@@ -1,0 +1,11 @@
+﻿
+#NavSide{ float:left; width:120px; }
+#NavSide li{ padding:2px; margin-bottom:35px; list-style:none; height:24px; line-height:24px; }
+#NavSide li.title{ }
+#NavSide li a{ color:#4F7FC9; text-decoration:none; font-size:14px; font-weight:bold; }
+#NavSide li a:hover{ color:#ff9933; text-decoration:underline; }
+
+#Main{  }
+
+#MainContentWrap{ float:right; width:800px; min-height:500px; _height:500px;   }
+#MainContent{  }

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A7AED8BA-70EA-49A4-81F6-E452F78263F1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ADeeWu.HuoBi3J.WebUI</RootNamespace>
+    <AssemblyName>ADeeWu.HuoBi3J.WebUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Nonshipping>true</Nonshipping>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Compose bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DateTimeSelector.cs" />
+    <Compile Include="FileUploadEx.cs" />
+    <Compile Include="Pager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyncSelector.cs" />
+    <Compile Include="ForePager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DateTimeSelectorClient\css\calendar-blue.css" />
+    <EmbeddedResource Include="Client\isc.js" />
+    <EmbeddedResource Include="Client\isc.ui.control.syncSelector.js" />
+    <Content Include="DateTimeSelectorClient\css\calendar-blue2.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-brown.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-green.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-system.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-tas.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-win2k-1.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-win2k-2.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-win2k-cold-1.css" />
+    <Content Include="DateTimeSelectorClient\css\calendar-win2k-cold-2.css" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\active-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\dark-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\hover-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\menuarrow.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\normal-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\rowhover-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\status-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\theme.css" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\title-bg.gif" />
+    <Content Include="DateTimeSelectorClient\css\skins\aqua\today-bg.gif" />
+    <EmbeddedResource Include="DateTimeSelectorClient\jquery.dynDateTime.js" />
+    <Content Include="DateTimeSelectorClient\lang\calendar-en.js" />
+    <Content Include="DateTimeSelectorClient\lang\calendar-en.min.js" />
+    <Content Include="DateTimeSelectorClient\lang\calendar-en.pack.js" />
+    <EmbeddedResource Include="SyncSelectorClient\jquery.SyncSelector.js" />
+    <EmbeddedResource Include="DateTimeSelectorClient\lang\calendar-zh.js" />
+    <EmbeddedResource Include="Client\jquery.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

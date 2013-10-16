@@ -1,0 +1,563 @@
+﻿<%-- 
+Table Must Set First Field Named "ID"
+--%>
+
+<%@ CodeTemplate Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Src="Utility\ProjectHelper.cs"  Inherits="CodeSmith.BaseTemplates.OutputFileCodeTemplate" Debug="true" Description="Entity Generate Template" %>
+
+
+<%@ Assembly Name="System.Data" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Assembly Name="SchemaExplorer" %>
+
+
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+<%
+
+string sqlUtilityName = "SQLUtility.Mssql";
+SchemaExplorer.ColumnSchema[] pkCols = GetPKColumns();
+%>
+
+using System;
+using System.Data.SqlClient;
+using System.Data;
+using System.Collections.Generic;
+using System.Text;
+
+namespace <%=Namespace%>.DAL{
+	
+	public class <%=SourceTable.Name%>{
+	
+	    private int _recordCount = 0;
+		///<summary>
+		///获取总记录数,该属性应该在调用Select2方法后获取
+		///</summary>
+		public int RecordCount
+		{
+			get{ return _recordCount; }
+		}
+		
+		public bool Exist(string where,params IDataParameter[] parameters)
+        {
+           StringBuilder builder = new StringBuilder();
+           builder.Append("select * from [<%=SourceTable.Name%>] where 1=1");
+           if (!string.IsNullOrEmpty(where) && where.Trim()!="")
+           {
+               builder.AppendFormat(" and ( {0} )", where);
+           }
+           return <%=sqlUtilityName%>.Exist(builder.ToString(), parameters);
+        }
+		
+		public bool Exist(string columnName, object value)
+        {
+            return Exist(new string[] { columnName }, value);
+        }
+
+        public bool Exist(string[] columns,params object[] values)
+        {
+           
+            StringBuilder builder = new StringBuilder();
+            builder.Append("select * from [<%=SourceTable.Name%>] where 1=1");
+            IDataParameter[] parameters = new IDataParameter[columns.Length];
+			
+            for (int i = 0; i < columns.Length; i++)
+            {
+                builder.AppendFormat(" and {0}=@{0}{1}", columns[i],i);
+                parameters[i] = SQLUtility.ParameterCollection.BuildParameter("@" + columns[i] + i, values[i]);
+            }
+            return <%=sqlUtilityName%>.Exist(builder.ToString(), parameters);
+        }
+		
+	    /// <summary>
+		/// 成功返回大于0的新ID
+		/// </summary>
+		public long Add(<%=GetModelClassName()%> model)
+		{
+			<%=GetCreateCmdParameters(SourceTable.Columns.ToArray(),"model.")%>
+		    DataTable dt = <%=sqlUtilityName%>.GetDataTable("<%=GetInsertSql()%>;select @@Identity;",parameters);
+			long newID = long.Parse(dt.Rows[0][0].ToString());
+			model.ID = newID;
+			return newID;
+		}
+		
+		public int Update(<%=GetModelClassName()%> model)
+		{
+			<%=GetCreateCmdParameters(SourceTable.Columns.ToArray(),"model.")%>
+			return <%=sqlUtilityName%>.ExecuteSql("<%=GetUpdateSql()%>",parameters);
+		}
+		
+	   
+		
+		/// <summary>
+        /// 更新记录(用于小量字段的更新)
+        /// </summary>
+        /// <param name="updateColumns">更新的字段集合</param>
+        /// <param name="updateValues">更新对应<paramref name="updateColumns"/>所指定的列的值</param>
+        /// <param name="filterColumns">筛选记录参照的字段名称</param>
+        /// <param name="filterValues">筛选记录参照的字段对应的值</param>
+        /// <returns></returns>
+		public int Update(string[] updateColumns, object[] updateValues, string[] filterColumns, object[] filterValues)
+		{
+			return <%=sqlUtilityName%>.Update("<%=SourceTable.Name%>",updateColumns,updateValues,filterColumns,filterValues);
+		}
+		
+		
+		
+		/// <summary>
+        /// 更新单个列的值
+        /// </summary>
+        /// <param name="updateColumns">更新的字段名称</param>
+        /// <param name="updateValues">更新对应<paramref name="updateColumns"/>所指定的列的值</param>
+        /// <param name="where">筛选条件</param>
+        /// <returns></returns>
+		public int Update(string columnName, object value, string where)
+		{
+			return <%=sqlUtilityName%>.Update("<%=SourceTable.Name%>",columnName, value, where, null);
+		}
+		
+		/// <summary>
+        /// 更新单个列的值
+        /// </summary>
+        /// <param name="updateColumns">更新的字段名称</param>
+        /// <param name="updateValues">更新对应<paramref name="updateColumns"/>所指定的列的值</param>
+        /// <param name="where">筛选条件</param>
+		/// <param name="parameters"><paramref name="where"/>所使用的参数</param>
+        /// <returns></returns>
+		public int Update(string columnName, object value, string where,params IDataParameter[] parameters)
+		{
+			return <%=sqlUtilityName%>.Update("<%=SourceTable.Name%>",columnName, value, where, parameters);
+		}
+		
+		/// <summary>
+        /// 更新记录 (可用于特殊情况筛选要更新的记录)
+        /// </summary>
+        /// <param name="updateColumns">更新的字段集合</param>
+        /// <param name="updateValues">更新对应<paramref name="updateColumns"/>所指定的列的值</param>
+        /// <param name="where">筛选条件</param>
+        /// <returns></returns>
+		public int Update(string[] updateColumns, object[] updateValues, string where)
+		{
+			return <%=sqlUtilityName%>.Update("<%=SourceTable.Name%>",updateColumns, updateValues, where, null);
+		}
+		
+		/// <summary>
+        /// 更新记录 (可用于特殊情况筛选要更新的记录)
+        /// </summary>
+        /// <param name="updateColumns">更新的字段集合</param>
+        /// <param name="updateValues">更新对应<paramref name="updateColumns"/>所指定的列的值</param>
+        /// <param name="where">筛选条件</param>
+        /// <param name="parameters"><paramref name="where"/>所使用的参数</param>
+        /// <returns></returns>
+		public int Update(string[] updateColumns, object[] updateValues, string where, params IDataParameter[] parameters)
+		{
+			return <%=sqlUtilityName%>.Update("<%=SourceTable.Name%>",updateColumns, updateValues, where,parameters);
+		}
+		
+		
+		public int Delete(<%=string.Join(",",GetPKParam())%>)
+		{
+			return <%=sqlUtilityName%>.Delete("<%=SourceTable.Name%>",
+			new string[]{
+				<%
+				for(int i=0;i<pkCols.Length;i++)
+					if(i==pkCols.Length-1){
+						Response.Write("\"{0}\"" , pkCols[i].Name);
+					}
+					else
+					{
+						Response.Write("\"{0}\"," , pkCols[i].Name);
+					}
+				%>
+			},
+			new object[]{
+				<%
+				for(int i=0;i<pkCols.Length;i++)
+					if(i==pkCols.Length-1){
+						Response.Write("{0}" , pkCols[i].Name);
+					}
+					else
+					{
+						Response.Write("{0}," , pkCols[i].Name);
+					}
+				%>
+			});
+		}
+		
+		
+		public int Delete(string[] columns,params object[] values)
+		{
+			return <%=sqlUtilityName%>.Delete("<%=SourceTable.Name%>",columns,values);
+		}
+		
+		public int Delete(string where,params IDataParameter[] parameters)
+        {
+            string sql = string.Format("delete from [{0}] where 1=1 ", "<%=SourceTable.Name%>");
+            return <%=sqlUtilityName%>.ExecuteSql(sql, parameters);
+        }
+
+        public int Delete(string columnName, object value)
+        {
+            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "<%=SourceTable.Name%>",columnName);
+            IDataParameter parameter = SQLUtility.ParameterCollection.BuildParameter("@" + columnName, value);
+            return <%=sqlUtilityName%>.ExecuteSql(sql, parameter);
+        }
+		
+		public <%=GetModelClassName()%> GetEntity(<%=string.Join(",",GetPKParam())%>)
+		{
+			<%=GetCreateCmdParameters(GetPKColumns(),"")%>
+			DataTable dt = <%=sqlUtilityName%>.GetDataTable("<%=GetSelectSql(GetPKColumns())%>",parameters);
+			if(dt.Rows.Count==0) return null;
+			DataRow dr = dt.Rows[0];
+			<%=GetModelClassName()%> Entity = new <%=GetModelClassName()%>();
+			<%foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns){%>
+			<%
+				string convertString = Utility.ProjectHelper.GetCSharpVariableTypeConvertString(	Utility.ProjectHelper.GetCSharpVariableType(col.DataType,false) , string.Format("dr[\"{0}\"].ToString()",col.Name) );
+			%>
+			Entity.<%=col.Name%> = <%=convertString%>;
+			<%}%>
+			return Entity;
+		}
+		
+		<%if(GetPKParam().Length>1){%>
+		public <%=GetModelClassName()%> GetEntity(<%=GetPKParam()[0]%>)
+		{
+			<%=GetCreateCmdParameters(new SchemaExplorer.ColumnSchema[]{GetPKColumns()[0]},"")%>
+			DataTable dt = <%=sqlUtilityName%>.GetDataTable("<%=GetSelectSql(new SchemaExplorer.ColumnSchema[]{GetPKColumns()[0]})%>",parameters);
+			if(dt.Rows.Count==0) return null;
+			DataRow dr = dt.Rows[0];
+			<%=GetModelClassName()%> Entity = new <%=GetModelClassName()%>();
+			<%foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns){%>
+			<%
+				string convertString = Utility.ProjectHelper.GetCSharpVariableTypeConvertString(	Utility.ProjectHelper.GetCSharpVariableType(col.DataType,false) , string.Format("dr[\"{0}\"].ToString()",col.Name) );
+			%>
+			Entity.<%=col.Name%> = <%=convertString%>;
+			<%}%>
+			return Entity;
+		}
+		<%}%>
+		
+		public <%=GetModelClassName()%> GetEntity(string[] columns,params object[] values)
+		{
+			<%=GetModelClassName()%>[] EntityList = GetEntityList("",columns,values);
+			if(EntityList.Length==0)return null;
+			return EntityList[0];
+		}
+		
+		public <%=GetModelClassName()%>[] GetEntityList(string orderBy,string[] colums,params object[] values)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append("select * from [<%=SourceTable.Name%>] where 1=1");
+            IDataParameter[] parameters = new IDataParameter[colums.Length];
+            for (int i = 0; i < colums.Length; i++)
+            {
+                builder.AppendFormat(" and [{0}]=@{0}", colums[i]);
+                parameters[i] = SQLUtility.ParameterCollection.BuildParameter("@" + colums[i], values[i]);
+            }
+            if (!string.IsNullOrEmpty(orderBy))
+            {
+                builder.AppendFormat(" order by {0}", orderBy);
+            }
+
+            DataTable dt = <%=sqlUtilityName%>.GetDataTable(builder.ToString(), parameters);
+           
+            <%=GetModelClassName()%>[] EntityList = new <%=GetModelClassName()%>[dt.Rows.Count];
+			 if (dt.Rows.Count == 0) return EntityList;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+				DataRow dr = dt.Rows[i];
+                <%=GetModelClassName()%> Entity = new <%=GetModelClassName()%>();
+				<%foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns){%>
+				<%
+				string convertString = Utility.ProjectHelper.GetCSharpVariableTypeConvertString(	Utility.ProjectHelper.GetCSharpVariableType(col.DataType,false) , string.Format("dr[\"{0}\"].ToString()",col.Name) );
+				%>
+				Entity.<%=col.Name%> = <%=convertString%>;
+				<%}%>
+                EntityList[i] = Entity;
+            }
+             return EntityList;
+        }
+		
+		/// <summary>
+        /// 查询数据(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <returns></returns>
+		public DataTable Select(string where,string orderBy)
+		{
+			return <%=sqlUtilityName%>.Select(-1,-1,"<%=this.SourceTable.Name%>","<%=GetPKColumns()[0].Name%>",orderBy,where,null);
+		}
+		
+		/// <summary>
+        /// 查询数据(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="where">支持变量的条件</param>
+		/// <param name="parameters">条件所需的参数</param>
+        /// <returns></returns>
+		public DataTable Select(string where,params IDataParameter[] parameters)
+		{
+			return <%=sqlUtilityName%>.Select(-1,-1,"<%=this.SourceTable.Name%>","<%=GetPKColumns()[0].Name%>","",where,parameters);
+		}
+		
+		
+		/// <summary>
+        /// 分页查询数据(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="pageSize">每页大小 设置-1 查询所有数据 </param>
+        /// <param name="pageIndex">页码 设置-1 查询所有数据 </param>
+        /// <returns></returns>
+		public DataTable Select(int pageSize,int pageIndex)
+		{
+			return <%=sqlUtilityName%>.Select(pageSize,pageIndex,"<%=this.SourceTable.Name%>","<%=GetPKColumns()[0].Name%>","","",null);
+		}
+		
+		/// <summary>
+        /// 分页查询数据(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="pageSize">每页大小 设置-1 查询所有数据 </param>
+        /// <param name="pageIndex">页码 设置-1 查询所有数据 </param>
+        /// <param name="orderBy">排序</param>
+        /// <returns></returns>
+		public DataTable Select(int pageSize,int pageIndex,string orderBy)
+		{
+			return <%=sqlUtilityName%>.Select(pageSize,pageIndex,"<%=this.SourceTable.Name%>","<%=GetPKColumns()[0].Name%>",orderBy,"",null);
+		}
+		
+		/// <summary>
+        /// 分页查询数据(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="pageSize">每页大小</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="orderBy">排序</param>
+        /// <param name="where">支持变量的条件,如Name=@Name</param>
+        /// <param name="parameters">条件所使用参数</param>
+        /// <returns></returns>
+		public DataTable Select(int pageSize,int pageIndex,string where,string orderBy,params IDataParameter[] parameters)
+		{
+			return <%=sqlUtilityName%>.Select(pageSize,pageIndex,"<%=this.SourceTable.Name%>","<%=GetPKColumns()[0].Name%>",orderBy,where,parameters);
+		}
+		
+		
+		
+		//带返回记录行数
+		
+		
+		/// <summary>
+        /// 分页查询数据并且返回总记录行数,通过ReocrdCount获取总行数
+        /// </summary>
+        /// <param name="pageSize">每页大小 设置-1 查询所有数据 </param>
+        /// <param name="pageIndex">页码 设置-1 查询所有数据 </param>
+        /// <returns></returns>
+        public DataTable Select2(int pageSize, int pageIndex)
+        {
+            return Select2(pageSize, pageIndex, "", "", null);
+        }
+		
+		/// <summary>
+        /// 查询数据并且返回总记录行数,通过ReocrdCount获取总行数
+        /// </summary>
+        /// <param name="where">条件</param>
+        /// <returns></returns>
+        public DataTable Select2(string where,params IDataParameter[] parameters)
+        {
+            return Select2(-1, -1, "", where, parameters);
+        }
+		
+		/// <summary>
+        /// 分页查询数据(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="pageSize">每页大小 设置-1 查询所有数据 </param>
+        /// <param name="pageIndex">页码 设置-1 查询所有数据 </param>
+        /// <param name="orderBy">排序</param>
+        /// <returns></returns>
+		public DataTable Select2(int pageSize,int pageIndex,string orderBy)
+		{
+			return Select2(pageSize,pageIndex,"",orderBy,null);
+		}
+		
+        /// <summary>
+        /// 分页查询数据并且返回总记录行数,通过ReocrdCount获取总行数(查询所有数据设置<paramref name="pageIndex"/>为-1
+        /// </summary>
+        /// <param name="pageSize">每页大小 设置-1 查询所有数据 </param>
+        /// <param name="pageIndex">页码 设置-1 查询所有数据 </param>
+        /// <param name="orderBy">排序</param>
+        /// <param name="recordCount">返回总记录行数</param>
+        /// <param name="where">带变量查询条件,如Name=@Name</param>
+        /// <param name="parameters">查询条件所使用参数</param>
+        /// <returns></returns>
+        public DataTable Select2(int pageSize, int pageIndex, string where ,string orderBy , params IDataParameter[] parameters)
+        {
+            return <%=sqlUtilityName%>.Select2(pageSize, pageIndex,"<%=this.SourceTable.Name%>","<%=GetPKColumns()[0].Name%>", orderBy,out _recordCount,where, parameters);
+        }
+		
+		
+		
+	}
+	
+}
+<script runat="template">
+
+
+public string GetModelClassName()
+{
+  return Namespace + ".Model." + SourceTable.Name;
+}
+
+public string[] GetPKParam()
+{
+	System.Collections.Generic.List<string> ret = new System.Collections.Generic.List<string>();
+	
+	foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns)
+	{
+		if(col.IsPrimaryKeyMember){
+	       ret.Add(string.Format("{0}  {1}", Utility.ProjectHelper.GetCSharpVariableType(col.DataType,false) ,	col.Name));
+		}
+	}
+	/*
+	foreach(SchemaExplorer.ExtendedProperty prop in SourceTable.Columns[5].ExtendedProperties)
+	{
+		Response.WriteLine(prop.Name + " " + prop.Value+ "  " + prop.DataType);
+	}
+	*/
+	
+	////return builder.ToString().Substring(1);
+	return ret.ToArray();
+}
+
+
+public SchemaExplorer.ColumnSchema[] GetPKColumns()
+{
+	System.Collections.Generic.List<SchemaExplorer.ColumnSchema> cols = new System.Collections.Generic.List<SchemaExplorer.ColumnSchema>();
+	foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns)
+	{
+		if(col.IsPrimaryKeyMember){
+	      cols.Add(col);
+		}
+	}
+	return cols.ToArray();
+}
+
+
+public string GetCreateCmdParameters(SchemaExplorer.ColumnSchema[] colums,string valuePrefix)
+{
+	System.Text.StringBuilder builder = new System.Text.StringBuilder();
+	builder.Append("IDataParameter[] parameters = new IDataParameter[]{\r\n");
+	foreach(SchemaExplorer.ColumnSchema col in colums)
+	{
+		builder.AppendFormat("\r\n\t\t\t\t\tSQLUtility.ParameterCollection.BuildParameter(\"@{0}\",{1}),", col.Name ,  Utility.ProjectHelper.GetSqlType(col.DataType));
+	}
+	builder.Remove(builder.Length-1,1);
+    //builder.Append("\r\n\t\t\t\t\tnew SqlParameter(\"@returnValue\", System.Data.SqlDbType.Int)");
+	builder.Append("\r\n\t\t\t\t\t};");
+	
+	for(int i=0;i<colums.Length;i++)
+	{
+		SchemaExplorer.ColumnSchema col = colums[i];
+		
+		//if(col.AllowDBNull)
+		//{
+		//	builder.AppendFormat("\r\n\t\t\t\t\tparameters[{0}].IsNullable=true;",i);
+		//	builder.AppendFormat("\r\n\t\t\t\t\tparameters[{0}].Value={1}==null?DBNull.Value:(object){1};",i,valuePrefix + col.Name);
+		//}
+		//else
+		//{
+			builder.AppendFormat("\r\n\t\t\t\t\tparameters[{0}].Value={1};",i,valuePrefix + col.Name);
+		//}
+	}
+	
+	//builder.AppendFormat("\r\n\t\t\t\tparameters[{0}].Direction = ParameterDirection.ReturnValue;" , colums.Length);
+	return builder.ToString();
+}
+
+public string GetSelectSql(SchemaExplorer.ColumnSchema[] columns)
+{
+	System.Text.StringBuilder builder = new System.Text.StringBuilder();
+	builder.AppendFormat("select * from [{0}] where 1=1 " , SourceTable.Name );
+	foreach(SchemaExplorer.ColumnSchema col in columns)
+	{
+		builder.AppendFormat(" and [{0}]=@{0}",col.Name);
+	}
+	
+	return builder.ToString();
+}
+
+public string GetInsertSql()
+{
+	string insertSql = string.Format("insert into [{0}]({1}) values ({2})" , 
+	SourceTable.Name , GetColumnsStringWithoutID() , GetSqlParamColumnStringWithoutID()
+	);
+	return insertSql;
+}
+
+public string GetDeleteSql(SchemaExplorer.ColumnSchema[] columns)
+{
+	System.Text.StringBuilder builder = new System.Text.StringBuilder();
+	builder.AppendFormat("delete from [{0}] where 1=1 ",SourceTable.Name);
+	foreach(SchemaExplorer.ColumnSchema col in columns)
+	{
+	    builder.AppendFormat(" and [{0}]=@{0}",col.Name);
+	}
+	return builder.ToString();
+}
+
+public string GetUpdateSql()
+{
+	System.Text.StringBuilder builder = new System.Text.StringBuilder();
+	string pk = string.Empty;
+	foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns)
+	{
+		if(!col.IsPrimaryKeyMember)
+		{
+			builder.AppendFormat(",[{0}]=@{0}",col.Name);
+		}
+		else
+		{
+			pk = string.Format("[{0}]=@{0}",col.Name);
+		}
+	}
+	string updateSql = string.Format("update [{0}] set {1} where {2}" , 
+		SourceTable.Name , builder.ToString().Substring(1) , pk
+	);
+	return updateSql;
+}
+
+
+
+public string GetColumnsStringWithoutID()
+{
+	//build columnString without Columns named 'ID'
+	System.Text.StringBuilder builder = new System.Text.StringBuilder();
+	foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns)
+	{
+		if(string.Compare(col.Name,"id",true)!=0){
+		builder.AppendFormat(",[{0}]",col.Name);
+		}
+	}
+	return builder.ToString().Substring(1);
+}
+
+public string GetSqlParamColumnStringWithoutID()
+{
+	System.Text.StringBuilder builder = new System.Text.StringBuilder();
+	
+	foreach(SchemaExplorer.ColumnSchema col in SourceTable.Columns)
+	{
+		if(string.Compare(col.Name,"id",true)!=0){
+		builder.AppendFormat(",@{0}",col.Name);
+		}
+	}
+	return builder.ToString().Substring(1);
+}
+
+
+
+
+
+</script>
+
+<!-- #include file="script.inc" -->

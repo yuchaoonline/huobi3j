@@ -1,0 +1,181 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MMain.Master" AutoEventWireup="true" CodeBehind="MMyUser.master.cs" Inherits="ADeeWu.HuoBi3J.Web.MMyUser" %>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphTitle" runat="server">
+    <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
+    <link href="/CSS/default.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+    <div class="position_index">
+        当前位置：<a href="/My/User/">我的后台</a>
+        <asp:ContentPlaceHolder ID="siteposition" runat="server"></asp:ContentPlaceHolder>
+    </div>
+
+    <div class="content zoom">
+        <div class="sidebar l">
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">基本信息</label>
+                    <a href="/logOut.aspx" class="orange">[注销登录]</a>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/">个人资料</a></li>
+                        <li><a href="/My/User/TradeOrders/">我的充值订单</a></li>
+                        <li><a href="/My/User/TradeOrders/Order.aspx">在线充值</a></li>
+                        <li><a href="/My/User/Coins/Purchase.aspx">购买货币</a></li>
+                        <li><a href="/My/User/Coins/">货币使用记录</a></li>
+                        <li><a href="/My/User/VMoney/">帐户明细记录</a></li>
+                        <li><a href="/My/User/TransferApplications/Application.aspx">转帐申请</a></li>
+                        <li><a href="/My/User/TransferApplications/">我的转帐申请历史记录</a></li>
+                        <%
+                            if (base.LoginUser.UserType == 1)
+                            {
+                        %>
+                        <li class="selected last"><a href="/My/Corp/" class="orange tdu">切换到商家控制面板</a></li>
+                        <%}
+                        else
+                        {%>
+                        <li class="selected last"><a href="/RegCorporations.aspx" class="orange tdu">注册成为商家</a></li>
+                        <%}%>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">即时比价</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/GroupBuy/">我的订单<span style="color: red;">（点此拍照）</span></a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">即时报价</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Center/RegSaleMan.aspx">申请关注关键字</a></li>
+                        <li><a href="/My/User/Center/MyQuestionList.aspx">我的提问<span id="questionAttentionCount"></span></a></li>
+                        <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
+                          { %>
+                        <li><a href="/My/User/Center/MyAnswerList.aspx">我收到的提问<span id="salemanAttentionCount"></span></a></li>
+                        <li><a href="/My/User/Center/MyAttentionList.aspx">关注列表</a></li>
+                        <% } %>
+                        <li><a href="/My/User/Center/KeyManage/">管理关键字</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">现金赠送</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/CashTickets/">我的现金赠送券</a></li>
+                        <li><a href="/My/User/CashTickets/Application.aspx">现金赠送券兑换</a></li>
+                        <li><a href="/My/User/FreeAdmission/Exchange.aspx">申请现金赠送</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">营销代理商</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/CorpAgent/">网络营销专员</a></li>
+                        <li><a href="/My/User/CorpAgent/Customer.aspx">我的营销伙伴</a></li>
+                        <li><a href="/My/User/CorpAgent/CustomerBenefit.aspx">营销伙伴收益</a></li>
+                        <li><a href="/My/User/CorpAgent/SearchHireInfo.aspx">搜索营销商家</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">精准搜索</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Keyword/New.aspx">添加搜索关键字</a></li>
+                        <li><a href="/My/User/Keyword">管理搜索关键字</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">全民广告</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Forum/Add.aspx">发布帖子</a></li>
+                        <li><a href="/My/User/Forum/Manager.aspx">管理帖子</a></li>
+                        <li><a href="/My/User/Forum/ApplyCash.aspx">申请现金</a></li>
+                        <li><a href="/My/User/Forum/MyApplyCashLog.aspx">申请记录</a></li>
+                        <li><a href="/My/User/Forum/MyFansList.aspx">关注商家</a></li>
+                        <li><a href="/My/User/Forum/MyUser.aspx">营销统计</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">在线营销</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Shops/Orders/">我的购物订单</a></li>
+                        <li><a href="/My/User/Shops/Orders/AfterSaleRecords/">售后服务</a></li>
+                        <li><a href="/My/User/Shops/Vouchers/">购物电子凭证</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">在线招聘</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Fav_Jobs/">我的收藏职位</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">在线出租</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Houses/">在线出租管理</a></li>
+                        <li><a href="/My/User/Houses/New.aspx">发布出租信息</a></li>
+                        <%--<li><a href="/My/User/Houses/Fav_Houses.aspx">收藏夹</a></li>--%>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+        </div>
+        <div class="side_content r">
+            <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>

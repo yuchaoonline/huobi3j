@@ -1,0 +1,220 @@
+﻿body ,th,td{
+	font:normal 12px 宋体; 
+}
+body  { margin:0px; background:#C4D8ED; margin:0px; padding:10px; 
+SCROLLBAR-FACE-COLOR: #72A3D0; SCROLLBAR-HIGHLIGHT-COLOR: #337ABB; 
+SCROLLBAR-SHADOW-COLOR: #337ABB; SCROLLBAR-DARKSHADOW-COLOR: #337ABB; 
+SCROLLBAR-3DLIGHT-COLOR: #337ABB; SCROLLBAR-ARROW-COLOR: #FFFFFF;
+SCROLLBAR-TRACK-COLOR: #337EC0; 
+overflow-x:hidden;
+}
+img,a img{ border:0px;}
+a { color: #135294; text-decoration: none; }
+a:hover { color: #ff6600; text-decoration: underline; }
+
+table{
+
+margin:0px auto;
+
+font-size:12px;
+color:#333333;
+text-align:left;
+background:#ECF3FD;
+
+border-collapse:collapse;/*细线表格代码*/
+}
+table td{
+padding-left:10px;
+border:1px solid #9EC9FE;/*细线表格线条颜色*/
+height:28px;
+line-height:28px;
+}
+
+
+
+radio { border:none; width:20px; }
+checkbox { border:none;width:20px; }
+submit{border:none; width:20px; }
+.helplink{
+	CURSOR: help;
+}
+.menuskin {
+
+	BORDER: #666666 1px solid; VISIBILITY: hidden; FONT: 12px Verdana;
+
+	POSITION: absolute; 
+
+	BACKGROUND-COLOR:#EFEFEF;
+
+	background-image:url("../skins/default/dvmenubg3.gif");
+
+	background-repeat : repeat-y;
+
+	}
+
+.menuskin A {
+
+	PADDING-RIGHT: 10px; PADDING-LEFT: 25px; COLOR: black; TEXT-DECORATION: none; behavior:url(inc/noline.htc);
+
+	}
+
+#mouseoverstyle {
+
+	BACKGROUND-COLOR: #C9D5E7; margin:2px; padding:0px; border:red 1px solid;
+
+	}
+
+#mouseoverstyle A {
+
+	COLOR: black
+
+}
+
+.menuitems{
+
+	margin:2px;padding:1px;word-break:keep-all;
+
+}
+.title{font:14px;}
+.font1{color:#AAAAAA;}
+.font2{color:red;}
+
+
+
+#inputArea
+	{
+
+
+	    padding: 10px;
+	    width:97%;
+		line-height:25px;
+	}
+	#inputArea input, #inputArea select
+	{
+
+	    margin-bottom: 5px;
+	    display: block;
+	    padding: 4px;
+	    width: 300px;
+		height:25px;
+		float:left;
+	}
+ #inputArea textarea{
+	        border: 1px  solid #cccccc;
+	    font-size: 13px;
+	    margin-bottom: 5px;
+	    display: block;
+	    padding: 4px;
+	    width: 90%;
+		height:400px;
+	}
+ #inputArea .activeField
+        {
+            background-image: none;
+            background-color: #ffffff;
+            border: solid 1px #33677F;
+        }
+ #inputArea .idle
+        {
+	    border: solid 1px #85b1de;
+	    background-image: url(../../images/blue_bg.png);
+	    background-repeat: repeat-x;
+	    background-position: top;
+        }
+		
+.button {
+font: 12px Tahoma, Verdana;
+padding: 0 5px;
+color: #D3E0E7;
+background-image: url("../images/bg_menu.png");
+background-repeat: repeat-x;
+background-position: 0 50%;
+outline: 1px solid #D3E0E7;
+border: 1px solid #FFF !important;
+height: 19px !important;
+border: 1px solid #D3E0E7;
+height: 21px;
+line-height: 17px;
+}
+
+
+caption{text-align:right;font-size:12px;font-weight:bold;margin:0 auto; float:right;}
+tr.t1 td {background-color:#fff;}/* 交替行第一行的背景色 */
+tr.t2 td {background-color:#ECF3FD;}/* 交替行第二行的背景色 */
+tr.t3 td {background-color:#CEDEF0;}/* 鼠标经过时的背景色 */
+th,tfoot tr td{font-weight:bold;text-align:center;background:#1D99D6; color:#fff;}
+th{line-height:30px;height:30px;}
+tfoot tr td{background:#fff;line-height:26px;height:26px;}
+thead{border:0px solid #999;}
+thead tr td{text-align:center;}
+#page{text-align:center;float:right; width:300px; height:25px; line-height:25px;}
+#page a,#page a:visited{width:60px;height:25px; line-height:25px;border:1px #1D99D6 solid;display:block;float:left;margin: 3px;
+text-decoration:none;}
+#page a:hover{background:#CEDEF0;text-decoration:none;}
+.grayr {padding:2px;font-size:11px;background:#fff;float:right;}
+.grayr a {padding:2px 5px;margin:2px;color:#000;text-decoration:none;;border:1px #c0c0c0 solid;}
+.grayr a:hover {color:#000;border:1px orange solid;}
+.grayr a:active {color:#000;background: #99ffff}
+.grayr span.current {padding:2px 5px;font-weight:bold; margin:2px; color: #303030;background:#fff;border:1px orange solid;}
+.grayr span.disabled {padding:2px 5px;margin:2px;color:#797979;background: #c1c1c1;border:1px #c1c1c1 solid;}
+
+ #inputArea .button, .button  {
+font: 12px Tahoma, Verdana;
+padding: 0 5px;
+color: #fff;
+background-image: url("../images/bg_menu.png");
+background-repeat: repeat-x;
+background-position: 0 50%;
+outline: 1px solid #D3E0E7;
+border: 1px solid #FFF !important;
+height: 19px !important;
+border: 1px solid #D3E0E7;
+height: 21px;
+line-height: 17px;
+font-weight:bold;
+}
+
+
+#SitePath{ margin-bottom:10px; }
+
+.searchTable{ width:100%; margin-bottom:10px; }
+.searchTable .key{ padding:0px 10px; text-align:left;}
+.searchTable .input{ text-align:left; padding:0px 10px; }
+
+.dataGrid{ width:100%; }
+.dataGrid th , .dataGrid td{ padding-left:0px; text-align:left; text-indent:10px; }
+.dataGrid .col_id{ width:120px; }
+.dataGrid .col_title{ text-align:left;}
+.dataGrid .col_datetime{ width:120px; }
+.dataGrid .col_calling{ width:150px; text-align:0px; padding-left:10px; text-align:left; }
+.dataGrid .col_location{ width:200px; }
+.dataGrid .col_state{ width:80px; }
+.dataGrid .col_ip{ width:120px; }
+.dataGrid .col_number{ width:80px; }
+.dataGrid .col_money{ width:80px; }
+.dataGrid .col_notes{ width:150px; }
+.dataGrid .col_account{ width:150px; }
+.dataGrid .col_option{ width:120px; }
+
+.dataGrid_Footer{ width:100%; margin-top:20px; }
+.dataGrid_Footer .options{ width:20%; }
+.dataGrid_Footer .pagerBox{ }
+
+.pager{  }
+.pager .curPage{ color:#f00; }
+.pager a{ margin-right:5px; }
+
+.formTable{ width:100%; }
+.tdLeft{ width:120px; }
+
+.tdRight{ text-align:left; }
+
+.txtBox{ width:120px; }
+.txtDate{ width:100px; }
+.txtAddress{ width:220px; }
+.txtNum{ width:50px; }
+.txtNotes{ }
+
+.tips{ color:#333; padding:0px 5px; }
+.require{ color:#f00; }
+.strewColor{ color:#f00; }

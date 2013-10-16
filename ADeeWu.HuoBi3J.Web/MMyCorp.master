@@ -1,0 +1,225 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MMain.Master" AutoEventWireup="true" CodeBehind="MMyCorp.master.cs" Inherits="ADeeWu.HuoBi3J.Web.MMyCorp" %>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="cphTitle" runat="server">
+    <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
+    <link href="/CSS/default.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            $('.spl').html(">");
+        })
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+    <div class="position_index">
+        <label>当前位置：</label><a href="/My/Corp/">商家控制面板</a>
+        <asp:ContentPlaceHolder ID="siteposition" runat="server"></asp:ContentPlaceHolder>
+    </div>
+
+    <div class="content zoom">
+        <div class="sidebar l">
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">基本信息</label>
+                    <a href="/logOut.aspx" class="orange">[注销登录]</a>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/">商家资料</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/CorpAgentManage/Roles/">角色管理</a> |
+										<a href="/My/Corp/CorpAgentManage/Roles/New.aspx">添加</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/CorpAgentManage/Users/">商家代表用户</a> |
+										<a href="/My/Corp/CorpAgentManage/Users/New.aspx">添加</a>
+                        </li>
+                        <li>
+                            <a href="/My/User/" class="orange tdu">切换到个人控制面板</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">即时比价</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/groupbuy/">返现列表</a> |
+                            <a href="/My/Corp/groupbuy/Add.aspx">添加</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/groupbuy/valcode.aspx">验证消费码</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">网络营销专员</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/CorpAgentManage/HireInfos/">招聘信息管理</a> |
+										<a href="/My/Corp/CorpAgentManage/HireInfos/New.aspx">发布</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/CorpAgentManage/SearchCorpAgents/Partner.aspx">我的网络营销专员</a> |
+										<a href="/My/Corp/CorpAgentManage/SearchCorpAgents/">查找</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">精准搜索</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/Promotions/Keywords/AD/Default.aspx">广告设置管理</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/Promotions/Keywords/Aution/Default.aspx">关键字竞价管理</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">在线营销</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/Shop/">我的商铺</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/Shop/ProductCategories/">商铺商品分类</a> |
+										<a href="/My/Corp/Shop/ProductCategories/New.aspx">添加</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/Shop/Products/">商品管理</a> |
+										<a href="/My/Corp/Shop/Products/New.aspx">发布商品</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/Shop/Vouchers/">电子凭证</a> |
+										<a href="/My/Corp/Shop/Vouchers/New.aspx">添加</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/Shop/Orders/">客户订单</a> |
+										<a href="/My/Corp/Shop/Orders/AfterSaleRecords/">售后服务</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <%if (!LoginUser.IsPromotionCorp)
+              {%>
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">官网搜索推广</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/Promotions/ServiceApplication.aspx">填写推广信息</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+            <%}
+              else
+              {%>
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">官网搜索推广</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/Corp/Promotions/">推广信息</a> | <a href="/My/Corp/Promotions/Edit.aspx">设置</a></li>
+                        <li><a href="/My/Corp/Promotions/Keywords/">推广关键字</a></li>
+                        <li><a href="/My/Corp/Promotions/Keywords/New.aspx">添加关键字</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">商企在线</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/Corporations/view.aspx?corpid=<%=this.LoginUser.CorpID%>" target="_blank">前台预览</a></li>
+                        <li><a href="/My/Corp/Service.aspx">特色服务/经营范围</a></li>
+                        <li><a href="/My/Corp/CorpImage/Albums/">企业相册</a> | <a href="/My/Corp/CorpImage/Albums/Photos/New.aspx">上传图片</a></li>
+                        <li><a href="/My/Corp/CorpImage/Videos/">企业视频</a> | <a href="/My/Corp/CorpImage/Videos/New.aspx">添加视频</a></li>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">在线招聘</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <a href="/My/Corp/Jobs/">发布职位管理</a>
+                        </li>
+                        <li>
+                            <a href="/My/Corp/Jobs/New.aspx">发布职位</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+            <%} %>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">现金赠送</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li>
+                            <%if (!LoginUser.IsCashTicketPartner)
+                              {%>
+                            <a href="/My/Corp/CashTickets/ServiceApplication.aspx">服务申请开通</a>
+                            <%}
+                              else
+                              {%>
+                            <a href="/My/Corp/CashTickets/">现金券列表</a>
+                            <%} %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="side_content r">
+            <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+        </div>
+        <asp:ContentPlaceHolder ID="afterform" runat="server"></asp:ContentPlaceHolder>
+    </div>
+</asp:Content>

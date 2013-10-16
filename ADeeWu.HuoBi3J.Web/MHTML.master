@@ -1,0 +1,20 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MMain.Master" AutoEventWireup="true" CodeBehind="MHTML.master.cs" Inherits="ADeeWu.HuoBi3J.Web.MHTML" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphTitle" runat="server">
+    <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+    <div id="content_commerce" class="zoom">
+        <div id="other" class="l">
+            <div class="title_short2"><a href="/html/AboutUs.aspx">关于我们</a></div>
+            <div class="title_short2"><a href="/html/Collaborate.aspx">商家合作</a></div>
+            <div class="title_short2"><a href="/html/ContactUs.aspx">联系我们</a></div>
+            <div class="title_short2"><a href="/html/Service.aspx">服务声明</a></div>
+        </div>
+        <div class="content_l r">
+            <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+</asp:Content>

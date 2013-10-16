@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6215E0D9-BF69-420B-8776-119BAD4AD09D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ADeeWu.HuoBi3J.DAL</RootNamespace>
+    <AssemblyName>ADeeWu.HuoBi3J.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin_Pages.cs" />
+    <Compile Include="Admin_RolePermissions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Admin_Roles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Admin_UserInRoles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Admin_UserPermissions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Admin_Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Answer.cs" />
+    <Compile Include="Areas.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttentionQuestion.cs" />
+    <Compile Include="BaseData.cs" />
+    <Compile Include="BusinessCircle.cs" />
+    <Compile Include="Callings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CA_CircleSaleMan.cs" />
+    <Compile Include="CA_CorpAgentInCorps.cs" />
+    <Compile Include="CA_HireInfos.cs" />
+    <Compile Include="CA_QuaAgentInCorps.cs" />
+    <Compile Include="CA_QualifiedAgentBusiness.cs" />
+    <Compile Include="CA_QualifiedAgents.cs" />
+    <Compile Include="CA_RolePermissions.cs" />
+    <Compile Include="CA_Roles.cs" />
+    <Compile Include="CA_UserPermissions.cs" />
+    <Compile Include="Center_Info.cs" />
+    <Compile Include="Center_Inform.cs" />
+    <Compile Include="Center_Key_Log.cs" />
+    <Compile Include="Center_Key_Manage.cs" />
+    <Compile Include="Center_Key_Refresh.cs" />
+    <Compile Include="Center_Products.cs" />
+    <Compile Include="Center_Product_Data.cs" />
+    <Compile Include="Center_QuestionIndex.cs" />
+    <Compile Include="Citys.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CI_Albums.cs" />
+    <Compile Include="CI_CatalogPhotos.cs" />
+    <Compile Include="CI_Catalogs.cs" />
+    <Compile Include="CI_Photos.cs" />
+    <Compile Include="CI_Videos.cs" />
+    <Compile Include="CorpAgents.cs" />
+    <Compile Include="Corporations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CP_KeywordIndex.cs" />
+    <Compile Include="CP_Keyword_AD.cs" />
+    <Compile Include="CP_Keyword_AD_Auction.cs" />
+    <Compile Include="CP_Keyword_AD_Auction_Log.cs" />
+    <Compile Include="CP_Keyword_AD_Log.cs" />
+    <Compile Include="CP_Keyword_Refresh.cs" />
+    <Compile Include="CP_Keyword_Result.cs" />
+    <Compile Include="CP_Keyword_Result_Click.cs" />
+    <Compile Include="CP_Keyword_Search.cs" />
+    <Compile Include="CP_Promotions.cs" />
+    <Compile Include="CP_Keywords.cs" />
+    <Compile Include="CT_CashTicketApplications.cs" />
+    <Compile Include="CT_CashTickets.cs" />
+    <Compile Include="CT_PartnerCorps.cs" />
+    <Compile Include="Forum_Auction.cs" />
+    <Compile Include="Forum_AuctionLog.cs" />
+    <Compile Include="Forum_AutoReply.cs" />
+    <Compile Include="Forum_CoinLog.cs" />
+    <Compile Include="Forum_MyFans.cs" />
+    <Compile Include="Forum_Page.cs" />
+    <Compile Include="Forum_Post.cs" />
+    <Compile Include="Forum_Reply.cs" />
+    <Compile Include="Forum_Users.cs" />
+    <Compile Include="FreeAdmission.cs" />
+    <Compile Include="FreeAdmission_Log.cs" />
+    <Compile Include="GroupBuy_Category.cs" />
+    <Compile Include="GroupBuy_Order.cs" />
+    <Compile Include="GroupBuy_Product.cs" />
+    <Compile Include="HotPlace.cs" />
+    <Compile Include="HouseInfos.cs" />
+    <Compile Include="House_SeekerFavs.cs" />
+    <Compile Include="IM_FriendApps.cs" />
+    <Compile Include="IM_FriendInTeams.cs" />
+    <Compile Include="IM_Friends.cs" />
+    <Compile Include="IM_FriendTeams.cs" />
+    <Compile Include="IM_Groups.cs" />
+    <Compile Include="IM_LeaveMsgs.cs" />
+    <Compile Include="IM_SystemMsgs.cs" />
+    <Compile Include="IM_UINS.cs" />
+    <Compile Include="IM_UserInGroups.cs" />
+    <Compile Include="IM_Users.cs" />
+    <Compile Include="Jobs.cs" />
+    <Compile Include="Job_Callings.cs" />
+    <Compile Include="Job_Categories.cs" />
+    <Compile Include="Job_SeekerFavs.cs" />
+    <Compile Include="Key.cs" />
+    <Compile Include="Key_Attribute.cs" />
+    <Compile Include="Key_Product.cs" />
+    <Compile Include="Market_Infos.cs" />
+    <Compile Include="Market_SeekerFavs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Provinces.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Question.cs" />
+    <Compile Include="SD_Bidders.cs" />
+    <Compile Include="SD_SeekerFavs.cs" />
+    <Compile Include="SD_SupplyDemands.cs" />
+    <Compile Include="Shops.cs" />
+    <Compile Include="Shop_AfterSaleRecords.cs" />
+    <Compile Include="Shop_CPCategories.cs" />
+    <Compile Include="Shop_OrderDetails.cs" />
+    <Compile Include="Shop_Orders.cs" />
+    <Compile Include="Shop_PC_Attrs.cs" />
+    <Compile Include="Shop_PC_Attr_Options.cs" />
+    <Compile Include="Shop_PInCPCategories.cs" />
+    <Compile Include="Shop_ProductAttrs.cs" />
+    <Compile Include="Shop_ProductCategories.cs" />
+    <Compile Include="Shop_Products.cs" />
+    <Compile Include="Shop_Vouchers.cs" />
+    <Compile Include="System_Functions.cs" />
+    <Compile Include="tblHistory.cs" />
+    <Compile Include="TicketHotKey.cs" />
+    <Compile Include="TradeSystem_Tasks.cs" />
+    <Compile Include="UserKey.cs" />
+    <Compile Include="Users.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TradeSystem_AlipayTrades.cs" />
+    <Compile Include="User_CoinUseHistories.cs" />
+    <Compile Include="User_DealHistories.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="User_PointsHistories.cs" />
+    <Compile Include="User_TransferApplications.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="User_TransferHistories.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.Model\ADeeWu.HuoBi3J.Model.csproj">
+      <Project>{64338C1C-0901-4EEF-BF2F-07B88FE39A30}</Project>
+      <Name>ADeeWu.HuoBi3J.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.Libary\ADeeWu.HuoBi3J.Libary.csproj">
+      <Project>{0B2961CC-0B54-4CB7-8C87-922C270B2A22}</Project>
+      <Name>ADeeWu.HuoBi3J.Libary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.SQL\ADeeWu.HuoBi3J.SQL.csproj">
+      <Project>{218bcca1-066c-4ea2-9d8e-00e19c2781fa}</Project>
+      <Name>ADeeWu.HuoBi3J.SQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

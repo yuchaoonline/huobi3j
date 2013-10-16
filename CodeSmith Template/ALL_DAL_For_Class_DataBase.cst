@@ -1,0 +1,127 @@
+﻿<%@ CodeTemplate OutputType="None" Language="C#" ResponseEncoding="UTF-8" TargetLanguage="C#" Debug="true"  %>
+<%@ Register Name="DAL" Template="DAL_For_Class_DataBase.cst" %>
+
+<%@ Assembly Name="System.Data" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.IO" %>
+
+
+
+
+<script runat="template">
+public override void Render(System.IO.TextWriter wirter)
+{
+	string targetPath = GeneratePath;
+	if(!targetPath.EndsWith(@"\") && !targetPath.EndsWith("/"))
+	{
+		targetPath += @"\";
+	}
+	
+	foreach(SchemaExplorer.TableSchema table in TableList)
+	{
+		string targetFile = targetPath + table.Name + ".cs";
+		CreateTemplate(table,this.Namespace,targetFile);
+	}
+}
+
+
+
+public void CreateTemplate(SchemaExplorer.TableSchema table,string clzNamespace,string targetFile)
+{
+	DAL dal = this.Create<DAL>();
+	dal.SourceTable = table;
+	dal.OutputFile = targetFile;
+	dal.Namespace = clzNamespace;
+	//dal.RegisterOutput(targetFile);
+	//dal.RenderToFile(targetFile,true);
+	
+	string content = dal.RenderToString();
+	CreateCSFile(targetFile,content);
+}
+
+public void CreateCSFile(string filePath,string content)
+{
+	if(File.Exists(filePath))
+	{
+		File.Delete(filePath);
+	}
+	System.IO.StreamWriter writer = File.CreateText(filePath);
+	writer.Write(content);
+	writer.Close();
+	
+}
+
+CodeTemplate subTemplate = null;
+[Browsable(false)]
+public CodeTemplate SubTemplate
+{
+    get
+    {
+        if(subTemplate == null)
+        {
+            CodeTemplateCompiler compiler = new CodeTemplateCompiler(this.CodeTemplateInfo.DirectoryName + "DAL_For_Class_DataBase.cst");
+            compiler.Compile();
+            if(compiler.Errors.Count==0)
+            {
+                subTemplate = compiler.CreateInstance();
+            }
+            else
+            {
+                for(int i=0; i<compiler.Errors.Count; i++)
+                {
+                    this.Response.WriteLine(compiler.Errors[i].ToString());
+                }
+            }
+        }
+        return subTemplate;
+    }
+}
+
+SchemaExplorer.TableSchemaCollection _collection = null;
+public SchemaExplorer.TableSchemaCollection TableList
+{
+	get{ return _collection; }
+	set{ _collection = value; }
+}
+
+private string _Namespace = "Allsels";
+[Category("Database")]
+[Description("Class Namespace")]
+public string Namespace
+{
+ 	get 
+	{
+		return _Namespace;
+	}
+ 	set 
+{
+	_Namespace = value;
+}
+}
+
+private string _Copyright = "Allsels";
+[Category("Context")]
+[Description("Copyright")]
+public string Copyright
+{
+ 	get 
+	{
+		return _Copyright;
+	}
+ 	set 
+{
+	_Copyright = value;
+}
+}
+
+private string generatePath = string.Empty;
+public string GeneratePath
+{
+	get{ return generatePath; }
+	set{ generatePath = value; }
+}
+
+
+</script>

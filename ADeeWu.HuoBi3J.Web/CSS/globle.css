@@ -1,0 +1,54 @@
+/*=========================================== css reset ===============================================*/
+body{
+	line-height:1.4em;
+	background:#fff;
+	font-family:'宋体',arial;
+}
+body,input,textarea,select{
+	font-size:12px;
+	color:#9D9D9D;
+}
+body,h1,h3,h4,p,ul,ol{
+	margin:0;
+}
+ul,ol{
+	padding-left:0;
+	list-style-type:none;
+}
+a {
+	text-decoration:none;
+	outline:none;
+	color: #707070;
+}
+/*image with no-border*/
+a img{border:0;}
+
+
+/*=========================================== css common ==============================================*/
+
+.l{float:left;display:inline;}.r{float:right;display:inline;}.cl{clear:both; height:0px;font-size:0px; line-height:0px; overflow:hidden;}
+.rel{position:relative;}.abs{position:absolute;}
+.tc{text-align:center;}.tr{text-align:right;}.tl{text-align:left;}
+.tdu{text-decoration:underline;}
+.vat{ vertical-align:top;}
+.fn{font-weight:normal!important; font-style:normal;}.fb{font-weight:bold; color:#323232;}
+.tdn {text-decoration:none;}
+/*字号*/
+.font12{font-size:12px; color:#5a5a5a;}.font14{font-size:14px;}.font16{font-size:16px;}.font18{font-size:14px;}.font20{font-size:20px;}.font24{font-size:24px;}
+
+
+/*外间距*/
+.m10 {margin:10px;} .m20{margin:20px;}
+.mt10{margin-top:10px;}.mt20{margin-top:20px;}
+.mr10{margin-right:10px;}.mr20{margin-right:20px;}
+.ml10{margin-left:10px;}.ml20{margin-left:20px;}
+.mb10{margin-bottom:10px;}.mb20{margin-bottom:20px;}
+.mb30{margin-bottom:30px;}
+
+.pb10{padding-bottom:10px;}
+.tin { text-indent:2em;}
+
+.dn{display:none;}.db{display:block;}.dib{-moz-inline-stack:inline-block; display:inline-block;}
+
+.lh14{line-height:14px;}.lh16{line-height:16px;}.lh18{line-height:18px;}.lh20{line-height:20px;}.lh22{line-height:22px;}.lh24{line-height:24px;}
+.zoom {overflow:hidden;zoom:1;}

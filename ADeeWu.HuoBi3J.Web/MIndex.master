@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MMain.Master" AutoEventWireup="true" CodeBehind="MIndex.master.cs" Inherits="ADeeWu.HuoBi3J.Web.MIndex" %>
+<asp:Content ID="Content3" ContentPlaceHolderID="cphTitle" runat="server">
+    <asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+    <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>

@@ -1,0 +1,15 @@
+﻿
+#NavSide{ float:left; width:150px; border:2px solid #4F7FC9; }
+#NavSide li{ padding:2px; margin-bottom:5px; list-style:none; border-bottom:1px dashed #ccc; height:24px; line-height:24px; }
+#NavSide li.title{ background:#4F7FC9; font-weight:bold; color:#ffffff; text-indent:10px; }
+#NavSide li a{ text-decoration:none; }
+#NavSide li a:hover{ text-decoration:underline; }
+
+#Main{}
+
+#MainContentWrap{  float:right; width:760px; min-height:500px; _height:500px;    }
+#MainContent{ border:1px solid #4F7FC9; padding:10px; }
+#SitePosition{ height:20px; border:1px solid #4F7FC9; padding:10px; }
+#SitePosition .curPos{ color:#ff9933; }
+.searchTable{ border-width:1px; }
+.searchTable .key{ width:80px; min-width:80px; }

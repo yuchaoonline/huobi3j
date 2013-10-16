@@ -1,0 +1,193 @@
+<%-- 
+Name: ORM
+Author: Issac
+Description: 
+Table Must Set First Field Named "ID"
+--%>
+
+<%@ CodeTemplate Language="C#" TargetLanguage="C#" Src="Utility\ProjectHelper.cs"  
+Inherits="CodeSmith.BaseTemplates.OutputFileCodeTemplate" Debug="true" 
+Description="Entity Generate Template" %>
+
+<%-- Property Name="DataBase" Type="SchemaExplorer.DatabaseSchema"  Optional="False" Category="Context" Description="Mapping DB" --%>
+
+
+<%@ Assembly Name="System.Data" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Assembly Name="SchemaExplorer" %>
+
+
+<%@ Assembly Name="CodeSmith.BaseTemplates" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="System.Text" %>
+<%@ Import Namespace="System.Collections.Generic" %>
+
+<%@ Assembly Name="CodeSmith.CustomProperties" %>
+<%@ Import Namespace="CodeSmith.CustomProperties" %>
+
+using System;
+namespace <%=Namespace%>.Model{
+	
+public class <%=SourceTable.Name%>{
+
+	#region Fields
+	<% foreach (SchemaExplorer.ColumnSchema col in SourceTable.Columns) { %>
+	<%= GetMemberVariableDeclarationStatement(col,!HasDefaultValue(col) && !col.IsPrimaryKeyMember) %>
+	<% } %>
+	#endregion
+	
+	#region Contructors
+	public <%=SourceTable.Name%>()
+	{
+	}
+	
+	public <%=SourceTable.Name%>
+	(
+		<%=GetConstructorParameters(SourceTable) %>
+	)
+	{
+		<%= GetAssignValue(SourceTable) %>
+	}
+	#endregion
+		
+	<% foreach(SchemaExplorer.ColumnSchema columm in SourceTable.Columns){%>
+	<%= CreateSetterAndGetter2(columm,true,true)  %>
+	<%}%>
+}
+}
+<script runat="template">
+
+public string CreateSetterAndGetter(SchemaExplorer.ColumnSchema column,bool hasSetter,bool hasGetter)
+{
+
+	Debugger.Break();
+	
+	StringBuilder ret = new StringBuilder();
+	//ret.AppendFormat("private {0} _{1} = {2};",column.DataType,column.Name);
+	ret.AppendLine();
+	
+	ret.AppendFormat("public {0} {1} \r\n",column.DataType,column.Name);
+	ret.Append("{");
+	if(hasSetter){
+		ret.Append("\r\n\tset{");
+		ret.AppendFormat(" {0} = value;","_"+ column.Name);
+		ret.Append("}");
+		ret.AppendLine();
+    }
+	
+	if(hasGetter){
+		ret.Append("\r\n\tget{");
+		ret.AppendFormat("return {0};","_"+ column.Name);
+		ret.Append("}");
+		ret.AppendLine();
+    }
+	ret.Append("}");
+	ret.AppendLine();
+	return ret.ToString();
+}
+
+public string CreateSetterAndGetter2(SchemaExplorer.ColumnSchema column,bool hasSetter,bool hasGetter)
+{
+	
+	//string dataType = Utility.ProjectHelper.GetCSharpVariableType(column.DataType,column.AllowDBNull);
+	string dataType = Utility.ProjectHelper.GetCSharpVariableType(column.DataType,!HasDefaultValue(column)&& !column.IsPrimaryKeyMember);
+	//Response.WriteLine("private {0} _{1};",dataType,column.Name);
+	
+	StringBuilder ret = new StringBuilder();
+	
+	ret.AppendFormat("public {0} {1} ",dataType,column.Name);
+	
+	//Debugger.Break();
+	
+	ret.Append("{");
+	if(hasSetter){
+		ret.Append(" set{");
+		ret.AppendFormat(" {0} = value;","_"+ column.Name);
+		ret.Append(" }");
+    }
+	
+	if(hasGetter){
+		ret.Append(" get{");
+		ret.AppendFormat(" return {0};","_"+ column.Name);
+		ret.Append(" }");
+    }
+	ret.Append("}");
+	return ret.ToString();
+}
+
+
+/*
+private string _className = string.Empty;
+public string ClassName{
+	set{ 
+		_className = value;
+		if(this._outputFile.Length>0){
+			int t = this._outputFile.LastIndexOf("\\");
+			if(t>0){
+				string filePath = this._outputFile.Substring(0,t+1);
+				this._outputFile = filePath + this._className+".cs";
+			}
+		}
+	}
+	get{ return _className; }
+}
+*/
+
+
+public override string GetFileName() {
+    return SourceTable.Name + ".cs";
+}
+
+
+[FileDialog(FileDialogType.Save, Title="Select Output File", Filter="C# Files (*.cs)|*.cs", DefaultExtension=".cs")]
+public override string OutputFile
+{
+    get {return base._outputFile;}
+    set { base._outputFile = value;}
+}
+
+
+
+
+
+/*
+private SchemaExplorer.TableSchemaCollection _schemaTableList;
+[Category("????")]
+public SchemaExplorer.TableSchemaCollection SchemaTableList{
+	get{ return _schemaTableList; }
+	set{ 
+		_schemaTableList = value; 
+		//string filePath = base.OutputFile.Substring(base.OutputFile.LastIndexOf("\\"));
+		//this.OutputFile = filePath + this._schemaTable.Name+".cs"; 
+	}
+}
+
+
+
+private string _outputDirectory = string.Empty;
+[Editor(typeof(System.Windows.Forms.Design.FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor)),
+Category("????"), Description("????")]
+public string OutputDirectory{
+	get{ 
+		if(_outputDirectory.Length>0){
+			if (_outputDirectory.LastIndexOf("\\") < 0 || _outputDirectory.LastIndexOf("/") <0 ){
+				return _outputDirectory + "\\";
+			} 
+		}
+		return _outputDirectory;
+	}
+	set{ _outputDirectory = value; }
+}
+
+private bool _isMutiGenerate = false;
+[Description("????????")]
+public bool IsMutiGenerate
+{
+	get{ return _isMutiGenerate; }
+	set{ _isMutiGenerate = value; }
+}
+*/
+</script>
+
+<!-- #include file="script.inc" -->
