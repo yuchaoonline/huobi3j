@@ -163,39 +163,38 @@ namespace ADeeWu.HuoBi3J.Web
             db.AutoClearParameters = false;
             if (ADeeWu.HuoBi3J.Libary.Utility.GetInt(db.RunProc("SP_User_Register"), -1) == 0)
             {
-
                 Class.UserSession.Logout();
 
                 this.LoginUser = Class.UserSession.Login(db.Parameters["@ReturnUIN"].Value.ToString(), pwd, DateTime.Now);
 
                 //登记代理商推广痕迹
-                var cookie = Request.Cookies["agent"];
-                if (cookie != null)
-                {
-                    string agentUIN = cookie.Value;
-                    if (agentUIN.Length > 0)
-                    {
-                        //检测用户是否存在
-                        Model.Users entAgent = dal.GetEntity(new string[] { "UIN" }, agentUIN);
-                        if (entAgent != null)
-                        {
-                            //判断是否存在该代理商，或该代理是否已通过审核
-                            if (db.Exist("select ID from CA_QualifiedAgents where UserID={0} and CheckState=1", entAgent.ID))
-                            {
-                                DAL.CA_QualifiedAgentBusiness dalAgentBus = new ADeeWu.HuoBi3J.DAL.CA_QualifiedAgentBusiness();
-                                Model.CA_QualifiedAgentBusiness entAgentBus = new ADeeWu.HuoBi3J.Model.CA_QualifiedAgentBusiness();
-                                entAgentBus.CustomerCorpID = 0;
-                                entAgentBus.CustomerUserID = this.LoginUser.UserID;//当前应该已自动登陆新注册帐户
-                                entAgentBus.AgentUserID = entAgent.ID;
-                                entAgentBus.CreateTime = DateTime.Now;
-                                dalAgentBus.Add(entAgentBus);
+                //var cookie = Request.Cookies["agent"];
+                //if (cookie != null)
+                //{
+                //    string agentUIN = cookie.Value;
+                //    if (agentUIN.Length > 0)
+                //    {
+                //        //检测用户是否存在
+                //        Model.Users entAgent = dal.GetEntity(new string[] { "UIN" }, agentUIN);
+                //        if (entAgent != null)
+                //        {
+                //            //判断是否存在该代理商，或该代理是否已通过审核
+                //            if (db.Exist("select ID from CA_QualifiedAgents where UserID={0} and CheckState=1", entAgent.ID))
+                //            {
+                //                DAL.CA_QualifiedAgentBusiness dalAgentBus = new ADeeWu.HuoBi3J.DAL.CA_QualifiedAgentBusiness();
+                //                Model.CA_QualifiedAgentBusiness entAgentBus = new ADeeWu.HuoBi3J.Model.CA_QualifiedAgentBusiness();
+                //                entAgentBus.CustomerCorpID = 0;
+                //                entAgentBus.CustomerUserID = this.LoginUser.UserID;//当前应该已自动登陆新注册帐户
+                //                entAgentBus.AgentUserID = entAgent.ID;
+                //                entAgentBus.CreateTime = DateTime.Now;
+                //                dalAgentBus.Add(entAgentBus);
 
-                                cookie.Expires = DateTime.Now.AddDays(-1);
-                                Response.Cookies.Add(cookie);
-                            }
-                        }
-                    }
-                }
+                //                cookie.Expires = DateTime.Now.AddDays(-1);
+                //                Response.Cookies.Add(cookie);
+                //            }
+                //        }
+                //    }
+                //}
 
                 if (this.chkRegCorp.Checked)
                 {
@@ -210,21 +209,10 @@ namespace ADeeWu.HuoBi3J.Web
             {
                 this.fhUIN.Value = "";
                 ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg("操作失败!");
-                db.Logger.Log(
-                    string.Format(@"执行存储过程时发生错误 {0}
-URL:{1}
-错误信息:{2}
-", DateTime.Now, Request.Url.ToString(), db.Parameters["@ErrorMessage"].Value)
- );
-                //ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg("操作失败!错误原因:\r\n" + db.Parameters["@ErrorMessage"].Value.ToString());
+                db.Logger.Log(string.Format(@"执行存储过程时发生错误 {0}\r\nURL:{1}\r\n错误信息:{2}", DateTime.Now, Request.Url.ToString(), db.Parameters["@ErrorMessage"].Value));
             }
             db.Parameters.Clear();
             db.AutoClearParameters = true;
-
-
-
         }
-
-
     }
 }

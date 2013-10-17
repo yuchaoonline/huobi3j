@@ -18,7 +18,7 @@ namespace ADeeWu.HuoBi3J.Web
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
-            
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -60,17 +60,8 @@ namespace ADeeWu.HuoBi3J.Web
 
             string redirect = Request.Url.ToString();
 
-            if (
-                (loginSession as Class.CorpSession) != null &&
-                (loginSession as Class.CorpSession).CorpCheckState == ADeeWu.HuoBi3J.Web.Class.UserSessionCheckState.Audited //企业用户未通过审核
-                )
-            {
-                redirect = "/My/Corp/";
-            }
-            else if (
-                (loginSession as Class.CorpAgentSession) != null &&
-                (loginSession as Class.CorpAgentSession).CorpCheckState == ADeeWu.HuoBi3J.Web.Class.UserSessionCheckState.Audited
-                )
+            //企业用户未通过审核
+            if ((loginSession as Class.CorpSession) != null && (loginSession as Class.CorpSession).CorpCheckState == ADeeWu.HuoBi3J.Web.Class.UserSessionCheckState.Audited)
             {
                 redirect = "/My/Corp/";
             }
@@ -78,13 +69,7 @@ namespace ADeeWu.HuoBi3J.Web
             {
                 redirect = "/My/User/";
             }
-
-            Response.Redirect(
-                Request.QueryString["url"] ?? redirect
-                );
-
+            Response.Redirect(Request.QueryString["url"] ?? redirect);
         }
-
-
     }
 }

@@ -84,8 +84,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\default.html" />
     <Content Include="Admin\MAdmin.Master" />
-    <Content Include="Admin\SystemSetup.ashx" />
     <Content Include="Ajax\Center.ashx" />
     <Content Include="Ajax\GroupBuy.ashx" />
     <Content Include="Ajax\User.ashx" />
@@ -110,100 +110,29 @@
     <Content Include="MHTML.master" />
     <Content Include="MIndex.master" />
     <Content Include="MMain.Master" />
-    <Content Include="MMyCorp.master" />
     <Content Include="MMyUser.master" />
-    <Content Include="My\Corp\Promotions\Keywords\Keywords.ashx" />
+    <Content Include="My\User\Center\KeyManage\Default.aspx" />
+    <Content Include="My\User\Center\KeyManage\Income.aspx" />
+    <Content Include="My\User\Center\KeyManage\Refresh.aspx" />
+    <Content Include="My\User\Center\KeyManage\RefreshLog.aspx" />
+    <Content Include="My\User\CorpAgent\Customer.aspx" />
+    <Content Include="My\User\CorpAgent\CustomerAjax.aspx" />
+    <Content Include="My\User\CorpAgent\CustomerBenefit.aspx" />
+    <Content Include="My\User\CorpAgent\CustomerKeyword.aspx" />
+    <Content Include="My\User\CorpAgent\Default.aspx" />
+    <Content Include="My\User\CorpAgent\Income.aspx" />
+    <Content Include="My\User\CorpAgent\SearchHireInfo.aspx" />
+    <Content Include="My\User\CorpAgent\ViewHireInfo.aspx" />
+    <Content Include="My\User\TradeOrders\Default.aspx" />
+    <Content Include="My\User\TradeOrders\Order.aspx" />
+    <Content Include="My\User\TradeOrders\PayNow.aspx" />
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\allsels.pubxml" />
+    <None Include="Properties\PublishProfiles\huobi3j.pubxml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\Callings\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Callings\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Callings\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Callings\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Callings\GenerateJSData.aspx.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Callings\GenerateJSData.aspx.designer.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Callings\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Callings\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTicketApplications\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTicketApplications\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTicketApplications\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTicketApplications\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTicketApplications\ListByAdmin.aspx.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTicketApplications\ListByAdmin.aspx.designer.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTickets\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTickets\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTickets\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTickets\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTickets\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTickets\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTickets\ListByAdmin.aspx.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTickets\ListByAdmin.aspx.designer.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CashTickets\Point.aspx.cs">
-      <DependentUpon>Point.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CashTickets\Point.aspx.designer.cs">
-      <DependentUpon>Point.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Center\AddAttribute.aspx.cs">
       <DependentUpon>AddAttribute.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -348,111 +277,6 @@
     <Compile Include="Admin\CorpAgent\UserInCorps\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Photos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Photos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Photos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Photos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Photos\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Albums\Photos\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\CatalogPhotos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\CatalogPhotos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\CatalogPhotos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\CatalogPhotos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\CatalogPhotos\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\CatalogPhotos\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Catalogs\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Videos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Videos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Videos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Videos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Videos\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpImage\Videos\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Corps\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -474,264 +298,12 @@
     <Compile Include="Admin\Corps\ListByAdmin.aspx.designer.cs">
       <DependentUpon>ListByAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\CP_KeywordIndex\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_KeywordIndex\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_KeywordIndex\Refresh.aspx.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_KeywordIndex\Refresh.aspx.designer.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keywords\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keywords\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keywords\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keywords\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\ADClickLog.aspx.cs">
-      <DependentUpon>ADClickLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\ADClickLog.aspx.designer.cs">
-      <DependentUpon>ADClickLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\AuctionLog.aspx.cs">
-      <DependentUpon>AuctionLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\AuctionLog.aspx.designer.cs">
-      <DependentUpon>AuctionLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_AD\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\DelResult.aspx.cs">
-      <DependentUpon>DelResult.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\DelResult.aspx.designer.cs">
-      <DependentUpon>DelResult.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\Result.aspx.cs">
-      <DependentUpon>Result.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Keyword_Search\Result.aspx.designer.cs">
-      <DependentUpon>Result.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Promotions\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Promotions\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CP_Promotions\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CP_Promotions\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\ListByAdmin.aspx.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CT_PartnerCorps\ListByAdmin.aspx.designer.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\FreeAdmission\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\FreeAdmission\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\FreeAdmission\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\FreeAdmission\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\GroupBuy\Category.aspx.cs">
-      <DependentUpon>Category.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\GroupBuy\Category.aspx.designer.cs">
-      <DependentUpon>Category.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\GroupBuy\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\GroupBuy\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\GroupBuy\EditOrderCount.aspx.cs">
-      <DependentUpon>EditOrderCount.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\GroupBuy\EditOrderCount.aspx.designer.cs">
-      <DependentUpon>EditOrderCount.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Houses\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Houses\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Houses\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Houses\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Jobs\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Jobs\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Jobs\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Jobs\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\GenerateJSData.aspx.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\GenerateJSData.aspx.designer.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Callings\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\GenerateJSData.aspx.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\GenerateJSData.aspx.designer.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Job_Categories\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Location\GenerateJSData.aspx.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Location\GenerateJSData.aspx.designer.cs">
-      <DependentUpon>GenerateJSData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -753,34 +325,6 @@
     </Compile>
     <Compile Include="Admin\MAdmin.Master.designer.cs">
       <DependentUpon>MAdmin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Marketing\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Marketing\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Marketing\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Marketing\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\SupplyDemand\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\SupplyDemand\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\SupplyDemand\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\SupplyDemand\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SystemManage\AdminRoles\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
@@ -837,9 +381,6 @@
     </Compile>
     <Compile Include="Admin\SystemManage\AdminUsers\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\SystemSetup.ashx.cs">
-      <DependentUpon>SystemSetup.ashx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Users\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
@@ -906,6 +447,11 @@
     <Compile Include="Ajax\User.ashx.cs">
       <DependentUpon>User.ashx</DependentUpon>
     </Compile>
+    <Compile Include="App_GlobalResources\SyncSelector.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SyncSelector.resx</DependentUpon>
+    </Compile>
     <Compile Include="Cashtickets\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -940,13 +486,6 @@
     </Compile>
     <Compile Include="Center\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\AddProduct.aspx.cs">
-      <DependentUpon>AddProduct.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\AddProduct.aspx.designer.cs">
-      <DependentUpon>AddProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\AttentionKey.aspx.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>
@@ -1011,26 +550,12 @@
     <Compile Include="Center\MoveCircle.aspx.designer.cs">
       <DependentUpon>MoveCircle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\Question.aspx.cs">
-      <DependentUpon>Question.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\Question.aspx.designer.cs">
-      <DependentUpon>Question.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Center\Question2.aspx.cs">
       <DependentUpon>Question2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Center\Question2.aspx.designer.cs">
       <DependentUpon>Question2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\QuestionList.aspx.cs">
-      <DependentUpon>QuestionList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\QuestionList.aspx.designer.cs">
-      <DependentUpon>QuestionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\TicketSearch.aspx.cs">
       <DependentUpon>TicketSearch.aspx</DependentUpon>
@@ -1044,7 +569,6 @@
     <Compile Include="Class\Alipay\alipay_notify.cs" />
     <Compile Include="Class\Alipay\alipay_service.cs" />
     <Compile Include="Class\BaseDataHelper.cs" />
-    <Compile Include="Class\CorpAgentSession.cs" />
     <Compile Include="Class\CorpSession.cs" />
     <Compile Include="Class\GlobalParameter.cs" />
     <Compile Include="Class\Helper.cs" />
@@ -1054,30 +578,10 @@
     <Compile Include="Class\PageBase_CircleSaleMan.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Class\PageBase_MyCorp.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Class\PageBase_MyCorpAgent.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Class\PageBase_MyCorp_Promotions.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Class\PageBase_MyCorp_Shop.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Class\PageBase_MyQualifiedAgents.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Class\PageBase_MyUser.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Class\QualifiedAgentSession.cs" />
     <Compile Include="Class\SaleManSession.cs" />
-    <Compile Include="Class\Shop\Cart.cs" />
-    <Compile Include="Class\Shop\CartItem.cs" />
-    <Compile Include="Class\Shop\CookieCart.cs" />
-    <Compile Include="Class\Shop\SessionCart.cs" />
     <Compile Include="Class\TaskHelper.cs" />
     <Compile Include="Class\Tips.cs" />
     <Compile Include="Class\UserSession.cs" />
@@ -1133,41 +637,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="GroupBuy\1.aspx.cs">
-      <DependentUpon>1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GroupBuy\1.aspx.designer.cs">
-      <DependentUpon>1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GroupBuy\2.aspx.cs">
-      <DependentUpon>2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GroupBuy\2.aspx.designer.cs">
-      <DependentUpon>2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GroupBuy\3.aspx.cs">
-      <DependentUpon>3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GroupBuy\3.aspx.designer.cs">
-      <DependentUpon>3.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GroupBuy\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GroupBuy\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GroupBuy\Details.aspx.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GroupBuy\Details.aspx.designer.cs">
-      <DependentUpon>Details.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Handler\BaseHandler.ashx.cs">
       <DependentUpon>BaseHandler.ashx</DependentUpon>
     </Compile>
@@ -1218,610 +687,12 @@
     <Compile Include="MMain.Master.designer.cs">
       <DependentUpon>MMain.Master</DependentUpon>
     </Compile>
-    <Compile Include="MMyCorp.master.cs">
-      <DependentUpon>MMyCorp.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MMyCorp.master.designer.cs">
-      <DependentUpon>MMyCorp.master</DependentUpon>
-    </Compile>
     <Compile Include="MMyUser.master.cs">
       <DependentUpon>MMyUser.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MMyUser.master.designer.cs">
       <DependentUpon>MMyUser.master</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CashTickets\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CashTickets\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CashTickets\ServiceApplication.aspx.cs">
-      <DependentUpon>ServiceApplication.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CashTickets\ServiceApplication.aspx.designer.cs">
-      <DependentUpon>ServiceApplication.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\HireInfos\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Roles\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\SearchCorpAgents\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\SearchCorpAgents\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\SearchCorpAgents\Partner.aspx.cs">
-      <DependentUpon>Partner.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\SearchCorpAgents\Partner.aspx.designer.cs">
-      <DependentUpon>Partner.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\SearchCorpAgents\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\SearchCorpAgents\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Users\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Users\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Users\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Users\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Users\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpAgentManage\Users\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Albums\photos\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Catalogs\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\CorpImage\Videos\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Add.aspx.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Add.aspx.designer.cs">
-      <DependentUpon>Add.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Order.aspx.cs">
-      <DependentUpon>Order.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\Order.aspx.designer.cs">
-      <DependentUpon>Order.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\ValCode.aspx.cs">
-      <DependentUpon>ValCode.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\GroupBuy\ValCode.aspx.designer.cs">
-      <DependentUpon>ValCode.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Jobs\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\ADLog.aspx.cs">
-      <DependentUpon>ADLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\ADLog.aspx.designer.cs">
-      <DependentUpon>ADLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\AD\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\AuctionLog.aspx.cs">
-      <DependentUpon>AuctionLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\AuctionLog.aspx.designer.cs">
-      <DependentUpon>AuctionLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Aution.aspx.cs">
-      <DependentUpon>Aution.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Aution.aspx.designer.cs">
-      <DependentUpon>Aution.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\DayCost.aspx.cs">
-      <DependentUpon>DayCost.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\DayCost.aspx.designer.cs">
-      <DependentUpon>DayCost.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Manager.aspx.cs">
-      <DependentUpon>Manager.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Manager.aspx.designer.cs">
-      <DependentUpon>Manager.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Pause.aspx.cs">
-      <DependentUpon>Pause.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Aution\Pause.aspx.designer.cs">
-      <DependentUpon>Pause.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\Keywords.ashx.cs">
-      <DependentUpon>Keywords.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\Keywords\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\ServiceApplication.aspx.cs">
-      <DependentUpon>ServiceApplication.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Promotions\ServiceApplication.aspx.designer.cs">
-      <DependentUpon>ServiceApplication.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Service.aspx.cs">
-      <DependentUpon>Service.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Service.aspx.designer.cs">
-      <DependentUpon>Service.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\AfterSaleRecords\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\AfterSaleRecords\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\AfterSaleRecords\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\AfterSaleRecords\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\AfterSaleRecords\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\AfterSaleRecords\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Orders\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\ProductCategories\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\SelectCategory.aspx.cs">
-      <DependentUpon>SelectCategory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Products\SelectCategory.aspx.designer.cs">
-      <DependentUpon>SelectCategory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Vouchers\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Vouchers\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Vouchers\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Vouchers\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Vouchers\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\Corp\Shop\Vouchers\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Cashtickets\Application.aspx.cs">
-      <DependentUpon>Application.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Cashtickets\Application.aspx.designer.cs">
-      <DependentUpon>Application.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Cashtickets\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Cashtickets\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\ChangeGoOn.aspx.cs">
       <DependentUpon>ChangeGoOn.aspx</DependentUpon>
@@ -1963,264 +834,12 @@
     <Compile Include="My\User\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="My\User\Fav_Jobs\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Fav_Jobs\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\FreeAdmission\Exchange.aspx.cs">
-      <DependentUpon>Exchange.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\FreeAdmission\Exchange.aspx.designer.cs">
-      <DependentUpon>Exchange.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\GroupBuy\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\GroupBuy\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Houses\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Houses\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Houses\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Houses\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Houses\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Houses\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Houses\Fav_Houses.aspx.cs">
-      <DependentUpon>Fav_Houses.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Houses\Fav_Houses.aspx.designer.cs">
-      <DependentUpon>Fav_Houses.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Houses\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Houses\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\DelResult.aspx.cs">
-      <DependentUpon>DelResult.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\DelResult.aspx.designer.cs">
-      <DependentUpon>DelResult.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\EditResult.aspx.cs">
-      <DependentUpon>EditResult.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\EditResult.aspx.designer.cs">
-      <DependentUpon>EditResult.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Income.aspx.cs">
-      <DependentUpon>Income.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Income.aspx.designer.cs">
-      <DependentUpon>Income.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Manager.aspx.cs">
-      <DependentUpon>Manager.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Manager.aspx.designer.cs">
-      <DependentUpon>Manager.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Refresh.aspx.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Refresh.aspx.designer.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\RefreshLog.aspx.cs">
-      <DependentUpon>RefreshLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\RefreshLog.aspx.designer.cs">
-      <DependentUpon>RefreshLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Keyword\Sale.aspx.cs">
-      <DependentUpon>Sale.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Keyword\Sale.aspx.designer.cs">
-      <DependentUpon>Sale.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Marketing\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Marketing\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Marketing\Favs.aspx.cs">
-      <DependentUpon>Favs.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Marketing\Favs.aspx.designer.cs">
-      <DependentUpon>Favs.aspx</DependentUpon>
-    </Compile>
     <Compile Include="My\User\Password.aspx.cs">
       <DependentUpon>Password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="My\User\Password.aspx.designer.cs">
       <DependentUpon>Password.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\AfterSaleRecords\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\AfterSaleRecords\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\AfterSaleRecords\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\AfterSaleRecords\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\Pay.aspx.cs">
-      <DependentUpon>Pay.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\Pay.aspx.designer.cs">
-      <DependentUpon>Pay.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Orders\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Vouchers\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Vouchers\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Shops\Vouchers\View.aspx.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Shops\Vouchers\View.aspx.designer.cs">
-      <DependentUpon>View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Bidders\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Bidders\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Bidders\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Bidders\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\DeFault.aspx.cs">
-      <DependentUpon>DeFault.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\DeFault.aspx.designer.cs">
-      <DependentUpon>DeFault.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Del.aspx.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Del.aspx.designer.cs">
-      <DependentUpon>Del.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Favs\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Favs\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\New.aspx.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\New.aspx.designer.cs">
-      <DependentUpon>New.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Show.aspx.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\SupplyDemand\Show.aspx.designer.cs">
-      <DependentUpon>Show.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\TradeOrders\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -2293,6 +912,13 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="selectUIN.aspx.cs">
+      <DependentUpon>selectUIN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="selectUIN.aspx.designer.cs">
+      <DependentUpon>selectUIN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tips.aspx.cs">
       <DependentUpon>Tips.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2334,21 +960,8 @@
     <Folder Include="Admin\SystemManage\AdminPages\" />
     <Folder Include="Admin\SystemManage\AdminUsersInRole\" />
     <Folder Include="App_Data\" />
-    <Folder Include="My\CorpAgent\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\Callings\Add.aspx" />
-    <Content Include="Admin\Callings\Edit.aspx" />
-    <Content Include="Admin\Callings\GenerateJSData.aspx" />
-    <Content Include="Admin\Callings\List.aspx" />
-    <Content Include="Admin\CashTicketApplications\Edit.aspx" />
-    <Content Include="Admin\CashTicketApplications\List.aspx" />
-    <Content Include="Admin\CashTicketApplications\ListByAdmin.aspx" />
-    <Content Include="Admin\CashTickets\Add.aspx" />
-    <Content Include="Admin\CashTickets\Edit.aspx" />
-    <Content Include="Admin\CashTickets\List.aspx" />
-    <Content Include="Admin\CashTickets\ListByAdmin.aspx" />
-    <Content Include="Admin\CashTickets\Point.aspx" />
     <Content Include="Admin\Center\AddAttribute.aspx" />
     <Content Include="Admin\Center\AddHotKey.aspx" />
     <Content Include="Admin\Center\CopyData.aspx" />
@@ -2369,61 +982,10 @@
     <Content Include="Admin\CorpAgent\Applications\List.aspx" />
     <Content Include="Admin\CorpAgent\UserInCorps\Edit.aspx" />
     <Content Include="Admin\CorpAgent\UserInCorps\List.aspx" />
-    <Content Include="Admin\CorpImage\Albums\Del.aspx" />
-    <Content Include="Admin\CorpImage\Albums\Edit.aspx" />
-    <Content Include="Admin\CorpImage\Albums\List.aspx" />
-    <Content Include="Admin\CorpImage\Albums\Photos\Del.aspx" />
-    <Content Include="Admin\CorpImage\Albums\Photos\Edit.aspx" />
-    <Content Include="Admin\CorpImage\Albums\Photos\List.aspx" />
-    <Content Include="Admin\CorpImage\Catalogs\CatalogPhotos\Del.aspx" />
-    <Content Include="Admin\CorpImage\Catalogs\CatalogPhotos\Edit.aspx" />
-    <Content Include="Admin\CorpImage\Catalogs\CatalogPhotos\List.aspx" />
-    <Content Include="Admin\CorpImage\Catalogs\Del.aspx" />
-    <Content Include="Admin\CorpImage\Catalogs\Edit.aspx" />
-    <Content Include="Admin\CorpImage\Catalogs\List.aspx" />
-    <Content Include="Admin\CorpImage\Videos\Del.aspx" />
-    <Content Include="Admin\CorpImage\Videos\Edit.aspx" />
-    <Content Include="Admin\CorpImage\Videos\List.aspx" />
     <Content Include="Admin\Corps\Edit.aspx" />
     <Content Include="Admin\Corps\List.aspx" />
     <Content Include="Admin\Corps\ListByAdmin.aspx" />
-    <Content Include="Admin\CP_KeywordIndex\List.aspx" />
-    <Content Include="Admin\CP_KeywordIndex\Refresh.aspx" />
-    <Content Include="Admin\CP_Keywords\Edit.aspx" />
-    <Content Include="Admin\CP_Keywords\List.aspx" />
-    <Content Include="Admin\CP_Keyword_AD\ADClickLog.aspx" />
-    <Content Include="Admin\CP_Keyword_AD\AuctionLog.aspx" />
-    <Content Include="Admin\CP_Keyword_AD\Edit.aspx" />
-    <Content Include="Admin\CP_Keyword_AD\List.aspx" />
-    <Content Include="Admin\CP_Keyword_Search\Del.aspx" />
-    <Content Include="Admin\CP_Keyword_Search\DelResult.aspx" />
-    <Content Include="Admin\CP_Keyword_Search\List.aspx" />
-    <Content Include="Admin\CP_Keyword_Search\Result.aspx" />
-    <Content Include="Admin\CP_Promotions\Edit.aspx" />
-    <Content Include="Admin\CP_Promotions\List.aspx" />
-    <Content Include="Admin\CT_PartnerCorps\Add.aspx" />
-    <Content Include="Admin\CT_PartnerCorps\Edit.aspx" />
-    <Content Include="Admin\CT_PartnerCorps\List.aspx" />
-    <Content Include="Admin\CT_PartnerCorps\ListByAdmin.aspx" />
     <Content Include="Admin\Default.aspx" />
-    <Content Include="Admin\default.html" />
-    <Content Include="Admin\FreeAdmission\List.aspx" />
-    <Content Include="Admin\FreeAdmission\New.aspx" />
-    <Content Include="Admin\GroupBuy\Category.aspx" />
-    <Content Include="Admin\GroupBuy\Default.aspx" />
-    <Content Include="Admin\GroupBuy\EditOrderCount.aspx" />
-    <Content Include="Admin\Houses\Edit.aspx" />
-    <Content Include="Admin\Houses\List.aspx" />
-    <Content Include="Admin\Jobs\Edit.aspx" />
-    <Content Include="Admin\Jobs\List.aspx" />
-    <Content Include="Admin\Job_Callings\Add.aspx" />
-    <Content Include="Admin\Job_Callings\Edit.aspx" />
-    <Content Include="Admin\Job_Callings\GenerateJSData.aspx" />
-    <Content Include="Admin\Job_Callings\List.aspx" />
-    <Content Include="Admin\Job_Categories\Add.aspx" />
-    <Content Include="Admin\Job_Categories\Edit.aspx" />
-    <Content Include="Admin\Job_Categories\GenerateJSData.aspx" />
-    <Content Include="Admin\Job_Categories\List.aspx" />
     <Content Include="Admin\js\admin.js" />
     <Content Include="Admin\js\default.js" />
     <Content Include="Admin\js\FormValid.js" />
@@ -2434,11 +996,8 @@
     <Content Include="Admin\js\jquery.json.js" />
     <Content Include="Admin\js\tools.js" />
     <Content Include="Admin\left.htm" />
-    <Content Include="Admin\Location\GenerateJSData.aspx" />
     <Content Include="Admin\Login.aspx" />
     <Content Include="Admin\Logout.aspx" />
-    <Content Include="Admin\Marketing\Edit.aspx" />
-    <Content Include="Admin\Marketing\List.aspx" />
     <Content Include="Admin\skins\css\css.css" />
     <Content Include="Admin\skins\css\fckEditor_EditArea.css" />
     <Content Include="Admin\skins\css\main.css" />
@@ -2497,8 +1056,6 @@
     <Content Include="Admin\skins\images\user_sys.gif" />
     <Content Include="Admin\skins\images\user_tag.gif" />
     <Content Include="Admin\skins\images\viewpic.gif" />
-    <Content Include="Admin\SupplyDemand\Edit.aspx" />
-    <Content Include="Admin\SupplyDemand\List.aspx" />
     <Content Include="Admin\SystemManage\AdminRoles\Add.aspx" />
     <Content Include="Admin\SystemManage\AdminRoles\Del.aspx" />
     <Content Include="Admin\SystemManage\AdminRoles\Edit.aspx" />
@@ -2522,7 +1079,6 @@
     <Content Include="Center\3.4.png" />
     <Content Include="Center\3.aspx" />
     <Content Include="Center\Add.aspx" />
-    <Content Include="Center\AddProduct.aspx" />
     <Content Include="Center\AttentionKey.aspx" />
     <Content Include="Center\BusinessCircle.aspx" />
     <Content Include="Center\CorpBusinessCircle.aspx" />
@@ -2547,9 +1103,7 @@
     <Content Include="Center\Key4Product.aspx" />
     <Content Include="Center\Location.aspx" />
     <Content Include="Center\MoveCircle.aspx" />
-    <Content Include="Center\Question.aspx" />
     <Content Include="Center\Question2.aspx" />
-    <Content Include="Center\QuestionList.aspx" />
     <Content Include="Center\TicketSearch.aspx" />
     <Content Include="Controls\Category.ascx" />
     <Content Include="Controls\FavControl.ascx" />
@@ -2825,28 +1379,6 @@
     <Content Include="FckEditor\fcktemplates.xml" />
     <Content Include="Forget.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="GroupBuy\1.2.png" />
-    <Content Include="GroupBuy\1.3.png" />
-    <Content Include="GroupBuy\1.aspx" />
-    <Content Include="GroupBuy\2.2.png" />
-    <Content Include="GroupBuy\2.3.png" />
-    <Content Include="GroupBuy\2.4.png" />
-    <Content Include="GroupBuy\2.5.png" />
-    <Content Include="GroupBuy\2.6.png" />
-    <Content Include="GroupBuy\2.7.png" />
-    <Content Include="GroupBuy\2.aspx" />
-    <Content Include="GroupBuy\3.2.jpg" />
-    <Content Include="GroupBuy\3.3.jpg" />
-    <Content Include="GroupBuy\3.4.gif" />
-    <Content Include="GroupBuy\3.6.jpg" />
-    <Content Include="GroupBuy\3.aspx" />
-    <Content Include="GroupBuy\base.css" />
-    <Content Include="GroupBuy\deal.css" />
-    <Content Include="GroupBuy\Default.aspx" />
-    <Content Include="GroupBuy\Details.aspx" />
-    <Content Include="GroupBuy\hovermark.css" />
-    <Content Include="GroupBuy\overlay.css" />
-    <Content Include="GroupBuy\sp-deal-intro-24.png" />
     <Content Include="html\AboutUs.aspx" />
     <Content Include="html\Collaborate.aspx" />
     <Content Include="html\ContactUs.aspx" />
@@ -3282,153 +1814,16 @@
     <Content Include="kindeditor\skins\default\default.gif" />
     <Content Include="Login.aspx" />
     <Content Include="LogOut.aspx" />
-    <Content Include="My\Corp\CashTickets\Default.aspx" />
-    <Content Include="My\Corp\CashTickets\ServiceApplication.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\HireInfos\Default.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\HireInfos\Del.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\HireInfos\Edit.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\HireInfos\New.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Roles\Default.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Roles\Del.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Roles\Edit.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Roles\New.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\SearchCorpAgents\Default.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\SearchCorpAgents\Partner.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\SearchCorpAgents\View.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Users\Default.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Users\Edit.aspx" />
-    <Content Include="My\Corp\CorpAgentManage\Users\New.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\Default.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\Del.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\Edit.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\New.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\photos\Default.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\photos\Del.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\photos\Edit.aspx" />
-    <Content Include="My\Corp\CorpImage\Albums\photos\New.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Default.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Del.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\Edit.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\CatalogPhotos\New.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\Default.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\Del.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\Edit.aspx" />
-    <Content Include="My\Corp\CorpImage\Catalogs\New.aspx" />
-    <Content Include="My\Corp\CorpImage\Videos\Default.aspx" />
-    <Content Include="My\Corp\CorpImage\Videos\Del.aspx" />
-    <Content Include="My\Corp\CorpImage\Videos\Edit.aspx" />
-    <Content Include="My\Corp\CorpImage\Videos\New.aspx" />
-    <Content Include="My\Corp\CSS\default.css" />
-    <Content Include="My\Corp\Default.aspx" />
-    <Content Include="My\Corp\GroupBuy\Add.aspx" />
-    <Content Include="My\Corp\GroupBuy\Default.aspx" />
-    <Content Include="My\Corp\GroupBuy\Edit.aspx" />
-    <Content Include="My\Corp\GroupBuy\Order.aspx" />
-    <Content Include="My\Corp\GroupBuy\ValCode.aspx" />
-    <Content Include="My\Corp\Jobs\Default.aspx" />
-    <Content Include="My\Corp\Jobs\Del.aspx" />
-    <Content Include="My\Corp\Jobs\Edit.aspx" />
-    <Content Include="My\Corp\Jobs\New.aspx" />
-    <Content Include="My\Corp\Promotions\Default.aspx" />
-    <Content Include="My\Corp\Promotions\Edit.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\AD\ADLog.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\AD\Default.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\AD\Del.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\AD\Edit.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Aution\AuctionLog.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Aution\Aution.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Aution\DayCost.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Aution\Default.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Aution\Manager.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Aution\Pause.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Default.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Del.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\Edit.aspx" />
-    <Content Include="My\Corp\Promotions\Keywords\JS\keywords.js" />
-    <Content Include="My\Corp\Promotions\Keywords\New.aspx" />
-    <Content Include="My\Corp\Promotions\ServiceApplication.aspx" />
-    <Content Include="My\Corp\Service.aspx" />
-    <Content Include="My\Corp\Shop\Default.aspx" />
-    <Content Include="My\Corp\Shop\Orders\AfterSaleRecords\Default.aspx" />
-    <Content Include="My\Corp\Shop\Orders\AfterSaleRecords\Edit.aspx" />
-    <Content Include="My\Corp\Shop\Orders\AfterSaleRecords\New.aspx" />
-    <Content Include="My\Corp\Shop\Orders\Default.aspx" />
-    <Content Include="My\Corp\Shop\Orders\Edit.aspx" />
-    <Content Include="My\Corp\Shop\ProductCategories\Default.aspx" />
-    <Content Include="My\Corp\Shop\ProductCategories\Del.aspx" />
-    <Content Include="My\Corp\Shop\ProductCategories\Edit.aspx" />
-    <Content Include="My\Corp\Shop\ProductCategories\New.aspx" />
-    <Content Include="My\Corp\Shop\Products\Default.aspx" />
-    <Content Include="My\Corp\Shop\Products\Del.aspx" />
-    <Content Include="My\Corp\Shop\Products\Edit.aspx" />
-    <Content Include="My\Corp\Shop\Products\New.aspx" />
-    <Content Include="My\Corp\Shop\Products\SelectCategory.aspx" />
-    <Content Include="My\Corp\Shop\Vouchers\Default.aspx" />
-    <Content Include="My\Corp\Shop\Vouchers\New.aspx" />
-    <Content Include="My\Corp\Shop\Vouchers\View.aspx" />
-    <Content Include="My\User\Cashtickets\Application.aspx" />
-    <Content Include="My\User\Cashtickets\Default.aspx" />
     <Content Include="My\User\Center\ChangeGoOn.aspx" />
-    <Content Include="My\User\Center\KeyManage\Default.aspx" />
-    <Content Include="My\User\Center\KeyManage\Income.aspx" />
-    <Content Include="My\User\Center\KeyManage\Refresh.aspx" />
-    <Content Include="My\User\Center\KeyManage\RefreshLog.aspx" />
     <Content Include="My\User\Center\MyAnswerList.aspx" />
     <Content Include="My\User\Center\MyAttentionList.aspx" />
     <Content Include="My\User\Center\MyQuestionList.aspx" />
     <Content Include="My\User\Center\RegSaleMan.aspx" />
     <Content Include="My\User\Coins\Default.aspx" />
     <Content Include="My\User\Coins\Purchase.aspx" />
-    <Content Include="My\User\CorpAgent\Customer.aspx" />
-    <Content Include="My\User\CorpAgent\CustomerAjax.aspx" />
-    <Content Include="My\User\CorpAgent\CustomerBenefit.aspx" />
-    <Content Include="My\User\CorpAgent\CustomerKeyword.aspx" />
-    <Content Include="My\User\CorpAgent\Default.aspx" />
-    <Content Include="My\User\CorpAgent\Income.aspx" />
-    <Content Include="My\User\CorpAgent\SearchHireInfo.aspx" />
-    <Content Include="My\User\CorpAgent\ViewHireInfo.aspx" />
     <Content Include="My\User\CSS\default.css" />
     <Content Include="My\User\Default.aspx" />
-    <Content Include="My\User\Fav_Jobs\Default.aspx" />
-    <Content Include="My\User\FreeAdmission\Exchange.aspx" />
-    <Content Include="My\User\GroupBuy\Default.aspx" />
-    <Content Include="My\User\Houses\Default.aspx" />
-    <Content Include="My\User\Houses\Del.aspx" />
-    <Content Include="My\User\Houses\Edit.aspx" />
-    <Content Include="My\User\Houses\Fav_Houses.aspx" />
-    <Content Include="My\User\Houses\New.aspx" />
-    <Content Include="My\User\Keyword\Default.aspx" />
-    <Content Include="My\User\Keyword\Del.aspx" />
-    <Content Include="My\User\Keyword\DelResult.aspx" />
-    <Content Include="My\User\Keyword\Edit.aspx" />
-    <Content Include="My\User\Keyword\EditResult.aspx" />
-    <Content Include="My\User\Keyword\Income.aspx" />
-    <Content Include="My\User\Keyword\Manager.aspx" />
-    <Content Include="My\User\Keyword\New.aspx" />
-    <Content Include="My\User\Keyword\Refresh.aspx" />
-    <Content Include="My\User\Keyword\RefreshLog.aspx" />
-    <Content Include="My\User\Keyword\Sale.aspx" />
-    <Content Include="My\User\Marketing\Default.aspx" />
-    <Content Include="My\User\Marketing\Favs.aspx" />
     <Content Include="My\User\Password.aspx" />
-    <Content Include="My\User\Shops\Orders\AfterSaleRecords\Default.aspx" />
-    <Content Include="My\User\Shops\Orders\AfterSaleRecords\View.aspx" />
-    <Content Include="My\User\Shops\Orders\Default.aspx" />
-    <Content Include="My\User\Shops\Orders\Pay.aspx" />
-    <Content Include="My\User\Shops\Orders\View.aspx" />
-    <Content Include="My\User\Shops\Vouchers\Default.aspx" />
-    <Content Include="My\User\Shops\Vouchers\View.aspx" />
-    <Content Include="My\User\SupplyDemand\Bidders\Default.aspx" />
-    <Content Include="My\User\SupplyDemand\Bidders\Edit.aspx" />
-    <Content Include="My\User\SupplyDemand\DeFault.aspx" />
-    <Content Include="My\User\SupplyDemand\Del.aspx" />
-    <Content Include="My\User\SupplyDemand\Edit.aspx" />
-    <Content Include="My\User\SupplyDemand\Favs\Default.aspx" />
-    <Content Include="My\User\SupplyDemand\New.aspx" />
-    <Content Include="My\User\SupplyDemand\Show.aspx" />
-    <Content Include="My\User\TradeOrders\Default.aspx" />
-    <Content Include="My\User\TradeOrders\Order.aspx" />
-    <Content Include="My\User\TradeOrders\PayNow.aspx" />
     <Content Include="My\User\TransferApplications\Application.aspx" />
     <Content Include="My\User\TransferApplications\Default.aspx" />
     <Content Include="My\User\VMoney\Default.aspx" />
@@ -3436,8 +1831,15 @@
     <Content Include="RefreshBaseData.aspx" />
     <Content Include="RegCorporations.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="selectUIN.aspx" />
     <Content Include="Tips.aspx" />
     <Content Include="ValidateCode.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\SyncSelector.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SyncSelector.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -3457,16 +1859,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>False</AutoAssignPort>
-          <DevelopmentServerPort>8088</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8088/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

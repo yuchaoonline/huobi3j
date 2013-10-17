@@ -28,16 +28,16 @@ namespace ADeeWu.HuoBi3J.Web.Class
             }
 
             //商家代表权限检测
-            CorpAgentSession corpAgentSession = this.LoginUser as CorpAgentSession;
-            if (corpAgentSession != null)
-            {
-                if (!corpAgentSession.CheckPermission(this.FunctionCode))
-                {
-                    Class.Tips tips = new ADeeWu.HuoBi3J.Web.Class.Tips("当前用户没有访问权限", "当前商家代表用户没有通过审核该功能的访问", "/My/Corp/", "点击这里进入用户中心");
-                    Class.Tips.SetTips(tips);
-                    Class.Tips.Show();
-                }
-            }
+            //CorpAgentSession corpAgentSession = this.LoginUser as CorpAgentSession;
+            //if (corpAgentSession != null)
+            //{
+            //    if (!corpAgentSession.CheckPermission(this.FunctionCode))
+            //    {
+            //        Class.Tips tips = new ADeeWu.HuoBi3J.Web.Class.Tips("当前用户没有访问权限", "当前商家代表用户没有通过审核该功能的访问", "/My/Corp/", "点击这里进入用户中心");
+            //        Class.Tips.SetTips(tips);
+            //        Class.Tips.Show();
+            //    }
+            //}
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         protected long GetRealBusinessUserID()
         {
             if (this.LoginUser == null) return 0;
-            Class.CorpAgentSession corpAgentSession = this.LoginUser as Class.CorpAgentSession;
+            Class.CorpSession corpAgentSession = this.LoginUser as Class.CorpSession;
             long userID = corpAgentSession == null ? this.LoginUser.UserID : corpAgentSession.CorpUserID;
             return userID;
         }

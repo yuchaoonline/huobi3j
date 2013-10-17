@@ -24,7 +24,6 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                 case "islogin": { result = IsLogin(); }; break;
                 case "issaleman": { result = IsSaleMan(); }; break;
                 case "getsaleman": { result = GetSaleMan(); }; break;
-                case "isqualifiedagent": { result = IsQualifiedAgent(); }; break;
                 default: { result = "something is error!"; }; break;
             }
 
@@ -76,13 +75,6 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                 positiony = Utility.GetStr(saleman["positiony"], "")
             });
         } 
-        #endregion
-
-        #region QualifiedAgent
-        private string IsQualifiedAgent()
-        {
-            return LitJson.JsonMapper.ToJson(new { statue = QualifiedAgentSession.IsQualifiedAgent });
-        }
         #endregion
 
         public bool IsReusable

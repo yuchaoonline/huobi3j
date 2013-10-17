@@ -10,6 +10,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
+    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
     <a href="/My/User/Center/MyQuestionList.aspx">即时报价</a>
@@ -72,6 +74,7 @@
             <td class="tdRight">
                 <asp:TextBox ID="txtCompanyAddress" runat="server" CssClass="txtCompanyAddress"></asp:TextBox>
                 <span class="require">*</span><span class="tips">请填写您的公司地址</span>
+                <button class="btn_blue btnPositionSearch">搜索</button>
                 <asp:RequiredFieldValidator ID="rfvCompanyAddress" ControlToValidate="txtCompanyAddress" runat="server"
                     ErrorMessage="请填写！" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
@@ -79,11 +82,9 @@
         <tr>
             <td class="tdLeft">地图坐标：
             </td>
-            <td class="tdRight">纬度 -
-                <asp:TextBox ID="txtPositionX" runat="server" /><br />
-                经度 -
-                <asp:TextBox ID="txtPositionY" runat="server" /><br />
-                <a href="/Map/?lat=<%=this.txtPositionX.Text%>&lng=<%=this.txtPositionY.Text%>&title=<%=HttpUtility.HtmlEncode(this.txtName.Text)%>&summary=<%=HttpUtility.HtmlEncode(this.txtCompanyAddress.Text)%>" target="_blank">查看当前地图位置</a> | <a href="/Map/GetPosition.html" target="_blank">获取地图坐标</a>(在地图上定位后，把对应的纬度、经度数值粘帖到文本框中)
+            <td class="tdRight">
+                <asp:HiddenField ID="hfPosition" runat="server" />
+                <div id="allmap" style="width: 650px; height: 400px;"></div>
             </td>
         </tr>
         <tr>
@@ -109,4 +110,43 @@
             </td>
         </tr>
     </table>
+
+    <script>
+        var map = new BMap.Map("allmap");
+        map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+        map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+        map.centerAndZoom("佛山市", 14);
+
+        var initPoint = new BMap.Point(23.027705, 113.12843);
+        var existVal = $('#<%=hfPosition.ClientID%>').val();
+        if (existVal != '') {
+            var a = existVal.split("|");
+            initPoint = new BMap.Point(a[0], a[1]);
+        }
+        var marker = new BMap.Marker(initPoint);
+        map.addOverlay(marker);
+        marker.enableDragging();
+        marker.addEventListener('dragend', function (type, target, pixel, point) {
+            updatePosition(type.point);
+        });
+
+        function updatePosition(point) {
+            $('#<%=hfPosition.ClientID%>').val(point.lat + '|' + point.lng);
+        }
+
+        $(function () {
+            $('.btnPositionSearch').click(function () {
+                var address = $('#<%=txtCompanyAddress.ClientID%>').val();
+                var myGeo = new BMap.Geocoder();    // 创建地址解析器实例
+                myGeo.getPoint(address, function (point) {
+                    if (point) {
+                        marker.setPosition(point);
+                        updatePosition(point);
+                    }
+                }, "佛山市");
+
+                return false;
+            })
+        })
+    </script>
 </asp:Content>

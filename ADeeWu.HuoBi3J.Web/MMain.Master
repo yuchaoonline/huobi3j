@@ -32,8 +32,7 @@
     <form id="form1" runat="server">
         <div id="body_bg">
             <ucheader:ucHeader ID="ucHeader1" runat="server" />
-            <ucnav:ucNav ID="ucNav1" runat="server" />
-            <!--main-->
+            <%--<ucnav:ucNav ID="ucNav1" runat="server" />--%>
             <div id="main">
                 <asp:ContentPlaceHolder ID="cphMain" runat="server"></asp:ContentPlaceHolder>
             </div>

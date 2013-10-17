@@ -30,28 +30,6 @@
                         <li><a href="/My/User/VMoney/">帐户明细记录</a></li>
                         <li><a href="/My/User/TransferApplications/Application.aspx">转帐申请</a></li>
                         <li><a href="/My/User/TransferApplications/">我的转帐申请历史记录</a></li>
-                        <%
-                            if (base.LoginUser.UserType == 1)
-                            {
-                        %>
-                        <li class="selected last"><a href="/My/Corp/" class="orange tdu">切换到商家控制面板</a></li>
-                        <%}
-                        else
-                        {%>
-                        <li class="selected last"><a href="/RegCorporations.aspx" class="orange tdu">注册成为商家</a></li>
-                        <%}%>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">即时比价</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/GroupBuy/">我的订单<span style="color: red;">（点此拍照）</span></a></li>
                     </ul>
                 </div>
                 <div class="box_bottom"></div>
@@ -78,19 +56,6 @@
 
             <div class="box">
                 <div class="box_head">
-                    <label class="fb font14">现金赠送</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/CashTickets/">我的现金赠送券</a></li>
-                        <li><a href="/My/User/CashTickets/Application.aspx">现金赠送券兑换</a></li>
-                        <li><a href="/My/User/FreeAdmission/Exchange.aspx">申请现金赠送</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
                     <label class="fb font14">营销代理商</label>
                 </div>
                 <div class="box_body">
@@ -98,77 +63,6 @@
                         <li><a href="/My/User/CorpAgent/">网络营销专员</a></li>
                         <li><a href="/My/User/CorpAgent/Customer.aspx">我的营销伙伴</a></li>
                         <li><a href="/My/User/CorpAgent/CustomerBenefit.aspx">营销伙伴收益</a></li>
-                        <li><a href="/My/User/CorpAgent/SearchHireInfo.aspx">搜索营销商家</a></li>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">精准搜索</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/Keyword/New.aspx">添加搜索关键字</a></li>
-                        <li><a href="/My/User/Keyword">管理搜索关键字</a></li>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">全民广告</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/Forum/Add.aspx">发布帖子</a></li>
-                        <li><a href="/My/User/Forum/Manager.aspx">管理帖子</a></li>
-                        <li><a href="/My/User/Forum/ApplyCash.aspx">申请现金</a></li>
-                        <li><a href="/My/User/Forum/MyApplyCashLog.aspx">申请记录</a></li>
-                        <li><a href="/My/User/Forum/MyFansList.aspx">关注商家</a></li>
-                        <li><a href="/My/User/Forum/MyUser.aspx">营销统计</a></li>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">在线营销</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/Shops/Orders/">我的购物订单</a></li>
-                        <li><a href="/My/User/Shops/Orders/AfterSaleRecords/">售后服务</a></li>
-                        <li><a href="/My/User/Shops/Vouchers/">购物电子凭证</a></li>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">在线招聘</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/Fav_Jobs/">我的收藏职位</a></li>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">在线出租</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/Houses/">在线出租管理</a></li>
-                        <li><a href="/My/User/Houses/New.aspx">发布出租信息</a></li>
-                        <%--<li><a href="/My/User/Houses/Fav_Houses.aspx">收藏夹</a></li>--%>
                     </ul>
                 </div>
                 <div class="box_bottom"></div>

@@ -13,17 +13,9 @@ using ADeeWu.HuoBi3J.Web.Class;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Center.KeyManage
 {
-    public partial class Default : Class.PageBase_MyQualifiedAgents
+    public partial class Default : Class.PageBase_MyUser
     {
         DataBase db = DataBase.Create();
-
-        public override string FunctionCode
-        {
-            get
-            {
-                return base.FunctionCode;
-            }
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +25,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center.KeyManage
             if (!IsPostBack)
             {
                 db.EnableRecordCount = true;
-                db.Parameters.Append("uid", QualifiedAgentSession.QualifiedAgent.UserID);
+                db.Parameters.Append("uid", LoginUser.UserID);
                 this.gvData.DataSource = db.Select(pageSize, pageIndex, "vw_Center_Key_Manage", "id", "uid=@uid", "");
                 this.gvData.DataBind();
                 this.Pager1.PageIndex = (int)pageIndex;

@@ -28,8 +28,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     txtName.Text = entApplication.Name;
                     txtJob.Text = entApplication.Job;
                     txtMemo.Text = entApplication.Memo;
-                    txtPositionX.Text = entApplication.PositionX;
-                    txtPositionY.Text = entApplication.PositionY;
+                    hfPosition.Value = entApplication.PositionX + "|" + entApplication.PositionY;
 
                     this.labTips.Text = "提交申请需要重新审核！";
                     this.btnSubmit.OnClientClick = "return cofirm('确认要重新提交吗？修改信息后需要重新通过审核！')";
@@ -82,8 +81,9 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             entApplication.CompanyName = txtCompanyName.Text;
             entApplication.Job = txtJob.Text;
             entApplication.Name = txtName.Text;
-            entApplication.PositionX = txtPositionX.Text;
-            entApplication.PositionY = txtPositionY.Text;
+            var position = hfPosition.Value.Split(new char[] { '|' });
+            entApplication.PositionX = position[0];
+            entApplication.PositionY = position[1];
 
             if (isAdd)
             {

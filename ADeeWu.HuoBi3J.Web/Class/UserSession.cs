@@ -130,104 +130,21 @@ namespace ADeeWu.HuoBi3J.Web.Class
             {
                 #region 1
                 db.Parameters.Append("@UserID", user.ID);
-                DataTable dtCorp = db.Select(
-                   @"select c.ID as CorpID , c.CorpName , c.CheckState, c2.id as CT_CorpID,c2.CheckState as CT_CorpCheckState , c3.id as CP_CorpID , c3.CheckState as CP_CorpCheckState,
-s.CheckState as ShopCheckState,s.ID as ShopID
-from [Corporations] as c left join 
-CT_PartnerCorps as c2 on c.id = c2.corpID left join 
-CP_Promotions as c3 on c.id = c3.corpid left join
-Shops as s on s.CorpID = c.id
-where c.UserID=@UserID"
-                    /*and c.CheckState=1"*///即使企业注册用户没有通过审核,也可以登陆,但将会看到当前已被取消审核的状态
-                   );
+                DataTable dtCorp = db.Select(@"select c.ID as CorpID , c.CorpName , c.CheckState from [Corporations] as c where c.UserID=@UserID");
 
                 if (dtCorp.Rows.Count > 0)
                 {
                     long corpID = Utility.GetLong(dtCorp.Rows[0]["CorpID"], 0);
-                    long cashTicketCorpID = Utility.GetLong(dtCorp.Rows[0]["CT_CorpID"], 0);
-                    long promotionCorpID = Utility.GetLong(dtCorp.Rows[0]["CP_CorpID"], 0);
-                    long shopID = Utility.GetLong(dtCorp.Rows[0]["ShopID"], 0);
-                    int ct_CorpCheckState = Utility.GetInt(dtCorp.Rows[0]["CT_CorpCheckState"], 0);
-                    int cp_CorpCheckState = Utility.GetInt(dtCorp.Rows[0]["CP_CorpCheckState"], 0);
                     int corpCheckState = Utility.GetInt(dtCorp.Rows[0]["CheckState"], 0);
-                    int shopCheckState = Utility.GetInt(dtCorp.Rows[0]["ShopCheckState"], 0);
                     string corpName = Utility.GetStr(dtCorp.Rows[0]["CorpName"], "");
 
 
-                    Class.CorpSession corpSession = new Class.CorpSession(user.ID, user.UIN, user.LoginName, user.Email,
-                        corpID, cashTicketCorpID, promotionCorpID, shopID, ct_CorpCheckState == 1, cp_CorpCheckState == 1, shopCheckState == 1, corpName);
+                    Class.CorpSession corpSession = new Class.CorpSession(user.ID, user.UIN, user.LoginName, user.Email, corpID, corpName);
                     corpSession.CorpCheckState = (UserSessionCheckState)corpCheckState;//企业用户审核状态
 
                     loginSession = corpSession;
                 }
                 else//商家注册未通过审核
-                {
-                    loginSession = new Class.UserSession(user.ID, user.UIN, user.LoginName, user.Email, user.UserType);
-                }
-                loginSession.UserCheckState = (UserSessionCheckState)user.CheckState;//个人用户审核状态 
-                #endregion
-            }
-            else if (user.UserType == 2)//商家代表
-            {
-                #region 2
-                db.Parameters.Append("@UserID", user.ID);
-                DataTable dtCorpAgent = db.Select(
-                   @"
-select CA.ID as CorpAgentID,CA.UserID,CA.RoleID,
-       c.UserID as CorpUserID,c.ID as CorpID , c.CorpName , c.CheckState as CorpCheckState, 
-       c2.id as CT_CorpID,c2.CheckState as CT_CorpCheckState , 
-       c3.id as CP_CorpID , c3.CheckState as CP_CorpCheckState,CA.CheckState as CorpAgentCheckState,
-       s.CheckState as ShopCheckState,s.ID as ShopID
-from CorpAgents as CA left join [Corporations] as c
-     on CA.AgentCorpID = C.ID left join CT_PartnerCorps as c2 
-     on c.id = c2.corpID left join CP_Promotions as c3 
-     on c.id = c3.corpid left join Shops as S
-     on c.id = S.id
-where CA.UserID=@UserID"
-                    /*and c.CheckState=1"*///即使商家代表用户没有通过审核,也可以登陆,但将会看到当前已被取消审核的状态
-                   );
-
-                if (dtCorpAgent.Rows.Count > 0)
-                {
-
-                    long roleID = Utility.GetLong(dtCorpAgent.Rows[0]["RoleID"], 0);
-                    long corpUserID = Utility.GetLong(dtCorpAgent.Rows[0]["CorpUserID"], 0);
-                    long corpAgentID = Utility.GetLong(dtCorpAgent.Rows[0]["CorpAgentID"], 0);
-                    long corpID = Utility.GetLong(dtCorpAgent.Rows[0]["CorpID"], 0);
-                    long cashTicketCorpID = Utility.GetLong(dtCorpAgent.Rows[0]["CT_CorpID"], 0);
-                    long promotionCorpID = Utility.GetLong(dtCorpAgent.Rows[0]["CP_CorpID"], 0);
-                    long shopID = Utility.GetLong(dtCorpAgent.Rows[0]["ShopID"], 0);
-                    int ct_CorpCheckState = Utility.GetInt(dtCorpAgent.Rows[0]["CT_CorpCheckState"], 0);
-                    int cp_CorpCheckState = Utility.GetInt(dtCorpAgent.Rows[0]["CP_CorpCheckState"], 0);
-                    int corpCheckState = Utility.GetInt(dtCorpAgent.Rows[0]["CorpCheckState"], 0);
-                    int corpAgentCheckState = Utility.GetInt(dtCorpAgent.Rows[0]["CorpAgentCheckState"], 0);
-                    int shopCheckState = Utility.GetInt(dtCorpAgent.Rows[0]["ShopCheckState"], 0);
-                    string corpName = Utility.GetStr(dtCorpAgent.Rows[0]["CorpName"], "");
-
-                    Class.CorpAgentSession corpAgentSession = new CorpAgentSession(corpAgentID, user.ID, corpUserID, user.UIN, user.LoginName, user.Email, corpID, cashTicketCorpID,
-                        promotionCorpID, shopID, ct_CorpCheckState == 1, cp_CorpCheckState == 1, shopCheckState == 1, corpName);
-
-                    corpAgentSession.CorpCheckState = (UserSessionCheckState)corpCheckState;//企业用户审核状态
-                    corpAgentSession.CorpAgentState = (UserSessionCheckState)corpAgentCheckState;//企业代表用户审核状态
-
-                    //获取权限列表
-
-                    DataTable dtRolePermissions = db.Select("select * from vw_CA_RolePermissions where RoleID=" + roleID);
-                    if (dtRolePermissions.Rows.Count > 0)
-                    {
-                        corpAgentSession.Functions = new string[dtRolePermissions.Rows.Count][];
-                        for (int i = 0; i < dtRolePermissions.Rows.Count; i++)
-                        {
-                            DataRow drRolePermission = dtRolePermissions.Rows[i];
-                            corpAgentSession.Functions[i] = new string[] { drRolePermission["Code"].ToString(), drRolePermission["AuthorizeState"].ToString() };
-                        }
-
-                    }
-
-
-                    loginSession = corpAgentSession;
-                }
-                else//商家未或当前商家代表未通过审核
                 {
                     loginSession = new Class.UserSession(user.ID, user.UIN, user.LoginName, user.Email, user.UserType);
                 }
@@ -241,7 +158,7 @@ where CA.UserID=@UserID"
             }
 
             SaleManSession.SaveCircleSaleMan(user.ID);
-            QualifiedAgentSession.SaveQualifiedAgent(user.ID);
+            //QualifiedAgentSession.SaveQualifiedAgent(user.ID);
 
             return loginSession;
         }

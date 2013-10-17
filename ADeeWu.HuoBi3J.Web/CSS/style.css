@@ -1100,7 +1100,7 @@ body {
     }
 
     #header .topBar {
-        background: url(/images/top_bar1.gif) no-repeat;
+        /*background: url(/images/top_bar1.gif) no-repeat;*/
         height: 20px;
         line-height: 30px;
         padding: 0px 0 0 50px;
@@ -1143,13 +1143,13 @@ body {
 }
 
     #nav .nav_l {
-        background: url(/images/nav_5l.gif) no-repeat;
+        /*background: url(/images/nav_5l.gif) no-repeat;*/
         width: 5px;
         height: 42px;
     }
 
     #nav .nav_r {
-        background: url(/images/nav_5l.gif) no-repeat;
+        /*background: url(/images/nav_5l.gif) no-repeat;*/
         width: 5px;
         height: 42px;
     }
