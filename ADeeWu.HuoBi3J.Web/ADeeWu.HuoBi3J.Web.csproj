@@ -94,7 +94,6 @@
     <Content Include="FckEditor\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
     <Content Include="Handler\BaseHandler.ashx" />
     <Content Include="Handler\LoginHandler.ashx" />
-    <Content Include="Handler\SaveFavsHandler.ashx" />
     <Content Include="Handler\WebIM\GetUser.ashx" />
     <Content Include="Handler\WebIM\Login.ashx" />
     <Content Include="images\biaoti.psd" />
@@ -147,13 +146,6 @@
     <Compile Include="Admin\Center\AddHotKey.aspx.designer.cs">
       <DependentUpon>AddHotKey.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Center\CopyData.aspx.cs">
-      <DependentUpon>CopyData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\CopyData.aspx.designer.cs">
-      <DependentUpon>CopyData.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Center\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,20 +180,6 @@
     </Compile>
     <Compile Include="Admin\Center\ProcessInform.aspx.designer.cs">
       <DependentUpon>ProcessInform.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\ProductList.aspx.cs">
-      <DependentUpon>ProductList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\ProductList.aspx.designer.cs">
-      <DependentUpon>ProductList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\Question.aspx.cs">
-      <DependentUpon>Question.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\Question.aspx.designer.cs">
-      <DependentUpon>Question.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Center\QuestionIndexList.aspx.cs">
       <DependentUpon>QuestionIndexList.aspx</DependentUpon>
@@ -550,13 +528,6 @@
     <Compile Include="Center\MoveCircle.aspx.designer.cs">
       <DependentUpon>MoveCircle.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\Question2.aspx.cs">
-      <DependentUpon>Question2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\Question2.aspx.designer.cs">
-      <DependentUpon>Question2.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Center\TicketSearch.aspx.cs">
       <DependentUpon>TicketSearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -585,13 +556,6 @@
     <Compile Include="Class\TaskHelper.cs" />
     <Compile Include="Class\Tips.cs" />
     <Compile Include="Class\UserSession.cs" />
-    <Compile Include="Controls\Category.ascx.cs">
-      <DependentUpon>Category.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\Category.ascx.designer.cs">
-      <DependentUpon>Category.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\FavControl.ascx.cs">
       <DependentUpon>FavControl.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -642,9 +606,6 @@
     </Compile>
     <Compile Include="Handler\LoginHandler.ashx.cs">
       <DependentUpon>LoginHandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Handler\SaveFavsHandler.ashx.cs">
-      <DependentUpon>SaveFavsHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Handler\WebIM\GetUser.ashx.cs">
       <DependentUpon>GetUser.ashx</DependentUpon>
@@ -964,14 +925,11 @@
   <ItemGroup>
     <Content Include="Admin\Center\AddAttribute.aspx" />
     <Content Include="Admin\Center\AddHotKey.aspx" />
-    <Content Include="Admin\Center\CopyData.aspx" />
     <Content Include="Admin\Center\Edit.aspx" />
     <Content Include="Admin\Center\HotKeys.aspx" />
     <Content Include="Admin\Center\InformList.aspx" />
     <Content Include="Admin\Center\Key4Attribute.aspx" />
     <Content Include="Admin\Center\ProcessInform.aspx" />
-    <Content Include="Admin\Center\ProductList.aspx" />
-    <Content Include="Admin\Center\Question.aspx" />
     <Content Include="Admin\Center\QuestionIndexList.aspx" />
     <Content Include="Admin\Center\QuestionList.aspx" />
     <Content Include="Admin\Center\SaleMan.aspx" />
@@ -1103,9 +1061,7 @@
     <Content Include="Center\Key4Product.aspx" />
     <Content Include="Center\Location.aspx" />
     <Content Include="Center\MoveCircle.aspx" />
-    <Content Include="Center\Question2.aspx" />
     <Content Include="Center\TicketSearch.aspx" />
-    <Content Include="Controls\Category.ascx" />
     <Content Include="Controls\FavControl.ascx" />
     <Content Include="Controls\ucFooter.ascx" />
     <Content Include="Controls\ucHeader.ascx" />
