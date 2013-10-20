@@ -5,34 +5,27 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    全民营销 - 个人管理中心 - 我的关键字列表
+    全民营销 - 个人管理中心 - 申请开通报价比价服务
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
-        <script src="/kindeditor/kindeditor.js" type="text/javascript"></script>
+    <script src="/ueditor/ueditor.config.js" type="text/javascript"></script>
+    <script src="/ueditor/ueditor.all.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        KE.show({
-            id: 'txtDesc',
-            imageUploadJson: '/kindeditor/upload_json.ashx',
-            fileManagerJson: '/kindeditor/file_manager_json.ashx',
-            resizeMode: 1,
-            allowPreviewEmoticons: true,
-            allowUpload: true,
-            items: ['fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-        });
         $(function () {
+            var editor = UE.getEditor('editor');
             $('#<%=btnSubmit.ClientID%>').click(function () {
-                if (KE.isEmpty('txtDesc')) {
-                    alert('提问内容不能为空！');
-                    return false;
-                } else {
-                    $('#<%=txtMemo.ClientID%>').val(KE.html('txtDesc'));
+                //if (!editor.hasContents()) {
+                //    alert('备注不能为空！');
+                //    return false;
+                //} else {
+                    $('#<%=txtMemo.ClientID%>').val(editor.getContent());
                     return true;
-                }
+                //}
 
-                return false;
+                //return false;
             })
         })
     </script>
@@ -43,17 +36,17 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <div align="center">
         <strong>注:带<span class="require">*</span> 表示必填项</strong><br />
-        <strong>申请关注关键字服务时，请确保你的账户余额大于50元，否则无法通过审核</strong><br />
+        <strong>申请开通报价比价服务时，请确保你的账户余额大于50元，否则无法通过审核</strong><br />
         <br />
         <asp:Label ID="labTips" runat="server" Text="" ForeColor="#FF0000"></asp:Label>
     </div>
     <table class="formTable">
         <tr>
-            <td class="tdLeft">名称：
+            <td class="tdLeft">联系人：
             </td>
             <td class="tdRight">
                 <asp:TextBox ID="txtName" runat="server" CssClass="txtName"></asp:TextBox>
-                <span class="require">*</span><span class="tips">请填写名称</span>
+                <span class="require">*</span><span class="tips">请填写联系人</span>
                 <asp:RequiredFieldValidator ID="rfvTxtName" ControlToValidate="txtName" runat="server"
                     ErrorMessage="请填写！" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
@@ -117,9 +110,9 @@
             <td class="tdRight">
                 <%--<asp:TextBox ID="txtMemo" runat="server" CssClass="txtMemo" TextMode="MultiLine"></asp:TextBox>--%>
                 <asp:HiddenField ID="txtMemo" runat="server" />
-                <textarea cols="100" rows="8" name="txtDesc" id="txtDesc" style="width: 650px; height: 34px;visibility:hidden;">
+                <script type="text/plain" id="editor" name="txtDesc" style="width: 650px; height: 34px">
                     <asp:Literal ID="litMemo" runat="server"></asp:Literal>
-                </textarea>
+                </script>
             </td>
         </tr>
         <asp:PlaceHolder ID="phCheckState" runat="server">

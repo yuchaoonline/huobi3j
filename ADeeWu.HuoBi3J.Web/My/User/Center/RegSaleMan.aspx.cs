@@ -46,7 +46,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 }
                 else
                 {
-                    string s = "您还没有提交过关注关键字的申请!通过简单的表格填写就可以申请成为即时报价业务员！";
+                    string s = "您还没有提交过开通报价比价服务的申请！";
                     this.labTips.Text = s;
                     this.phCheckState.Visible = false;
                 }
@@ -67,7 +67,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                WebUtility.ShowMsg("名称不能为空！");
+                WebUtility.ShowMsg("联系人不能为空！");
                 return;
             }
 

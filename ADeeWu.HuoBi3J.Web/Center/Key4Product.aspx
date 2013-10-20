@@ -9,7 +9,7 @@
     <script src="../JS/jquery.cookie.js"></script>
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
-    <link href="../GroupBuy/base.css" rel="stylesheet" />
+    <link href="/CSS/base.css" rel="stylesheet" />
     <script type="text/javascript">
         $(function () {
             $('.arc_title img').ReduceImage();
@@ -81,15 +81,15 @@
                     </ul>
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
-                    <div class="label has-icon"><i></i>³ß´ç£º</div>
-                    <ul class="inline-block-list">
-                        <asp:Literal runat="server" ID="litSize"></asp:Literal>
-                    </ul>
-                </div>
-                <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>¼Û¸ñ£º</div>
                     <ul class="inline-block-list">
                         <asp:Literal runat="server" ID="litPrice"></asp:Literal>
+                    </ul>
+                </div>
+                <div class="filter-label-list filter-section category-filter-wrapper">
+                    <div class="label has-icon"><i></i>³ß´ç£º</div>
+                    <ul class="inline-block-list">
+                        <asp:Literal runat="server" ID="litSize"></asp:Literal>
                     </ul>
                 </div>
             </div>

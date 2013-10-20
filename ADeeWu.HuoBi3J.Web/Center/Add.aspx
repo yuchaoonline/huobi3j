@@ -9,8 +9,7 @@
 <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="/js/jquery.watermark.js" ></script>
 <script type="text/javascript" src="/js/user.js" ></script>
-<script src="/kindeditor/kindeditor.js" type="text/javascript"></script>
-<script>
+<script type="text/javascript">
     $(function () {
         $('[name=BName]').watermark(' ‰»Î…Ã»¶√˚≥∆');
 

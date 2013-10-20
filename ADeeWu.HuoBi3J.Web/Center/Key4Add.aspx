@@ -6,20 +6,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
-    <link href="../GroupBuy/base.css" rel="stylesheet" />
-    <script src="/kindeditor/kindeditor.js" type="text/javascript"></script>
+    <link href="/CSS/base.css" rel="stylesheet" />
+    <script src="/ueditor/ueditor.config.js" type="text/javascript"></script>
+    <script src="/ueditor/ueditor.all.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        KE.show({
-            id: 'txtDesc',
-            imageUploadJson: '/kindeditor/upload_json.ashx',
-            fileManagerJson: '/kindeditor/file_manager_json.ashx',
-            resizeMode: 1,
-            allowPreviewEmoticons: true,
-            allowUpload: true,
-            items: ['fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link']
-        });
-
-
         $(function () {
             $('.arc_title img').ReduceImage();
 
@@ -29,7 +19,7 @@
                     $('.select-type').html('类型：'+$this.html());
                 }
                 if ($this.hasClass('selectSize')) {
-                    $('.select-size').html('尺寸：'+$this.html());
+                    $('.select-size').html('其他：'+$this.html());
                 }
                 if ($this.hasClass('selectPrice')) {
                     $('.select-price').html('价格：'+$this.html());
@@ -38,27 +28,24 @@
                 return false;
             })
 
+            var editor = UE.getEditor('editor');
             $('#btnSubmit').click(function () {
                 var selecttype = $('.select-type');
                 var selectprice = $('.select-price');
                 var selectsize = $('.select-size');
                 var price = $('input[name="txtPrice"]');
                 var simpledesc = $('input[name=txtSimple]');
-                var content = KE.html('txtDesc');
+                var content = editor.getContent();
 
                 if (!selecttype.html()) {
                     alert('请选择类型!');
-                    return false;
-                }
-                if (!selectsize.html()) {
-                    alert('请选择尺寸!');
                     return false;
                 }
                 if (!selectprice.html()) {
                     alert('请选择价格!');
                     return false;
                 }
-                var selectValue = selecttype.html() + ';' + selectsize.html() + ';' + selectprice.html();
+                var selectValue = selecttype.html() + ';' + selectprice.html() + ';' + selectsize.html();
                 if (!price.val()) {
                     alert('价格不能为空！');
                     return false;
@@ -72,7 +59,7 @@
                     return false;
                 }
                                 
-                if (KE.isEmpty('txtDesc')) {
+                if (!editor.hasContents()) {
                     alert('提问内容不能为空！');
                     return false;
                 }
@@ -127,23 +114,23 @@
                     </ul>
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
-                    <div class="label has-icon"><i></i>尺寸：</div>
-                    <ul class="inline-block-list">
-                        <asp:Literal runat="server" ID="litSize"></asp:Literal>
-                    </ul>
-                </div>
-                <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>价格：</div>
                     <ul class="inline-block-list">
                         <asp:Literal runat="server" ID="litPrice"></asp:Literal>
                     </ul>
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
+                    <div class="label has-icon"><i></i>其他：</div>
+                    <ul class="inline-block-list">
+                        <asp:Literal runat="server" ID="litSize"></asp:Literal>
+                    </ul>
+                </div>
+                <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>选择：</div>
                     <ul class="inline-block-list">
-                        <li class="item"><span class="select-type"></span></li>
-                        <li class="item"><span class="select-size"></span></li>
+                        <li class="item"><span class="select-type"></span></li>                        
                         <li class="item"><span class="select-price"></span></li>
+                        <li class="item"><span class="select-size"></span></li>
                     </ul>
                 </div>
             </div>
@@ -172,7 +159,8 @@
             </td>
             <td class="tdRight">
                 <%--<asp:TextBox ID="txtDesc" runat="server"></asp:TextBox>--%>
-                <textarea cols="100" rows="8" name="txtDesc" id="txtDesc" style="width: 800px; height: 34px;visibility:hidden;"></textarea>
+                <script type="text/plain" id="editor" name="txtDesc" style="width: 800px; height: 200px"></script>
+                <%--<textarea cols="100" rows="8" name="txtDesc" id="txtDesc" style="width: 800px; height: 34px;visibility:hidden;"></textarea>--%>
             </td>
         </tr>
         <tr>
