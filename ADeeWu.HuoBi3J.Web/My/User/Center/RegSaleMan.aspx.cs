@@ -27,7 +27,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     txtCompanyName.Text = entApplication.CompanyName;
                     txtName.Text = entApplication.Name;
                     txtJob.Text = entApplication.Job;
-                    txtMemo.Text = entApplication.Memo;
+                    litMemo.Text = entApplication.Memo;
                     hfPosition.Value = entApplication.PositionX + "|" + entApplication.PositionY;
 
                     this.labTips.Text = "提交申请需要重新审核！";
@@ -67,7 +67,13 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
             if (string.IsNullOrEmpty(txtName.Text))
             {
-                WebUtility.ShowMsg("联系方式不能为空！");
+                WebUtility.ShowMsg("名称不能为空！");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(hfPosition.Value))
+            {
+                WebUtility.ShowMsg("请在地图中选择准确位置！");
                 return;
             }
 
@@ -75,7 +81,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             entApplication.ModifyTime = DateTime.Now;
             entApplication.Phone = txtPhone.Text;
             entApplication.UserID = this.LoginUser.UserID;
-            entApplication.Memo = txtMemo.Text;
+            entApplication.Memo = txtMemo.Value;
             entApplication.QQ = txtQQ.Text;
             entApplication.CompanyAddress = txtCompanyAddress.Text;
             entApplication.CompanyName = txtCompanyName.Text;

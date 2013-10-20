@@ -8,6 +8,7 @@ using System.Data;
 using System.Web.SessionState;
 using ADeeWu.HuoBi3J.Web.Class;
 using ADeeWu.HuoBi3J.DAL;
+using System.IO;
 
 namespace ADeeWu.HuoBi3J.Web.Ajax
 {
@@ -39,6 +40,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                     case "getproductlist": { result = GetProductList(); }; break;
                     case "hasticket": { result = HasTicket(); }; break;
                     case "getbusinesscirclecount": { result = GetBusinessCircleCount(); }; break;
+                    case "getlocationpoint": { result = GetLocationPoint(); }; break;
                     default: { result = "something is error!"; }; break;
                 }
             }
@@ -49,6 +51,26 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(result);
+        }
+
+        private string GetLocationPoint()
+        {
+            var city = WebUtility.GetRequestStr("city", "");
+            var address = WebUtility.GetRequestStr("address","");
+            var ak = WebUtility.GetRequestStr("ak","");
+
+            if (string.IsNullOrWhiteSpace(address) || string.IsNullOrWhiteSpace(ak))
+            {
+                return JsonMapper.ToJson(new { statue = false, msg = "参数有误" });
+            }
+
+            var url = string.Format("http://api.map.baidu.com/geocoder/v2/?address={0}&city={2}&output=json&ak={1}&callback=showLocation", HttpUtility.UrlEncode(address), ak, HttpUtility.UrlEncode(city));
+            System.Net.WebRequest wr = System.Net.WebRequest.Create(url);
+            Stream strm = wr.GetResponse().GetResponseStream();
+            var sr = new StreamReader(strm);
+            var html = sr.ReadToEnd();
+            var jsonResult = html.Substring(27, html.Length - 28);
+            return jsonResult;
         }
 
         private string GetAttention()

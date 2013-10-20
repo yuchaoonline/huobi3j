@@ -1,6 +1,5 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.Default" %>
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
-<%@ Register Src="~/Controls/Category.ascx" TagPrefix="UserControl" TagName="Category" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 全民广告 - 即时报价

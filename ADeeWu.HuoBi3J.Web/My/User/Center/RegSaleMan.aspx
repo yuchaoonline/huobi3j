@@ -1,4 +1,4 @@
-<%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="RegSaleMan.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.RegSaleMan" %>
+<%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="RegSaleMan.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.RegSaleMan" %>
 
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
 
@@ -11,7 +11,31 @@
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
-    
+        <script src="/kindeditor/kindeditor.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        KE.show({
+            id: 'txtDesc',
+            imageUploadJson: '/kindeditor/upload_json.ashx',
+            fileManagerJson: '/kindeditor/file_manager_json.ashx',
+            resizeMode: 1,
+            allowPreviewEmoticons: true,
+            allowUpload: true,
+            items: ['fontname', 'fontsize', '|', 'textcolor', 'bgcolor', 'bold', 'italic', 'underline', 'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist', 'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+        });
+        $(function () {
+            $('#<%=btnSubmit.ClientID%>').click(function () {
+                if (KE.isEmpty('txtDesc')) {
+                    alert('提问内容不能为空！');
+                    return false;
+                } else {
+                    $('#<%=txtMemo.ClientID%>').val(KE.html('txtDesc'));
+                    return true;
+                }
+
+                return false;
+            })
+        })
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
     <a href="/My/User/Center/MyQuestionList.aspx">即时报价</a>
@@ -91,7 +115,11 @@
             <td class="tdLeft">备注：
             </td>
             <td class="tdRight">
-                <asp:TextBox ID="txtMemo" runat="server" CssClass="txtMemo" TextMode="MultiLine"></asp:TextBox>
+                <%--<asp:TextBox ID="txtMemo" runat="server" CssClass="txtMemo" TextMode="MultiLine"></asp:TextBox>--%>
+                <asp:HiddenField ID="txtMemo" runat="server" />
+                <textarea cols="100" rows="8" name="txtDesc" id="txtDesc" style="width: 650px; height: 34px;visibility:hidden;">
+                    <asp:Literal ID="litMemo" runat="server"></asp:Literal>
+                </textarea>
             </td>
         </tr>
         <asp:PlaceHolder ID="phCheckState" runat="server">
@@ -137,13 +165,15 @@
         $(function () {
             $('.btnPositionSearch').click(function () {
                 var address = $('#<%=txtCompanyAddress.ClientID%>').val();
-                var myGeo = new BMap.Geocoder();    // 创建地址解析器实例
-                myGeo.getPoint(address, function (point) {
-                    if (point) {
+                $.getJSON("/ajax/center.ashx", { method: 'getlocationpoint', address: address, ak: "D10a875567626012d06af2387efa088e" }, function (data) {
+                    if (data.result.location.lng) {
+                        var point = new BMap.Point(data.result.location.lng, data.result.location.lat);
                         marker.setPosition(point);
                         updatePosition(point);
+                    } else {
+                        alert('查无此找到结果')
                     }
-                }, "佛山市");
+                })
 
                 return false;
             })
