@@ -7,45 +7,45 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace ADeeWu.HuoBi3J.Web.Center {
+namespace ADeeWu.HuoBi3J.Web.My.User.Center {
     
     
-    public partial class Key4Add {
+    public partial class SearchKey {
         
         /// <summary>
-        /// rpKey 控件。
+        /// txtKeyword 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpKey;
+        protected global::System.Web.UI.WebControls.TextBox txtKeyword;
         
         /// <summary>
-        /// litType 控件。
+        /// btnSearch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litType;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// litPrice 控件。
+        /// rpResult 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litPrice;
+        protected global::System.Web.UI.WebControls.Repeater rpResult;
         
         /// <summary>
-        /// litSize 控件。
+        /// Pager1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSize;
+        protected global::ADeeWu.HuoBi3J.WebUI.Pager3 Pager1;
     }
 }

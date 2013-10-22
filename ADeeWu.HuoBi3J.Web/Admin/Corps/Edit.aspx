@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/Admin/MAdmin.master" CodeBehind="Edit.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.Corps.Edit"  %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 
 
@@ -38,7 +38,7 @@ Admin - Corps - Edit
    <tr>
     <td class="tdLeft">经营行业:</td>
     <td class="tdRight">
-        <IscControl:SyncSelector ID="syncSelectorCalling" runat="server" 
+        <ADeeWuControl:SyncSelector ID="syncSelectorCalling" runat="server" 
 				DataSourceURL="<%$Resources:SyncSelector,Calling_DataSourceURL %>" 
 				DataSourceName="<%$Resources:SyncSelector,Calling_DataSourceName %>" 
 				ClientPostNames="<%$Resources:SyncSelector,Calling_ClientPostNames %>"
@@ -50,7 +50,7 @@ Admin - Corps - Edit
   <tr>
     <td class="tdLeft">所属地区:</td>
     <td class="tdRight">
-       <IscControl:SyncSelector ID="syncSelectorLocation" runat="server" 
+       <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server" 
                 DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>" 
                 DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" 
                 ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"

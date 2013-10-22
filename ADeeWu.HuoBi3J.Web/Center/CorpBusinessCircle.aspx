@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="CorpBusinessCircle.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.CorpBusinessCircle" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
@@ -38,6 +38,6 @@
     </table>
 
     <div class="pager" align="center">
-        <IscControl:Pager ID="Pager1" runat="server"  />
+        <ADeeWuControl:Pager ID="Pager1" runat="server"  />
     </div>
 </asp:Content>

@@ -1,5 +1,5 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Cashtickets.Default" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 现金赠送
@@ -47,7 +47,7 @@ ol li{ list-style-position:inside; margin:0px; padding:0px; text-indent:0px; mar
 			<tr>
 			  <td class="tdLeft">消费日期：</td>
 				<td class="tdRight">
-				<IscControl:DateTimeSelector ID="txtCostDate" runat="server" CssClass="txtDate"></IscControl:DateTimeSelector><span class="require">*</span>
+				<ADeeWuControl:DateTimeSelector ID="txtCostDate" runat="server" CssClass="txtDate"></ADeeWuControl:DateTimeSelector><span class="require">*</span>
 				</td>
 		  </tr>
 			<tr>

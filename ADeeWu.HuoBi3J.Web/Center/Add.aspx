@@ -1,5 +1,5 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master"  AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.Add" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 即时报价 - 添加
@@ -69,7 +69,7 @@
                 <td class="tdLeft">地区：
                 </td>
                 <td class="tdRight">
-                    <IscControl:SyncSelector ID="syncSelectorLocation" runat="server" DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
+                    <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server" DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
                     DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"
                     InitClientDependency="true" />
                 </td>

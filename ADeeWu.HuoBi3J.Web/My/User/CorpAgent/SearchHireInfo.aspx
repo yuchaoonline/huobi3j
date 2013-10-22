@@ -1,6 +1,6 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="SearchHireInfo.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.CorpAgent.SearchHireInfo" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -56,7 +56,7 @@
             </td>
             <td style="width: 60px">µØ&nbsp;&nbsp;&nbsp;&nbsp;Çø£º</td>
             <td>
-                <IscControl:SyncSelector ID="syncSelectorLocation" runat="server"
+                <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server"
                     DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
                     DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>"
                     ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>" />
@@ -88,7 +88,7 @@
     </dl>
 
 
-    <IscControl:Pager ID="Pager1" runat="server" />
+    <ADeeWuControl:Pager ID="Pager1" runat="server" />
 
 
 

@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="TicketSearch.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.TicketSearch" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
-<%@ Register Src="~/Controls/Category.ascx" TagPrefix="UserControl" TagName="Category" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
@@ -103,7 +102,7 @@
     </div>
 
     <div class="pager" align="center">
-        <IscControl:Pager3 ID="Pager1" runat="server" />
+        <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
     </div>
 
     <ul class="list">

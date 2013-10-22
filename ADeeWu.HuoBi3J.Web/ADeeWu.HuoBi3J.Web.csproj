@@ -89,6 +89,9 @@
     <Content Include="Ajax\Center.ashx" />
     <Content Include="Ajax\GroupBuy.ashx" />
     <Content Include="Ajax\User.ashx" />
+    <Content Include="Center\Default.aspx" />
+    <Content Include="Center\HotKey.aspx" />
+    <Content Include="Center\SearchKey.aspx" />
     <Content Include="CSS\base.css" />
     <Content Include="CSS\deal.css" />
     <Content Include="CSS\hovermark.css" />
@@ -105,10 +108,12 @@
     <Content Include="images\nav_current2.psd" />
     <Content Include="images\radius_3_r11.psd" />
     <Content Include="images\radius_3_rl11.psd" />
+    <Content Include="JS\jquery.key.js" />
     <Content Include="MHTML.master" />
     <Content Include="MIndex.master" />
     <Content Include="MMain.Master" />
     <Content Include="MMyUser.master" />
+    <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\KeyManage\Default.aspx" />
     <Content Include="My\User\Center\KeyManage\Income.aspx" />
     <Content Include="My\User\Center\KeyManage\Refresh.aspx" />
@@ -472,11 +477,18 @@
     <Compile Include="Center\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\AttentionKey.aspx.cs">
+    <Compile Include="Center\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\AttentionKey.aspx.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Center\AttentionKey.aspx.designer.cs">
+    <Compile Include="My\User\Center\AttentionKey.aspx.designer.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\BusinessCircle.aspx.cs">
@@ -500,19 +512,26 @@
     <Compile Include="Center\CorpKeys.aspx.designer.cs">
       <DependentUpon>CorpKeys.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Center\SearchPrice.aspx.cs">
+      <DependentUpon>SearchPrice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Center\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Center\SearchPrice.aspx.designer.cs">
+      <DependentUpon>SearchPrice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\Key4Add.aspx.cs">
-      <DependentUpon>Key4Add.aspx</DependentUpon>
+    <Compile Include="Center\HotKey.aspx.cs">
+      <DependentUpon>HotKey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Center\Key4Add.aspx.designer.cs">
-      <DependentUpon>Key4Add.aspx</DependentUpon>
+    <Compile Include="Center\HotKey.aspx.designer.cs">
+      <DependentUpon>HotKey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\AddPrice4Key.aspx.cs">
+      <DependentUpon>AddPrice4Key.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\AddPrice4Key.aspx.designer.cs">
+      <DependentUpon>AddPrice4Key.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\Key4Product.aspx.cs">
       <DependentUpon>Key4Product.aspx</DependentUpon>
@@ -534,6 +553,13 @@
     </Compile>
     <Compile Include="Center\MoveCircle.aspx.designer.cs">
       <DependentUpon>MoveCircle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Center\SearchKey.aspx.cs">
+      <DependentUpon>SearchKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\SearchKey.aspx.designer.cs">
+      <DependentUpon>SearchKey.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\TicketSearch.aspx.cs">
       <DependentUpon>TicketSearch.aspx</DependentUpon>
@@ -661,6 +687,13 @@
     </Compile>
     <Compile Include="MMyUser.master.designer.cs">
       <DependentUpon>MMyUser.master</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\SearchKey.aspx.cs">
+      <DependentUpon>SearchKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\SearchKey.aspx.designer.cs">
+      <DependentUpon>SearchKey.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\ChangeGoOn.aspx.cs">
       <DependentUpon>ChangeGoOn.aspx</DependentUpon>
@@ -1045,11 +1078,11 @@
     <Content Include="Center\3.4.png" />
     <Content Include="Center\3.aspx" />
     <Content Include="Center\Add.aspx" />
-    <Content Include="Center\AttentionKey.aspx" />
+    <Content Include="My\User\Center\AttentionKey.aspx" />
     <Content Include="Center\BusinessCircle.aspx" />
     <Content Include="Center\CorpBusinessCircle.aspx" />
     <Content Include="Center\CorpKeys.aspx" />
-    <Content Include="Center\Default.aspx" />
+    <Content Include="Center\SearchPrice.aspx" />
     <Content Include="Center\images\1.jpg" />
     <Content Include="Center\images\2.1.jpg" />
     <Content Include="Center\images\2.2.jpg" />
@@ -1065,7 +1098,7 @@
     <Content Include="Center\images\4.jpg" />
     <Content Include="Center\images\5.jpg" />
     <Content Include="Center\images\6.jpg" />
-    <Content Include="Center\Key4Add.aspx" />
+    <Content Include="My\User\Center\AddPrice4Key.aspx" />
     <Content Include="Center\Key4Product.aspx" />
     <Content Include="Center\Location.aspx" />
     <Content Include="Center\MoveCircle.aspx" />

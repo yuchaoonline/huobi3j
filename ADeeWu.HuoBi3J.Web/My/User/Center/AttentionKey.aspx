@@ -1,4 +1,4 @@
-<%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master"  AutoEventWireup="true" CodeBehind="AttentionKey.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.AttentionKey" %>
+<%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master"  AutoEventWireup="true" CodeBehind="AttentionKey.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.AttentionKey" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 全民广告 - 即时报价 - 关注关键字
@@ -32,6 +32,9 @@
         margin-bottom: 5px;
     }
 </style>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="siteposition" runat="server">
+    即时报价 - 关注关键字
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <div class="item">

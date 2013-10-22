@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/Admin/MAdmin.master" CodeBehind="List.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.CorpAgent.Applications.List"  %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -88,7 +88,7 @@ Admin - CorpAgent - Applications - List
          <!-- <a href="#" onclick="setCheckGroup('<% = gvData.ClientID %>',true); void(0);">全选</a> <a href="#" onclick="resverSelect('<% = gvData.ClientID %>'); void(0);">反选</a> -->
         </td>
         <td class="pagerBox">
-            <IscControl:Pager ID="Pager1" runat="server"  />
+            <ADeeWuControl:Pager ID="Pager1" runat="server"  />
         </td>
     </tr>
 </table>

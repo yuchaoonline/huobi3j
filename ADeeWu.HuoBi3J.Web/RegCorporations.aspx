@@ -1,5 +1,5 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master"  AutoEventWireup="true" CodeBehind="RegCorporations.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.RegCorporations" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 全民营销网 - 用户注册
@@ -46,7 +46,7 @@ $(document).ready(function(){
    <tr>
     <td class="tdLeft">经营行业：</td>
     <td class="tdRight">
-        <IscControl:SyncSelector ID="syncSelectorCalling" runat="server" 
+        <ADeeWuControl:SyncSelector ID="syncSelectorCalling" runat="server" 
         DataSourceURL="<%$Resources:SyncSelector,Calling_DataSourceURL %>" 
         DataSourceName="<%$Resources:SyncSelector,Calling_DataSourceName %>" 
         ClientPostNames="<%$Resources:SyncSelector,Calling_ClientPostNames %>"
@@ -55,7 +55,7 @@ $(document).ready(function(){
   <tr>
     <td class="tdLeft">所属地区：</td>
     <td class="tdRight">
-        <IscControl:SyncSelector ID="syncSelectorLocation" runat="server" 
+        <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server" 
         DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>" 
         DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" 
         ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"

@@ -1,5 +1,5 @@
 <%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/Admin/MAdmin.master" CodeBehind="Edit.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.CorpAgent.Applications.Edit"  %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 <%@ Register Assembly="FredCK.FCKeditorV2" Namespace="FredCK.FCKeditorV2" TagPrefix="FCKeditorV2" %>
 
 
@@ -42,7 +42,7 @@ Admin - CorpAgent - Applications - Edit
             出生日期：
             </td>
             <td class="tdRight">
-                <IscControl:DateTimeSelector ID="txtBirthday" runat="server" CssClass="txtDate"></IscControl:DateTimeSelector> <span class="require">*</span>
+                <ADeeWuControl:DateTimeSelector ID="txtBirthday" runat="server" CssClass="txtDate"></ADeeWuControl:DateTimeSelector> <span class="require">*</span>
             </td>
         </tr>
         <tr>
@@ -50,7 +50,7 @@ Admin - CorpAgent - Applications - Edit
             所在地区：
             </td>
             <td class="tdRight">
-                <IscControl:SyncSelector ID="syncSelectorLocation" runat="server" 
+                <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server" 
                 DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>" 
                 DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" 
                 ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"
@@ -79,7 +79,7 @@ Admin - CorpAgent - Applications - Edit
             学&nbsp;&nbsp;&nbsp;&nbsp;历：
             </td>
             <td class="tdRight">
-                <IscControl:SyncSelector ID="syncSelectorEducation" runat="server" 
+                <ADeeWuControl:SyncSelector ID="syncSelectorEducation" runat="server" 
                 DataSourceURL="<%$Resources:SyncSelector,Education_DataSourceURL %>" 
                 DataSourceName="<%$Resources:SyncSelector,Education_DataSourceName %>" 
                 ClientPostNames="<%$Resources:SyncSelector,Education_ClientPostNames %>"
@@ -91,7 +91,7 @@ Admin - CorpAgent - Applications - Edit
             工作经验：
             </td>
             <td class="tdRight">
-                <IscControl:SyncSelector ID="syncSelectorWorkExp" runat="server" 
+                <ADeeWuControl:SyncSelector ID="syncSelectorWorkExp" runat="server" 
                 DataSourceURL="<%$Resources:SyncSelector,WorkExp_DataSourceURL %>" 
                 DataSourceName="<%$Resources:SyncSelector,WorkExp_DataSourceName %>" 
                 ClientPostNames="<%$Resources:SyncSelector,WorkExp_ClientPostNames %>"

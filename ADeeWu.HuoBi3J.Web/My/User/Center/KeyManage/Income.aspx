@@ -1,6 +1,6 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="Income.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.KeManage.Income" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -32,7 +32,7 @@
         </asp:Repeater>
     </table>
     <div class="pager">
-        <IscControl:Pager ID="Pager1" runat="server" />
+        <ADeeWuControl:Pager ID="Pager1" runat="server" />
     </div>
 </asp:Content>
 

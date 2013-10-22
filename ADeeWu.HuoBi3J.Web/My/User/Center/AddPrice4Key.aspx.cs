@@ -11,9 +11,9 @@ using System.Data;
 using System.Linq;
 using LitJson;
 
-namespace ADeeWu.HuoBi3J.Web.Center
+namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
-    public partial class Key4Add : Class.PageBase_CircleSaleMan
+    public partial class AddPrice4Key : Class.PageBase_CircleSaleMan
     {
         int kid = 0;
 

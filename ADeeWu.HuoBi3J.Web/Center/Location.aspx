@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master"  AutoEventWireup="true" CodeBehind="Location.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.Location" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 全民广告 - 区域内容
@@ -37,7 +37,7 @@
     <a href="#" title="发表提问" class="newKey btn_blue89">添加商圈</a>
     <div class="PostKey" style="display: none;">
         <input type="hidden" name="aid" />
-        <IscControl:SyncSelector ID="syncSelectorLocation" runat="server" DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
+        <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server" DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
                     DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"
                     InitClientDependency="true" />
         <input type="text" name="BName" />
@@ -68,6 +68,6 @@
     </table>
 
     <div class="pager" align="center">
-        <IscControl:Pager ID="Pager1" runat="server"  />
+        <ADeeWuControl:Pager ID="Pager1" runat="server"  />
     </div>
 </asp:Content>

@@ -1,6 +1,6 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.CorpAgent.Default" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -45,7 +45,7 @@
             <td class="tdLeft">出生日期：
             </td>
             <td class="tdRight">
-                <IscControl:DateTimeSelector ID="txtBirthday" runat="server" CssClass="txtDate"></IscControl:DateTimeSelector>
+                <ADeeWuControl:DateTimeSelector ID="txtBirthday" runat="server" CssClass="txtDate"></ADeeWuControl:DateTimeSelector>
                 <span class="require">*</span><span class="tips">请填写您的出生日期</span>
             </td>
         </tr>
@@ -53,7 +53,7 @@
             <td class="tdLeft">所在地区：
             </td>
             <td class="tdRight">
-                <IscControl:SyncSelector ID="syncSelectorLocation" runat="server"
+                <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server"
                     DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
                     DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>"
                     ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>" />
@@ -81,7 +81,7 @@
             <td class="tdLeft">学　　历：
             </td>
             <td class="tdRight">
-                <IscControl:SyncSelector ID="syncSelectorEducation" runat="server"
+                <ADeeWuControl:SyncSelector ID="syncSelectorEducation" runat="server"
                     DataSourceURL="<%$Resources:SyncSelector,Education_DataSourceURL %>"
                     DataSourceName="<%$Resources:SyncSelector,Education_DataSourceName %>"
                     ClientPostNames="<%$Resources:SyncSelector,Education_ClientPostNames %>" />
@@ -92,7 +92,7 @@
             <td class="tdLeft">工作经验：
             </td>
             <td class="tdRight">
-                <IscControl:SyncSelector ID="syncSelectorWorkExp" runat="server"
+                <ADeeWuControl:SyncSelector ID="syncSelectorWorkExp" runat="server"
                     DataSourceURL="<%$Resources:SyncSelector,WorkExp_DataSourceURL %>"
                     DataSourceName="<%$Resources:SyncSelector,WorkExp_DataSourceName %>"
                     ClientPostNames="<%$Resources:SyncSelector,WorkExp_ClientPostNames %>" />

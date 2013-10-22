@@ -1,5 +1,5 @@
 <%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/Admin/MAdmin.master" CodeBehind="QuestionList.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.Center.QuestionList"  %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -55,7 +55,7 @@
     </table>
 
     <div class="pager">
-        <IscControl:Pager ID="Pager1" runat="server" />
+        <ADeeWuControl:Pager ID="Pager1" runat="server" />
     </div>
     <div id="attentionDialog"></div>
 </asp:Content>

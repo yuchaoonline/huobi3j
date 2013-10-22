@@ -43,7 +43,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             var returnValue = "已取消关注";
             if (ADeeWu.HuoBi3J.Libary.Utility.GetBool(Eval("IsGoOn"), false))
             {
-                returnValue = string.Format(" <a href='ChangeGoOn.aspx?kid={0}' title='取消关注'>取消关注</a>", _kid);
+                returnValue = string.Format(" <a href='ChangeGoOn.aspx?kid={0}' title='取消关注' class='btn_blue'>取消关注</a>", _kid);
             }
 
             return returnValue;

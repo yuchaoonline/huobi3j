@@ -45,6 +45,7 @@
                         <li><a href="/My/User/Center/MyQuestionList.aspx">我的询价提问<span id="questionAttentionCount"></span></a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
+                        <li><a href="/My/User/Center/SearchKey.aspx">关注关键字<span id="Span1"></span></a></li>
                         <li><a href="/My/User/Center/MyAnswerList.aspx">我收到的提问<span id="salemanAttentionCount"></span></a></li>
                         <li><a href="/My/User/Center/MyAttentionList.aspx">关注列表</a></li>
                         <% } %>

@@ -10,70 +10,43 @@
 namespace ADeeWu.HuoBi3J.Web.Center {
     
     
-    public partial class Key4Product {
+    public partial class SearchKey {
         
         /// <summary>
-        /// txtSearch 控件。
+        /// ucNav 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::ADeeWu.HuoBi3J.Web.Controls.ucNav ucNav;
         
         /// <summary>
-        /// btnSearch 控件。
+        /// syncSelectorLocation 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::ADeeWu.HuoBi3J.WebUI.SyncSelector syncSelectorLocation;
         
         /// <summary>
-        /// rpKey 控件。
+        /// rpQuestionIndex 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpKey;
+        protected global::System.Web.UI.WebControls.Repeater rpQuestionIndex;
         
         /// <summary>
-        /// litType 控件。
+        /// rpResult 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litType;
-        
-        /// <summary>
-        /// litPrice 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litPrice;
-        
-        /// <summary>
-        /// litSize 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSize;
-        
-        /// <summary>
-        /// rpProduct 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpProduct;
+        protected global::System.Web.UI.WebControls.Repeater rpResult;
         
         /// <summary>
         /// Pager1 控件。
@@ -83,5 +56,23 @@ namespace ADeeWu.HuoBi3J.Web.Center {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::ADeeWu.HuoBi3J.WebUI.Pager3 Pager1;
+        
+        /// <summary>
+        /// noresult 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noresult;
+        
+        /// <summary>
+        /// rpDefaultCenter 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rpDefaultCenter;
     }
 }

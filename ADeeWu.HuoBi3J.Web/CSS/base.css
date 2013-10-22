@@ -3856,7 +3856,7 @@ button.formbutton {
     }
 
         #filter .filter-section-wrapper .filter-section {
-            padding: 12px 0 12px 65px;
+            padding: 12px 0 12px 100px;
             border-top: 1px dotted #dbdbdb;
         }
 
@@ -3923,7 +3923,7 @@ button.formbutton {
 
     #filter .filter-section-wrapper .has-icon {
         padding-left: 2em;
-        width: 3em;
+        width: 5em;
         *zoom: 1;
     }
 

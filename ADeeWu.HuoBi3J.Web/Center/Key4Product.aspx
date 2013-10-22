@@ -1,17 +1,18 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="Key4Product.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.Key4Product" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    全民广告 - 价格列表
+    价格列表 - 即时报价
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-    <script src="../JS/jquery.cookie.js"></script>
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
     <link href="/CSS/base.css" rel="stylesheet" />
     <script type="text/javascript">
         $(function () {
+            $('title').text($('#kname').text() + ' - 价格列表 - 即时报价');
+
             $('.arc_title img').ReduceImage();
 
             $('.showinfo').click(function () {
@@ -38,30 +39,12 @@
         .dline a {
             text-decoration: underline;
         }
+        .aaa a{
+            display: inline-block !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
-    <div id="center_list">
-        <div class="centerP_body">
-            <asp:Repeater ID="rpKey" runat="server">
-                <ItemTemplate>
-                    <div class="body_content font14 black70">
-                        <p>
-                            <span>关键字名称：<label class="fb black32 "><%# Eval("KName") %></label></span></p>
-                        <p class="mt10">
-                            <span>所属商圈：
-                                <label class="black32 dline"><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></label>
-                            </span>
-                            <span class="gjbj1">所属地区：<label class="black32"><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"),Eval("aname"),Eval("cid"),Eval("cname"),Eval("pid"),Eval("pname")," - ") %></label></span></p>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
-        </div>
-        <div class="centerP_head"></div>
-    </div>
-
-    <div class="cl"></div>
-
     <div id="filter">
         <div class="filter-sortbar-outer-box">
             <div class="filter-section-wrapper">
@@ -70,7 +53,23 @@
                     <ul class="inline-block-list">
                         <li class="item current">
                             <asp:TextBox runat="server" ID="txtSearch" CssClass="searchText"></asp:TextBox>
-                            <asp:Button runat="server" ID="btnSearch" CssClass="btn_blue" Text="搜索" OnClick="btnSearch_Click" />
+                            <asp:Button runat="server" ID="btnSearch" CssClass="btn_blue" Text="搜索" OnClick="btnSearch_Click" />(公司地址、公司名称、简单描述)
+                        </li>
+                    </ul>
+                </div>
+                <div class="filter-label-list filter-section category-filter-wrapper">
+                    <div class="label has-icon"><i></i>关键字：</div>
+                    <ul class="inline-block-list">
+                        <li class="item">
+                            <asp:Repeater ID="rpKey" runat="server">
+                                <ItemTemplate>
+                                    <div class="black70 aaa">
+                                            <span style="font-weight: bold; font-size: 14px; margin-right: 100px;" id="kname"><%# Eval("KName") %></span>
+                                            <span>所属商圈：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></span>
+                                            <span style="margin-left: 10px;">所属地区：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"),Eval("aname"),Eval("cid"),Eval("cname"),Eval("pid"),Eval("pname")," - ") %></span>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </li>
                     </ul>
                 </div>
@@ -87,7 +86,7 @@
                     </ul>
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
-                    <div class="label has-icon"><i></i>尺寸：</div>
+                    <div class="label has-icon"><i></i>其他：</div>
                     <ul class="inline-block-list">
                         <asp:Literal runat="server" ID="litSize"></asp:Literal>
                     </ul>
@@ -133,5 +132,5 @@
         </FooterTemplate>
     </asp:Repeater>
 
-    <IscControl:Pager3 ID="Pager1" runat="server" />
+    <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
 </asp:Content>

@@ -1,6 +1,6 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Default" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -115,7 +115,7 @@
                     <tr height="35px">
                         <td class="tr">ËùÊôµØÇø£º</td>
                         <td class="font14 black4B">
-                            <IscControl:SyncSelector ID="syncSelectorLocation" runat="server"
+                            <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server"
                                 DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
                                 DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>"
                                 ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>" />

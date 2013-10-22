@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="selectUIN.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.selectUIN" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -51,7 +51,7 @@
          <tr>
            <td>
             <div class="pager" style="margin-top:-20px">
-    <IscControl:Pager ID="Pager1" runat="server"  />
+    <ADeeWuControl:Pager ID="Pager1" runat="server"  />
 </div>
            </td>
          </tr>

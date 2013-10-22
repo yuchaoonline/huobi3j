@@ -9,7 +9,7 @@ using ADeeWu.HuoBi3J.SQL;
 using System.Data;
 using ADeeWu.HuoBi3J.Web.Class;
 
-namespace ADeeWu.HuoBi3J.Web.Center
+namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
     public partial class AttentionKey : Class.PageBase_CircleSaleMan
     {
@@ -107,7 +107,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
                 };
                 dealHistoryDAL.Add(deal);
 
-                WebUtility.ShowAndTopRedirect(this, "关注成功！", "/index.html");
+                WebUtility.ShowAndTopRedirect(this, "关注成功！", "MyAttentionList.aspx");
                 return;
             }
             else

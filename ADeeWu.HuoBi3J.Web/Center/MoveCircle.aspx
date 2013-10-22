@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="MoveCircle.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.MoveCircle" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
@@ -21,7 +21,7 @@
             <tr>
                 <td class="tdLeft">所属区域：</td>
                 <td class="tdRight">
-                    <IscControl:SyncSelector 
+                    <ADeeWuControl:SyncSelector 
                             ID="syncSelectorLocation" runat="server" 
                             DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
                             DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" 

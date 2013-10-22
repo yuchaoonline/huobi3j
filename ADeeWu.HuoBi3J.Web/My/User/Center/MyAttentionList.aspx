@@ -1,6 +1,6 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="MyAttentionList.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.MyKeyList" %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -29,7 +29,7 @@
                         <tr>
                             <td class="common">关键字
                             </td>
-                            <td class="by2">所属区域
+                            <td class="common">所属区域
                             </td>
                             <td class="by2">所属商圈
                             </td>
@@ -37,7 +37,7 @@
                             </td>
                             <td class="by2">关注时间
                             </td>
-                            <td class="by2">操作
+                            <td class="common">操作
                             </td>
                         </tr>
                     </tbody>
@@ -54,7 +54,7 @@
                                     <td class="common">
                                         <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>"><%# Eval("KName") %></a>
                                     </td>
-                                    <td class="by2">
+                                    <td class="common">
                                         <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"), Eval("aname"), Eval("cid"), Eval("cname"), Eval("pid"), Eval("pname"), "-") %>
                                     </td>
                                     <td class="by2">
@@ -68,8 +68,9 @@
                                         <em>
                                             <%# Eval("CreateTime")%></em>
                                     </td>
-                                    <td class="by2">
+                                    <td class="common">
                                         <%# IsGoOn(Eval("IsGoOn"), Eval("kid"))%>
+                                        <a href="AddPrice4Key.aspx?kid=<%# Eval("kid") %>" title="添加价格" class="btn_blue">添加价格</a>
                                     </td>
                                 </tr>
                             </ItemTemplate>
@@ -81,6 +82,6 @@
         </div>
     </div>
     <div class="pager" align="center">
-        <IscControl:Pager ID="Pager1" runat="server" />
+        <ADeeWuControl:Pager ID="Pager1" runat="server" />
     </div>
 </asp:Content>

@@ -37,6 +37,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var selectType = WebUtility.GetRequestStr("selectType", "");
             var selectSize = WebUtility.GetRequestStr("selectSize", "");
             var selectPrice = WebUtility.GetRequestStr("selectPrice", "");
+            var keyword = WebUtility.GetRequestStr("keyword", "");
 
             DataBase db = DataBase.Create();
 
@@ -67,7 +68,13 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             db.EnableRecordCount = true;
             db.Parameters.Append("kid", kid);
-            var dt = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", "kid=@kid", "");
+            var strWhere = "kid=@kid";
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                txtSearch.Text = keyword;
+                strWhere += string.Format(" and (companyname like '%{0}%' or companyaddress like '%{0}%' or simpledesc like '%{0}%')",keyword);
+            }
+            var dt = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", strWhere, "");
             var rows = new List<DataRow>();
 
             var finallpass = (string.IsNullOrWhiteSpace(selectType) ? 0 : 1) + (string.IsNullOrWhiteSpace(selectSize) ? 0 : 1) + (string.IsNullOrWhiteSpace(selectPrice) ? 0 : 1);
@@ -103,6 +110,10 @@ namespace ADeeWu.HuoBi3J.Web.Center
             rpProduct.DataBind();
 
             this.Pager1.AppendUrlParam("kid", kid.ToString());
+            this.Pager1.AppendUrlParam("selectType", selectType);
+            this.Pager1.AppendUrlParam("selectSize", selectSize);
+            this.Pager1.AppendUrlParam("selectPrice", selectPrice);
+            this.Pager1.AppendUrlParam("keyword", keyword);
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
@@ -110,7 +121,12 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
+            var id = WebUtility.GetRequestInt("kid", -1);
+            var selectType = WebUtility.GetRequestStr("selectType", "");
+            var selectSize = WebUtility.GetRequestStr("selectSize", "");
+            var selectPrice = WebUtility.GetRequestStr("selectPrice", "");
 
+            Response.Redirect(string.Format("/center/key4product.aspx?kid={0}&selectType={1}&selectSize={2}&selectPrice={3}&keyword={4}", id, selectType, selectSize, selectPrice, txtSearch.Text), true);
         }
     }
 }

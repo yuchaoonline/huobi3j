@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace ADeeWu.HuoBi3J.Web.Center
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class HotKey : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("searchkey.aspx?keyword=快餐", true);
+
         }
     }
 }

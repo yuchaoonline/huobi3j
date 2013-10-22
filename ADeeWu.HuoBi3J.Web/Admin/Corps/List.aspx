@@ -1,6 +1,6 @@
 <%@ Page Language="C#" AutoEventWireup="True" MasterPageFile="~/Admin/MAdmin.master" CodeBehind="List.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.Corps.List"  %>
 
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 
 
@@ -39,7 +39,7 @@ Admin - Corps - List
       <td class="key">行业:</td>
       <td class="input">
 	  	
-	  	<IscControl:SyncSelector ID="syncSelectorCalling" runat="server" 
+	  	<ADeeWuControl:SyncSelector ID="syncSelectorCalling" runat="server" 
         DataSourceURL="<%$Resources:SyncSelector,Calling_DataSourceURL %>" 
         DataSourceName="<%$Resources:SyncSelector,Calling_DataSourceName %>" 
         ClientPostNames="<%$Resources:SyncSelector,Calling_ClientPostNames %>"
@@ -48,7 +48,7 @@ Admin - Corps - List
       </td>
       <td class="key">地区:</td>
       <td class="input">
-	  	 <IscControl:SyncSelector ID="syncSelectorLocation" runat="server" 
+	  	 <ADeeWuControl:SyncSelector ID="syncSelectorLocation" runat="server" 
         DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>" 
         DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>" 
         ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"
@@ -109,7 +109,7 @@ Admin - Corps - List
             商家数量:<asp:Literal ID="litNumOfCorps" runat="server"></asp:Literal>
         </td>
         <td class="pagerBox">
-           <IscControl:Pager ID="Pager1" runat="server"  />
+           <ADeeWuControl:Pager ID="Pager1" runat="server"  />
         </td>
     </tr>
 </table>

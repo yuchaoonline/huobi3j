@@ -1,4 +1,4 @@
-<%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="Key4Add.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.Key4Add" %>
+<%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="AddPrice4Key.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.AddPrice4Key" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
     全民广告 - 添加价格
@@ -85,6 +85,9 @@
         }
     </style>
 </asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="siteposition" runat="server">
+    即时报价 - 添加价格
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <div id="center_list">
         <div class="centerP_body">
@@ -143,23 +146,23 @@
         <tr>
             <td class="tdLeft">价格：
             </td>
-            <td class="tdRight" style="width: 853px">
+            <td class="tdRight" style="width: 650px">
                 <input type="text" name="txtPrice" />
             </td>
         </tr>
         <tr>
-            <td class="tdLeft">商品简单描述：
+            <td class="tdLeft">简单描述：
             </td>
             <td class="tdRight">
                 <input type="text" name="txtSimple" />（10字以内）
             </td>
         </tr>
         <tr>
-            <td class="tdLeft">商品详情描述：
+            <td class="tdLeft">详情描述：
             </td>
             <td class="tdRight">
                 <%--<asp:TextBox ID="txtDesc" runat="server"></asp:TextBox>--%>
-                <script type="text/plain" id="editor" name="txtDesc" style="width: 800px; height: 200px"></script>
+                <script type="text/plain" id="editor" name="txtDesc" style="width: 650px; height: 200px"></script>
                 <%--<textarea cols="100" rows="8" name="txtDesc" id="txtDesc" style="width: 800px; height: 34px;visibility:hidden;"></textarea>--%>
             </td>
         </tr>
