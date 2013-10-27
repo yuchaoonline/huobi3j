@@ -17,16 +17,49 @@
         $(function () {
             var editor = UE.getEditor('editor');
             $('#<%=btnSubmit.ClientID%>').click(function () {
-                //if (!editor.hasContents()) {
-                //    alert('备注不能为空！');
-                //    return false;
-                //} else {
-                    $('#<%=txtMemo.ClientID%>').val(editor.getContent());
-                    return true;
-                //}
-
-                //return false;
+                $('#<%=txtMemo.ClientID%>').val(editor.getContent());
+                return true;
             })
+
+            var map = new BMap.Map("allmap");
+            map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+            
+            var initPoint = new BMap.Point(23.027705, 113.12843);
+            var existVal = $('#<%=hfPosition.ClientID%>').val();
+            if (existVal != '') {
+                var a = existVal.split("|");
+                initPoint = new BMap.Point(a[1], a[0]);
+                map.centerAndZoom(initPoint, 18);
+            } else {
+                map.centerAndZoom("<% =ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>", 14);
+            }
+            var marker = new BMap.Marker(initPoint);
+            map.addOverlay(marker);
+            marker.enableDragging();
+            marker.addEventListener('dragend', function (type, target, pixel, point) {
+                updatePosition(type.point);
+            });
+            
+            $('.btnPositionSearch').click(function () {
+                var address = $('#<%=txtCompanyAddress.ClientID%>').val();
+                $.getJSON("/ajax/center.ashx", { method: 'getlocationpoint', address: address }, function (data) {
+                    if (data.status == 0 && data.result && data.result.location && data.result.location.lng) {
+                        var point = new BMap.Point(data.result.location.lng, data.result.location.lat);
+                        marker.setPosition(point);
+                        updatePosition(point);
+                    } else {
+                        alert('查无此找到结果')
+                    }
+                })
+
+                return false;
+            })
+
+            function updatePosition(point) {
+                map.centerAndZoom(point, 18);
+                $('#<%=hfPosition.ClientID%>').val(point.lat + '|' + point.lng);
+            }
         })
     </script>
 </asp:Content>
@@ -131,45 +164,4 @@
             </td>
         </tr>
     </table>
-
-    <script>
-        var map = new BMap.Map("allmap");
-        map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
-        map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
-        map.centerAndZoom("佛山市", 14);
-
-        var initPoint = new BMap.Point(23.027705, 113.12843);
-        var existVal = $('#<%=hfPosition.ClientID%>').val();
-        if (existVal != '') {
-            var a = existVal.split("|");
-            initPoint = new BMap.Point(a[0], a[1]);
-        }
-        var marker = new BMap.Marker(initPoint);
-        map.addOverlay(marker);
-        marker.enableDragging();
-        marker.addEventListener('dragend', function (type, target, pixel, point) {
-            updatePosition(type.point);
-        });
-
-        function updatePosition(point) {
-            $('#<%=hfPosition.ClientID%>').val(point.lat + '|' + point.lng);
-        }
-
-        $(function () {
-            $('.btnPositionSearch').click(function () {
-                var address = $('#<%=txtCompanyAddress.ClientID%>').val();
-                $.getJSON("/ajax/center.ashx", { method: 'getlocationpoint', address: address, ak: "D10a875567626012d06af2387efa088e" }, function (data) {
-                    if (data.result.location.lng) {
-                        var point = new BMap.Point(data.result.location.lng, data.result.location.lat);
-                        marker.setPosition(point);
-                        updatePosition(point);
-                    } else {
-                        alert('查无此找到结果')
-                    }
-                })
-
-                return false;
-            })
-        })
-    </script>
 </asp:Content>

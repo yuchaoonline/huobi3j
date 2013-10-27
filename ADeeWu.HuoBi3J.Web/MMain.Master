@@ -20,6 +20,7 @@
     <link type="text/css" href="/JS/Jquery/theme/start/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
     <link href="/JS/fancybox/jquery.fancybox-1.3.4.css" rel="stylesheet" media="screen" />
     <script type="text/javascript" src="/JS/jquery.js"></script>
+    <script type="text/javascript" src="/JS/jquery.cookie.js"></script>
     <script type="text/javascript" src="/JS/jquery.key.js"></script>
     <script type="text/javascript" src="/JS/Jquery/jquery-ui-1.8.23.custom.min.js"></script>
     <script type="text/javascript" src="/JS/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>

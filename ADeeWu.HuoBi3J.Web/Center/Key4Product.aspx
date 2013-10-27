@@ -14,19 +14,7 @@
             $('title').text($('#kname').text() + ' - 价格列表 - 即时报价');
 
             $('.arc_title img').ReduceImage();
-
-            $('.showinfo').click(function () {
-                var $this = $(this);
-                var win = $('#window');
-                win.html($this.parent().find('div').html()).dialog({
-                    title: '详情',
-                    width: 500,
-                    modal: true
-                });
-
-                return false;
-            });
-
+            
             $('.item a1').click(function () {
                 if ($(this).text() != '' && $(this).text() != '无')
                 $.cookie($(this).attr('class'), $(this).text());
@@ -54,6 +42,7 @@
                         <li class="item current">
                             <asp:TextBox runat="server" ID="txtSearch" CssClass="searchText"></asp:TextBox>
                             <asp:Button runat="server" ID="btnSearch" CssClass="btn_blue" Text="搜索" OnClick="btnSearch_Click" />(公司地址、公司名称、简单描述)
+                            <a style="display: inline-block;line-height: 24px;text-align: center;padding: 3px 5px;height: 24px;background-color: orange;margin-left: 115px;" href="questionlist.aspx?kid=<%=kid%>">发布信息找低价</a>
                         </li>
                     </ul>
                 </div>
@@ -65,9 +54,7 @@
                                 <ItemTemplate>
                                     <div class="black70 aaa">
                                             <span style="font-weight: bold; font-size: 14px; margin-right: 100px;" id="kname"><%# Eval("KName") %></span>
-                                            <span>所属商圈：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></span>
-                                            <span style="margin-left: 10px;">所属地区：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"),Eval("aname"),Eval("cid"),Eval("cname"),Eval("pid"),Eval("pname")," - ") %></span>
-                                    </div>
+                                            <span>所属商圈：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></span><span style="margin-left: 10px;">所属地区：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"),Eval("aname"),Eval("cid"),Eval("cname"),Eval("pid"),Eval("pname")," - ") %></span></div>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </li>
@@ -119,10 +106,7 @@
                     <td><%# Eval("[selectattribute]") %></td>
                     <td><%# Eval("[companyname]") %></td>
                     <td><%# Eval("[companyaddress]")%></td>
-                    <td>
-                        <a href="#" class="btn_blue showinfo" contentid="<%# Eval("[id]") %>" typeid="2" title="详情">详情</a>
-                        <div style="display: none;"><%# Eval("[description]") %></div>
-                    </td>
+                    <td><a href="details.aspx?id=<%# Eval("[ID]") %>" class="btn_blue showinfo" title="详情">详情</a></td>
                 </tr>
             </tbody>
         </ItemTemplate>

@@ -84,14 +84,18 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Center\AddSearchHotKey.aspx" />
+    <Content Include="Admin\Center\CopyData.aspx" />
+    <Content Include="Admin\Center\SearchHotKey.aspx" />
     <Content Include="Admin\default.html" />
     <Content Include="Admin\MAdmin.Master" />
     <Content Include="Ajax\Center.ashx" />
     <Content Include="Ajax\GroupBuy.ashx" />
     <Content Include="Ajax\User.ashx" />
     <Content Include="Center\Default.aspx" />
-    <Content Include="Center\HotKey.aspx" />
+    <Content Include="Center\SearchHotKey.aspx" />
     <Content Include="Center\SearchKey.aspx" />
+    <Content Include="Center\Details.aspx" />
     <Content Include="CSS\base.css" />
     <Content Include="CSS\deal.css" />
     <Content Include="CSS\hovermark.css" />
@@ -158,6 +162,20 @@
     <Compile Include="Admin\Center\AddHotKey.aspx.designer.cs">
       <DependentUpon>AddHotKey.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Center\AddSearchHotKey.aspx.cs">
+      <DependentUpon>AddSearchHotKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Center\AddSearchHotKey.aspx.designer.cs">
+      <DependentUpon>AddSearchHotKey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Center\CopyData.aspx.cs">
+      <DependentUpon>CopyData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Center\CopyData.aspx.designer.cs">
+      <DependentUpon>CopyData.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Center\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -213,6 +231,13 @@
     </Compile>
     <Compile Include="Admin\Center\SaleMan.aspx.designer.cs">
       <DependentUpon>SaleMan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Center\SearchHotKey.aspx.cs">
+      <DependentUpon>SearchHotKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Center\SearchHotKey.aspx.designer.cs">
+      <DependentUpon>SearchHotKey.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Class\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -484,6 +509,21 @@
     <Compile Include="Center\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Center\SearchHotKey.aspx.cs">
+      <DependentUpon>SearchHotKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\SearchHotKey.aspx.designer.cs">
+      <DependentUpon>SearchHotKey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Class\AccountHelper.cs" />
+    <Compile Include="Center\Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="My\User\Center\AttentionKey.aspx.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -518,13 +558,6 @@
     </Compile>
     <Compile Include="Center\SearchPrice.aspx.designer.cs">
       <DependentUpon>SearchPrice.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\HotKey.aspx.cs">
-      <DependentUpon>HotKey.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\HotKey.aspx.designer.cs">
-      <DependentUpon>HotKey.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\AddPrice4Key.aspx.cs">
       <DependentUpon>AddPrice4Key.aspx</DependentUpon>

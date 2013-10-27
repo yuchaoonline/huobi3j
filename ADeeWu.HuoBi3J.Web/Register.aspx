@@ -22,8 +22,8 @@ function showUIN() {
     $('#iframeSelectUIN').show().attr('src', 'selectUIN.aspx');
 }
 
-$(document).ready(function() {
-    if ($('#radAuto').get(0).checked) {
+$(function() {
+    if ($('#<%=radAuto.ClientID%>').get(0).checked) {
         hideUIN();
     } else if ($('#radSelMySelf').get(0).checked) {
         showUIN();
@@ -109,14 +109,9 @@ $(document).ready(function() {
             </li>
             <li>
                 <asp:Button ID="btnSubmit" runat="server" Text="注册" OnClick="btnSubmit_Click" CssClass="btn_blue btn_regist" />
-                <asp:CheckBox ID="chkRegCorp" runat="server"></asp:CheckBox>
-                我是商家,填写用户基本信息后注册商家用户信息
             </li>
             <li class="zoom">
                 <span class="orange db l ">注:带 * 表示必填项。</span>
-                <span class="db l">
-                    <label class="blue24D">若要开通商家服务功能,请登陆个人用户后台 -&gt; "基本信息" -&gt; "注册成为商家"</label>
-                </span>
             </li>
 
         </ul>

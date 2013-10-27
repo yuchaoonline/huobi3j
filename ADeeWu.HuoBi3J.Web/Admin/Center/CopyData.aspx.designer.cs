@@ -7,28 +7,46 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace ADeeWu.HuoBi3J.Web.Center {
+namespace ADeeWu.HuoBi3J.Web.Admin.Center {
     
     
-    public partial class SearchKey {
+    public partial class CopyData {
         
         /// <summary>
-        /// ucNav 控件。
+        /// btnCopy 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::ADeeWu.HuoBi3J.Web.Controls.ucNav ucNav;
+        protected global::System.Web.UI.WebControls.Button btnCopy;
         
         /// <summary>
-        /// rpQuestionIndex 控件。
+        /// syncSelectorLocation 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpQuestionIndex;
+        protected global::ADeeWu.HuoBi3J.WebUI.SyncSelector syncSelectorLocation;
+        
+        /// <summary>
+        /// txtBName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBName;
+        
+        /// <summary>
+        /// btnAdd 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
         /// rpResult 控件。
@@ -38,32 +56,5 @@ namespace ADeeWu.HuoBi3J.Web.Center {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rpResult;
-        
-        /// <summary>
-        /// Pager1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::ADeeWu.HuoBi3J.WebUI.Pager3 Pager1;
-        
-        /// <summary>
-        /// noresult 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl noresult;
-        
-        /// <summary>
-        /// rpDefaultCenter 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpDefaultCenter;
     }
 }

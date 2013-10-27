@@ -24,5 +24,6 @@
         <input type="text" id="txtPageSearch" />
         <a href="#" id="btnPageSearchPrice" title="搜价格" class="btn_blue">搜价格</a>
         <a href="#" id="btnPageSearchKey" title="搜关键字" class="btn_blue">搜关键字</a>
+        <a href="#" id="currentcity" title="当前城市" class="btn_blue"><%= ADeeWu.HuoBi3J.Web.Class.AccountHelper.City %></a>
     </div>
 </div>

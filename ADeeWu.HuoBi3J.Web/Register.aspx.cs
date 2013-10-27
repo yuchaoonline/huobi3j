@@ -196,14 +196,7 @@ namespace ADeeWu.HuoBi3J.Web
                 //    }
                 //}
 
-                if (this.chkRegCorp.Checked)
-                {
-                    ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg(this, "注册成功!", "/RegCorporations.aspx?agent=" + Server.UrlEncode(Request["agent"] + ""));
-                }
-                else
-                {
-                    ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg(this, "注册成功!", "/My/User");
-                }
+                ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg(this, "注册成功!", "/My/User");
             }
             else
             {

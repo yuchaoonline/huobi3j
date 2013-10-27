@@ -52,35 +52,6 @@
             $('#txtKeyword').enter($('.btn_search'));
         })
     </script>
-    <style>
-        <!--
-        .STYLE1 {
-            font-size: 16px;
-            color: #323232;
-            /*font-weight: bold;*/
-        }
-
-        .intro a {
-            text-decoration: underline;
-        }
-
-        .list li.conn {
-            height: 30px;
-            line-height: 30px;
-            font-size: 14px;
-        }
-
-        .body_right {
-            float: left;
-            margin-left: 67px;
-        }
-
-            .body_right li a {
-                font-size: 12px;
-                color: #0066cc;
-            }
-        -->
-    </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <uc1:ucNav runat="server" ID="ucNav" />

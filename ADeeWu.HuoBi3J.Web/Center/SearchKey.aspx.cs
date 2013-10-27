@@ -1,5 +1,6 @@
 ﻿using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
+using ADeeWu.HuoBi3J.Web.Class;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,12 +44,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
         private void Search(string KeyWord)
         {
-            var pid = WebUtility.GetRequestInt("province", -1);
-            var cid = WebUtility.GetRequestInt("city", -1);
-            var aid = WebUtility.GetRequestInt("area", -1);
-            syncSelectorLocation.Values = new string[] { pid.ToString(), cid.ToString(), aid.ToString() };
-
-            if (string.IsNullOrWhiteSpace(KeyWord) && pid == -1 && cid == -1 && aid == -1)
+            if (string.IsNullOrWhiteSpace(KeyWord))
             {
                 ShowQuestionIndex();
                 return;
@@ -59,23 +55,13 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             DataBase db = DataBase.Create();
 
-            var sql = "1=1 and bid != " + movebid;
+            var sql = string.Format(" bid != {0} and cname = '{1}' and pname = '{2}'", movebid, AccountHelper.City, AccountHelper.Province);
             if (!string.IsNullOrEmpty(KeyWord)) sql += string.Format(" and (KName like '%{0}%' or BName like '%{0}%')", KeyWord);
-            if (aid != -1)
-            {
-                sql += " and aid=" + aid;
-                this.Pager1.AppendUrlParam("area", aid.ToString());
-            }
-            if (cid != -1)
-            {
-                sql += " and cid=" + cid;
-                this.Pager1.AppendUrlParam("city", cid.ToString());
-            }
-            if (pid != -1)
-            {
-                sql += " and pid=" + pid;
-                this.Pager1.AppendUrlParam("province", pid.ToString());
-            }
+            //if (aid != -1)
+            //{
+            //    sql += " and aid=" + aid;
+            //    this.Pager1.AppendUrlParam("area", aid.ToString());
+            //}
 
             db.EnableRecordCount = true;
             var dt = db.Select(pageSize, pageIndex, "vw_Keys", "kid", sql, "QuestionCount desc,BCreateTime");
@@ -87,7 +73,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
 
-            var sql2 = string.Format("(KName like '%{0}%' or BName like '%{0}%') and bid={1}", KeyWord, Utility.GetInt(System.Configuration.ConfigurationManager.AppSettings["movebid"], 0));
+            var sql2 = string.Format("(KName like '%{0}%' or BName like '%{0}%') and bid={1}", KeyWord, movebid);
             var defaultData = db.Select(20, 1, "vw_Keys", "kid", sql2, "QuestionCount desc,BCreateTime");
             rpDefaultCenter.DataSource = defaultData;
             rpDefaultCenter.DataBind();

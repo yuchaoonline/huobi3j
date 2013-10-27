@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="SearchKey.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.SearchKey" %>
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 <%@ Register Src="~/Controls/ucNav.ascx" TagPrefix="uc1" TagName="ucNav" %>
-
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
     全民广告 - 即时报价 - 搜索价格
@@ -34,14 +33,12 @@
             }).css('cursor','pointer');
 
             $('.btn_search').click(function(){
-                var sync = <%=syncSelectorLocation.ID%>;
-                var values = sync.getValues().split(',');
                 var newVal = $(".txtKeyword").val();
                 if(newVal=='')
                     newVal=val;
                 if(newVal=='输入搜索关键字')
                     newVal='';
-                var url = "<%=HttpContext.Current.Request.FilePath %>?keyword=" + newVal + "&" + [ "province="+values[0] , "city="+values[1] , "area="+values[2] ].join('&');
+                var url = "<%=HttpContext.Current.Request.FilePath %>?keyword=" + newVal;
                 location.href=url;
                 return false;
             });
@@ -50,12 +47,6 @@
 
             $('.result img').ReduceImage();
 
-            //document.onkeydown = function(e){ 
-            //    var ev = document.all ? window.event : e;
-            //    if(ev.keyCode==13) {
-            //        $('.btn_search').click();
-            //    }
-            //}        
             $('#txtKeyword').enter($('.btn_search'));
         })
     </script>
@@ -96,39 +87,12 @@
         <div class="centerP_body">
             <div class="body_content" style="float: left;">
                 <p>
-                    <span>地&nbsp;&nbsp;&nbsp;&nbsp;区：
-						<ADeeWuControl:SyncSelector
-                            ID="syncSelectorLocation" runat="server"
-                            DataSourceURL="<%$Resources:SyncSelector,Location_DataSourceURL %>"
-                            DataSourceName="<%$Resources:SyncSelector,Location_DataSourceName %>"
-                            ClientPostNames="<%$Resources:SyncSelector,Location_ClientPostNames %>"
-                            InitClientDependency="true" />
-                        <a href="add.aspx" class="orange" style="text-decoration: underline;">添加区域或商圈</a>
-                    </span>
-                </p>
-                <p class="mt10">
                     <span>关 键 字： <%--<asp:TextBox ID="txtKeyword" CssClass="text txtKeyword" runat="server" Text="" ></asp:TextBox>--%>
                         <input type="text" id="txtKeyword" name="txtKeyword" class="text txtKeyword" value="<%=Request["keyword"] %>" />
                         <input type="button" class="btn_blue btn_search" value="搜 索">
+                        <a href="add.aspx" class="orange" style="text-decoration: underline;">添加区域或商圈</a>
                     </span>
                 </p>
-                <p class="mt10">
-                    <span>发布询价流程：搜索商品或服务&gt;&gt;选择关键字&gt;&gt;发表提问&gt;&gt;收到回复报价</span>
-                </p>
-
-            </div>
-            <div class="body_right">
-                <div id="other" class="r">
-                    <div class="title_short1">使用操作指引</div>
-                    <ul class="menu_list">
-                        <li><a href="1.aspx" target="_blank">消费者即时获得商家报价流程</a></li>
-                        <li><a href="2.aspx" target="_blank">商家报价使用流程</a></li>
-                        <li><a href="3.aspx" target="_blank">用户领取现金赠送流程</a></li>
-                    </ul>
-                    <div class="b3"></div>
-                    <div class="b2"></div>
-                    <div class="b1"></div>
-                </div>
             </div>
         </div>
     </div>

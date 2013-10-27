@@ -153,9 +153,11 @@
                             <ul>
                                 <li><a href="Center/SaleMan.aspx" target='frmright'>业务员管理</a></li>
                                 <li><a href="Center/InformList.aspx" target='frmright'>举报管理</a></li>
+                                <li><a href="Center/CopyData.aspx" target='frmright'>复制分类</a></li>
                                 <li><a href="Center/QuestionList.aspx" target='frmright'>提问列表</a></li>
                                 <li><a href="Center/ProductList.aspx" target='frmright'>商品列表</a></li>
                                 <li><a href="Center/HotKeys.aspx" target='frmright'>有券热门关键字</a></li>
+                                <li><a href="Center/SearchHotKey.aspx" target='frmright'>首页热门关键字</a></li>
                                 <li><a href="Center/key4attribute.aspx" target='frmright'>关键字属性管理</a></li>
                             </ul>
                         </div>

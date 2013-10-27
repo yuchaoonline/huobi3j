@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADeeWu.HuoBi3J.Libary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,6 @@ namespace ADeeWu.HuoBi3J.Web.Controls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
