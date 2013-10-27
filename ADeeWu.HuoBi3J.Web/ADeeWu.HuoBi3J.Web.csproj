@@ -93,6 +93,8 @@
     <Content Include="Ajax\GroupBuy.ashx" />
     <Content Include="Ajax\User.ashx" />
     <Content Include="Center\Default.aspx" />
+    <Content Include="Center\Question.aspx" />
+    <Content Include="Center\QuestionList.aspx" />
     <Content Include="Center\SearchHotKey.aspx" />
     <Content Include="Center\SearchKey.aspx" />
     <Content Include="Center\Details.aspx" />
@@ -508,6 +510,20 @@
     </Compile>
     <Compile Include="Center\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Center\Question.aspx.cs">
+      <DependentUpon>Question.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\Question.aspx.designer.cs">
+      <DependentUpon>Question.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Center\QuestionList.aspx.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\QuestionList.aspx.designer.cs">
+      <DependentUpon>QuestionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\SearchHotKey.aspx.cs">
       <DependentUpon>SearchHotKey.aspx</DependentUpon>
