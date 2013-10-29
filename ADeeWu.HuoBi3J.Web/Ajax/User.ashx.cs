@@ -4,8 +4,8 @@ using System.Web;
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.Web.Class;
 using System.Web.SessionState;
-using LitJson;
 using ADeeWu.HuoBi3J.SQL;
+using Newtonsoft.Json;
 
 namespace ADeeWu.HuoBi3J.Web.Ajax
 {
@@ -34,30 +34,30 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
         private string IsLogin()
         {
             var uid = UserSession.GetSession() == null ? 0 : UserSession.GetSession().UserID;
-            if (uid <= 0) return JsonMapper.ToJson(new { Statue = false });
+            if (uid <= 0) return JsonConvert.SerializeObject(new { Statue = false });
 
-            return JsonMapper.ToJson(new { Statue = true });
+            return JsonConvert.SerializeObject(new { Statue = true });
         }
 
         #region SaleMan
         private string IsSaleMan()
         {
-            return LitJson.JsonMapper.ToJson(new { statue = SaleManSession.IsSaleMan });
+            return JsonConvert.SerializeObject(new { statue = SaleManSession.IsSaleMan });
         }
 
         private string GetSaleMan()
         {
             var uid = WebUtility.GetRequestInt("uid", -1);
-            if (uid == -1) return JsonMapper.ToJson(new { Statue = false });
+            if (uid == -1) return JsonConvert.SerializeObject(new { Statue = false });
 
             var db = DataBase.Create();
             db.Parameters.Append("uid", uid);
             var salemans = db.Select("vw_circlesaleman", "userid=@uid", "");
-            if (salemans == null || salemans.Rows.Count <= 0) return JsonMapper.ToJson(new { Statue = false, msg = "无此即时业务员" });
+            if (salemans == null || salemans.Rows.Count <= 0) return JsonConvert.SerializeObject(new { Statue = false, msg = "无此即时业务员" });
 
             var saleman = salemans.Rows[0];
 
-            return JsonMapper.ToJson(new
+            return JsonConvert.SerializeObject(new
             {
                 statue = true,
                 id = uid,

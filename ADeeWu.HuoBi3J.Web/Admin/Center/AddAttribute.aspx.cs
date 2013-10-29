@@ -25,44 +25,44 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
             }
         }
 
+        private DAL.Key keyDAL = new DAL.Key();
+        private DAL.Key_Attribute attrDAL = new DAL.Key_Attribute();
+
         private void BandData(int kid)
         {
-            var key = new DAL.Key().GetEntity(kid);
+            var key = keyDAL.GetEntity(kid);
             if (key == null) return;
 
             litKeyname.Text = key.Name;
             hfID.Value = key.KID.ToString();
 
-            var attributes = new DAL.Key_Attribute().GetEntityList("", new string[] { "kid" }, new object[] { kid });
-
-            txtType.Text = string.Join(";", attributes.Select(p => p.KeyType));
-            txtSize.Text = string.Join(";", attributes.Select(p => p.KeySize));
-            txtPrice.Text = string.Join(";", attributes.Select(p => p.KeyPrice));
+            var attribute = attrDAL.GetEntity("kid=" + kid);
+            if (attribute != null)
+            {
+                txtType.Text = attribute.KeyType;
+                txtSize.Text = attribute.KeySize;
+                txtPrice.Text = attribute.KeyPrice;
+            }
         }
 
         protected void btnSubmit_OnClick(object sender, EventArgs e)
         {
             var kid = Utility.GetInt(hfID.Value, 0);
-            var keytypes = txtType.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-            var keysizes = txtSize.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-            var keyprices = txtPrice.Text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var max = keysizes.Count()>keyprices.Count()?keysizes.Count():keyprices.Count();
-            max = max > keytypes.Count() ? max : keytypes.Count();
+            var key = keyDAL.GetEntity(kid);
+            var kids = keyDAL.GetEntityList("", new string[] { "name" }, new object[] { key.Name }).Select(p => p.KID);
 
-            var keyAttributeDAL = new DAL.Key_Attribute();
-            keyAttributeDAL.Delete("kid=" + kid);
-            for (int i = 0; i < max; i++)
+            foreach (var item in kids)
             {
                 var attribute = new Model.Key_Attribute
                 {
-                    KID = kid,
-                    KeyType = keytypes.Count()>i?keytypes[i]:"",
-                    KeySize = keysizes.Count()>i?keysizes[i]:"",
-                    KeyPrice = keyprices.Count()>i?keyprices[i]:""
+                    KID = item,
+                    KeyType = txtType.Text,
+                    KeySize = txtSize.Text,
+                    KeyPrice = txtPrice.Text,
                 };
 
-                keyAttributeDAL.Add(attribute);
+                attrDAL.Add(attribute);
             }
 
             WebUtility.ShowAndGoBack(this, "保存成功！");

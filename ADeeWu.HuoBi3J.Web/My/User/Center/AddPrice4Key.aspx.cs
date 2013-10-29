@@ -9,25 +9,16 @@ using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
 using System.Data;
 using System.Linq;
-using LitJson;
+using Newtonsoft.Json;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
     public partial class AddPrice4Key : Class.PageBase_CircleSaleMan
     {
-        int kid = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                kid = WebUtility.GetRequestInt("kid", -1);
-                if (kid == -1)
-                {
-                    WebUtility.ShowAndGoBack(this, "参数有误！");
-                    return;
-                }
-
                 var method = WebUtility.GetRequestStr("method", string.Empty);
                 if (string.IsNullOrWhiteSpace(method))
                     Search();
@@ -38,14 +29,18 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         private void Search()
         {
+            var kid = WebUtility.GetRequestInt("kid", -1);
+            if (kid == -1)
+            {
+                WebUtility.ShowAndGoBack(this, "参数有误！");
+                return;
+            }
+
             if (LoginUser == null)
             {
                 WebUtility.ShowMsg(this, "请登录！", "/login.aspx?url=" + Request.RawUrl);
                 return;
             }
-
-            var pageIndex = WebUtility.GetRequestLong("page", 1);
-            var pageSize = Utility.GetLong(Request["pagesize"], 10, 5, 40);
 
             DataBase db = DataBase.Create();
 
@@ -54,32 +49,29 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             rpKey.DataSource = keys;
             rpKey.DataBind();
 
-            db.Parameters.Append("kid", kid);
-            var dtAttributes = db.Select("Key_Attribute", "kid=@kid", "");
-            var keyType = new List<string>();
-            var KeySize = new List<string>();
-            var KeyPrice = new List<string>();
-            foreach (DataRow item in dtAttributes.Rows)
-            {
-                keyType.Add(item["KeyType"].ToString());
-                KeySize.Add(item["KeySize"].ToString());
-                KeyPrice.Add(item["KeyPrice"].ToString());
-            }
             litPrice.Text = "<li class='item'><a href='#' class='selectPrice'>无</a></li>";
             litSize.Text = "<li class='item'><a href='#' class='selectSize'>无</a></li>";
             litType.Text = "<li class='item'><a href='#' class='selectType'>无</a></li>";
 
-            litPrice.Text += string.Join("", KeyPrice.Select(p => "<li class='item'><a href='#' class='selectPrice'>" + p + "</a></li>"));
-            litSize.Text += string.Join("", KeySize.Select(p => "<li class='item'><a href='#' class='selectSize'>" + p + "</a></li>"));
-            litType.Text += string.Join("", keyType.Select(p => "<li class='item'><a href='#' class='selectType'>" + p + "</a></li>"));
+            var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
+            litPrice.Text += string.Join("", attribute.KeyPrice.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='#' class='selectPrice'>" + p + "</a></li>"));
+            litSize.Text += string.Join("", attribute.KeySize.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='#' class='selectSize'>" + p + "</a></li>"));
+            litType.Text += string.Join("", attribute.KeyType.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='#' class='selectType'>" + p + "</a></li>"));
         }
 
         private void Save()
         {
+            var kid = WebUtility.GetRequestInt("kid", -1);
+            if (kid == -1)
+            {
+                WebUtility.ShowAndGoBack(this, "参数有误！");
+                return;
+            }
+
             var result = "";
             if (LoginUser == null)
             {
-                result = JsonMapper.ToJson(new { statue = false, msg = "请登录！" });
+                result = JsonConvert.SerializeObject(new { statue = false, msg = "请登录！" });
             }
             else
             {
@@ -125,11 +117,11 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
                 if (new DAL.Key_Product().Add(attribute) > 0)
                 {
-                    result = JsonMapper.ToJson(new { statue = true });
+                    result = JsonConvert.SerializeObject(new { statue = true });
                 }
                 else
                 {
-                    result = JsonMapper.ToJson(new { statue = false, msg = "添加失败！" });
+                    result = JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
                 }
             }
 

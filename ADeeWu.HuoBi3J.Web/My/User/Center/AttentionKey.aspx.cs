@@ -58,7 +58,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             if (keys == null) return;
 
             var key = keys.Rows[0];
-            litPrice.Text = BaseDataHelper.GetAttentionKeyFee.ToString("#.##");
+            litPrice.Text = BaseDataHelper.GetAttentionKeyFee.ToString("F2");
             
             rpKey.DataSource = keys;
             rpKey.DataBind();

@@ -45,7 +45,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var datarowview = (DataRowView)e.Item.DataItem;
             var userid = Utility.GetInt(datarowview["createuserid"], 0);
 
-            rpOtherPrice.DataSource = db.Select(string.Format("select top 10 * from vw_key_product where createuserid = {0} and pname={1} and cname={2}", userid, AccountHelper.Province, AccountHelper.City));
+            rpOtherPrice.DataSource = db.Select(string.Format("select top 10 * from vw_key_product where createuserid = {0} and pname='{1}' and cname='{2}'", userid, AccountHelper.Province, AccountHelper.City));
             rpOtherPrice.DataBind();
         }
     }

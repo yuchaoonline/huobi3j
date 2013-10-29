@@ -1,6 +1,6 @@
 ﻿using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
-using LitJson;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -42,7 +42,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                 }
             }
 
-            return JsonMapper.ToJson(citys);
+            return JsonConvert.SerializeObject(citys);
         }
 
         public bool IsReusable

@@ -12,6 +12,24 @@
     <script type="text/javascript">
         $(function () {
             $('title').text($('#kname').text() + ' - 价格列表 - 即时报价');
+            
+            $('.attr-type').each(function (index, item) {
+                selectValue(item.children, '<%=Request["selectType"]%>');
+            });
+            $('.attr-price').each(function (index, item) {
+                selectValue(item.children, '<%=Request["selectPrice"]%>');
+            });
+            $('.attr-size').each(function (index, item) {
+                selectValue(item.children, '<%=Request["selectSize"]%>');
+            });
+
+            function selectValue(list,selectVal) {
+                $.each(list, function (index, item) {
+                    if ($(item).text() == selectVal) {
+                        $(item).addClass('current');
+                    }
+                })
+            }
 
             $('.arc_title img').ReduceImage();
             
@@ -62,19 +80,19 @@
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>类型：</div>
-                    <ul class="inline-block-list">
+                    <ul class="inline-block-list attr-type">
                         <asp:Literal runat="server" ID="litType"></asp:Literal>
                     </ul>
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>价格：</div>
-                    <ul class="inline-block-list">
+                    <ul class="inline-block-list attr-price">
                         <asp:Literal runat="server" ID="litPrice"></asp:Literal>
                     </ul>
                 </div>
                 <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>其他：</div>
-                    <ul class="inline-block-list">
+                    <ul class="inline-block-list attr-size">
                         <asp:Literal runat="server" ID="litSize"></asp:Literal>
                     </ul>
                 </div>
@@ -101,7 +119,7 @@
         <ItemTemplate>
             <tbody>
                 <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                    <td class="arc_title"><%# Eval("[Price]") %></td>
+                    <td class="arc_title"><%# GetMoney(Eval("[Price]")) %></td>
                     <td><%# Eval("[simpledesc]") %></td>
                     <td><%# Eval("[selectattribute]") %></td>
                     <td><%# Eval("[companyname]") %></td>

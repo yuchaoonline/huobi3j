@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Libary;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ADeeWu.HuoBi3J.Web.Class
 {
@@ -63,15 +64,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         #region 操作方法
         private static object GetValue(int IDentity)
         {
-            object returnValue = null;
-            foreach (var baseData in BaseDatas)
-            {
-                if (baseData.IDentity == IDentity)
-                {
-                    returnValue = baseData.Value; break;
-                }
-            }
-            return returnValue;
+            return BaseDatas.Any(p => p.IDentity == IDentity) ? BaseDatas.FirstOrDefault(p => p.IDentity == IDentity).Value : null;
         }
 
         public static Model.BaseData[] BaseDatas

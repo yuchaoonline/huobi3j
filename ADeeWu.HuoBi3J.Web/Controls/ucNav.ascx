@@ -5,7 +5,7 @@
     <div class="nav_main l zoom">
         <a class="db l current" href="/groupbuy">即时比价</a>
         <a class="db l" href="/center">即时报价</a>
-        <a class="db l" href="/Forum">全民广告</a>
+        <a class="db l" href="/Forum">即时报价</a>
         <a class="db l" href="/Shop">在线营销</a>
         <a class="db l" href="/CorpPromotions">官网搜索</a>
         <a class="db l" href="/Corporations">商企在线</a>

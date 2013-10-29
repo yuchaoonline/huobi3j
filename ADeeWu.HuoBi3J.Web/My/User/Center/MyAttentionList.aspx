@@ -12,7 +12,11 @@
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
     <script>
         $(function () {
-            $('.question img').ReduceImage();
+            $('#btnSearch').click(function () {
+                var url = $(this).attr('href') + "?keyword=" + $('#txtKeyword').val();
+                $(this).attr('href', url);
+                return true;
+            })
         })
     </script>
 </asp:Content>
@@ -20,6 +24,15 @@
     <a href="/My/User/Center/MyQuestionList.aspx">即时报价</a>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
+    <table class="searchTable">
+        <tr>
+            <td class="key">关键字：</td>
+            <td class="input">
+                <input type="text" id="txtKeyword" />
+                <a href="SearchKey.aspx" title="搜索" id="btnSearch" class="btn_blue">搜索</a>
+            </td>
+        </tr>
+    </table>
     <div class="mn">
         <div class="tl bm bmw" id="threadlist">
             <!--列名_Start-->
@@ -27,18 +40,18 @@
                 <table cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>
-                            <td class="common">关键字
-                            </td>
-                            <td class="common">所属区域
-                            </td>
-                            <td class="by2">所属商圈
-                            </td>
-                            <td class="num">提问数
-                            </td>
-                            <td class="by2">关注时间
-                            </td>
-                            <td class="common">操作
-                            </td>
+                            <th class="common">关键字
+                            </th>
+                            <th class="common">所属区域
+                            </th>
+                            <th class="by2">所属商圈
+                            </th>
+                            <th class="num">提问数
+                            </th>
+                            <th class="by2">关注时间
+                            </th>
+                            <th class="common">操作
+                            </th>
                         </tr>
                     </tbody>
                 </table>
@@ -70,7 +83,7 @@
                                     </td>
                                     <td class="common">
                                         <%# IsGoOn(Eval("IsGoOn"), Eval("kid"))%>
-                                        <a href="AddPrice4Key.aspx?kid=<%# Eval("kid") %>" title="添加价格" class="btn_blue">添加价格</a>
+                                        <a href="PriceList4Key.aspx?kid=<%# Eval("kid") %>" title="管理价格" class="btn_blue">管理价格</a>
                                     </td>
                                 </tr>
                             </ItemTemplate>

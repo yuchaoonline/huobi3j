@@ -15,6 +15,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
     public partial class Key4Product : System.Web.UI.Page
     {
         public int kid = 0;
+        DataBase db = DataBase.Create();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -39,32 +40,19 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var selectPrice = WebUtility.GetRequestStr("selectPrice", "");
             var keyword = WebUtility.GetRequestStr("keyword", "");
 
-            DataBase db = DataBase.Create();
-
             db.Parameters.Append("kid", kid);
             var keys = db.Select("vw_Keys", "kid=@kid", "");
             rpKey.DataSource = keys;
             rpKey.DataBind();
 
-            db.Parameters.Append("kid", kid);
-            var dtAttributes = db.Select("Key_Attribute", "kid=@kid", "");
-            var KeyType = new List<string>();
-            var KeySize = new List<string>();
-            var KeyPrice = new List<string>();
-            foreach (DataRow item in dtAttributes.Rows)
-            {
-                KeyType.Add(item["KeyType"].ToString());
-                KeySize.Add(item["KeySize"].ToString());
-                KeyPrice.Add(item["KeyPrice"].ToString());
-            }
-
             litType.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>全部</a></li>";
             litSize.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=&selectPrice=" + selectPrice + "' class='selectPrice'>全部</a></li>";
             litPrice.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectSize + "&selectSize=" + selectSize + "&selectPrice=' class='selectPrice'>全部</a></li>";
             
-            litType.Text += string.Join("", KeyType.Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + p + "&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
-            litSize.Text += string.Join("", KeySize.Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + p + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
-            litPrice.Text += string.Join("", KeyPrice.Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + selectSize + "&selectPrice=" + p + "' class='selectPrice'>" + p + "</a></li>"));
+            var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
+            litType.Text += string.Join("", attribute.KeyType.Split(new char[]{';'}).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + p + "&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
+            litSize.Text += string.Join("", attribute.KeySize.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + p + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
+            litPrice.Text += string.Join("", attribute.KeyPrice.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + selectSize + "&selectPrice=" + p + "' class='selectPrice'>" + p + "</a></li>"));
 
             db.EnableRecordCount = true;
             db.Parameters.Append("kid", kid);
@@ -127,6 +115,11 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var selectPrice = WebUtility.GetRequestStr("selectPrice", "");
 
             Response.Redirect(string.Format("/center/key4product.aspx?kid={0}&selectType={1}&selectSize={2}&selectPrice={3}&keyword={4}", id, selectType, selectSize, selectPrice, txtSearch.Text), true);
+        }
+
+        public string GetMoney(object mon)
+        {
+            return Utility.GetDecimal(mon, 0).ToString("F2");
         }
     }
 }

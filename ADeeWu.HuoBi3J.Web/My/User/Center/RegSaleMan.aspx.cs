@@ -55,6 +55,24 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                WebUtility.ShowMsg("联系人不能为空！");
+                return;
+            }
+
+            if (!Utility.IsNumeric(txtPhone.Text))
+            {
+                WebUtility.ShowMsg("联系方式只能为数字！");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(hfPosition.Value))
+            {
+                WebUtility.ShowMsg("请在地图中选择准确位置！");
+                return;
+            }
+
             bool isAdd = false;
             Model.CA_CircleSaleMan entApplication = circleSaleMan.GetEntity(new string[] { "UserID" }, this.LoginUser.UserID);
             if (entApplication == null)
@@ -63,18 +81,6 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 entApplication.CreateTime = DateTime.Now;
                 entApplication.ModifyTime = DateTime.Now;
                 isAdd = true;
-            }
-
-            if (string.IsNullOrEmpty(txtName.Text))
-            {
-                WebUtility.ShowMsg("联系人不能为空！");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(hfPosition.Value))
-            {
-                WebUtility.ShowMsg("请在地图中选择准确位置！");
-                return;
             }
 
             entApplication.CheckState = (int)UserSessionCheckState.NotAudit;

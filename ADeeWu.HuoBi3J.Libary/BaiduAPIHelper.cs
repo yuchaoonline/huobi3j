@@ -29,18 +29,28 @@ namespace ADeeWu.HuoBi3J.Libary
         /// 通过IP获取地址
         /// </summary>
         /// <returns>city,province</returns>
-        public Dictionary<string,string> GetLocationByIP()
+        public Dictionary<string, string> GetLocationByIP(string ip = "")
         {
+            if (ip == "::1") ip = "";
+
             var httpResult = HttpHelper.GetHtml(new HttpItem
             {
-                URL = string.Format("http://api.map.baidu.com/location/ip?ak={0}",ApplicationKey),
+                URL = string.Format("http://api.map.baidu.com/location/ip?ak={0}&ip={1}", ApplicationKey, ip),
                 ResultType = ResultType.String,
             });
 
-            JObject obj = JObject.Parse(httpResult.Html);
             var resultDic = new Dictionary<string, string>();
-            resultDic.Add("city", obj["content"]["address_detail"]["city"].ToString());
-            resultDic.Add("province", obj["content"]["address_detail"]["province"].ToString());
+            try
+            {
+                JObject obj = JObject.Parse(httpResult.Html);
+                resultDic.Add("city", obj["content"]["address_detail"]["city"].ToString());
+                resultDic.Add("province", obj["content"]["address_detail"]["province"].ToString());
+            }
+            catch (Exception ex)
+            {
+                resultDic.Add("city", "佛山市");
+                resultDic.Add("province", "广东省");
+            }
             return resultDic;
         }
     }

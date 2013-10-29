@@ -1,7 +1,7 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="AddPrice4Key.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.AddPrice4Key" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    全民广告 - 添加价格
+    即时报价 - 添加价格
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
@@ -68,7 +68,7 @@
                     var result = JSON.parse(data);
                     if (result.statue) {
                         alert('添加成功！');
-                        location.href = location.href;
+                        location.href = "pricelist4key.aspx?kid=<%= Request["kid"] %>";
                         return false;
                     } else {
                         alert(result.msg);

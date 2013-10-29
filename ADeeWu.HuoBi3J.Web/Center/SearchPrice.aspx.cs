@@ -46,5 +46,10 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
         }
+
+        public string GetMoney(object mon)
+        {
+            return Utility.GetDecimal(mon, 0).ToString("F2");
+        }
     }
 }

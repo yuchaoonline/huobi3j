@@ -1,7 +1,7 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master"  AutoEventWireup="true" CodeBehind="AttentionKey.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.AttentionKey" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-全民广告 - 即时报价 - 关注关键字
+即时报价 - 即时报价 - 关注关键字
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 <script type="text/javascript" src="/js/jquery.watermark.js" ></script>

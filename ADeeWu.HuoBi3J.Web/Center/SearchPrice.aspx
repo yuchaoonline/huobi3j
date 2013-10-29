@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    全民广告 - 即时报价
+    即时报价 - 即时报价
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="/js/jquery.watermark.js"></script>
@@ -87,7 +87,7 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                    <td class="arc_title"><a href="View.aspx?id=460" target="_blank"><%# Eval("price") %></a></td>
+                    <td class="arc_title"><a href="View.aspx?id=460" target="_blank"><%# GetMoney(Eval("price")) %></a></td>
                     <td><%# Eval("simpledesc") %></td>
                     <td><%# Eval("companyname") %></td>
                     <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>

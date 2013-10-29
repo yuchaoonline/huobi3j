@@ -89,7 +89,7 @@
             </td>
             <td class="tdRight">
                 <asp:TextBox ID="txtPhone" runat="server" CssClass="txtPhone"></asp:TextBox>
-                <span class="tips">请填写您的联系方式</span>
+                <span class="tips">请填写您的联系方式，只能填数字</span>
             </td>
         </tr>
         <tr>
@@ -141,7 +141,6 @@
             <td class="tdLeft">备注：
             </td>
             <td class="tdRight">
-                <%--<asp:TextBox ID="txtMemo" runat="server" CssClass="txtMemo" TextMode="MultiLine"></asp:TextBox>--%>
                 <asp:HiddenField ID="txtMemo" runat="server" />
                 <script type="text/plain" id="editor" name="txtDesc" style="width: 650px; height: 34px">
                     <asp:Literal ID="litMemo" runat="server"></asp:Literal>
