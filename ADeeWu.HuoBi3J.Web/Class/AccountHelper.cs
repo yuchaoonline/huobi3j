@@ -11,6 +11,7 @@ using ADeeWu.HuoBi3J.Libary;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace ADeeWu.HuoBi3J.Web.Class
 {
@@ -29,7 +30,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         {
             get
             {
-                return LocationSession["province"];
+                return LocationSession.Keys.Contains("province") ? LocationSession["province"] : "";
             }
         }
 
@@ -51,20 +52,12 @@ namespace ADeeWu.HuoBi3J.Web.Class
 
                 var locationObj = JObject.Parse(locationCookie.Value);
                 location.Add("city", HttpUtility.UrlDecode(locationObj["city"].ToString()));
-                location.Add("province", HttpUtility.UrlDecode(locationObj["province"].ToString()));
+                if (locationObj["province"]!=null)
+                    location.Add("province", HttpUtility.UrlDecode(locationObj["province"].ToString()));
 
                 return location;
             }
         }
-
-        public static void ChangeLocation(string cityname, string provinename = "")
-        {
-            var sessionDic = new Dictionary<string, string>();
-            sessionDic["city"] = cityname;
-            sessionDic["province"] = provinename;
-
-            HttpContext.Current.Session["location"] = sessionDic;
-        } 
         #endregion
     }
 }

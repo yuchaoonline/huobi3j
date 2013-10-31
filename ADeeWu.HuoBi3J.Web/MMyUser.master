@@ -42,11 +42,14 @@
                 <div class="box_body">
                     <ul>
                         <li><a href="/My/User/Center/RegSaleMan.aspx">申请开通报价比价服务</a></li>
-                        <li><a href="/My/User/Center/MyQuestionList.aspx">我的询价提问<span id="questionAttentionCount"></span></a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
                         <li><a href="/My/User/Center/MyAttentionList.aspx">发布和管理价格信息<span id="Span1"></span></a></li>
-                        <li><a href="/My/User/Center/MyAnswerList.aspx">我收到的询价提问<span id="salemanAttentionCount"></span></a></li>
+                        <% } %>
+                        <li><a href="/My/User/Center/MyQuestionList.aspx">我的询价提问<span id="questionAttentionCount"></span></a></li>
+                        <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
+                          { %>
+                        <li><a href="/My/User/Center/MyAnswerList.aspx">我收到的询价提问<span id="Span3"></span></a></li>
                         <% } %>
                     </ul>
                 </div>

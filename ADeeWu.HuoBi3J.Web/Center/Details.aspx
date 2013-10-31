@@ -72,7 +72,7 @@
                                 <div class="deal-brand">
                                     【<%#Eval("kname") %>】
                                     <h1 class="inline-block"><%#Eval("simpledesc") %></h1>
-                                    <h2 class="deal-title"><%#Eval("selectattribute") %></h2>
+                                    <h2 class="deal-title">商家名称：<%#Eval("companyname") %></h2>
                                 </div>
                             </div>
                             <div id="J-content-navbar" class="content-navbar">

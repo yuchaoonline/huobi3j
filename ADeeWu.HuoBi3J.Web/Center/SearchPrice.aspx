@@ -10,6 +10,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="/js/jquery.watermark.js"></script>
     <script type="text/javascript" src="/js/user.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
     <script type="text/javascript">
         $(function () {
             var val = $('.txtKeyword').val();
@@ -50,31 +51,60 @@
             $('.result img').ReduceImage();
 
             $('#txtKeyword').enter($('.btn_search'));
+
+            var map = new BMap.Map("allmap");
+            map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+            map.centerAndZoom('<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>', 14);
+
+            $.each(JSON.parse($('#<%=hfData.ClientID%>').val()), function (index, item) {
+                var marker = new BMap.Marker(new BMap.Point(item.pointY, item.pointX));
+                map.addOverlay(marker);
+
+                var html = '<table class="table_list" cellpadding="0" cellspacing="0" width="450px"><thead><tr height="30px" class="black70"><td width="30%" class="arc_title">价格</td><td width="30%">简单描述</td><td width="30%">商家</td><td width="10%">操作</td></tr><thead><tbody>';
+                $.each(item.data, function (i, product) {
+                    html+='<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=" class="">';
+                    html += '<td>' + product.price + '</td>';
+                    html += '<td>' + product.simpledesc + '</td>';
+                    html += '<td>' + product.companyname + '</td>';
+                    html += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
+                    html+='</tr>';
+                })
+                html += '</tbody></table>';
+
+                //创建信息窗口
+                var infoWin = new BMap.InfoWindow(html);
+                marker.addEventListener("click", function () { this.openInfoWindow(infoWin); });
+            })
         })
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <uc1:ucNav runat="server" ID="ucNav" />
 
-    <div id="center">
+    <%--<div id="center">
         <div class="centerP_body">
             <div class="body_content" style="float: left;">
                 <p>
-                    <span>价格： <%--<asp:TextBox ID="txtKeyword" CssClass="text txtKeyword" runat="server" Text="" ></asp:TextBox>--%>
+                    <span>价格： 
                         <input type="text" id="txtKeyword" name="txtKeyword" class="text txtKeyword" value="<%=Request["keyword"] %>" />
                         <input type="button" class="btn_blue btn_search" value="搜 索">
                     </span>
                 </p>
             </div>
         </div>
-    </div>
+    </div>--%>
 
     <div class="cl"></div>
 
     <div id="searchResult">
+        <div style="width: 950px;">
+            <div id="allmap"style="width: 950px; height: 555px;"></div>
+            <asp:HiddenField ID="hfData" runat="server" />
+        </div>
         <asp:Repeater ID="rpResult" runat="server">
             <HeaderTemplate>
-                <table id="rentP_list1" class="table_list" cellpadding="0" cellspacing="0">
+                <table id="rentP_list1" class="table_list" cellpadding="0" cellspacing="0" width="950px">
                     <thead>
                         <tr height="30px" class="black70">
                             <td width="20%" class="arc_title">价格</td>
@@ -99,6 +129,8 @@
             </FooterTemplate>
         </asp:Repeater>
     </div>
+
+    <div class="cl"></div>
 
     <div class="pager" align="center">
         <ADeeWuControl:Pager3 ID="Pager1" runat="server" />

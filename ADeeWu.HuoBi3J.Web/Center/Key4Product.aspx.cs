@@ -50,51 +50,44 @@ namespace ADeeWu.HuoBi3J.Web.Center
             litPrice.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectSize + "&selectSize=" + selectSize + "&selectPrice=' class='selectPrice'>全部</a></li>";
             
             var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
-            litType.Text += string.Join("", attribute.KeyType.Split(new char[]{';'}).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + p + "&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
-            litSize.Text += string.Join("", attribute.KeySize.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + p + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
-            litPrice.Text += string.Join("", attribute.KeyPrice.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + selectSize + "&selectPrice=" + p + "' class='selectPrice'>" + p + "</a></li>"));
-
-            db.EnableRecordCount = true;
-            db.Parameters.Append("kid", kid);
+            if (attribute != null)
+            {
+                litType.Text += string.Join("", attribute.KeyType.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + p + "&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
+                litSize.Text += string.Join("", attribute.KeySize.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + p + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
+                litPrice.Text += string.Join("", attribute.KeyPrice.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + selectSize + "&selectPrice=" + p + "' class='selectPrice'>" + p + "</a></li>"));
+            }
+                        
             var strWhere = "kid=@kid";
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 txtSearch.Text = keyword;
                 strWhere += string.Format(" and (companyname like '%{0}%' or companyaddress like '%{0}%' or simpledesc like '%{0}%')",keyword);
             }
-            var dt = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", strWhere, "");
-            var rows = new List<DataRow>();
 
-            var finallpass = (string.IsNullOrWhiteSpace(selectType) ? 0 : 1) + (string.IsNullOrWhiteSpace(selectSize) ? 0 : 1) + (string.IsNullOrWhiteSpace(selectPrice) ? 0 : 1);
-            foreach (DataRow item in dt.Rows)
+            var selectAttribute = "";
+            if (!string.IsNullOrWhiteSpace(selectType))
             {
-                if (finallpass == 0)
-                {
-                    rows.Add(item);
-                    continue;
-                }
-
-                var pass = 0;
-
-                var selectAttribute = item["selectattribute"].ToString();
-                var attrbutes = selectAttribute.Split(new char[] { ';', '：' });
-                if (!string.IsNullOrWhiteSpace(selectType))
-                {
-                    if (attrbutes[1].Contains(selectType)) pass++; else pass--;
-                }
-                if (!string.IsNullOrWhiteSpace(selectSize))
-                {
-                    if (attrbutes[3].Contains(selectSize)) pass++; else pass--;
-                }
-                if (!string.IsNullOrWhiteSpace(selectPrice))
-                {
-                    if (attrbutes[5].Contains(selectPrice)) pass++; else pass--;
-                }
-
-                if (finallpass == pass)
-                    rows.Add(item);
+                selectAttribute += ";类型：" + selectType;
             }
-            rpProduct.DataSource = rows;
+            if (!string.IsNullOrWhiteSpace(selectPrice))
+            {
+                selectAttribute += ";价格：" + selectPrice;
+            }
+            if (!string.IsNullOrWhiteSpace(selectSize))
+            {
+                selectAttribute += ";其他：" + selectSize;
+            }
+            
+            if (!string.IsNullOrWhiteSpace(selectAttribute))
+            {
+                if (selectAttribute.StartsWith(";"))
+                    selectAttribute = selectAttribute.Substring(1);
+                strWhere += string.Format(" and selectattribute like '%{0}%'", selectAttribute);
+            }
+
+            db.EnableRecordCount = true;
+            db.Parameters.Append("kid", kid);
+            rpProduct.DataSource = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", strWhere, ""); ;
             rpProduct.DataBind();
 
             this.Pager1.AppendUrlParam("kid", kid.ToString());

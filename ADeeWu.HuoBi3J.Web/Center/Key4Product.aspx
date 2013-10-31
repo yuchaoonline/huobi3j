@@ -108,10 +108,9 @@
                 <thead>
                     <tr height="30px" class="black70 fb font12">
                         <td style="width: 80px;">价格</td>                        
-                        <td style="width: 200px;">简单描述</td>
+                        <td style="width: 290px;">简单描述</td>
+                        <td style="width: 290px;">商家</td>
                         <td style="width: 205px;">选择</td>
-                        <td style="width: 190px;">公司</td>
-                        <td style="width: 190px;">地址</td>
                         <td style="width: 80px;">详情</td>
                     </tr>
                 </thead>
@@ -121,9 +120,8 @@
                 <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
                     <td class="arc_title"><%# GetMoney(Eval("[Price]")) %></td>
                     <td><%# Eval("[simpledesc]") %></td>
-                    <td><%# Eval("[selectattribute]") %></td>
                     <td><%# Eval("[companyname]") %></td>
-                    <td><%# Eval("[companyaddress]")%></td>
+                    <td><%# Eval("[selectattribute]") %></td>             
                     <td><a href="details.aspx?id=<%# Eval("[ID]") %>" class="btn_blue showinfo" title="详情">详情</a></td>
                 </tr>
             </tbody>

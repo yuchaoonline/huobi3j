@@ -16,21 +16,21 @@
             $('.txtKeyword').val('');
             $('.txtKeyword').watermark(val);
 
-            $('.attentionCount').click(function(){
-                var kid = $(this).parents('#recruit_list').find('[name=kid]').val();
-                $.getJSON('/ajax/center.ashx',{method: 'getattention',kid: kid},function(data){
-                    if(data!=null){
-                        var html = "<ul class='attentionList'>";
-                        for(i=0;i<data.length;i++){
-                            var item = data[i];
-                            html+="<li><a href='#"+item.UID+"'>"+item.UName+"</a></li>";
-                        }
-                        html+="</ul>";
+            //$('.attentionCount').click(function(){
+            //    var kid = $(this).parents('#recruit_list').find('[name=kid]').val();
+            //    $.getJSON('/ajax/center.ashx',{method: 'getattention',kid: kid},function(data){
+            //        if(data!=null){
+            //            var html = "<ul class='attentionList'>";
+            //            for(i=0;i<data.length;i++){
+            //                var item = data[i];
+            //                html+="<li><a href='#"+item.UID+"'>"+item.UName+"</a></li>";
+            //            }
+            //            html+="</ul>";
 
-                        $('#attentionDialog').html(html).dialog({modal: true});
-                    }
-                })
-            }).css('cursor','pointer');
+            //            $('#attentionDialog').html(html).dialog({modal: true});
+            //        }
+            //    })
+            //}).css('cursor','pointer');
 
             $('.btn_search').click(function(){
                 var newVal = $(".txtKeyword").val();
@@ -83,11 +83,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <uc1:ucNav runat="server" ID="ucNav" />
 
-    <div id="center">
+    <%--<div id="center">
         <div class="centerP_body">
             <div class="body_content" style="float: left;">
                 <p>
-                    <span>关 键 字： <%--<asp:TextBox ID="txtKeyword" CssClass="text txtKeyword" runat="server" Text="" ></asp:TextBox>--%>
+                    <span>关 键 字： 
                         <input type="text" id="txtKeyword" name="txtKeyword" class="text txtKeyword" value="<%=Request["keyword"] %>" />
                         <input type="button" class="btn_blue btn_search" value="搜 索">
                         <a href="add.aspx" class="orange" style="text-decoration: underline;">添加区域或商圈</a>
@@ -95,7 +95,7 @@
                 </p>
             </div>
         </div>
-    </div>
+    </div>--%>
 
     <div class="cl"></div>
 
@@ -130,7 +130,10 @@
                                 <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"), Eval("aname"), Eval("cid"), Eval("cname"), Eval("pid"), Eval("pname"), "-") %>>>
                                 <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %>
                                 <label>
-                                    <div align="right"><span class="attentionCount">关注人数（<%# Eval("AttentionCount") %>）</span>问题数（<%# Eval("QuestionCount") %>）</div>
+                                    <div align="right">
+                                        <%--<span class="attentionCount">关注人数（<%# Eval("AttentionCount") %>）</span>问题数（<%# Eval("QuestionCount") %>）--%>
+                                        <span class="attentionCount">商品数（<%# Eval("PriceCount") %>）</span>商家数（<%# Eval("SaleManCount") %>）
+                                    </div>
                                 </label>
                             </span>
                         </div>

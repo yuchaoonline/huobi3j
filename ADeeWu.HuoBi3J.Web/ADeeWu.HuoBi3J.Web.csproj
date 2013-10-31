@@ -85,6 +85,7 @@
     <Content Include="Ajax\Center.ashx" />
     <Content Include="Ajax\GroupBuy.ashx" />
     <Content Include="Ajax\User.ashx" />
+    <Content Include="Center\ChangeCity.aspx" />
     <Content Include="Center\Default.aspx" />
     <Content Include="Center\Question.aspx" />
     <Content Include="Center\QuestionList.aspx" />
@@ -498,6 +499,13 @@
     </Compile>
     <Compile Include="Center\Add.aspx.designer.cs">
       <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Center\ChangeCity.aspx.cs">
+      <DependentUpon>ChangeCity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\ChangeCity.aspx.designer.cs">
+      <DependentUpon>ChangeCity.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

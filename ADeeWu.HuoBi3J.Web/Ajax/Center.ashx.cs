@@ -41,6 +41,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                     case "hasticket": { result = HasTicket(); }; break;
                     case "getbusinesscirclecount": { result = GetBusinessCircleCount(); }; break;
                     case "getlocationpoint": { result = GetLocationPoint(); }; break;
+                    case "getcity": { result = GetCity(); }; break;
                     default: { result = "something is error!"; }; break;
                 }
             }
@@ -51,6 +52,19 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(result);
+        }
+
+        private string GetCity()
+        {
+            var citys = new List<object>();
+            DataBase db = DataBase.Create();
+            var dtCitys = db.Select("select * from citys where id in( select cityid from vw_businesscircle group by cityid)");
+            foreach (DataRow city in dtCitys.Rows)
+            {
+                citys.Add(new { cname = city["name"], cid = city["id"], pid = city["pid"] });
+            }
+
+            return JsonConvert.SerializeObject(citys);
         }
 
         private string GetLocationPoint()
