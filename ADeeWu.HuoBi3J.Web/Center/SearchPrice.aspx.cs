@@ -34,7 +34,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             db.EnableRecordCount = true;
             db.Parameters.Append("pname", AccountHelper.Province);
             db.Parameters.Append("cname", AccountHelper.City);
-            var products = db.Select(pageSize, pageIndex, "vw_Key_Product", "ID", string.Format("cname=@cname and pname=@pname and kname like '%{0}%'", Keyword), "");
+            var products = db.Select(pageSize, pageIndex, "vw_Key_Product", "ID", string.Format("cname=@cname and pname=@pname and kname like '%{0}%'", Keyword), "price asc");
             rpResult.DataSource = products;
             rpResult.DataBind();
 

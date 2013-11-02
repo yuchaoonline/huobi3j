@@ -5,7 +5,7 @@
         <a href="/" target="_blank" title="首页">首页</a> -
 		<a href="/html/AboutUs.aspx" target="_blank" title="关于我们">关于我们</a> -
 		<a href="/html/Collaborate.aspx" target="_blank" title="商家合作">商家合作</a> -
-		<%--<a href="/html/ContactUs.aspx" target="_blank" title="联系我们">联系我们</a> ---%>
+		<a href="/html/ContactUs.aspx" target="_blank" title="联系我们">联系我们</a> -
 		<a href="/html/Service.aspx" target="_blank" title="服务声明">服务声明</a>
     </div>
     <div>

@@ -120,7 +120,7 @@
                 <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
                     <td class="arc_title"><%# GetMoney(Eval("[Price]")) %></td>
                     <td><%# Eval("[simpledesc]") %></td>
-                    <td><%# Eval("[companyname]") %></td>
+                   <td><a href="SaleMan4Product.aspx?userid=<%# Eval("createuserid") %>" target="_blank"><%# Eval("companyname") %></a></td>
                     <td><%# Eval("[selectattribute]") %></td>             
                     <td><a href="details.aspx?id=<%# Eval("[ID]") %>" class="btn_blue showinfo" title="ÏêÇé">ÏêÇé</a></td>
                 </tr>

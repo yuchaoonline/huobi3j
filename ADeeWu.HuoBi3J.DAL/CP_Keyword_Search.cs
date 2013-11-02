@@ -326,7 +326,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// 转让关键字
         /// </summary>
         /// <param name="userid">转让给用户ID</param>
-        /// <param name="coin">扣除虚拟币</param>
+        /// <param name="coin">扣除金币</param>
         /// <returns></returns>
         public string SaleKeyword(long id, string username)
         {

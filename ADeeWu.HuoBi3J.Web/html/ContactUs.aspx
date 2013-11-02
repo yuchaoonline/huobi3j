@@ -15,7 +15,7 @@
   电　话：0757-88748387，88748383，88748366，400-625-0757<br />
   传　真：0757-83328006，83203381<br />
   Q Q：1959831331（客服），544872430（客服） <br />
-  网  址：<a href="http://www.ADeeWu.HuoBi3J.com" target="_blank">http://www.ADeeWu.HuoBi3J.com</a><br />
+  网  址：<a href="http://www.HuoBi3J.com" target="_blank">http://www.HuoBi3J.com</a><br />
   E-mail： <a href="mailto:1959831331@qq.com ">1959831331@qq.com </a></p>
 <br />
 </div>

@@ -11,13 +11,17 @@ using System.Web.UI.WebControls;
 
 namespace ADeeWu.HuoBi3J.Web.Center
 {
-    public partial class Details : System.Web.UI.Page
+    public partial class SaleMan4Product : System.Web.UI.Page
     {
         DataBase db = DataBase.Create();
-        DAL.Corporations corDAL = new DAL.Corporations();
+        long pageIndex = 0;
+        long pageSize = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            pageIndex = WebUtility.GetRequestLong("page", 1);
+            pageSize = Utility.GetLong(Request["pagesize"], 10, 5, 40);
+
             if (!IsPostBack)
             {
                 BandData();
@@ -26,12 +30,12 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
         private void BandData()
         {
-            var id = WebUtility.GetRequestInt("id",0);
-            if(id==0)return;
-
-            var product = db.Select("vw_key_product", "id = " + id, "price asc");
-             rpResult.DataSource = product;
-             rpResult.DataBind();
+            var userid = WebUtility.GetRequestInt("userid", 0);
+            if (userid > 0)
+            {
+                rpResult.DataSource = db.Select("vw_CircleSaleMan", "userid = " + userid, "");
+                rpResult.DataBind();
+            }
         }
 
         public string GetDecimal(object obj, int length)
@@ -43,9 +47,9 @@ namespace ADeeWu.HuoBi3J.Web.Center
         {
             var rpOtherPrice = (Repeater)e.Item.FindControl("rpOtherPrice");
             var datarowview = (DataRowView)e.Item.DataItem;
-            var userid = Utility.GetInt(datarowview["createuserid"], 0);
+            var userid = Utility.GetInt(datarowview["userid"], 0);
 
-            rpOtherPrice.DataSource = db.Select(string.Format("select top 10 * from vw_key_product where createuserid = {0} and pname='{1}' and cname='{2}'", userid, AccountHelper.Province, AccountHelper.City));
+            rpOtherPrice.DataSource = db.Select("vw_key_product", string.Format("createuserid = {0} and pname='{1}' and cname='{2}'", userid, AccountHelper.Province, AccountHelper.City), "price asc");
             rpOtherPrice.DataBind();
         }
     }

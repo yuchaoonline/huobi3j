@@ -66,7 +66,7 @@
                             <div id="deal-intro" class="cf">
                                 <div class="main">
                                     <div class="deal-discount">
-                                        <span class="price"><span class="symbol-RMB">¥</span> <%#GetDecimal(Eval("price"),1) %></span>
+                                        <span class="price"><span class="symbol-RMB">¥</span> <%#GetDecimal(Eval("price"),2) %></span>
                                     </div>
                                 </div>
                                 <div class="deal-brand">
@@ -141,11 +141,11 @@
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                                                            <td class="arc_title"><a href="View.aspx?id=460" target="_blank"><%# Eval("price") %></a></td>
+                                                            <td class="arc_title"><%# Eval("price") %></td>
                                                             <td><%# Eval("simpledesc") %></td>
                                                             <td><a href="key4product.aspx?kid=<%# Eval("kid") %>" ><%# Eval("kname") %></a></td>
                                                             <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
-                                                            <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue">查看</a></td>
+                                                            <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue" target="_blank">查看</a></td>
                                                         </tr>
                                                     </ItemTemplate>
                                                     <FooterTemplate>

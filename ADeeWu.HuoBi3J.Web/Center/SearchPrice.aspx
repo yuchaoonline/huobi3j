@@ -82,19 +82,6 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <uc1:ucNav runat="server" ID="ucNav" />
 
-    <%--<div id="center">
-        <div class="centerP_body">
-            <div class="body_content" style="float: left;">
-                <p>
-                    <span>价格： 
-                        <input type="text" id="txtKeyword" name="txtKeyword" class="text txtKeyword" value="<%=Request["keyword"] %>" />
-                        <input type="button" class="btn_blue btn_search" value="搜 索">
-                    </span>
-                </p>
-            </div>
-        </div>
-    </div>--%>
-
     <div class="cl"></div>
 
     <div id="searchResult">
@@ -108,19 +95,21 @@
                     <thead>
                         <tr height="30px" class="black70">
                             <td width="20%" class="arc_title">价格</td>
-                            <td width="30%">简单描述</td>
-                            <td width="25%">商家</td>
+                            <td width="25%">简单描述</td>
+                            <td width="20%">商家</td>
                             <td width="25%">所在商圈</td>
+                            <td width="10%">查看</td>
                         </tr>
                     </thead>
                     <tbody>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                    <td class="arc_title"><a href="View.aspx?id=460" target="_blank"><%# GetMoney(Eval("price")) %></a></td>
+                    <td class="arc_title"><%# GetMoney(Eval("price")) %></td>
                     <td><%# Eval("simpledesc") %></td>
-                    <td><%# Eval("companyname") %></td>
+                    <td><a href="SaleMan4Product.aspx?userid=<%# Eval("createuserid") %>" target="_blank"><%# Eval("companyname") %></a></td>
                     <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
+                    <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue">详情</a></td>
                 </tr>
             </ItemTemplate>
             <FooterTemplate>

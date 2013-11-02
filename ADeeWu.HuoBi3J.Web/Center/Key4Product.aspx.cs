@@ -87,7 +87,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             db.EnableRecordCount = true;
             db.Parameters.Append("kid", kid);
-            rpProduct.DataSource = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", strWhere, ""); ;
+            rpProduct.DataSource = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", strWhere, "price asc"); ;
             rpProduct.DataBind();
 
             this.Pager1.AppendUrlParam("kid", kid.ToString());

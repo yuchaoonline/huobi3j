@@ -48,41 +48,41 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center.KeyManage
 
                 #endregion 是否已刷新关键字
 
-                #region 扣掉虚拟币
+                #region 扣掉金币
 
                 DAL.Users userDAL = new DAL.Users();
                 Model.Users user = userDAL.GetEntity(LoginUser.UserID);
                 if (user.Coins < brokerage)
                 {
-                    WebUtility.ShowAndGoBack(this, "虚拟币不足" + brokerage + "，刷新失败！");
+                    WebUtility.ShowAndGoBack(this, "金币不足" + brokerage + "，刷新失败！");
                     return;
                 }
                 user.Coins -= brokerage;
                 if (userDAL.Update(user) <= 0)
                 {
-                    WebUtility.ShowAndGoBack(this, "扣除虚拟币失败，请重试！");
+                    WebUtility.ShowAndGoBack(this, "扣除金币失败，请重试！");
                     return;
                 }
 
-                #endregion 扣掉虚拟币
+                #endregion 扣掉金币
 
-                #region 添加虚拟币记录
+                #region 添加金币记录
 
                 Model.User_CoinUseHistories history = new Model.User_CoinUseHistories
                 {
                     CreateTime = DateTime.Now,
                     InCoin = 0,
                     OutCoin = brokerage,
-                    Notes = string.Format("刷新即时报价关键字：{0}，扣除虚拟币：{1}！", key.Name, brokerage),
+                    Notes = string.Format("刷新即时报价关键字：{0}，扣除金币：{1}！", key.Name, brokerage),
                     Remain = user.Coins,
                     UserID = user.ID
                 };
                 if (new DAL.User_CoinUseHistories().Add(history) <= 0)
                 {
-                    WebUtility.ShowAndGoBack(this, "添加虚拟币消费记录失败！");
+                    WebUtility.ShowAndGoBack(this, "添加金币消费记录失败！");
                 }
 
-                #endregion 添加虚拟币记录
+                #endregion 添加金币记录
 
                 #region 刷新关键字
 

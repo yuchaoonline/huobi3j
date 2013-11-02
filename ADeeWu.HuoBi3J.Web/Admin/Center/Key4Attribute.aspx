@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MAdmin.Master" AutoEventWireup="true" CodeBehind="Key4Attribute.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.Center.Key4Attribute" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
@@ -38,4 +40,8 @@
             </ItemTemplate>
         </asp:Repeater>
     </table>
+
+    <div class="pager">
+        <ADeeWuControl:Pager ID="Pager1" runat="server" />
+    </div>
 </asp:Content>
