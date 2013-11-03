@@ -45,8 +45,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
         private void BandData()
         {
             var kid = WebUtility.GetRequestStr("kid", "");
-            var dt = productDAL.GetEntityList("", new string[] { "CreateUserID", "kid" }, new object[] { this.LoginUser.UserID, kid });
-            rpQuestions.DataSource = dt;
+            rpQuestions.DataSource = DataBase.Create().Select("vw_key_product", string.Format("createuserid={0} and kid={1}", this.LoginUser.UserID, kid), "price asc");
             rpQuestions.DataBind();
         }
 

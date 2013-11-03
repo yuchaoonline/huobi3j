@@ -24,6 +24,8 @@
                             </td>
                             <td class="common">选中属性
                             </td>
+                            <td class="num">点击数
+                            </td>
                             <td class="common">操作
                             </td>
                         </tr>
@@ -45,8 +47,10 @@
                                     <td class="common">
                                             <%# Eval("selectattribute")%>
                                     </td>
+                                    <td class="num">
+                                            <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# Eval("ClickCount") %></a>
+                                    </td>
                                     <td class="common">
-                                        
                                         <a href="EditPrice4Key.aspx?id=<%# Eval("id") %>" title="修改" class="btn_blue">修改</a>
                                         <a href="PriceList4Key.aspx?method=delete&id=<%# Eval("id") %>&kid=<%# Eval("kid") %>" title="删除" class="btn_blue">删除</a>
                                     </td>

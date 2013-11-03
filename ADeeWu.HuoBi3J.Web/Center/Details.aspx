@@ -33,6 +33,20 @@
                 }
             })
 
+            $('.add_fav').click(function () {
+                var userid = $(this).attr('href');
+                userid = userid.substring(1, userid.length);
+                $.getJSON('/ajax/center.ashx', {method: 'addfav', userid: userid }, function (data) {
+                    if (data && data.statue) {
+                        alert('收藏成功！');
+                    } else {
+                        alert(data.msg);
+                    }
+                })
+
+                return false;
+            })
+
             var map = new BMap.Map("allmap");
 
             var initPoint = new BMap.Point(23.027705, 113.12843);
@@ -72,7 +86,7 @@
                                 <div class="deal-brand">
                                     【<%#Eval("kname") %>】
                                     <h1 class="inline-block"><%#Eval("simpledesc") %></h1>
-                                    <h2 class="deal-title">商家名称：<%#Eval("companyname") %></h2>
+                                    <h2 class="deal-title">商家名称：<%#Eval("companyname") %><a href="#<%# Eval("createuserid") %>" class="add_fav btn_blue">收藏</a></h2>
                                 </div>
                             </div>
                             <div id="J-content-navbar" class="content-navbar">
@@ -141,7 +155,7 @@
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                                                            <td class="arc_title"><%# Eval("price") %></td>
+                                                            <td class="arc_title"><%# GetDecimal(Eval("price"),2) %></td>
                                                             <td><%# Eval("simpledesc") %></td>
                                                             <td><a href="key4product.aspx?kid=<%# Eval("kid") %>" ><%# Eval("kname") %></a></td>
                                                             <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>

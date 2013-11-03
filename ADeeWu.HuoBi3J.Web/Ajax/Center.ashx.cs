@@ -42,6 +42,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                     case "getbusinesscirclecount": { result = GetBusinessCircleCount(); }; break;
                     case "getlocationpoint": { result = GetLocationPoint(); }; break;
                     case "getcity": { result = GetCity(); }; break;
+                    case "addfav": { result = AddFav(); }; break;
                     default: { result = "something is error!"; }; break;
                 }
             }
@@ -52,6 +53,28 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(result);
+        }
+
+        private string AddFav()
+        {
+            var uid = UserSession.GetSession() == null ? 0 : UserSession.GetSession().UserID;
+            if (uid <= 0) return JsonConvert.SerializeObject(new { statue = false, msg = "请登录再收藏！" });
+
+            var userid = WebUtility.GetRequestInt("userid", 0);
+            var fav = new Model.Common_Favourite
+            {
+                CreateDate = DateTime.Now,
+                DataID = userid,
+                DataType = "center_saleman",
+                Memo = "",
+                UserID = (int)uid,
+            };
+            if (new DAL.Common_Favourite().Add(fav) > 0)
+            {
+                return JsonConvert.SerializeObject(new { statue = true });
+            }
+
+            return JsonConvert.SerializeObject(new { statue = false, msg = "收藏失败，请重试！" });
         }
 
         private string GetCity()

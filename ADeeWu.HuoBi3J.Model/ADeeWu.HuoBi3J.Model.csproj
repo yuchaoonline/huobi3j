@@ -93,6 +93,8 @@
     <Compile Include="CI_Catalogs.cs" />
     <Compile Include="CI_Photos.cs" />
     <Compile Include="CI_Videos.cs" />
+    <Compile Include="Common_Count_Click.cs" />
+    <Compile Include="Common_Favourite.cs" />
     <Compile Include="CorpAgents.cs" />
     <Compile Include="Corporations.cs" />
     <Compile Include="CP_KeywordIndex.cs" />

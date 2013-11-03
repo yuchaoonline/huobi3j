@@ -115,6 +115,8 @@
     <Content Include="MMain.Master" />
     <Content Include="MMyUser.master" />
     <Content Include="My\User\Center\EditPrice4Key.aspx" />
+    <Content Include="My\User\Center\MyFavList.aspx" />
+    <Content Include="My\User\Center\PriceCount4Key.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\KeyManage\Default.aspx" />
     <Content Include="My\User\Center\KeyManage\Income.aspx" />
@@ -754,6 +756,20 @@
     </Compile>
     <Compile Include="My\User\Center\EditPrice4Key.aspx.designer.cs">
       <DependentUpon>EditPrice4Key.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\MyFavList.aspx.cs">
+      <DependentUpon>MyFavList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\MyFavList.aspx.designer.cs">
+      <DependentUpon>MyFavList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\PriceCount4Key.aspx.cs">
+      <DependentUpon>PriceCount4Key.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\PriceCount4Key.aspx.designer.cs">
+      <DependentUpon>PriceCount4Key.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\SearchKey.aspx.cs">
       <DependentUpon>SearchKey.aspx</DependentUpon>

@@ -1,8 +1,5 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="MyAttentionList.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.MyKeyList" %>
-
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
-
-
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
     全民营销 - 个人管理中心 - 我的关键字列表
@@ -40,7 +37,7 @@
                 <table cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>
-                            <th class="common">关键字
+                            <th class="by2">关键字
                             </th>
                             <th class="common">所属区域
                             </th>
@@ -64,7 +61,7 @@
                         <asp:Repeater ID="rpQuestions" runat="server">
                             <ItemTemplate>
                                 <tr>
-                                    <td class="common">
+                                    <td class="by2">
                                         <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>"><%# Eval("KName") %></a>
                                     </td>
                                     <td class="common">
@@ -84,6 +81,7 @@
                                     <td class="common">
                                         <%# IsGoOn(Eval("IsGoOn"), Eval("kid"))%>
                                         <a href="PriceList4Key.aspx?kid=<%# Eval("kid") %>" title="管理价格" class="btn_blue">管理价格</a>
+                                        <a href="AddPrice4Key.aspx?kid=<%# Eval("kid") %>" title="添加价格" class="btn_blue">添加价格</a>
                                     </td>
                                 </tr>
                             </ItemTemplate>

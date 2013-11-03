@@ -64,42 +64,15 @@
                             <div id="J-content-navbar" class="content-navbar">
                                 <ul class="cf">
                                     <li class="left-corner"></li>
+                                    <li><a class="tab-item" href="#anchor-other">商家报价信息</a></li>
                                     <li><a class="tab-item" href="#business-info">商家介绍</a></li>
                                     <li><a class="tab-item" href="#anchor-address">商家地址</a></li>
-                                    <li><a class="tab-item" href="#anchor-other">商家报价信息</a></li>
                                     <li class="right-corner"></li>
                                 </ul>
                             </div>
                             <div id="deal-stuff">
                                 <div class="mainbox cf">
                                     <div class="main">
-                                        <h2 class="content-title" id="business-info">商家介绍</h2>
-                                        <div class="blk detail">
-                                            <%#Eval("memo") %>
-                                        </div>
-                                        <h2 class="content-title" id="anchor-address">商家地址</h2>
-                                        <div id="side-business" class="cf blk detail">
-                                            <div class="address-list cf">
-                                                <div class="left-content">
-                                                    <div class="mapbody">
-                                                        <input type="hidden" class="maplocation" value="<%#Eval("PositionX") %>|<%#Eval("PositionY") %>" />
-                                                        <div id="allmap" style="width: 555px; height: 400px;"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="biz-wrapper biz-wrapper-nobottom">
-                                                    <div class="all-biz cf">
-                                                        <div class="biz-info biz-info--open biz-info--first biz-info--only" id="yui_3_8_0_1">
-                                                            <div class="biz-item">
-                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %></div>
-                                                            <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
-                                                            <div class="biz-item">
-                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <h2 class="content-title" id="anchor-other">商家报价信息</h2>
                                         <div class="blk detail">
                                             <div id="searchResult">
@@ -131,6 +104,33 @@
                                                         </table>
                                                     </FooterTemplate>
                                                 </asp:Repeater>
+                                            </div>
+                                        </div>
+                                        <h2 class="content-title" id="business-info">商家介绍</h2>
+                                        <div class="blk detail">
+                                            <%#Eval("memo") %>
+                                        </div>
+                                        <h2 class="content-title" id="anchor-address">商家地址</h2>
+                                        <div id="side-business" class="cf blk detail">
+                                            <div class="address-list cf">
+                                                <div class="left-content">
+                                                    <div class="mapbody">
+                                                        <input type="hidden" class="maplocation" value="<%#Eval("PositionX") %>|<%#Eval("PositionY") %>" />
+                                                        <div id="allmap" style="width: 555px; height: 400px;"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="biz-wrapper biz-wrapper-nobottom">
+                                                    <div class="all-biz cf">
+                                                        <div class="biz-info biz-info--open biz-info--first biz-info--only" id="yui_3_8_0_1">
+                                                            <div class="biz-item">
+                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %></div>
+                                                            <div class="biz-item">
+                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
+                                                            <div class="biz-item">
+                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
