@@ -17,7 +17,14 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             if (!IsPostBack)
             {
                 BandData(this.LoginUser.UserID);
+                CalCoin();
             }
+        }
+
+        private void CalCoin()
+        {
+            var coin = DataBase.Create().ExecuteScalar("select sum(coin) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
+            litCoin.Text = coin.ToString();
         }
 
         private void BandData(long uid)

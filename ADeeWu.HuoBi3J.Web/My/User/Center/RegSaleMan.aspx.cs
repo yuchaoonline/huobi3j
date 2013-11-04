@@ -29,6 +29,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     txtJob.Text = entApplication.Job;
                     litMemo.Text = entApplication.Memo;
                     hfPosition.Value = entApplication.PositionX + "|" + entApplication.PositionY;
+                    litQR.Text = string.Format("<img width='200px' src=salemanqr.aspx?s={0} alt='扫描二维码' />", HttpUtility.UrlEncode("http://" + Request.UserHostName + "/center/getCoin.aspx?salemanid=" + entApplication.UserID));
 
                     this.labTips.Text = "提交申请需要重新审核！";
                     this.btnSubmit.OnClientClick = "return cofirm('确认要重新提交吗？修改信息后需要重新通过审核！')";

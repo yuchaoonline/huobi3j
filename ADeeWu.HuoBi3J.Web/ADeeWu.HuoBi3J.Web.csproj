@@ -53,6 +53,9 @@
     <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Gma.QrCodeNet.Encoding">
+      <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -87,6 +90,7 @@
     <Content Include="Ajax\User.ashx" />
     <Content Include="Center\ChangeCity.aspx" />
     <Content Include="Center\Default.aspx" />
+    <Content Include="Center\GetCoin.aspx" />
     <Content Include="Center\Question.aspx" />
     <Content Include="Center\QuestionList.aspx" />
     <Content Include="Center\SaleMan4Product.aspx" />
@@ -117,6 +121,7 @@
     <Content Include="My\User\Center\EditPrice4Key.aspx" />
     <Content Include="My\User\Center\MyFavList.aspx" />
     <Content Include="My\User\Center\PriceCount4Key.aspx" />
+    <Content Include="My\User\Center\SaleManQR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\KeyManage\Default.aspx" />
     <Content Include="My\User\Center\KeyManage\Income.aspx" />
@@ -517,6 +522,13 @@
     <Compile Include="Center\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Center\GetCoin.aspx.cs">
+      <DependentUpon>GetCoin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\GetCoin.aspx.designer.cs">
+      <DependentUpon>GetCoin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Center\Question.aspx.cs">
       <DependentUpon>Question.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -770,6 +782,13 @@
     </Compile>
     <Compile Include="My\User\Center\PriceCount4Key.aspx.designer.cs">
       <DependentUpon>PriceCount4Key.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\SaleManQR.aspx.cs">
+      <DependentUpon>SaleManQR.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\SaleManQR.aspx.designer.cs">
+      <DependentUpon>SaleManQR.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\SearchKey.aspx.cs">
       <DependentUpon>SearchKey.aspx</DependentUpon>

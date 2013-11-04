@@ -101,6 +101,7 @@
     <Compile Include="Center_Key_Refresh.cs" />
     <Compile Include="Center_Products.cs" />
     <Compile Include="Center_Product_Data.cs" />
+    <Compile Include="Center_QR_Log.cs" />
     <Compile Include="Center_QuestionIndex.cs" />
     <Compile Include="Citys.cs">
       <SubType>Code</SubType>

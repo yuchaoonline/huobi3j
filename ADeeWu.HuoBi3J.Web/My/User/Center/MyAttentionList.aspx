@@ -28,6 +28,9 @@
                 <input type="text" id="txtKeyword" />
                 <a href="SearchKey.aspx" title="搜索" id="btnSearch" class="btn_blue">搜索</a>
             </td>
+            <td>
+                <span style="color: blue;">已经送出金币：<font color="#ff9933"><asp:Literal ID="litCoin" runat="server"></asp:Literal></font>个</span>
+            </td>
         </tr>
     </table>
     <div class="mn">

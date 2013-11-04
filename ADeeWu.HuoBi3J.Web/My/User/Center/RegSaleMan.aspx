@@ -147,6 +147,13 @@
                 </script>
             </td>
         </tr>
+        <tr>
+            <td class="tdLeft">¶þÎ¬Âë£º
+            </td>
+            <td class="tdRight">
+                <asp:Literal ID="litQR" runat="server"></asp:Literal>
+            </td>
+        </tr>
         <asp:PlaceHolder ID="phCheckState" runat="server">
             <tr>
                 <td class="tdLeft">µ±Ç°×´Ì¬£º
