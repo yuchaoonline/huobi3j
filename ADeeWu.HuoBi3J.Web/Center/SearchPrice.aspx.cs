@@ -27,37 +27,37 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
         private void Search(string Keyword)
         {
-            var pageIndex = WebUtility.GetRequestLong("page", 1);
-            var pageSize = Utility.GetLong(Request["pagesize"], 20, 5, 40);
+            //var pageIndex = WebUtility.GetRequestLong("page", 1);
+            //var pageSize = Utility.GetLong(Request["pagesize"], 20, 5, 40);
 
-            var db = DataBase.Create();
-            db.EnableRecordCount = true;
-            db.Parameters.Append("pname", AccountHelper.Province);
-            db.Parameters.Append("cname", AccountHelper.City);
-            var products = db.Select(pageSize, pageIndex, "vw_Key_Product", "ID", string.Format("cname=@cname and pname=@pname and kname like '%{0}%'", Keyword), "price asc");
-            rpResult.DataSource = products;
-            rpResult.DataBind();
+            //var db = DataBase.Create();
+            //db.EnableRecordCount = true;
+            //db.Parameters.Append("pname", AccountHelper.Province);
+            //db.Parameters.Append("cname", AccountHelper.City);
+            //var products = db.Select(pageSize, pageIndex, "vw_Key_Product", "ID", string.Format("cname=@cname and pname=@pname and kname like '%{0}%'", Keyword), "price asc");
+            //rpResult.DataSource = products;
+            //rpResult.DataBind();
 
-            this.Pager1.AppendUrlParam("keyword", Keyword);
-            this.Pager1.PageSize = (int)pageSize;
-            this.Pager1.PageIndex = (int)pageIndex;
-            this.Pager1.TotalRecords = (int)db.RecordCount;
+            //this.Pager1.AppendUrlParam("keyword", Keyword);
+            //this.Pager1.PageSize = (int)pageSize;
+            //this.Pager1.PageIndex = (int)pageIndex;
+            //this.Pager1.TotalRecords = (int)db.RecordCount;
 
-            var datas = new List<product>();
-            foreach (DataRow product in products.Rows)
-            {
-                datas.Add(new product
-                {
-                    id = product["id"].ToString(),
-                    companyname = product["companyname"].ToString(),
-                    pointX = product["positionX"].ToString(),
-                    pointY = product["positionY"].ToString(),
-                    price = GetMoney(product["price"]),
-                    simpledesc = product["simpledesc"].ToString()
-                });
-            }
+            //var datas = new List<product>();
+            //foreach (DataRow product in products.Rows)
+            //{
+            //    datas.Add(new product
+            //    {
+            //        id = product["id"].ToString(),
+            //        companyname = product["companyname"].ToString(),
+            //        pointX = product["positionX"].ToString(),
+            //        pointY = product["positionY"].ToString(),
+            //        price = GetMoney(product["price"]),
+            //        simpledesc = product["simpledesc"].ToString()
+            //    });
+            //}
 
-            hfData.Value = JsonConvert.SerializeObject(datas.GroupBy(p => p.point).Select(p => new { pointX = p.Key.Split(',').FirstOrDefault(), pointY = p.Key.Split(',').LastOrDefault(), data = p.Select(p1 => p1) }));
+            //hfData.Value = JsonConvert.SerializeObject(datas.GroupBy(p => p.point).Select(p => new { pointX = p.Key.Split(',').FirstOrDefault(), pointY = p.Key.Split(',').LastOrDefault(), data = p.Select(p1 => p1) }));
         }
 
         class product

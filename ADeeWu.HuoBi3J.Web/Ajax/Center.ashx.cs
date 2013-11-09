@@ -9,6 +9,7 @@ using ADeeWu.HuoBi3J.Web.Class;
 using ADeeWu.HuoBi3J.DAL;
 using System.IO;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace ADeeWu.HuoBi3J.Web.Ajax
 {
@@ -43,6 +44,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                     case "getlocationpoint": { result = GetLocationPoint(); }; break;
                     case "getcity": { result = GetCity(); }; break;
                     case "addfav": { result = AddFav(); }; break;
+                    case "getpricedata": { result = GetPriceData(); }; break;
                     default: { result = "something is error!"; }; break;
                 }
             }
@@ -53,6 +55,50 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             context.Response.ContentType = "text/plain";
             context.Response.Write(result);
+        }
+
+        private string GetPriceData()
+        {
+            var keyword = WebUtility.GetRequestStr("keyword", "");
+            var bssw_lng = WebUtility.GetRequestFloat("bssw_lng", 0);
+            var bssw_lat = WebUtility.GetRequestFloat("bssw_lat", 0);
+            var bsne_lng = WebUtility.GetRequestFloat("bsne_lng", 0);
+            var bsne_lat = WebUtility.GetRequestFloat("bsne_lat", 0);
+
+            var strWhere = string.Format("cname='{4}' and pname='{5}' and dbo.f_ntof(positionX) BETWEEN {0} and {1} and dbo.f_ntof(positionY) between {2} and {3}", bssw_lat, bsne_lat, bssw_lng, bsne_lng, AccountHelper.City, AccountHelper.Province);
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                strWhere += string.Format(" and kname like '%{0}%'", keyword);
+            }
+            var db = DataBase.Create();
+            var products = db.Select("vw_Key_Product", strWhere, "price asc");
+
+            var datas = new List<product>();
+            foreach (DataRow product in products.Rows)
+            {
+                datas.Add(new product
+                {
+                    id = product["id"].ToString(),
+                    companyname = product["companyname"].ToString(),
+                    pointX = product["positionX"].ToString(),
+                    pointY = product["positionY"].ToString(),
+                    price = Utility.GetDecimal(product["price"], 0).ToString("F2"),
+                    simpledesc = product["simpledesc"].ToString(),
+                    bname = Helper.GetBusinessCircle(product["bid"],product["bname"]),
+                });
+            }
+
+            return JsonConvert.SerializeObject(
+                new
+                {
+                    statue = true,
+                    data = JsonConvert.SerializeObject(datas.GroupBy(p => p.point).Select(p => new
+                    {
+                        pointX = p.Key.Split(',').FirstOrDefault(),
+                        pointY = p.Key.Split(',').LastOrDefault(),
+                        data = p.Select(p1 => p1)
+                    }))
+                });
         }
 
         private string AddFav()
@@ -519,6 +565,24 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
             get
             {
                 return false;
+            }
+        }
+
+        class product
+        {
+            public string id { get; set; }
+            public string companyname { get; set; }
+            public string price { get; set; }
+            public string pointX { get; set; }
+            public string pointY { get; set; }
+            public string simpledesc { get; set; }
+            public string bname { get; set; }
+            public string point
+            {
+                get
+                {
+                    return pointX + "," + pointY;
+                }
             }
         }
     }

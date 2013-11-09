@@ -43,6 +43,11 @@ namespace ADeeWu.HuoBi3J.Web.Class
                 if (locationCookie == null)
                 {
                     location = new BaiduAPIHelper().GetLocationByIP(HttpContext.Current.Request.UserHostAddress);
+
+                    //TODO 固定城市
+                    location["city"] = "佛山市";
+                    location["province"] = "广东省";
+
                     locationCookie = new HttpCookie("location");
                     locationCookie.Value = JsonConvert.SerializeObject(new { city = HttpUtility.UrlEncode(location["city"]), province = HttpUtility.UrlEncode(location["province"]) });
                     locationCookie.Expires = DateTime.Now.AddDays(7);
@@ -52,7 +57,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
 
                 var locationObj = JObject.Parse(locationCookie.Value);
                 location.Add("city", HttpUtility.UrlDecode(locationObj["city"].ToString()));
-                if (locationObj["province"]!=null)
+                if (locationObj["province"] != null)
                     location.Add("province", HttpUtility.UrlDecode(locationObj["province"].ToString()));
 
                 return location;

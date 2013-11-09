@@ -92,7 +92,7 @@
                                                     </HeaderTemplate>
                                                     <ItemTemplate>
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                                                            <td class="arc_title"><a href="View.aspx?id=460" target="_blank"><%# Eval("price") %></a></td>
+                                                            <td class="arc_title"><%# GetDecimal(Eval("price"),2) %></td>
                                                             <td><%# Eval("simpledesc") %></td>
                                                             <td><a href="key4product.aspx?kid=<%# Eval("kid") %>" ><%# Eval("kname") %></a></td>
                                                             <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>

@@ -25,9 +25,8 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     locationCookie.Value = JsonConvert.SerializeObject(new { city = HttpUtility.UrlEncode(location.Rows[0]["city"].ToString()), province = HttpUtility.UrlEncode(location.Rows[0]["province"].ToString()) });
                     locationCookie.Expires = DateTime.Now.AddDays(7);
                     Response.Cookies.Add(locationCookie);
-                    Response.Flush();
-                    Response.Write("<script language=\"javascript\">alert('切换成功！');location.href='/';</script>");
-                    Response.End();
+                    WebUtility.ShowMsg(this, "切换成功！", "/");
+                    return;
                 }
 
 

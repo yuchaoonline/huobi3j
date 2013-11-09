@@ -17,11 +17,12 @@
         #changeCity li a:hover {
             background-color: #45abab;
             color: #FFF;
-        }
+        }
+
 </style>
 <script type="text/javascript">
     $(function () {
-        $('#txtPageSearch').enter($('#btnPageSearchKey'));
+        $('#txtPageSearch').enter($('#btnPageSearchPrice'));
         $('#btnPageSearchPrice').click(function () {
             location.href = "/center/searchprice.aspx?keyword=" + $('#txtPageSearch').val();
         })
@@ -34,7 +35,9 @@
                 $.each(data, function (index, item) {
                     html += "<li><a href='/center/changecity.aspx?city=" + item.cname + "' title='" + item.cname + "'>" + item.cname + "</a></li>";
                 })
-                html += "</ul>";                $('#changeCity').html(html).dialog({
+                html += "</ul>";
+
+                $('#changeCity').html(html).dialog({
                     title: '切换城市',
                     width: 750,
                     height: 500,
@@ -51,12 +54,13 @@
         <a href="/My/User/Center/MyAttentionList.aspx" id="btnPageAddPrice" title="发布价格" class="btn_blue">发布价格</a>        
     </div>
     <a class="l logo1" href="/index.html">
-        <img src="/images/logo.jpg" width="308" height="61" alt="全民营销——即时通讯营销平台"></a>
+        <img src="/images/logo.jpg" width="200" height="61" alt="全民营销——即时通讯营销平台"></a>
     <div style="height: 61px; line-height: 61px;">
-        <a href="#" id="btnPageChangeCity" title="点击切换城市"><span style="color: red;"><%= ADeeWu.HuoBi3J.Web.Class.AccountHelper.City %></span>切换城市</a>
-        <input type="text" id="txtPageSearch" />
+        <%--<a href="#" id="btnPageChangeCity" title="点击切换城市"><span style="color: red;"><%= ADeeWu.HuoBi3J.Web.Class.AccountHelper.City %></span>切换城市</a>--%>
+        <input type="text" id="txtPageSearch" value="<%=Request["keyword"] %>" />
         <a href="#" id="btnPageSearchPrice" title="搜价格" class="btn_blue">搜价格</a>
         <a href="#" id="btnPageSearchKey" title="搜关键字" class="btn_blue">搜关键字</a>
+        <a href="/center/searchhotkey.aspx" id="btnPageSearchHotKey" title="热门关键字" style="color: blue;">热门关键字</a>
     </div>
     <div id="changeCity"></div>
 </div>

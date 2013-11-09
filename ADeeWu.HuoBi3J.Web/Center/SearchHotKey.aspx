@@ -10,8 +10,6 @@
     <link href="/CSS/base.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
-    <uc1:ucNav runat="server" ID="ucNav" />
-
     <div id="filter">
         <div class="filter-sortbar-outer-box">
             <div class="filter-section-wrapper">

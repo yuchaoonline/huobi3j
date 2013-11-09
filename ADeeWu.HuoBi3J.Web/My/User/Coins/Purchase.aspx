@@ -5,17 +5,17 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    个人控制面板 - 购买虚拟货币
+    个人控制面板 - 购买虚拟金币
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-    <span class="spl"></span><span class="curPos">购买虚拟货币</span>
+    <span class="spl"></span><span class="curPos">购买虚拟金币</span>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <table border="0" cellspacing="0" cellpadding="0">
         <tr>
-            <td class="tdLeft">当前货币持有量：</td>
+            <td class="tdLeft">当前金币持有量：</td>
             <td class="tdRight">
                 <asp:Literal ID="liteNumOfCoins" runat="server"></asp:Literal>
                 个
@@ -29,8 +29,8 @@
             </td>
         </tr>
         <tr>
-            <td class="tdLeft">货币兑换率：</td>
-            <td class="tdRight">1 元 = <%=ADeeWu.HuoBi3J.Web.GlobalParameter.MoneyToCoinsRate%>个货币
+            <td class="tdLeft">金币兑换率：</td>
+            <td class="tdRight">1 元 = <%=ADeeWu.HuoBi3J.Web.GlobalParameter.MoneyToCoinsRate%>个金币
             </td>
         </tr>
         <tr>
@@ -44,7 +44,7 @@
         <tr>
             <td class="tdLeft">&nbsp;</td>
             <td class="tdRight">
-                <asp:Button ID="btnSubmit" runat="server" Text="提交" OnClick="btnSubmit_Click" OnClientClick="return confirm('确认购买货币?')" /></td>
+                <asp:Button ID="btnSubmit" runat="server" Text="提交" OnClick="btnSubmit_Click" OnClientClick="return confirm('确认购买金币?')" /></td>
         </tr>
     </table>
 

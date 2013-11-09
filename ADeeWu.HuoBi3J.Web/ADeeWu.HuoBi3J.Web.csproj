@@ -98,6 +98,8 @@
     <Content Include="Center\SearchKey.aspx" />
     <Content Include="Center\Details.aspx" />
     <Content Include="CSS\base.css" />
+    <Content Include="CSS\basic.css" />
+    <Content Include="CSS\basic_ie.css" />
     <Content Include="CSS\deal.css" />
     <Content Include="CSS\hovermark.css" />
     <Content Include="CSS\overlay.css" />
@@ -114,6 +116,7 @@
     <Content Include="images\radius_3_r11.psd" />
     <Content Include="images\radius_3_rl11.psd" />
     <Content Include="JS\jquery.key.js" />
+    <Content Include="JS\jquery.simplemodal.js" />
     <Content Include="MHTML.master" />
     <Content Include="MIndex.master" />
     <Content Include="MMain.Master" />

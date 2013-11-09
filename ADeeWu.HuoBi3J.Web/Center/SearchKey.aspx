@@ -16,22 +16,6 @@
             $('.txtKeyword').val('');
             $('.txtKeyword').watermark(val);
 
-            //$('.attentionCount').click(function(){
-            //    var kid = $(this).parents('#recruit_list').find('[name=kid]').val();
-            //    $.getJSON('/ajax/center.ashx',{method: 'getattention',kid: kid},function(data){
-            //        if(data!=null){
-            //            var html = "<ul class='attentionList'>";
-            //            for(i=0;i<data.length;i++){
-            //                var item = data[i];
-            //                html+="<li><a href='#"+item.UID+"'>"+item.UName+"</a></li>";
-            //            }
-            //            html+="</ul>";
-
-            //            $('#attentionDialog').html(html).dialog({modal: true});
-            //        }
-            //    })
-            //}).css('cursor','pointer');
-
             $('.btn_search').click(function(){
                 var newVal = $(".txtKeyword").val();
                 if(newVal=='')
@@ -81,22 +65,6 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
-    <uc1:ucNav runat="server" ID="ucNav" />
-
-    <%--<div id="center">
-        <div class="centerP_body">
-            <div class="body_content" style="float: left;">
-                <p>
-                    <span>关 键 字： 
-                        <input type="text" id="txtKeyword" name="txtKeyword" class="text txtKeyword" value="<%=Request["keyword"] %>" />
-                        <input type="button" class="btn_blue btn_search" value="搜 索">
-                        <a href="add.aspx" class="orange" style="text-decoration: underline;">添加区域或商圈</a>
-                    </span>
-                </p>
-            </div>
-        </div>
-    </div>--%>
-
     <div class="cl"></div>
 
     <div id="searchResult">

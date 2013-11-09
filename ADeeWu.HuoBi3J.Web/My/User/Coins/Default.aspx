@@ -5,12 +5,12 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    个人控制面板 - 虚拟货币历史记录
+    个人控制面板 - 虚拟金币历史记录
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-    <span class="spl"></span><span class="curPos">虚拟货币历史记录</span>
+    <span class="spl"></span><span class="curPos">虚拟金币历史记录</span>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <table class="searchTable">

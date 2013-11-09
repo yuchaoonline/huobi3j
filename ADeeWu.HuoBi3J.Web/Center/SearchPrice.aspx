@@ -8,9 +8,17 @@
     即时报价 - 即时报价
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="/JS/jquery.simplemodal.js"></script>
     <script type="text/javascript" src="/js/jquery.watermark.js"></script>
     <script type="text/javascript" src="/js/user.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
+    <!-- Contact Form CSS files -->
+    <link type='text/css' href='/css/basic.css' rel='stylesheet' media='screen' />
+
+    <!-- IE6 "fix" for the close png image -->
+    <!--[if lt IE 7]>
+    <link type='text/css' href='/css/basic_ie.css' rel='stylesheet' media='screen' />
+    <![endif]-->
     <script type="text/javascript">
         $(function () {
             var val = $('.txtKeyword').val();
@@ -56,32 +64,62 @@
             map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
             map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
             map.centerAndZoom('<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>', 14);
+            map.addEventListener("tilesloaded", function () {
+                getData();
+            });
+            map.addEventListener("dragend", function () {
+                getData();
+            });
 
-            $.each(JSON.parse($('#<%=hfData.ClientID%>').val()), function (index, item) {
-                var marker = new BMap.Marker(new BMap.Point(item.pointY, item.pointX));
-                map.addOverlay(marker);
+            function getData() {
+                var bs = map.getBounds();   //获取可视区域
+                var bssw = bs.getSouthWest();   //可视区域左下角
+                var bsne = bs.getNorthEast();   //可视区域右上角
+                var keyword = '<%=Request["keyword"]%>';
+                console.log("当前地图可视范围是：" + bssw.lng + "," + bssw.lat + "到" + bsne.lng + "," + bsne.lat);
 
-                var html = '<table class="table_list" cellpadding="0" cellspacing="0" width="450px"><thead><tr height="30px" class="black70"><td width="30%" class="arc_title">价格</td><td width="30%">简单描述</td><td width="30%">商家</td><td width="10%">操作</td></tr><thead><tbody>';
-                $.each(item.data, function (i, product) {
-                    html+='<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=" class="">';
-                    html += '<td>' + product.price + '</td>';
-                    html += '<td>' + product.simpledesc + '</td>';
-                    html += '<td>' + product.companyname + '</td>';
-                    html += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
-                    html+='</tr>';
+                $.getJSON('/ajax/center.ashx', { method: 'getpricedata', bssw_lng: bssw.lng, bssw_lat: bssw.lat, bsne_lng: bsne.lng, bsne_lat: bsne.lat,keyword: keyword }, function (data) {
+                    if (data && data.statue) {
+                        var products = JSON.parse(data.data);
+                        console.log(products.length);
+                        var allRows = "";
+                        $.each(products, function (index, item) {
+                            var marker = new BMap.Marker(new BMap.Point(item.pointY, item.pointX));
+                            map.addOverlay(marker);
+
+                            var html = '<table class="table_list" cellpadding="0" cellspacing="0" width="450px"><thead><tr height="30px" class="black70"><td width="30%" class="arc_title">价格</td><td width="30%">简单描述</td><td width="30%">商家</td><td width="10%">操作</td></tr><thead><tbody>';
+                            $.each(item.data, function (i, product) {
+                                html += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
+                                html += '<td>' + product.price + '</td>';
+                                html += '<td>' + product.simpledesc + '</td>';
+                                html += '<td>' + product.companyname + '</td>';
+                                html += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
+                                html += '</tr>';
+
+                                allRows += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
+                                allRows += '<td><a target="_blank" href="details.aspx?id=' + product.id + '">'+product.price+'</a></td>';
+                                allRows += '<td>' + product.simpledesc + '</td>';
+                                allRows += '<td>' + product.companyname + '</td>';
+                                allRows += '<td>' + product.bname + '</td>';
+                                allRows += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
+                                allRows += '</tr>';
+                            })
+                            html += '</tbody></table>';
+
+                            //创建信息窗口
+                            var infoWin = new BMap.InfoWindow(html);
+                            marker.addEventListener("click", function () { this.openInfoWindow(infoWin); });
+                        })
+                        $('#rentP_list1 tbody').empty().html(allRows);
+                    } else {
+                        alert(data.msg);
+                    }
                 })
-                html += '</tbody></table>';
-
-                //创建信息窗口
-                var infoWin = new BMap.InfoWindow(html);
-                marker.addEventListener("click", function () { this.openInfoWindow(infoWin); });
-            })
+            }
         })
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
-    <uc1:ucNav runat="server" ID="ucNav" />
-
     <div class="cl"></div>
 
     <div id="searchResult">
@@ -89,34 +127,18 @@
             <div id="allmap"style="width: 950px; height: 555px;"></div>
             <asp:HiddenField ID="hfData" runat="server" />
         </div>
-        <asp:Repeater ID="rpResult" runat="server">
-            <HeaderTemplate>
-                <table id="rentP_list1" class="table_list" cellpadding="0" cellspacing="0" width="950px">
-                    <thead>
-                        <tr height="30px" class="black70">
-                            <td width="20%" class="arc_title">价格</td>
-                            <td width="25%">简单描述</td>
-                            <td width="20%">商家</td>
-                            <td width="25%">所在商圈</td>
-                            <td width="10%">查看</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                    <td class="arc_title"><%# GetMoney(Eval("price")) %></td>
-                    <td><%# Eval("simpledesc") %></td>
-                    <td><a href="SaleMan4Product.aspx?userid=<%# Eval("createuserid") %>" target="_blank"><%# Eval("companyname") %></a></td>
-                    <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
-                    <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue">详情</a></td>
+        <table id="rentP_list1" class="table_list" cellpadding="0" cellspacing="0" width="950px">
+            <thead>
+                <tr height="30px" class="black70">
+                    <td width="20%" class="arc_title">价格</td>
+                    <td width="25%">简单描述</td>
+                    <td width="20%">商家</td>
+                    <td width="25%">所在商圈</td>
+                    <td width="10%">查看</td>
                 </tr>
-            </ItemTemplate>
-            <FooterTemplate>
-                </tbody>
-                </table>
-            </FooterTemplate>
-        </asp:Repeater>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 
     <div class="cl"></div>
@@ -124,4 +146,5 @@
     <div class="pager" align="center">
         <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
     </div>
+    <div id="loading"></div>
 </asp:Content>
