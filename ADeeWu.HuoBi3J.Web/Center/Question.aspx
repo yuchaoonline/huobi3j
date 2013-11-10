@@ -3,7 +3,7 @@
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="IscControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    即时报价 - 提问列表 - 回复详情
+    货比三家 - 提问列表 - 回复详情
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />

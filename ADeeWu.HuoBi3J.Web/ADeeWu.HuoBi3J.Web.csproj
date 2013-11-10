@@ -100,9 +100,14 @@
     <Content Include="CSS\base.css" />
     <Content Include="CSS\basic.css" />
     <Content Include="CSS\basic_ie.css" />
+    <Content Include="CSS\bootstrap-theme.css" />
+    <Content Include="CSS\bootstrap-theme.min.css" />
+    <Content Include="CSS\bootstrap.css" />
+    <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\deal.css" />
     <Content Include="CSS\hovermark.css" />
     <Content Include="CSS\overlay.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Handler\BaseHandler.ashx" />
     <Content Include="Handler\LoginHandler.ashx" />
     <Content Include="Handler\WebIM\GetUser.ashx" />
@@ -115,8 +120,11 @@
     <Content Include="images\nav_current2.psd" />
     <Content Include="images\radius_3_r11.psd" />
     <Content Include="images\radius_3_rl11.psd" />
+    <Content Include="JS\bootstrap.js" />
+    <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery.key.js" />
     <Content Include="JS\jquery.simplemodal.js" />
+    <Content Include="MobileLogin.aspx" />
     <Content Include="MHTML.master" />
     <Content Include="MIndex.master" />
     <Content Include="MMain.Master" />
@@ -143,6 +151,9 @@
     <Content Include="My\User\TradeOrders\Order.aspx" />
     <Content Include="My\User\TradeOrders\PayNow.aspx" />
     <Content Include="packages.config" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="Properties\PublishProfiles\huobi3j.pubxml" />
     <Content Include="ueditor\net\fileUp.ashx" />
     <Content Include="ueditor\net\getContent.ashx" />
@@ -152,6 +163,7 @@
     <Content Include="ueditor\net\imageUp.ashx" />
     <Content Include="ueditor\net\scrawlUp.ashx" />
     <Content Include="ueditor\net\Web.config" />
+    <None Include="Properties\PublishProfiles\www.huobi3j.com.pubxml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -567,6 +579,13 @@
     </Compile>
     <Compile Include="Center\Details.aspx.designer.cs">
       <DependentUpon>Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MobileLogin.aspx.cs">
+      <DependentUpon>MobileLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MobileLogin.aspx.designer.cs">
+      <DependentUpon>MobileLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\AttentionKey.aspx.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>

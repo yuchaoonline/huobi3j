@@ -73,7 +73,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center.KeyManage
                     CreateTime = DateTime.Now,
                     InCoin = 0,
                     OutCoin = brokerage,
-                    Notes = string.Format("刷新即时报价关键字：{0}，扣除金币：{1}！", key.Name, brokerage),
+                    Notes = string.Format("刷新货比三家关键字：{0}，扣除金币：{1}！", key.Name, brokerage),
                     Remain = user.Coins,
                     UserID = user.ID
                 };

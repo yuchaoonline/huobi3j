@@ -24,7 +24,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
         private void CalCoin()
         {
             var coin = DataBase.Create().ExecuteScalar("select sum(coin) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
-            litCoin.Text = coin.ToString();
+            litCoin.Text = coin == null ? "0" : coin.ToString();
         }
 
         private void BandData(long uid)

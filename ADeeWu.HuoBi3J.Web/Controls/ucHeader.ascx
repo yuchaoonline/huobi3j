@@ -22,12 +22,19 @@
 </style>
 <script type="text/javascript">
     $(function () {
-        $('#txtPageSearch').enter($('#btnPageSearchPrice'));
+        $('#txtPageSearch').enter($('#btnPageSearchPrice'), function () {
+            ClickPageSearchPrice();
+        });
         $('#btnPageSearchPrice').click(function () {
+            ClickPageSearchPrice();
+        });
+        function ClickPageSearchPrice() {
             location.href = "/center/searchprice.aspx?keyword=" + $('#txtPageSearch').val();
-        })
+            return false;
+        }
         $('#btnPageSearchKey').click(function () {
             location.href = "/center/searchkey.aspx?keyword=" + $('#txtPageSearch').val();
+            return false;
         })
         $('#btnPageChangeCity').click(function () {
             $.getJSON('/ajax/center.ashx', { method: 'getcity' }, function (data) {
@@ -44,6 +51,8 @@
                     modal: true
                 });
             })
+
+            return false;
         })
     })
 </script>

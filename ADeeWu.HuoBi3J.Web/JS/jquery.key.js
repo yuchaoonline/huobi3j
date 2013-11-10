@@ -1,8 +1,9 @@
 (function ($) {
-    $.fn.enter = $.fn.enter || function (obj) {
-        $(this).keyup(function (e) {
+    $.fn.enter = $.fn.enter || function (obj, callback) {
+        $(this).keydown(function (e) {
             if (13 == e.which) {
-                obj.click();
+                callback();
+                return false;
             }
         })
     }

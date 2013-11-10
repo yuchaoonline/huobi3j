@@ -2,7 +2,7 @@
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-即时报价 - 区域内容
+货比三家 - 区域内容
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />

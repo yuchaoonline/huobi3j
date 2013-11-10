@@ -64,7 +64,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-    <a href="/My/User/Center/MyQuestionList.aspx">即时报价</a>
+    <a href="/My/User/Center/MyQuestionList.aspx">货比三家</a>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <div align="center">

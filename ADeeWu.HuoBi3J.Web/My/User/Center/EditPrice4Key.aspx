@@ -85,7 +85,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-    即时报价 - 编辑价格
+    货比三家 - 编辑价格
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <div id="center_list">

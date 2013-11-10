@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    即时报价 - 即时报价
+    货比三家 - 货比三家
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="/JS/jquery.simplemodal.js"></script>
@@ -81,7 +81,12 @@
                 $.getJSON('/ajax/center.ashx', { method: 'getpricedata', bssw_lng: bssw.lng, bssw_lat: bssw.lat, bsne_lng: bsne.lng, bsne_lat: bsne.lat,keyword: keyword }, function (data) {
                     if (data && data.statue) {
                         var products = JSON.parse(data.data);
-                        console.log(products.length);
+
+                        if (products.length <= 0) {
+                            alert('没有查询到 '+keyword+' 的报价信息，请尝试其他关键字！');
+                            return false;
+                        }
+
                         var allRows = "";
                         $.each(products, function (index, item) {
                             var marker = new BMap.Marker(new BMap.Point(item.pointY, item.pointX));

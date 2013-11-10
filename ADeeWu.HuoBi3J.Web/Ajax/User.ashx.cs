@@ -12,7 +12,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
     /// <summary>
     /// User 的摘要说明
     /// </summary>
-    public class User : IHttpHandler, IRequiresSessionState, IReadOnlySessionState
+    public class User : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
@@ -38,6 +38,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             return JsonConvert.SerializeObject(new { Statue = true });
         }
+
 
         #region SaleMan
         private string IsSaleMan()

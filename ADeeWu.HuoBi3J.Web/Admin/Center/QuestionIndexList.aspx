@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-<span>即时报价管理</span> &gt; 首页提问列表
+<span>货比三家管理</span> &gt; 首页提问列表
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <table id="resultList" class="gridView" width="100%">

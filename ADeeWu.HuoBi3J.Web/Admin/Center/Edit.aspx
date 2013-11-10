@@ -8,7 +8,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-    <span>即时报价管理</span> &gt; <a href="SaleMan.aspx">业务员列表</a> &gt; 修改
+    <span>货比三家管理</span> &gt; <a href="SaleMan.aspx">业务员列表</a> &gt; 修改
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <table border="0" cellspacing="0" cellpadding="0" class="formTable">

@@ -148,7 +148,7 @@
                         </div>
                     </li>
                     <li id="menu_12" onmouseover="Menus.Show(this,0)" onclick="getleftbar(this);"><a href="javascript:void(0);"
-                        target='frmright'><strong>即时报价</strong></a>
+                        target='frmright'><strong>货比三家</strong></a>
                         <div class="menu_childs" onmouseout="Menus.Hide(0);">
                             <ul>
                                 <li><a href="Center/SaleMan.aspx" target='frmright'>业务员管理</a></li>

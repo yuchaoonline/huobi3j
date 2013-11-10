@@ -51,7 +51,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         }
 
         /// <summary>
-        /// 获取即时报价未刷新而导致丢失关键字管理的天数
+        /// 获取货比三家未刷新而导致丢失关键字管理的天数
         /// </summary>
         public static long GetLostKeyDay
         {

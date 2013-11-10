@@ -28,7 +28,7 @@
             <span class="orange">举例</span>：个人注册账号“allsels”。<br />
             <img src="images/1.jpg" />
         </li>
-        <li>2. 点击进入“即时报价”页面，在搜索框输入要搜索的产品或服务。网址：<a href="http://www.ADeeWu.HuoBi3J.com/center ">http://www.ADeeWu.HuoBi3J.com/center/</a><br />
+        <li>2. 点击进入“货比三家”页面，在搜索框输入要搜索的产品或服务。网址：<a href="http://www.ADeeWu.HuoBi3J.com/center ">http://www.ADeeWu.HuoBi3J.com/center/</a><br />
             <span class="orange">举例</span>：会员allsels想印名片，可以输入“印名片”，按确认键。<br />
             <img src="images/2.jpg" />
         </li>

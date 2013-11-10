@@ -11,7 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 namespace ADeeWu.HuoBi3J.Web.Class
 {
     /// <summary>
-    /// 即时报价业务员
+    /// 货比三家业务员
     /// </summary>
     public class PageBase_CircleSaleMan : PageBase
     {
@@ -27,7 +27,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
             //商家代表权限检测
             if (!SaleManSession.IsSaleMan)
             {
-                Class.Tips tips = new ADeeWu.HuoBi3J.Web.Class.Tips("当前用户没有访问权限", "当前用户不是即时报价业务员或者审核通过请重新登录", "/my/user/center/RegSaleMan.aspx", "点击注册");
+                Class.Tips tips = new ADeeWu.HuoBi3J.Web.Class.Tips("当前用户没有访问权限", "当前用户不是货比三家业务员或者审核通过请重新登录", "/my/user/center/RegSaleMan.aspx", "点击注册");
                 Class.Tips.SetTips(tips);
                 Class.Tips.Show();
             }

@@ -1,7 +1,7 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" ValidateRequest="false" CodeBehind="AddPrice4Key.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.AddPrice4Key" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    即时报价 - 添加价格
+    货比三家 - 添加价格
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
@@ -86,7 +86,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="siteposition" runat="server">
-    即时报价 - 添加价格
+    货比三家 - 添加价格
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <div id="center_list">

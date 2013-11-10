@@ -8,7 +8,7 @@
     <link href="/CSS/forum_forumdisplay.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
-    <a href="/My/User/Center/MyQuestionList.aspx">即时报价</a>
+    <a href="/My/User/Center/MyQuestionList.aspx">货比三家</a>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <a href="AddPrice4Key.aspx?kid=<%=Request["kid"] %>" title="添加价格" class="btn_blue">添加价格</a>

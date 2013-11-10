@@ -29,7 +29,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     txtJob.Text = entApplication.Job;
                     litMemo.Text = entApplication.Memo;
                     hfPosition.Value = entApplication.PositionX + "|" + entApplication.PositionY;
-                    litQR.Text = string.Format("<img width='200px' src=salemanqr.aspx?s={0} alt='扫描二维码' />", HttpUtility.UrlEncode("http://" + Request.Url.Host + "/center/getCoin.aspx?salemanuserid=" + entApplication.UserID));
+                    litQR.Text = string.Format("<img width='200px' src=salemanqr.aspx?s={0} alt='扫描二维码' />", HttpUtility.UrlEncode("http://" + Request.Url.Host+":" +Request.Url.Port + "/center/getCoin.aspx?salemanuserid=" + entApplication.UserID));
 
                     this.labTips.Text = "提交申请需要重新审核！";
                     this.btnSubmit.OnClientClick = "return cofirm('确认要重新提交吗？修改信息后需要重新通过审核！')";
@@ -103,7 +103,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 var user = new DAL.Users().GetEntity(LoginUser.UserID);
                 if (user.Money <= 50)
                 {
-                    WebUtility.ShowMsg(string.Format("你的余额为：{0}，申请即时报价业务员余额大于50元！", user.Money));
+                    WebUtility.ShowMsg(string.Format("你的余额为：{0}，申请货比三家业务员余额大于50元！", user.Money));
                     return;
                 }
 

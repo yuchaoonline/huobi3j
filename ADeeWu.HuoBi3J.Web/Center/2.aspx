@@ -31,7 +31,7 @@
         <li>2. 后台点击进入“申请关注关键字”页面申请开通服务。网址：<a href="http://www.ADeeWu.HuoBi3J.com/My/User/Center/RegSaleMan.aspx">http://www.ADeeWu.HuoBi3J.com/My/User/Center/RegSaleMan.aspx</a> 申请时联系客服人员开通，客服QQ：1959831331。<br />
             <img src="images/2.2.jpg" />
         </li>
-        <li>3. 重新登录，点击进入“即时报价”页面，在搜索框输入要申请的产品或服务。网址：<a href="http://www.ADeeWu.HuoBi3J.com/center/">http://www.ADeeWu.HuoBi3J.com/center/</a>
+        <li>3. 重新登录，点击进入“货比三家”页面，在搜索框输入要申请的产品或服务。网址：<a href="http://www.ADeeWu.HuoBi3J.com/center/">http://www.ADeeWu.HuoBi3J.com/center/</a>
             <br />
             <span class="orange">举例</span>：会员fsmingpian想开通印名片报价服务，可以输入“印名片”，按搜索键。<br />
             <img src="images/2.3.jpg" />

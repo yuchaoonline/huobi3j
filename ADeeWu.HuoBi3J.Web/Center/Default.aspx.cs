@@ -11,7 +11,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("searchkey.aspx?keyword=快餐", true);
+            Response.Redirect("SearchPrice.aspx?keyword=快餐", true);
         }
     }
 }

@@ -3,7 +3,7 @@
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    价格列表 - 即时报价
+    价格列表 - 货比三家
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />
@@ -11,7 +11,7 @@
     <link href="/CSS/base.css" rel="stylesheet" />
     <script type="text/javascript">
         $(function () {
-            $('title').text($('#kname').text() + ' - 价格列表 - 即时报价');
+            $('title').text($('#kname').text() + ' - 价格列表 - 货比三家');
             
             $('.attr-type').each(function (index, item) {
                 selectValue(item.children, '<%=Request["selectType"]%>');
