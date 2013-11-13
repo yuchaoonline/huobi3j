@@ -80,15 +80,15 @@ ol li{ list-style-position:inside; margin:0px; padding:0px; text-indent:0px; mar
 	<div class="TipsSide">
 		<dl>
 			<dt>何为现金赠送</dt>
-			<dd>现金赠送即顾客在全民营销网合作商家消费后获得全民营销收据上的序列号和密码，登陆全民营销网填写赠送序列号和密码等相关信息并获得现金赠送。</dd>
+			<dd>现金赠送即顾客在货比三家网合作商家消费后获得货比三家收据上的序列号和密码，登陆货比三家网填写赠送序列号和密码等相关信息并获得现金赠送。</dd>
 		</dl>
 		
 		<dl style="margin-left:40px; margin-top:20px;">
 			<dt>现金赠送券使用流程</dt>
 			<dd>
 				<ol>
-					<li>到全民营销网合作商家消费</li>
-					<li>获得全民营销收据上的序列号和密码</li>
+					<li>到货比三家网合作商家消费</li>
+					<li>获得货比三家收据上的序列号和密码</li>
 					<li>登陆www.ADeeWu.HuoBi3J.com</li>
 					<li>申请现金赠送</li>
 					<li>获得现金赠送</li>

@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://www.huobi3j.com">货比三家</a>
+            <h4><span style="color: blue;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
         </div>
     </nav>
 

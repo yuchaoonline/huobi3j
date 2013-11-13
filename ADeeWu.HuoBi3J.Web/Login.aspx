@@ -59,7 +59,7 @@
     <div id="login_register" class="l">
         <div>
             <span class="font14 fb">还没有注册会员？</span>
-            <p class="black70">只要通过简单的表单填写就可以成为全民营销网的正式会员</p>
+            <p class="black70">只要通过简单的表单填写就可以成为货比三家网的正式会员</p>
             <input type="button" class="btn_gray114 btn_regist" value="注册新用户" />
         </div>
     </div>

@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    全民营销 - 个人管理中心 - 网络营销专员
+    货比三家 - 个人管理中心 - 网络营销专员
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

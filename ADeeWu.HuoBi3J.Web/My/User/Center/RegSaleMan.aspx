@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    全民营销 - 个人管理中心 - 申请开通报价比价服务
+    货比三家 - 个人管理中心 - 申请开通报价比价服务
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
     <link href="/CSS/forum_common.css" rel="stylesheet" type="text/css" />

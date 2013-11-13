@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-    <link href="/css/base.css" rel="stylesheet" />
+    <%--<link href="/css/base.css" rel="stylesheet" />--%>
     <link href="/css/deal.css" rel="stylesheet" />
     <link href="/css/overlay.css" rel="stylesheet" />
     <style>
@@ -123,14 +123,11 @@
                                                     <div class="all-biz cf">
                                                         <div class="biz-info biz-info--open biz-info--first biz-info--only" id="yui_3_8_0_1">
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %>
-                                                            </div>
+                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %></div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %>
-                                                            </div>
+                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %>
-                                                            </div>
+                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %></div>
                                                         </div>
                                                     </div>
                                                 </div>

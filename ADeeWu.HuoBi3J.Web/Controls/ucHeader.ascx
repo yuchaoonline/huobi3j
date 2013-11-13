@@ -27,11 +27,12 @@
     }
 
         .currentSelect a {
-            color: #fff;
+            color: #fff !important;
         }
 
     #header a {
         cursor: pointer;
+        color: #3e4545;
     }
 </style>
 <script type="text/javascript">

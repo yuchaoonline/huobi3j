@@ -266,7 +266,7 @@ body {
 }
 
 a {
-    color: #399;
+    color: #508acb;
     text-decoration: none;
 }
 
@@ -443,7 +443,7 @@ button.formbutton {
 
     .small-form-button:hover, .form-button:hover {
         background-position: 0% 0%;
-    border-color: #399;
+    border-color: #508acb;
     box-shadow: 0 1px #e1e0e0;
         background-image: linear-gradient(top,#4cd8d8,#03c9c9);
         filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4CD8D8',endColorstr='#03C9C9');
@@ -505,7 +505,7 @@ button.formbutton {
 
     .small-link-button:hover, .link-button:hover {
         background-position: 0% 0%;
-    border-color: #399;
+    border-color: #508acb;
     box-shadow: 0 1px #e1e0e0;
         text-decoration: none;
         background-image: linear-gradient(top,#4cd8d8,#03c9c9);
@@ -1078,7 +1078,7 @@ button.formbutton {
     }
 
     #hd .search-suggest__item--history {
-        color: #399;
+        color: #508acb;
     }
 
     #hd .search-suggest__item--over {
@@ -1233,7 +1233,7 @@ button.formbutton {
             padding-right: 21px;
             border-color: #1e9293;
             background: #FFF;
-            color: #399;
+            color: #508acb;
             zoom: 1;
             -webkit-transition: none;
             -moz-transition: none;
@@ -1247,7 +1247,7 @@ button.formbutton {
     }
 
     #hd .hover .tri, #hd .info-link:hover .tri {
-        border-top-color: #399;
+        border-top-color: #508acb;
     }
 
     #hd .info-item--logout .info-link, #hd .info-item--login .info-link, #hd .info-item--signup .info-link {
@@ -1358,7 +1358,7 @@ button.formbutton {
     }
 
         #hd .dropdown-menu--text .dropdown-menu__item:hover {
-            color: #399;
+            color: #508acb;
             background: #f8f8f8;
         }
 
@@ -1379,7 +1379,7 @@ button.formbutton {
         }
 
             #hd .dropdown-menu--deal .dropdown-menu__item .deal-link:hover {
-                color: #399;
+                color: #508acb;
                 text-decoration: none;
             }
 
@@ -1442,7 +1442,7 @@ button.formbutton {
         }
 
         #hd .dropdown-menu--history .clear__btn {
-            color: #399;
+            color: #508acb;
         }
 
             #hd .dropdown-menu--history .clear__btn:hover {
@@ -2449,7 +2449,7 @@ button.formbutton {
         }
 
             #sidebar .side-single .inner-img-blk:hover {
-                color: #399;
+                color: #508acb;
                 text-decoration: none;
             }
 
@@ -2717,7 +2717,7 @@ button.formbutton {
 
                 #sidebar .side-rank-deals h6 a:hover {
                     text-decoration: none;
-                    color: #399;
+                    color: #508acb;
                 }
 
         #sidebar .side-rank-deals li {
@@ -3252,7 +3252,7 @@ button.formbutton {
     }
 
     .table-section table .op .refund, .table-section table .op .order-cancel, .table-section table .op .order-delete {
-        color: #399;
+        color: #508acb;
         background: transparent;
         border: 0;
         cursor: pointer;
@@ -3888,7 +3888,7 @@ button.formbutton {
                 border-radius: 2px;
                 text-decoration: none;
                 color: #FFF;
-                background-color: #45abab;
+                background-color: #508acb;
             }
 
                 #filter .filter-section-wrapper .item a:hover span {
@@ -3897,7 +3897,7 @@ button.formbutton {
 
     #filter .filter-section-wrapper .current a {
         border-radius: 2px;
-        background-color: #45abab;
+        background-color: #508acb;
         color: #FFF;
     }
 
@@ -4123,7 +4123,7 @@ button.formbutton {
                 border-radius: 2px;
                 text-decoration: none;
                 color: #FFF;
-                background-color: #45abab;
+                background-color: #508acb;
             }
 
         #filter .hot-tag-wrapper .hot {
@@ -4571,7 +4571,7 @@ button.formbutton {
     }
 
         .normal-deal-list .item h3 a:hover .xtitle, .normal-deal-list .item h3 a:hover .short-title {
-            color: #399;
+            color: #508acb;
         }
 
 .normal-deal-list .item .buy {
@@ -4675,7 +4675,7 @@ button.formbutton {
     }
 
     .normal-deal-list .item .rate-info:hover, .normal-deal-list .item .rate-info:hover .rate-info__count {
-        color: #399;
+        color: #508acb;
         text-decoration: none;
     }
 
@@ -4967,14 +4967,14 @@ button.formbutton {
         background: url(http://s0.meituan.net/www/css/i/icon-arrow.png) no-repeat 29px -22px;
         float: right;
         padding: 10px 20px 0 0;
-        color: #399;
+        color: #508acb;
         margin: 0;
         *float: none;
         *margin-left: 70px;
     }
 
         #deal-share a.collapse:hover {
-            color: #399;
+            color: #508acb;
             text-decoration: underline;
         }
 
@@ -5374,7 +5374,7 @@ button.formbutton {
         height: 0;
         width: 0;
         border: 5px dashed transparent;
-        border-top: 5px solid #399;
+        border-top: 5px solid #508acb;
         font-size: 0;
         line-height: 0;
     }
@@ -7208,7 +7208,7 @@ body.yui-skin-sam .yui-panel .bd {
     }
 
         .growth-side-info .upgrade-help:hover {
-            color: #399;
+            color: #508acb;
             text-decoration: none;
         }
 
@@ -7591,7 +7591,7 @@ body.yui-skin-sam .yui-panel .bd {
 
     #movie-filter-switch .selected {
         padding-bottom: 6px;
-        border-bottom: 2px solid #45abab;
+        border-bottom: 2px solid #508acb;
         color: #666;
     }
 
@@ -7643,7 +7643,7 @@ body.yui-skin-sam .yui-panel .bd {
                 }
 
                     .bg-for-new-header #hd .site-info li a:hover {
-                        color: #399;
+                        color: #508acb;
                     }
 
             .bg-for-new-header #hd .site-info .mobile {
@@ -7863,7 +7863,7 @@ body.yui-skin-sam .yui-panel .bd {
 }
 
     .mobile-info__link:hover {
-        color: #399;
+        color: #508acb;
         text-decoration: none;
     }
 
@@ -7914,7 +7914,7 @@ body.yui-skin-sam .yui-panel .bd {
 }
 
     .user-info__logout:hover {
-        color: #399;
+        color: #508acb;
     }
 
 .user-info__name {
@@ -7966,7 +7966,7 @@ body.yui-skin-sam .yui-panel .bd {
     margin: 0;
     text-decoration: none;
     background: #FFF;
-    color: #399;
+    color: #508acb;
     border-left: 1px solid #DDD;
     border-right: 1px solid #DDD;
     box-shadow: 1px -1px 2px rgba(203,203,203,0.5);
@@ -8037,7 +8037,7 @@ body.yui-skin-sam .yui-panel .bd {
 }
 
     #site-mast .dropdown-menu--text .dropdown-menu__item:hover {
-        color: #399;
+        color: #508acb;
         background: #f8f8f8;
     }
 
@@ -8060,7 +8060,7 @@ body.yui-skin-sam .yui-panel .bd {
     }
 
         #site-mast .dropdown-menu--deal .dropdown-menu__item .deal-link:hover {
-            color: #399;
+            color: #508acb;
             text-decoration: none;
         }
 
@@ -8122,7 +8122,7 @@ body.yui-skin-sam .yui-panel .bd {
     }
 
     #site-mast .dropdown-menu--history .clear__btn {
-        color: #399;
+        color: #508acb;
     }
 
         #site-mast .dropdown-menu--history .clear__btn:hover {
@@ -8191,7 +8191,7 @@ body.yui-skin-sam .yui-panel .bd {
     #site-mast .dropdown--history .hover, #site-mast .dropdown--history:hover .dropdown__toggle {
         _margin-top: 0;
         border-top: 1px solid #DDD;
-        color: #399;
+        color: #508acb;
         box-shadow: none;
     }
 
@@ -8390,7 +8390,7 @@ body.yui-skin-sam .yui-panel .bd {
 }
 
 #site-mast .search-suggest__item--history {
-    color: #399;
+    color: #508acb;
 }
 
 #site-mast .search-suggest__item--over {
@@ -9044,7 +9044,7 @@ body.yui-skin-sam .yui-panel .bd {
 
     .filter-sect-list .current, .filter-sect-list a:hover {
         border-radius: 2px;
-        background: #45abab;
+        background: #508acb;
         color: #FFF;
         _text-decoration: none;
     }

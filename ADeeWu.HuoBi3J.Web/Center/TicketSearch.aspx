@@ -63,7 +63,7 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
     <div>
-        <img src="/images/centerbiaoti.png" width="950px" alt="全民营销——即时通讯营销平台">
+        <img src="/images/centerbiaoti.png" width="950px" alt="货比三家——即时通讯营销平台">
     </div>
 
     <div id="center">
