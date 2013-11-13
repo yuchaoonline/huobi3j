@@ -116,10 +116,12 @@
     <Content Include="images\biaoti111.psd" />
     <Content Include="images\biaotiqie1.psd" />
     <Content Include="images\centerbiaoti.psd" />
-    <Content Include="images\logo_r.psd" />
     <Content Include="images\nav_current2.psd" />
+    <Content Include="images\news.gif" />
     <Content Include="images\radius_3_r11.psd" />
     <Content Include="images\radius_3_rl11.psd" />
+    <Content Include="images\ss.gif" />
+    <Content Include="images\ss_1.gif" />
     <Content Include="JS\bootstrap.js" />
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery.key.js" />
@@ -1325,9 +1327,7 @@
     <Content Include="images\login_QMT.gif" />
     <Content Include="images\Logo.gif" />
     <Content Include="images\logo.jpg" />
-    <Content Include="images\Logo2.gif" />
     <Content Include="images\logo_m.jpg" />
-    <Content Include="images\logo_r.jpg" />
     <Content Include="images\m01.gif" />
     <Content Include="images\m02.gif" />
     <Content Include="images\Menu_Bar.gif" />

@@ -10,6 +10,9 @@
     <script type="text/javascript" src="/js/user.js"></script>
     <script type="text/javascript">
         $(function () {
+            $('.currentSelect').removeClass('currentSelect');
+            $('#btnPageSearchKey').parent().addClass('currentSelect');
+
             var val = $('.txtKeyword').val();
             if(val=='')
                 val='输入搜索关键字';
