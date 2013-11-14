@@ -17,6 +17,37 @@
                 top: 0;
                 left: 0;
             }
+
+        .STYLE6 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .STYLE7 {
+            font-size: 24px;
+            font-family: "黑体";
+            font-weight: bold;
+            color: #777777;
+        }
+
+        .STYLE8 {
+            font-family: "黑体";
+        }
+
+        .STYLE9 {
+            font-family: Arial;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff9801;
+        }
+
+        .STYLE10 {
+            font-family: Arial;
+            font-size: 60px;
+            color: #ff9801;
+            font-weight: bold;
+        }
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
     <script type="text/javascript">
@@ -36,7 +67,7 @@
             $('.add_fav').click(function () {
                 var userid = $(this).attr('href');
                 userid = userid.substring(1, userid.length);
-                $.getJSON('/ajax/center.ashx', {method: 'addfav', userid: userid }, function (data) {
+                $.getJSON('/ajax/center.ashx', { method: 'addfav', userid: userid }, function (data) {
                     if (data && data.statue) {
                         alert('收藏成功！');
                     } else {
@@ -69,7 +100,7 @@
             <div id="deal-default">
                 <div id="bdw" class="bdw">
                     <div id="bd" class="cf">
-                        <div class="bread-nav">
+                        <div class="bread-nav" style="margin-bottom: 10px;">
                             <a href="default.aspx">返现首页</a>
                             <span>»</span>
                             <a href="key4product.aspx?kid=<%# Eval("kid") %>"><%#Eval("kname") %></a>
@@ -79,14 +110,14 @@
                         <div id="content">
                             <div id="deal-intro" class="cf">
                                 <div class="main">
-                                    <div class="deal-discount">
-                                        <span class="price"><span class="symbol-RMB">¥</span> <%#GetDecimal(Eval("price"),2) %></span>
-                                    </div>
+                                    <span class="STYLE9">￥</span>
+                                    <span class="STYLE10">8.00</span>
                                 </div>
-                                <div class="deal-brand">
-                                    【<%#Eval("kname") %>】
-                                    <h1 class="inline-block"><%#Eval("simpledesc") %></h1>
-                                    <h2 class="deal-title">商家名称：<%#Eval("companyname") %><a href="#<%# Eval("createuserid") %>" class="add_fav btn_blue">收藏</a></h2>
+                                <div class="deal-brand" style="margin-bottom: 15px;">
+                                    【<%#Eval("kname") %>】<span class="inline-block STYLE6"><%#Eval("simpledesc") %></span>
+                                    <a href="#<%# Eval("createuserid") %>" style="float: right;" class="add_fav btn_blue">收藏</a>
+                                    <br />
+                                    <span class="inline-block STYLE7" style="padding-left: 15px;">商家名称：<%#Eval("companyname") %></span>
                                 </div>
                             </div>
                             <div id="J-content-navbar" class="content-navbar">
@@ -123,11 +154,14 @@
                                                     <div class="all-biz cf">
                                                         <div class="biz-info biz-info--open biz-info--first biz-info--only" id="yui_3_8_0_1">
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %></div>
+                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %>
+                                                            </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
+                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %>
+                                                            </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %></div>
+                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -154,7 +188,7 @@
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
                                                             <td class="arc_title"><%# GetDecimal(Eval("price"),2) %></td>
                                                             <td><%# Eval("simpledesc") %></td>
-                                                            <td><a href="key4product.aspx?kid=<%# Eval("kid") %>" ><%# Eval("kname") %></a></td>
+                                                            <td><a href="key4product.aspx?kid=<%# Eval("kid") %>"><%# Eval("kname") %></a></td>
                                                             <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
                                                             <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue" target="_blank">查看</a></td>
                                                         </tr>

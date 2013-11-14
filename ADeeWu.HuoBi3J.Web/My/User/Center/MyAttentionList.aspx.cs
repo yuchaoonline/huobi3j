@@ -18,6 +18,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             {
                 BandData(this.LoginUser.UserID);
                 CalCoin();
+                CalQRCount();
             }
         }
 
@@ -25,6 +26,12 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
         {
             var coin = DataBase.Create().ExecuteScalar("select sum(coin) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
             litCoin.Text = coin == null ? "0" : coin.ToString();
+        }
+
+        private void CalQRCount()
+        {
+            var count = DataBase.Create().ExecuteScalar("select count(*) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
+            litQRCount.Text = count == null ? "0" : count.ToString();
         }
 
         private void BandData(long uid)

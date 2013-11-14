@@ -76,7 +76,7 @@
                 var bssw = bs.getSouthWest();   //可视区域左下角
                 var bsne = bs.getNorthEast();   //可视区域右上角
                 var keyword = '<%=Request["keyword"]%>';
-                console.log("当前地图可视范围是：" + bssw.lng + "," + bssw.lat + "到" + bsne.lng + "," + bsne.lat);
+                //console.log("当前地图可视范围是：" + bssw.lng + "," + bssw.lat + "到" + bsne.lng + "," + bsne.lat);
 
                 $.getJSON('/ajax/center.ashx', { method: 'getpricedata', bssw_lng: bssw.lng, bssw_lat: bssw.lat, bsne_lng: bsne.lng, bsne_lat: bsne.lat,keyword: keyword }, function (data) {
                     if (data && data.statue) {

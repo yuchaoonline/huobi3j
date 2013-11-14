@@ -200,11 +200,11 @@
         #deal-other-biz .item-list a:hover {
             background: #f9fafa;
             text-decoration: none;
-            color: #0BB;
+            color: #508acb;
         }
 
             #deal-other-biz .item-list a:hover .value, #deal-other-biz .item-list a:hover .value-cn, #deal-other-biz .item-list a:hover .biz-title, #deal-other-biz .item-list a:hover .sale {
-                color: #0BB;
+                color: #508acb;
             }
 
     #deal-other-biz .item-list .first {
@@ -345,8 +345,7 @@
     }
 
     #deal-intro .deal-brand {
-        padding: 9px 20px 5px 0;
-        font: normal bold 28px/1.4 'Microsoft Yahei','黑体',Tahoma,Helvetica,arial,sans-serif;
+        font: normal bold 36px 'Microsoft Yahei','黑体',Tahoma,Helvetica,arial,sans-serif;
         color: #000;
     }
 
@@ -367,14 +366,11 @@
     #deal-intro .main {
         position: relative;
         float: left;
-        margin-bottom: 16px;
-        margin-left: -15px;
-        margin-right: 30px;
-        margin-top: 14px;
-        padding-top: 63px;
-        width: 208px;
+        margin-left: 20px;
+        margin-top: 10px;
+        margin-right: 20px;
+        line-height: 60px;
         _display: inline;
-        background: #f4f4f4;
         font-family: Helvetica,arial,sans-serif;
     }
 
@@ -1118,7 +1114,7 @@
             text-decoration: none;
             border: 1px solid #CCC;
             border-radius: 1px;
-            color: #0bb;
+            color: #508acb;
             font: 12px/12px arial;
             line-height: 20px;
         }
@@ -1137,12 +1133,12 @@
 
         #side-business .page-nav .previous .tri {
             left: 4px;
-            border-right: 4px solid #0bb;
+            border-right: 4px solid #508acb;
         }
 
         #side-business .page-nav .next .tri {
             right: 4px;
-            border-left: 3px solid #0bb;
+            border-left: 3px solid #508acb;
         }
 
         #side-business .page-nav .next .disable {
@@ -1156,7 +1152,7 @@
         #side-business .page-nav .current {
             background-color: #edfffe;
             border-color: #badfde;
-            color: #0bb;
+            color: #508acb;
         }
 
     #side-business .poi-link {
@@ -1382,7 +1378,7 @@
         _border-left: 0;
         border-right: 1px solid #e0e0e0;
         outline: 0;
-        color: #0bb;
+        color: #508acb;
         text-decoration: none;
         *zoom: 1;
         _display: inline;
@@ -2316,7 +2312,7 @@
 
     .pg-deal-verify .protect-item__link:hover {
         text-decoration: none;
-        color: #0BB;
+        color: #508acb;
     }
 
 .pg-deal-verify .protect-item__emphasis, .pg-deal-verify .protect-item--expiring {
@@ -3001,7 +2997,7 @@
 }
 
 #consult-list .item a {
-    color: #0BB!important;
+    color: #508acb!important;
 }
 
 #referral-lottery-dialog .body {

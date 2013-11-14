@@ -122,6 +122,7 @@
     <Content Include="images\radius_3_rl11.psd" />
     <Content Include="images\ss.gif" />
     <Content Include="images\ss_1.gif" />
+    <Content Include="images\tit_bg.gif" />
     <Content Include="JS\bootstrap.js" />
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery.key.js" />
