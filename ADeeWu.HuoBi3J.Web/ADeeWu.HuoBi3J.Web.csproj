@@ -157,7 +157,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <None Include="Properties\PublishProfiles\huobi3j.pubxml" />
     <Content Include="ueditor\net\fileUp.ashx" />
     <Content Include="ueditor\net\getContent.ashx" />
     <Content Include="ueditor\net\getMovie.ashx" />
