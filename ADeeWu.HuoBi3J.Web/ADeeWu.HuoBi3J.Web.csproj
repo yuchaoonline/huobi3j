@@ -132,6 +132,7 @@
     <Content Include="MIndex.master" />
     <Content Include="MMain.Master" />
     <Content Include="MMyUser.master" />
+    <Content Include="MobileRegister.aspx" />
     <Content Include="My\User\Center\EditPrice4Key.aspx" />
     <Content Include="My\User\Center\MyFavList.aspx" />
     <Content Include="My\User\Center\PriceCount4Key.aspx" />
@@ -588,6 +589,13 @@
     </Compile>
     <Compile Include="MobileLogin.aspx.designer.cs">
       <DependentUpon>MobileLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MobileRegister.aspx.cs">
+      <DependentUpon>MobileRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MobileRegister.aspx.designer.cs">
+      <DependentUpon>MobileRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\AttentionKey.aspx.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>

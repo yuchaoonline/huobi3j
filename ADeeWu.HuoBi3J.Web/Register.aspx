@@ -105,7 +105,7 @@ $(function() {
             <li class="zoom">
                 <span class="db l form_title font14">验证码：</span>
                 <asp:TextBox ID="txtValidCode" runat="server" Width="50px" CssClass="input_text"></asp:TextBox>
-                <img src="ValidateCode.aspx" class="varify_code" width="75ox" height="21px" alt="验证码" />
+                <img src="ValidateCode.aspx" class="varify_code" width="75" height="21" alt="验证码" />
             </li>
             <li>
                 <asp:Button ID="btnSubmit" runat="server" Text="注册" OnClick="btnSubmit_Click" CssClass="btn_blue btn_regist" />

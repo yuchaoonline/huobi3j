@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>登录 - 货比三家</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link href="/CSS/bootstrap.css" rel="stylesheet">
+    <title>注册 - 货比三家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <link href="/CSS/bootstrap-theme.css" rel="stylesheet" />
     <style type="text/css">
         body { padding-top: 70px; }
@@ -25,14 +25,14 @@
             <div class="panel-body">
                 <form role="form">
                     <div class="form-group">
-                        <input type="text" class="form-control input-lg" id="username" placeholder="用户名">
+                        <input type="text" class="form-control input-lg" id="username" placeholder="用户名" />
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control input-lg" id="Password" placeholder="密码">
+                        <input type="password" class="form-control input-lg" id="Password" placeholder="密码" />
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-lg" id="btnSubmit">登录</button>
-                        <span class="label label-warning">注册请访问http://www.huobi3j.com进行操作</span>
+                        <button class="btn btn-primary btn-lg" id="btnRegister">注册</button>
                     </div>
                 </form>
             </div>
@@ -67,6 +67,11 @@
                     }
                 })
 
+                return false;
+            })
+
+            $('#btnRegister').click(function () {
+                location.href = "/mobileregister.aspx?url=<%=Request["url"]%>";
                 return false;
             })
         })

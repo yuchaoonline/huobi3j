@@ -133,18 +133,6 @@ namespace ADeeWu.HuoBi3J.Web
                 return;
             }
 
-            //if (alipayAccount == "")
-            //{
-            //    ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg("请输入支付宝帐号!");
-            //    return;
-            //}
-
-            //if (name == "")
-            //{
-            //    ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg("请输入姓名!");
-            //    return;
-            //}
-
             string pwdMd5 = System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(pwd, "md5");
 
             db.Parameters.Append("@LoginName", loginName);
@@ -166,35 +154,6 @@ namespace ADeeWu.HuoBi3J.Web
                 Class.UserSession.Logout();
 
                 this.LoginUser = Class.UserSession.Login(db.Parameters["@ReturnUIN"].Value.ToString(), pwd, DateTime.Now);
-
-                //登记代理商推广痕迹
-                //var cookie = Request.Cookies["agent"];
-                //if (cookie != null)
-                //{
-                //    string agentUIN = cookie.Value;
-                //    if (agentUIN.Length > 0)
-                //    {
-                //        //检测用户是否存在
-                //        Model.Users entAgent = dal.GetEntity(new string[] { "UIN" }, agentUIN);
-                //        if (entAgent != null)
-                //        {
-                //            //判断是否存在该代理商，或该代理是否已通过审核
-                //            if (db.Exist("select ID from CA_QualifiedAgents where UserID={0} and CheckState=1", entAgent.ID))
-                //            {
-                //                DAL.CA_QualifiedAgentBusiness dalAgentBus = new ADeeWu.HuoBi3J.DAL.CA_QualifiedAgentBusiness();
-                //                Model.CA_QualifiedAgentBusiness entAgentBus = new ADeeWu.HuoBi3J.Model.CA_QualifiedAgentBusiness();
-                //                entAgentBus.CustomerCorpID = 0;
-                //                entAgentBus.CustomerUserID = this.LoginUser.UserID;//当前应该已自动登陆新注册帐户
-                //                entAgentBus.AgentUserID = entAgent.ID;
-                //                entAgentBus.CreateTime = DateTime.Now;
-                //                dalAgentBus.Add(entAgentBus);
-
-                //                cookie.Expires = DateTime.Now.AddDays(-1);
-                //                Response.Cookies.Add(cookie);
-                //            }
-                //        }
-                //    }
-                //}
 
                 ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg(this, "注册成功!", "/My/User");
             }

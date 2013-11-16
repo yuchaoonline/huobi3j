@@ -16,7 +16,6 @@ namespace ADeeWu.HuoBi3J.Web
 {
     public partial class MobileLogin : System.Web.UI.Page
     {
-
         protected void Page_Load(object sender, System.EventArgs e)
         {
             if (!IsPostBack)
