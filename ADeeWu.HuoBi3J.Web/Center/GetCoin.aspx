@@ -44,7 +44,7 @@
                     <asp:Repeater ID="rpProduct" runat="server">
                         <ItemTemplate>
                             <tr>
-                                <td><a href="Details.aspx?id=<%# Eval("id") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
+                                <td><a href="M_Details.aspx?id=<%# Eval("id") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
                                 <td><%# Eval("simpledesc") %></td>
                                 <td><%# Eval("kname") %></td>
                             </tr>

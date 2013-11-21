@@ -23,6 +23,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             {
                 SaleManInfo();
                 SaleManProduct();
+                RecordQRCount();
 
                 if (WebUtility.GetRequestStr("confirm", "")=="yes")
                 {
@@ -45,7 +46,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
         {
             var userid = WebUtility.GetRequestInt("salemanuserid", 0);
 
-            rpProduct.DataSource = db.Select(10, 1, "vw_key_product", "id", string.Format("createuserid = {0} and pname='{1}' and cname='{2}'", userid, AccountHelper.Province, AccountHelper.City), "price asc");
+            rpProduct.DataSource = db.Select("vw_key_product", string.Format("createuserid = {0} and pname='{1}' and cname='{2}'", userid, AccountHelper.Province, AccountHelper.City), "price asc");
             rpProduct.DataBind();
         }
 
@@ -98,6 +99,23 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
                     WebUtility.ShowMsg(this, "扫描成功，金币已入账！", "SaleMan4Product.aspx?userid=" + salemanUserID);
                 }
+            }
+        }
+
+        private void RecordQRCount()
+        {
+            if (LoginUser == null)
+            {
+                var salemanUserID = WebUtility.GetRequestInt("salemanuserid", 0);
+                var qrLog = new Model.Center_QR_Log
+                {
+                    Coin = 0,
+                    CreateDate = DateTime.Now,
+                    SaleManUserID = salemanUserID,
+                    UserID = -1,
+                    Demo = ""
+                };
+                qrLogDAL.Add(qrLog);
             }
         }
 

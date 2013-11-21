@@ -17,6 +17,10 @@
                 top: 0;
                 left: 0;
             }
+
+        .biz-item {
+            margin-bottom: 10px;
+        }
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
     <script type="text/javascript">
@@ -94,7 +98,7 @@
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
                                                             <td class="arc_title"><%# GetDecimal(Eval("price"),2) %></td>
                                                             <td><%# Eval("simpledesc") %></td>
-                                                            <td><a href="key4product.aspx?kid=<%# Eval("kid") %>" ><%# Eval("kname") %></a></td>
+                                                            <td><a href="key4product.aspx?kid=<%# Eval("kid") %>"><%# Eval("kname") %></a></td>
                                                             <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
                                                             <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue">查看</a></td>
                                                         </tr>
@@ -121,13 +125,16 @@
                                                 </div>
                                                 <div class="biz-wrapper biz-wrapper-nobottom">
                                                     <div class="all-biz cf">
-                                                        <div class="biz-info biz-info--open biz-info--first biz-info--only" id="yui_3_8_0_1">
+                                                        <div class="biz-info biz-info--open biz-info--first biz-info--only">
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %></div>
+                                                                <span style="font-size: 24px; color: #ff9801; font-family: 黑体;"><%# Eval("companyname") %></span>
+                                                            </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
+                                                                <label class="title-label">商家电话：</label><span style="font-family: Arial; font-size: 24px; font-weight: bold;"><%# Eval("phone") %></span>
+                                                            </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %></div>
+                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>

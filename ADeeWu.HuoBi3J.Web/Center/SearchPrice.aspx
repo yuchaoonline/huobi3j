@@ -66,6 +66,7 @@
             map.centerAndZoom('<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>', 14);
             map.addEventListener("tilesloaded", function () {
                 getData();
+                map.removeEventListener('tilesloaded');
             });
             map.addEventListener("dragend", function () {
                 getData();
@@ -85,9 +86,7 @@
                         if (products.length <= 0) {
                             alert('没有查询到 '+keyword+' 的报价信息，请尝试其他关键字！');
                             return false;
-                        }
-
-                        var allRows = "";
+                        }                        
                         $.each(products, function (index, item) {
                             var marker = new BMap.Marker(new BMap.Point(item.pointY, item.pointX));
                             map.addOverlay(marker);
@@ -97,23 +96,27 @@
                                 html += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
                                 html += '<td>' + product.price + '</td>';
                                 html += '<td>' + product.simpledesc + '</td>';
-                                html += '<td>' + product.companyname + '</td>';
+                                html += '<td><a href="SaleMan4Product.aspx?userid=' + product.salemanid + '" target="_blank">' + product.companyname + '</a></td>';
                                 html += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
                                 html += '</tr>';
-
-                                allRows += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
-                                allRows += '<td><a target="_blank" href="details.aspx?id=' + product.id + '">'+product.price+'</a></td>';
-                                allRows += '<td>' + product.simpledesc + '</td>';
-                                allRows += '<td>' + product.companyname + '</td>';
-                                allRows += '<td>' + product.bname + '</td>';
-                                allRows += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
-                                allRows += '</tr>';
                             })
                             html += '</tbody></table>';
 
                             //创建信息窗口
                             var infoWin = new BMap.InfoWindow(html);
                             marker.addEventListener("click", function () { this.openInfoWindow(infoWin); });
+                        })
+
+                        var allRows = "";
+                        var notsortproduct = JSON.parse(data.data2);
+                        $.each(notsortproduct, function (i, product) {
+                            allRows += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
+                            allRows += '<td><a target="_blank" href="details.aspx?id=' + product.id + '">' + product.price + '</a></td>';
+                            allRows += '<td>' + product.simpledesc + '</td>';
+                            allRows += '<td><a href="SaleMan4Product.aspx?userid=' + product.salemanid + '" target="_blank">' + product.companyname + '</a></td>';
+                            allRows += '<td>' + product.bname + '</td>';
+                            allRows += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">查看</a></td>';
+                            allRows += '</tr>';
                         })
                         $('#rentP_list1 tbody').empty().html(allRows);
                     } else {

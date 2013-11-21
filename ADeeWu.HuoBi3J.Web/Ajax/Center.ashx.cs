@@ -80,6 +80,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                 {
                     id = product["id"].ToString(),
                     companyname = product["companyname"].ToString(),
+                    salemanid = product["createuserid"].ToString(),
                     pointX = product["positionX"].ToString(),
                     pointY = product["positionY"].ToString(),
                     price = Utility.GetDecimal(product["price"], 0).ToString("F2"),
@@ -97,7 +98,8 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                         pointX = p.Key.Split(',').FirstOrDefault(),
                         pointY = p.Key.Split(',').LastOrDefault(),
                         data = p.Select(p1 => p1)
-                    }))
+                    })),
+                    data2 = JsonConvert.SerializeObject(datas),
                 });
         }
 
@@ -572,6 +574,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
         {
             public string id { get; set; }
             public string companyname { get; set; }
+            public string salemanid { get; set; }
             public string price { get; set; }
             public string pointX { get; set; }
             public string pointY { get; set; }

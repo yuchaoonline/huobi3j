@@ -30,7 +30,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         private void CalQRCount()
         {
-            var count = DataBase.Create().ExecuteScalar("select count(*) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
+            var count = DataBase.Create().ExecuteScalar("select count(*) from Center_QR_Log where userid = -1 and salemanuserid = " + SaleManSession.SaleMan.UserID);
             litQRCount.Text = count == null ? "0" : count.ToString();
         }
 

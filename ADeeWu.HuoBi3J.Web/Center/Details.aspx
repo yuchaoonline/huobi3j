@@ -48,6 +48,9 @@
             color: #ff9801;
             font-weight: bold;
         }
+        .biz-item{
+            margin-bottom: 10px;
+        }
     </style>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
     <script type="text/javascript">
@@ -101,7 +104,7 @@
                 <div id="bdw" class="bdw">
                     <div id="bd" class="cf">
                         <div class="bread-nav" style="margin-bottom: 10px;">
-                            <a href="default.aspx">返现首页</a>
+                            <a href="default.aspx">货比三家</a>
                             <span>»</span>
                             <a href="key4product.aspx?kid=<%# Eval("kid") %>"><%#Eval("kname") %></a>
                             <span>»</span>
@@ -111,14 +114,12 @@
                             <div id="deal-intro" class="cf">
                                 <div class="main">
                                     <span class="STYLE9">￥</span>
-                                    <span class="STYLE10">8.00</span>
+                                    <span class="STYLE10"><%# GetDecimal(Eval("price"),2) %></span>
                                 </div>
                                 <div class="deal-brand" style="margin-bottom: 15px;">
-                                    【<%#Eval("kname") %>】<span class="inline-block STYLE6"><%#Eval("simpledesc") %></span>
-                                    <a href="#<%# Eval("createuserid") %>" style="float: right;" class="add_fav btn_blue">收藏</a>
+                                    【<%#Eval("kname") %>】<span class="inline-block STYLE6"><%#Eval("simpledesc") %></span><a href="#<%# Eval("createuserid") %>" style="float: right;" class="add_fav btn_blue">收藏</a>
                                     <br />
-                                    <span class="inline-block STYLE7" style="padding-left: 15px;">商家名称：<%#Eval("companyname") %></span>
-                                </div>
+                                    <span class="inline-block STYLE7" style="padding-left: 15px;">商家名称：<%#Eval("companyname") %></span></div>
                             </div>
                             <div id="J-content-navbar" class="content-navbar">
                                 <ul class="cf">
@@ -152,16 +153,14 @@
                                                 </div>
                                                 <div class="biz-wrapper biz-wrapper-nobottom">
                                                     <div class="all-biz cf">
-                                                        <div class="biz-info biz-info--open biz-info--first biz-info--only" id="yui_3_8_0_1">
+                                                        <div class="biz-info biz-info--open biz-info--first biz-info--only">
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家名称：</label><%# Eval("companyname") %>
+                                                                <span style="font-size: 24px;color: #ff9801;font-family: 黑体;"><%# Eval("companyname") %></span>
                                                             </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %>
-                                                            </div>
+                                                                <label class="title-label">商家电话：</label><span style="font-family: Arial;font-size: 24px;font-weight: bold;"><%# Eval("phone") %></span></div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家电话：</label><%# Eval("phone") %>
-                                                            </div>
+                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
                                                         </div>
                                                     </div>
                                                 </div>

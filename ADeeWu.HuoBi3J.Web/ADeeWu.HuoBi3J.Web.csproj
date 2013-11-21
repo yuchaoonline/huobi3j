@@ -91,6 +91,7 @@
     <Content Include="Center\ChangeCity.aspx" />
     <Content Include="Center\Default.aspx" />
     <Content Include="Center\GetCoin.aspx" />
+    <Content Include="Center\M_Details.aspx" />
     <Content Include="Center\Question.aspx" />
     <Content Include="Center\QuestionList.aspx" />
     <Content Include="Center\SaleMan4Product.aspx" />
@@ -546,6 +547,13 @@
     </Compile>
     <Compile Include="Center\GetCoin.aspx.designer.cs">
       <DependentUpon>GetCoin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Center\M_Details.aspx.cs">
+      <DependentUpon>M_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\M_Details.aspx.designer.cs">
+      <DependentUpon>M_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\Question.aspx.cs">
       <DependentUpon>Question.aspx</DependentUpon>
