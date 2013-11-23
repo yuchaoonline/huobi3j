@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADeeWu.HuoBi3J.Model", "ADeeWu.HuoBi3J.Model\ADeeWu.HuoBi3J.Model.csproj", "{64338C1C-0901-4EEF-BF2F-07B88FE39A30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADeeWu.HuoBi3J.SQL", "ADeeWu.HuoBi3J.SQL\ADeeWu.HuoBi3J.SQL.csproj", "{218BCCA1-066C-4EA2-9D8E-00E19C2781FA}"
@@ -19,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D5B32C
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADeeWu.HuoBi3J.DAL", "ADeeWu.HuoBi3J.DAL\ADeeWu.HuoBi3J.DAL.csproj", "{6215E0D9-BF69-420B-8776-119BAD4AD09D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADeeWu.HuoBi3J.MobileService", "ADeeWu.HuoBi3J.MobileService\ADeeWu.HuoBi3J.MobileService.csproj", "{5AD85CE5-5EA6-4967-BBC3-48DE662AEC44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,10 @@ Global
 		{6215E0D9-BF69-420B-8776-119BAD4AD09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6215E0D9-BF69-420B-8776-119BAD4AD09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6215E0D9-BF69-420B-8776-119BAD4AD09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AD85CE5-5EA6-4967-BBC3-48DE662AEC44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AD85CE5-5EA6-4967-BBC3-48DE662AEC44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AD85CE5-5EA6-4967-BBC3-48DE662AEC44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AD85CE5-5EA6-4967-BBC3-48DE662AEC44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
