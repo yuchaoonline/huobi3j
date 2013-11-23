@@ -17,7 +17,7 @@
     <form id="form1" runat="server">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-                <h4><span style="color: blue;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
+                <h4><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
             </div>
         </nav>
         <div class="container">
@@ -25,7 +25,7 @@
                 <ItemTemplate>
                     <div class="panel panel-primary">
                         <div class="panel-heading">报价</div>
-                        <div class="panel-body" style="font-weight: bold; font-size: 1.2em;">【<%# Eval("kname") %>】<%# Eval("simpledesc") %><span style="font-size: 2em;background-color: #f0ad4e;" class="badge pull-right label-warning"><%# GetDecimal(Eval("price"),2) %></span></div>                     
+                        <div class="panel-body" style="font-weight: bold; font-size: 1.2em;"><span style="font-size: 2em;background-color: #f0ad4e;" class="badge label-warning"><%# GetDecimal(Eval("price"),2) %></span>【<%# Eval("kname") %>】<%# Eval("simpledesc") %></div>                     
                     </div>
 
                     <div class="panel panel-primary">
@@ -56,7 +56,7 @@
                             <asp:Repeater ID="rpOtherPrice" runat="server">
                                 <ItemTemplate>
                                     <tr>
-                                        <td><a href="Details.aspx?id=<%# Eval("id") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
+                                        <td><a href="M_Details.aspx?id=<%# Eval("id") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
                                         <td><%# Eval("simpledesc") %></td>
                                         <td><%# Eval("kname") %></td>
                                     </tr>

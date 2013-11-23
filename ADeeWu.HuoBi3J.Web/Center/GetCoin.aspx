@@ -17,7 +17,7 @@
     <form id="form1" runat="server">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <h4><span style="color: blue;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
+            <h4><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
         </div>
     </nav>
         <div class="container">

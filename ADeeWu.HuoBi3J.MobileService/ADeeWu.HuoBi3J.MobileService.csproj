@@ -167,10 +167,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\JsonResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -288,10 +291,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.DAL\ADeeWu.HuoBi3J.DAL.csproj">
+      <Project>{6215e0d9-bf69-420b-8776-119bad4ad09d}</Project>
+      <Name>ADeeWu.HuoBi3J.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.Libary\ADeeWu.HuoBi3J.Libary.csproj">
+      <Project>{0b2961cc-0b54-4cb7-8c87-922c270b2a22}</Project>
+      <Name>ADeeWu.HuoBi3J.Libary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.Model\ADeeWu.HuoBi3J.Model.csproj">
+      <Project>{64338c1c-0901-4eef-bf2f-07b88fe39a30}</Project>
+      <Name>ADeeWu.HuoBi3J.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ADeeWu.HuoBi3J.SQL\ADeeWu.HuoBi3J.SQL.csproj">
+      <Project>{218bcca1-066c-4ea2-9d8e-00e19c2781fa}</Project>
+      <Name>ADeeWu.HuoBi3J.SQL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
