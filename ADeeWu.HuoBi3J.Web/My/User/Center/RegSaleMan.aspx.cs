@@ -29,11 +29,11 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     txtJob.Text = entApplication.Job;
                     litMemo.Text = entApplication.Memo;
                     hfPosition.Value = entApplication.PositionX + "|" + entApplication.PositionY;
-                    litQR.Text = string.Format("<img width='200px' src=salemanqr.aspx?s={0} alt='扫描二维码' />", HttpUtility.UrlEncode("http://" + Request.Url.Host+":" +Request.Url.Port + "/center/getCoin.aspx?salemanuserid=" + entApplication.UserID));
+                    litQR.Text = string.Format("<img width='200px' src=salemanqr.aspx?s={0} alt='扫描二维码' />", HttpUtility.UrlEncode("http://" + Request.Url.Host + ":" + Request.Url.Port + "/center/getCoin.aspx?salemanuserid=" + entApplication.UserID));
 
                     this.labTips.Text = "提交申请需要重新审核！";
                     this.btnSubmit.OnClientClick = "return cofirm('确认要重新提交吗？修改信息后需要重新通过审核！')";
-                    
+
                     this.phCheckState.Visible = true;
                     this.liteCheckState.Text = ADeeWu.HuoBi3J.Libary.WebUtility.Switch(
                         entApplication.CheckState.ToString(),
@@ -95,8 +95,8 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             entApplication.Job = txtJob.Text;
             entApplication.Name = txtName.Text;
             var position = hfPosition.Value.Split(new char[] { '|' });
-            entApplication.PositionX = position[0];
-            entApplication.PositionY = position[1];
+            entApplication.PositionX = Utility.GetFloat(position[0], 0);
+            entApplication.PositionY = Utility.GetFloat(position[1], 0);
 
             if (isAdd)
             {

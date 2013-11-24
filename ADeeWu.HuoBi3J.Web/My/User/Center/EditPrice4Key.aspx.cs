@@ -77,7 +77,9 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 var txtPrice = WebUtility.GetRequestStr("price", "");
                 var txtSimpleDesc = WebUtility.GetRequestStr("simpledesc", "");
                 var txtDesc = WebUtility.GetRequestStr("description", "");
-                var selectAttribute = WebUtility.GetRequestStr("selectattribute", "");
+                var selecttype = WebUtility.GetRequestStr("selecttype", "");
+                var selectprice = WebUtility.GetRequestStr("selecprice", "");
+                var selectsize = WebUtility.GetRequestStr("selectsize", "");
 
                 if (string.IsNullOrWhiteSpace(txtPrice))
                 {
@@ -109,7 +111,9 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     KID = kid,
                     Description = txtDesc,
                     Price = Utility.GetDecimal(txtPrice, 0),
-                    SelectAttribute = selectAttribute,
+                    SelectType=selecttype,
+                    SelectPrice=selectprice,
+                    SelectSize = selectsize,
                     SimpleDesc = txtSimpleDesc,
                     CreateUserID = LoginUser.UserID,
                 };

@@ -44,7 +44,6 @@
                     alert('请选择价格!');
                     return false;
                 }
-                var selectValue = selecttype.html() + ';' + selectprice.html() + ';' + selectsize.html();
                 if (!price.val()) {
                     alert('价格不能为空！');
                     return false;
@@ -63,7 +62,7 @@
                     return false;
                 }
 
-                $.post(location.href, { method: 'post', selectattribute: selectValue, price: price.val(), simpledesc: simpledesc.val(), description: content,kid: '<%= product.KID%>' }, function (data) {
+                $.post(location.href, { method: 'post', selecttype: selecttype,selectprice:selectprice,selectsize:selectsize, price: price.val(), simpledesc: simpledesc.val(), description: content,kid: '<%= product.KID%>' }, function (data) {
                     var result = JSON.parse(data);
                     if (result.statue) {
                         alert('添加成功！');

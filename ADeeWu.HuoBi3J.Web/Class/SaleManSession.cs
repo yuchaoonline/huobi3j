@@ -67,8 +67,8 @@ namespace ADeeWu.HuoBi3J.Web.Class
                     Job = Utility.GetStr(saleMan["Job"], ""),
                     Memo = Utility.GetStr(saleMan["Memo"], ""),
                     Name = Utility.GetStr(saleMan["Name"], ""),
-                    PositionX = Utility.GetStr(saleMan["PositionX"], ""),
-                    PositionY = Utility.GetStr(saleMan["PositionY"], ""),
+                    PositionX = Utility.GetFloat(saleMan["PositionX"], 0),
+                    PositionY = Utility.GetFloat(saleMan["PositionY"], 0),
                 };
                 HttpContext.Current.Session["SaleMan"] = circleMan;
             }

@@ -7,7 +7,8 @@ using System.Text;
 using ADeeWu.HuoBi3J.SQL.ParameterCollection;
 using ADeeWu.HuoBi3J.SQL;
 
-namespace ADeeWu.HuoBi3J.DAL{
+namespace ADeeWu.HuoBi3J.DAL
+{
 	
 	public class CA_CircleSaleMan{
 	
@@ -33,7 +34,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		
 		public CA_CircleSaleMan()
 		{
-			this.db = ADeeWu.HuoBi3J.SQL.DataBase.Create();
+			this.db = DataBase.Create();
 		}
 		
 		
@@ -71,24 +72,24 @@ namespace ADeeWu.HuoBi3J.DAL{
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public long Add(ADeeWu.HuoBi3J.Model.CA_CircleSaleMan model)
+		public int Add(ADeeWu.HuoBi3J.Model.CA_CircleSaleMan model)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@UserID",model.UserID );
 		db.Parameters.Append("@QQ",model.QQ );
 		db.Parameters.Append("@Phone",model.Phone );
 		db.Parameters.Append("@CompanyName",model.CompanyName );
 		db.Parameters.Append("@CompanyAddress",model.CompanyAddress );
 		db.Parameters.Append("@Job",model.Job );
-		db.Parameters.Append("@PositionX",model.PositionX );
-		db.Parameters.Append("@PositionY",model.PositionY );
+		db.Parameters.Append("@PositionX",model.PositionX.HasValue ? (object)model.PositionX.Value : (object)DBNull.Value );
+		db.Parameters.Append("@PositionY",model.PositionY.HasValue ? (object)model.PositionY.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CheckState",model.CheckState.HasValue ? (object)model.CheckState.Value : (object)DBNull.Value );
 		db.Parameters.Append("@ModifyTime",model.ModifyTime.HasValue ? (object)model.ModifyTime.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
 		    DataTable dt = db.Select("insert into [CA_CircleSaleMan]([Name],[UserID],[QQ],[Phone],[CompanyName],[CompanyAddress],[Job],[PositionX],[PositionY],[CheckState],[ModifyTime],[CreateTime],[Memo]) values (@Name,@UserID,@QQ,@Phone,@CompanyName,@CompanyAddress,@Job,@PositionX,@PositionY,@CheckState,@ModifyTime,@CreateTime,@Memo);select @@Identity;");
-			long newID = long.Parse(dt.Rows[0][0].ToString());
+			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
 		}
@@ -104,8 +105,8 @@ namespace ADeeWu.HuoBi3J.DAL{
 		db.Parameters.Append("@CompanyName",model.CompanyName );
 		db.Parameters.Append("@CompanyAddress",model.CompanyAddress );
 		db.Parameters.Append("@Job",model.Job );
-		db.Parameters.Append("@PositionX",model.PositionX );
-		db.Parameters.Append("@PositionY",model.PositionY );
+		db.Parameters.Append("@PositionX",model.PositionX.HasValue ? (object)model.PositionX.Value : (object)DBNull.Value );
+		db.Parameters.Append("@PositionY",model.PositionY.HasValue ? (object)model.PositionY.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CheckState",model.CheckState.HasValue ? (object)model.CheckState.Value : (object)DBNull.Value );
 		db.Parameters.Append("@ModifyTime",model.ModifyTime.HasValue ? (object)model.ModifyTime.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
@@ -230,8 +231,8 @@ namespace ADeeWu.HuoBi3J.DAL{
 			Entity.CompanyName = dr["CompanyName"] as string;
 			Entity.CompanyAddress = dr["CompanyAddress"] as string;
 			Entity.Job = dr["Job"] as string;
-			Entity.PositionX = dr["PositionX"] as string;
-			Entity.PositionY = dr["PositionY"] as string;
+			Entity.PositionX = dr["PositionX"] as double?;
+			Entity.PositionY = dr["PositionY"] as double?;
 			Entity.CheckState = dr["CheckState"] as int?;
 			Entity.ModifyTime = dr["ModifyTime"] as DateTime?;
 			Entity.CreateTime = dr["CreateTime"] as DateTime?;
@@ -261,8 +262,8 @@ namespace ADeeWu.HuoBi3J.DAL{
 			Entity.CompanyName = dr["CompanyName"] as string;
 			Entity.CompanyAddress = dr["CompanyAddress"] as string;
 			Entity.Job = dr["Job"] as string;
-			Entity.PositionX = dr["PositionX"] as string;
-			Entity.PositionY = dr["PositionY"] as string;
+			Entity.PositionX = dr["PositionX"] as double?;
+			Entity.PositionY = dr["PositionY"] as double?;
 			Entity.CheckState = dr["CheckState"] as int?;
 			Entity.ModifyTime = dr["ModifyTime"] as DateTime?;
 			Entity.CreateTime = dr["CreateTime"] as DateTime?;
@@ -302,8 +303,8 @@ namespace ADeeWu.HuoBi3J.DAL{
 				Entity.CompanyName = dr["CompanyName"] as string;
 				Entity.CompanyAddress = dr["CompanyAddress"] as string;
 				Entity.Job = dr["Job"] as string;
-				Entity.PositionX = dr["PositionX"] as string;
-				Entity.PositionY = dr["PositionY"] as string;
+				Entity.PositionX = dr["PositionX"] as double?;
+				Entity.PositionY = dr["PositionY"] as double?;
 				Entity.CheckState = dr["CheckState"] as int?;
 				Entity.ModifyTime = dr["ModifyTime"] as DateTime?;
 				Entity.CreateTime = dr["CreateTime"] as DateTime?;

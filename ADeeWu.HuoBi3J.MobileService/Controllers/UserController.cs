@@ -14,6 +14,12 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 {
     public class UserController : JsonController
     {
+        /// <summary>
+        /// 用户登录，http://mobile.huobi3j.com/user/login
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <param name="password">密码（不加密）</param>
+        /// <returns></returns>
         public ActionResult Login(string username,string password)
         {
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
@@ -49,6 +55,12 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             return GetJson(new JsonResponse { status = true, data = JsonConvert.SerializeObject(user) });
         }
 
+        /// <summary>
+        /// 注册用户，http://mobile.huobi3j.com/user/register
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <param name="password">密码（不加密）</param>
+        /// <returns></returns>
         public ActionResult Register(string username, string password)
         {
             ADeeWu.HuoBi3J.DAL.Users dal = new ADeeWu.HuoBi3J.DAL.Users();

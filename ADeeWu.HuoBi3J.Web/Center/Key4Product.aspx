@@ -121,7 +121,7 @@
                     <td class="arc_title"><%# GetMoney(Eval("[Price]")) %></td>
                     <td><%# Eval("[simpledesc]") %></td>
                    <td><a href="SaleMan4Product.aspx?userid=<%# Eval("createuserid") %>" target="_blank"><%# Eval("companyname") %></a></td>
-                    <td><%# Eval("[selectattribute]") %></td>             
+                    <td><%# Eval("[selecttype]") %>;<%# Eval("[selectprice]") %>;<%# Eval("[selectsize]") %></td>             
                     <td><a href="details.aspx?id=<%# Eval("[ID]") %>" class="btn_blue showinfo" title="ÏêÇé">ÏêÇé</a></td>
                 </tr>
             </tbody>

@@ -10,7 +10,9 @@ public class Key_Product{
 	private decimal _Price = 0M;
 	private string _SimpleDesc = null;
 	private string _Description = null;
-	private string _SelectAttribute = null;
+	private string _SelectType = null;
+	private string _SelectPrice = null;
+	private string _SelectSize = null;
 	private long? _CreateUserID = null;
 	#endregion
 	
@@ -26,17 +28,21 @@ public class Key_Product{
 			decimal price,
 			string simpleDesc,
 			string description,
-			string selectAttribute,
+			string selectType,
+			string selectPrice,
+			string selectSize,
 			long createUserID
 	)
 	{
-		_ID              = iD;
-			_KID             = kID;
-			_Price           = price;
-			_SimpleDesc      = simpleDesc;
-			_Description     = description;
-			_SelectAttribute = selectAttribute;
-			_CreateUserID    = createUserID;
+		_ID           = iD;
+			_KID          = kID;
+			_Price        = price;
+			_SimpleDesc   = simpleDesc;
+			_Description  = description;
+			_SelectType   = selectType;
+			_SelectPrice  = selectPrice;
+			_SelectSize   = selectSize;
+			_CreateUserID = createUserID;
 			
 	}
 	#endregion
@@ -46,7 +52,9 @@ public class Key_Product{
 	public decimal Price { set{ _Price = value; } get{ return _Price; }}
 	public string SimpleDesc { set{ _SimpleDesc = value; } get{ return _SimpleDesc; }}
 	public string Description { set{ _Description = value; } get{ return _Description; }}
-	public string SelectAttribute { set{ _SelectAttribute = value; } get{ return _SelectAttribute; }}
+	public string SelectType { set{ _SelectType = value; } get{ return _SelectType; }}
+	public string SelectPrice { set{ _SelectPrice = value; } get{ return _SelectPrice; }}
+	public string SelectSize { set{ _SelectSize = value; } get{ return _SelectSize; }}
 	public long? CreateUserID { set{ _CreateUserID = value; } get{ return _CreateUserID; }}
 }
 }

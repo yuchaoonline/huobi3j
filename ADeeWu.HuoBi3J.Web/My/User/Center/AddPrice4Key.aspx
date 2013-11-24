@@ -30,22 +30,21 @@
 
             var editor = UE.getEditor('editor');
             $('#btnSubmit').click(function () {
-                var selecttype = $('.select-type');
-                var selectprice = $('.select-price');
-                var selectsize = $('.select-size');
+                var selecttype = $('.select-type').html();
+                var selectprice = $('.select-price').html();
+                var selectsize = $('.select-size').html();
                 var price = $('input[name="txtPrice"]');
                 var simpledesc = $('input[name=txtSimple]');
                 var content = editor.getContent();
 
-                if (!selecttype.html()) {
+                if (!selecttype) {
                     alert('请选择类型!');
                     return false;
                 }
-                if (!selectprice.html()) {
+                if (!selectprice) {
                     alert('请选择价格!');
                     return false;
                 }
-                var selectValue = selecttype.html() + ';' + selectprice.html() + ';' + selectsize.html();
                 if (!price.val()) {
                     alert('价格不能为空！');
                     return false;
@@ -64,7 +63,7 @@
                     return false;
                 }
 
-                $.post(location.href, { method: 'post', selectattribute: selectValue, price: price.val(), simpledesc: simpledesc.val(), description: content }, function (data) {
+                $.post(location.href, { method: 'post', selecttype: selecttype,selectprice:selectprice,selectsize:selectsize, price: price.val(), simpledesc: simpledesc.val(), description: content }, function (data) {
                     var result = JSON.parse(data);
                     if (result.statue) {
                         alert('添加成功！');

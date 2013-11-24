@@ -45,7 +45,7 @@
                                             <%# Eval("simpledesc")%>
                                     </td>
                                     <td class="common">
-                                            <%# Eval("selectattribute")%>
+                                           类型：<%# Eval("selecttype")%>;价格：<%# Eval("selectprice")%>;其他：<%# Eval("selectsize")%>
                                     </td>
                                     <td class="num">
                                             <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# Eval("ClickCount") %></a>

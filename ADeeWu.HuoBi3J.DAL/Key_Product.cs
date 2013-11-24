@@ -7,7 +7,8 @@ using System.Text;
 using ADeeWu.HuoBi3J.SQL.ParameterCollection;
 using ADeeWu.HuoBi3J.SQL;
 
-namespace ADeeWu.HuoBi3J.DAL{
+namespace ADeeWu.HuoBi3J.DAL
+{
 	
 	public class Key_Product{
 	
@@ -33,7 +34,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		
 		public Key_Product()
 		{
-			this.db = ADeeWu.HuoBi3J.SQL.DataBase.Create();
+			this.db = DataBase.Create();
 		}
 		
 		
@@ -71,17 +72,19 @@ namespace ADeeWu.HuoBi3J.DAL{
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public long Add(ADeeWu.HuoBi3J.Model.Key_Product model)
+		public int Add(ADeeWu.HuoBi3J.Model.Key_Product model)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@KID",model.KID.HasValue ? (object)model.KID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Price",model.Price);
 		db.Parameters.Append("@SimpleDesc",model.SimpleDesc );
 		db.Parameters.Append("@Description",model.Description );
-		db.Parameters.Append("@SelectAttribute",model.SelectAttribute );
+		db.Parameters.Append("@SelectType",model.SelectType );
+		db.Parameters.Append("@SelectPrice",model.SelectPrice );
+		db.Parameters.Append("@SelectSize",model.SelectSize );
 		db.Parameters.Append("@CreateUserID",model.CreateUserID.HasValue ? (object)model.CreateUserID.Value : (object)DBNull.Value );
-		    DataTable dt = db.Select("insert into [Key_Product]([KID],[Price],[SimpleDesc],[Description],[SelectAttribute],[CreateUserID]) values (@KID,@Price,@SimpleDesc,@Description,@SelectAttribute,@CreateUserID);select @@Identity;");
-			long newID = long.Parse(dt.Rows[0][0].ToString());
+		    DataTable dt = db.Select("insert into [Key_Product]([KID],[Price],[SimpleDesc],[Description],[SelectType],[SelectPrice],[SelectSize],[CreateUserID]) values (@KID,@Price,@SimpleDesc,@Description,@SelectType,@SelectPrice,@SelectSize,@CreateUserID);select @@Identity;");
+			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
 		}
@@ -94,9 +97,11 @@ namespace ADeeWu.HuoBi3J.DAL{
 		db.Parameters.Append("@Price",model.Price);
 		db.Parameters.Append("@SimpleDesc",model.SimpleDesc );
 		db.Parameters.Append("@Description",model.Description );
-		db.Parameters.Append("@SelectAttribute",model.SelectAttribute );
+		db.Parameters.Append("@SelectType",model.SelectType );
+		db.Parameters.Append("@SelectPrice",model.SelectPrice );
+		db.Parameters.Append("@SelectSize",model.SelectSize );
 		db.Parameters.Append("@CreateUserID",model.CreateUserID.HasValue ? (object)model.CreateUserID.Value : (object)DBNull.Value );
-			return db.ExecuteSql("update [Key_Product] set [KID]=@KID,[Price]=@Price,[SimpleDesc]=@SimpleDesc,[Description]=@Description,[SelectAttribute]=@SelectAttribute,[CreateUserID]=@CreateUserID where [ID]=@ID");
+			return db.ExecuteSql("update [Key_Product] set [KID]=@KID,[Price]=@Price,[SimpleDesc]=@SimpleDesc,[Description]=@Description,[SelectType]=@SelectType,[SelectPrice]=@SelectPrice,[SelectSize]=@SelectSize,[CreateUserID]=@CreateUserID where [ID]=@ID");
 		}
 		
 	
@@ -213,7 +218,9 @@ namespace ADeeWu.HuoBi3J.DAL{
 			Entity.Price = decimal.Parse(dr["Price"].ToString());
 			Entity.SimpleDesc = dr["SimpleDesc"] as string;
 			Entity.Description = dr["Description"] as string;
-			Entity.SelectAttribute = dr["SelectAttribute"] as string;
+			Entity.SelectType = dr["SelectType"] as string;
+			Entity.SelectPrice = dr["SelectPrice"] as string;
+			Entity.SelectSize = dr["SelectSize"] as string;
 			Entity.CreateUserID = dr["CreateUserID"] as long?;
 			return Entity;
 		}
@@ -237,7 +244,9 @@ namespace ADeeWu.HuoBi3J.DAL{
 			Entity.Price = decimal.Parse(dr["Price"].ToString());
 			Entity.SimpleDesc = dr["SimpleDesc"] as string;
 			Entity.Description = dr["Description"] as string;
-			Entity.SelectAttribute = dr["SelectAttribute"] as string;
+			Entity.SelectType = dr["SelectType"] as string;
+			Entity.SelectPrice = dr["SelectPrice"] as string;
+			Entity.SelectSize = dr["SelectSize"] as string;
 			Entity.CreateUserID = dr["CreateUserID"] as long?;
 			return Entity;
 		}
@@ -271,7 +280,9 @@ namespace ADeeWu.HuoBi3J.DAL{
 				Entity.Price = decimal.Parse(dr["Price"].ToString());
 				Entity.SimpleDesc = dr["SimpleDesc"] as string;
 				Entity.Description = dr["Description"] as string;
-				Entity.SelectAttribute = dr["SelectAttribute"] as string;
+				Entity.SelectType = dr["SelectType"] as string;
+				Entity.SelectPrice = dr["SelectPrice"] as string;
+				Entity.SelectSize = dr["SelectSize"] as string;
 				Entity.CreateUserID = dr["CreateUserID"] as long?;
                 EntityList[i] = Entity;
             }

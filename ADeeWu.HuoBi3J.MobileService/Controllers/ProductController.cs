@@ -13,7 +13,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     {
         DataBase db = DataBase.Create();
         /// <summary>
-        /// 获取报价信息
+        /// 获取报价信息，http://mobile.huobi3j.com/product/details
         /// </summary>
         /// <param name="id">报价ID</param>
         /// <returns></returns>
@@ -26,7 +26,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         }
 
         /// <summary>
-        /// 获取商家的报价信息
+        /// 获取商家的报价信息，http://mobile.huobi3j.com/product/getproductofsaleman
         /// </summary>
         /// <param name="userid">用户ID</param>
         /// <param name="top">前N条</param>
@@ -43,7 +43,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         }
 
         /// <summary>
-        /// 搜索报价
+        /// 搜索报价，http://mobile.huobi3j.com/product/searchproduct
         /// </summary>
         /// <param name="keyword">关键字</param>
         /// <param name="lat">所在位置LAT</param>
@@ -66,12 +66,13 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var lng1 = lng + LNG_PER * radius / 100;
             var lng2 = lng - LNG_PER * radius / 100;
 
-            var strWhere = string.Format("cname='{4}' and pname='{5}' and dbo.f_ntof(positionX) BETWEEN {0} and {1} and dbo.f_ntof(positionY) between {2} and {3}", lat1, lat2, lng1, lng2, city, province);
+            var strWhere = string.Format("cname='{4}' and pname='{5}' and positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", lat1, lat2, lng1, lng2, city, province);
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 strWhere += string.Format(" and kname like '%{0}%'", keyword);
             }
             var products = db.Select("vw_Key_Product", strWhere, "price asc");
+            result = products.Clone();
             foreach (System.Data.DataRow product in products.Rows)
             {
                 var tempLat = double.Parse(product["positionX"].ToString());
@@ -79,12 +80,13 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 var distance = GetDistance(lat, lng, tempLat, tempLng);
                 distance = Math.Abs(distance);
                 if (radius >= distance)
-                    result.Rows.Add(product);
+                    result.ImportRow(product);
             }
 
             return GetJson(result.ToJson());
         }
 
+        #region 坐标计算
         /// <summary>
         /// 地球半径
         /// </summary>
@@ -100,7 +102,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         private static double rad(double d)
         {
             return d * Math.PI / 180.0;
-        } 
+        }
         /// <summary>
         /// 获取两个坐标点之间的距离，单位m，小数点后2位
         /// </summary>
@@ -118,8 +120,28 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             double s = 2 * Math.Asin(Math.Sqrt(Math.Pow(Math.Sin(a / 2), 2) + Math.Cos(radLat1) * Math.Cos(radLat2) * Math.Pow(Math.Sin(b / 2), 2)));
             s = s * EARTH_RADIUS;
-            s = Math.Round(s * 10000) / 10000;
+            s = Math.Round(s * 10000) / 10;
             return s;
-        }
+        } 
+        #endregion
+
+        //public ActionResult a()
+        //{
+        //    var dal = new DAL.Key_Product();
+        //    var products = dal.GetEntityList("", new string[] { }, new string[] { });
+        //    foreach (var product in products)
+        //    {
+        //        var attrs = product.SelectAttribute.Split(new char[] { ';' });
+        //        product.SelectAttribute = attrs[0].Split(new char[] { '：' }).LastOrDefault();
+        //        if (attrs.Count() >= 2)
+        //            product.SelectPrice = attrs[1].Split(new char[] { '：' }).LastOrDefault();
+        //        if (attrs.Count() >= 3)
+        //            product.SelectSize = attrs[2].Split(new char[] { '：' }).LastOrDefault();
+
+        //        dal.Update(product);
+        //    }
+
+        //    return Content("OK");
+        //}
     }
 }
