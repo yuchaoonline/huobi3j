@@ -129,9 +129,9 @@
                 <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>选择：</div>
                     <ul class="inline-block-list">
-                        <li class="item"><span class="select-type"> <%= product.SelectAttribute.Split(new char[]{';'}).FirstOrDefault(p=>p.Contains("类型")) %></span></li>                        
-                        <li class="item"><span class="select-price"><%= product.SelectAttribute.Split(new char[]{';'}).FirstOrDefault(p=>p.Contains("价格")) %></span></li>
-                        <li class="item"><span class="select-size"><%= product.SelectAttribute.Split(new char[]{';'}).FirstOrDefault(p=>p.Contains("其他")) %></span></li>
+                        <li class="item"><span class="select-type"> <%= product.SelectType %></span></li>                        
+                        <li class="item"><span class="select-price"><%= product.SelectPrice %></span></li>
+                        <li class="item"><span class="select-size"><%= product.SelectSize %></span></li>
                     </ul>
                 </div>
             </div>

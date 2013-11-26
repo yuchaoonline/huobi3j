@@ -63,7 +63,7 @@
                else
                { %>
             <div class="alert alert-warning">
-                您将获得10个金币，请先登陆            
+                登录后可获得10个金币，金币可在网站兑换金钱。         
             </div>
             <button type="button" id="btnLogin" class="btn btn-primary btn-block btn-lg">登录</button>
             <%} %>

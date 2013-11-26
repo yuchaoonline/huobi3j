@@ -64,25 +64,17 @@ namespace ADeeWu.HuoBi3J.Web.Center
                 strWhere += string.Format(" and (companyname like '%{0}%' or companyaddress like '%{0}%' or simpledesc like '%{0}%')",keyword);
             }
 
-            var selectAttribute = "";
             if (!string.IsNullOrWhiteSpace(selectType))
             {
-                selectAttribute += ";类型：" + selectType;
+                strWhere += string.Format(" and selecttype='{0}'", selectType);
             }
             if (!string.IsNullOrWhiteSpace(selectPrice))
             {
-                selectAttribute += ";价格：" + selectPrice;
+                strWhere += string.Format(" and selectPrice='{0}'", selectPrice);
             }
             if (!string.IsNullOrWhiteSpace(selectSize))
             {
-                selectAttribute += ";其他：" + selectSize;
-            }
-            
-            if (!string.IsNullOrWhiteSpace(selectAttribute))
-            {
-                if (selectAttribute.StartsWith(";"))
-                    selectAttribute = selectAttribute.Substring(1);
-                strWhere += string.Format(" and selectattribute like '%{0}%'", selectAttribute);
+                strWhere += string.Format(" and selectSize='{0}'", selectSize);
             }
 
             db.EnableRecordCount = true;

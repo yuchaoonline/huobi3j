@@ -17,6 +17,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
         protected void Page_Load(object sender, EventArgs e)
         {
             BandData();
+            AddClickCount();
         }
 
         private void BandData()
@@ -27,6 +28,27 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var product = db.Select("vw_key_product", "id = " + id, "price asc");
             rpProduct.DataSource = product;
             rpProduct.DataBind();
+        }
+
+        private void AddClickCount()
+        {
+            try
+            {
+                var id = WebUtility.GetRequestInt("id", 0);
+                if (id == 0) return;
+
+                new DAL.Common_Count_Click().Add(new Model.Common_Count_Click
+                {
+                    CreateDate = DateTime.Now,
+                    DataID = id,
+                    DataType = "center_product",
+                    IP = Request.UserHostAddress,
+                });
+            }
+            catch
+            {
+
+            }
         }
 
         protected void rpProduct_ItemDataBound(object sender, RepeaterItemEventArgs e)

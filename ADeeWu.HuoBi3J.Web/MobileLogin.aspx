@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>注册 - 货比三家</title>
+    <title>登录 - 货比三家</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <link href="/CSS/bootstrap-theme.css" rel="stylesheet" />
@@ -14,12 +14,24 @@
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <h4><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></a>
+            <button type="button" class="btn btn-default navbar-btn" id="btnApp">查看附近价格</button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li></li>
+                <li></li>
+            </ul>
         </div>
     </nav>
 
     <div class="container">
-        <%--<div class="alert alert-danger">超时请重新登录</div>--%>
         <div class="panel panel-primary">
             <div class="panel-heading">登录 - 货比三家</div>
             <div class="panel-body">
@@ -60,7 +72,7 @@
                     var data = JSON.parse(result);
                     if (data && data.statue) {
                         var url = '<%=Request["url"]%>';
-                        if(url=='') url = '/';
+                        if (url == '/mobilelogin.aspx') url = '/';
                         location.href = url;
                     } else {
                         alert(data.msg);
@@ -72,6 +84,11 @@
 
             $('#btnRegister').click(function () {
                 location.href = "/mobileregister.aspx?url=<%=Request["url"]%>";
+                return false;
+            })
+
+            $('#btnApp').click(function () {
+                alert('即将到来...');
                 return false;
             })
         })
