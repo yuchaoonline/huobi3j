@@ -17,6 +17,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// </summary>
         /// <param name="id">报价ID</param>
         /// <returns></returns>
+        [OutputCache(Duration = 3600, VaryByParam = "id")]
         public ActionResult Details(int id)
         {
             if (id == 0) return Json(new JsonResponse { status = false, message = "参数有误！" });
@@ -33,6 +34,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="city">所在城市，可以不填，默认佛山市</param>
         /// <param name="province">所在省份，可以不填，默认广东省</param>
         /// <returns></returns>
+        [OutputCache(Duration = 3600, VaryByParam = "userid;top;city;province")]
         public ActionResult GetProductOfSaleMan(int userid, int top, string city = "佛山市", string province = "广东省")
         {
             if (userid == 0) return Json(new JsonResponse { status = false, message = "参数有误！" });
@@ -56,9 +58,12 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="city">所在城市</param>
         /// <param name="province">所在省份</param>
         /// <returns></returns>
-        public ActionResult SearchProduct(string keyword, double lat, double lng, int radius, string type, string price, string size, string sort, string city = "佛山市", string province = "广东省")
+        [OutputCache(Duration = 3600, VaryByParam = "keyword;lat;lng;type;price;size;radius;sort;desc;city;province")]
+        public ActionResult SearchProduct(string keyword,string productprice, double lat, double lng, string type, string price, string size, int radius = 100, string sort = "price", string desc = "asc", string city = "佛山市", string province = "广东省")
         {
-            var result = new DataTable();
+            var result = new List<Product>();
+
+            if (radius > 1500) radius = 1500;
 
             //计算矩形四个点
             var lat1 = lat + LAT_PER * radius / 100;
@@ -71,8 +76,20 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             {
                 strWhere += string.Format(" and kname like '%{0}%'", keyword);
             }
-            var products = db.Select("vw_Key_Product", strWhere, "price asc");
-            result = products.Clone();
+            if (!string.IsNullOrWhiteSpace(type))
+            {
+                strWhere += string.Format(" and selecttype = {0}", type);
+            }
+            if (!string.IsNullOrWhiteSpace(price))
+            {
+                strWhere += string.Format(" and selectprice = {0}", price);
+            }
+            if (!string.IsNullOrWhiteSpace(size))
+            {
+                strWhere += string.Format(" and selectsize = {0}", size);
+            }
+            var sortdesc = sort + " " + desc;
+            var products = db.Select("vw_Key_Product", strWhere, sort.ToLower() == "distance" ? "" : sortdesc);
             foreach (System.Data.DataRow product in products.Rows)
             {
                 var tempLat = double.Parse(product["positionX"].ToString());
@@ -80,10 +97,53 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 var distance = GetDistance(lat, lng, tempLat, tempLng);
                 distance = Math.Abs(distance);
                 if (radius >= distance)
-                    result.ImportRow(product);
+                {
+                    result.Add(new Product
+                    {
+                        ID = product["ID"].ToString(),
+                        Price = product["Price"].ToString(),
+                        SimpleDesc = product["SimpleDesc"].ToString(),
+                        Description = product["Description"].ToString(),
+                        KName = product["KName"].ToString(),
+                        BID = product["BID"].ToString(),
+                        KCreateTime = product["KCreateTime"].ToString(),
+                        BName = product["BName"].ToString(),
+                        BCreateTime = product["BCreateTime"].ToString(),
+                        AID = product["AID"].ToString(),
+                        AName = product["AName"].ToString(),
+                        CID = product["CID"].ToString(),
+                        CName = product["CName"].ToString(),
+                        PID = product["PID"].ToString(),
+                        PName = product["PName"].ToString(),
+                        QuestionCount = product["QuestionCount"].ToString(),
+                        AttentionCount = product["AttentionCount"].ToString(),
+                        KID = product["KID"].ToString(),
+                        CreateUserID = product["CreateUserID"].ToString(),
+                        CompanyName = product["CompanyName"].ToString(),
+                        CompanyAddress = product["CompanyAddress"].ToString(),
+                        PositionX = product["PositionX"].ToString(),
+                        PositionY = product["PositionY"].ToString(),
+                        Phone = product["Phone"].ToString(),
+                        Memo = product["Memo"].ToString(),
+                        QQ = product["QQ"].ToString(),
+                        ClickCount = product["ClickCount"].ToString(),
+                        SelectType = product["SelectType"].ToString(),
+                        SelectPrice = product["SelectPrice"].ToString(),
+                        SelectSize = product["SelectSize"].ToString(),
+                        Distance = distance.ToString()
+                    });
+                }
             }
 
-            return GetJson(result.ToJson());
+            if ("distance" == sort.ToLower())
+            {
+                if ("desc" == desc)
+                    result = result.OrderByDescending(p => p.Distance).ToList();
+                else
+                    result = result.OrderBy(p => p.Distance).ToList();
+            }
+
+            return GetJson(result);
         }
 
         #region 坐标计算
@@ -122,26 +182,42 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             s = s * EARTH_RADIUS;
             s = Math.Round(s * 10000) / 10;
             return s;
-        } 
+        }
         #endregion
 
-        //public ActionResult a()
-        //{
-        //    var dal = new DAL.Key_Product();
-        //    var products = dal.GetEntityList("", new string[] { }, new string[] { });
-        //    foreach (var product in products)
-        //    {
-        //        var attrs = product.SelectAttribute.Split(new char[] { ';' });
-        //        product.SelectAttribute = attrs[0].Split(new char[] { '：' }).LastOrDefault();
-        //        if (attrs.Count() >= 2)
-        //            product.SelectPrice = attrs[1].Split(new char[] { '：' }).LastOrDefault();
-        //        if (attrs.Count() >= 3)
-        //            product.SelectSize = attrs[2].Split(new char[] { '：' }).LastOrDefault();
-
-        //        dal.Update(product);
-        //    }
-
-        //    return Content("OK");
-        //}
+        public class Product
+        {
+            public string ID { get; set; }
+            public string Price { get; set; }
+            public string SimpleDesc { get; set; }
+            public string Description { get; set; }
+            public string KName { get; set; }
+            public string BID { get; set; }
+            public string KCreateTime { get; set; }
+            public string BName { get; set; }
+            public string BCreateTime { get; set; }
+            public string AID { get; set; }
+            public string AName { get; set; }
+            public string CID { get; set; }
+            public string CName { get; set; }
+            public string PID { get; set; }
+            public string PName { get; set; }
+            public string QuestionCount { get; set; }
+            public string AttentionCount { get; set; }
+            public string KID { get; set; }
+            public string CreateUserID { get; set; }
+            public string CompanyName { get; set; }
+            public string CompanyAddress { get; set; }
+            public string PositionX { get; set; }
+            public string PositionY { get; set; }
+            public string Phone { get; set; }
+            public string Memo { get; set; }
+            public string QQ { get; set; }
+            public string ClickCount { get; set; }
+            public string SelectType { get; set; }
+            public string SelectPrice { get; set; }
+            public string SelectSize { get; set; }
+            public string Distance { get; set; }
+        }
     }
 }
