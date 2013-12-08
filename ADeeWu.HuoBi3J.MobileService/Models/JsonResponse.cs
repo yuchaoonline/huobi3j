@@ -26,7 +26,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Models
         /// <param name="dt">DataTable</param>
         /// <param name="top">前N条</param>
         /// <returns></returns>
-        public static string ToJson(this DataTable dt, int top = -1)
+        public static List<object> ToJson(this DataTable dt, int top = -1)
         {
             var datas = new List<object>();
 
@@ -37,14 +37,15 @@ namespace ADeeWu.HuoBi3J.MobileService.Models
 
                 foreach (DataColumn dc in dt.Columns)
                 {
-                    result.Add(dc.ColumnName, dr[dc].ToString());
+                    result.Add(dc.ColumnName, HttpUtility.HtmlEncode(dr[dc]));
                 }
                 datas.Add(result);
                 index++;
 
                 if (top > 0 && index >= top) break;
             }
-            return JsonConvert.SerializeObject(datas);
+
+            return datas;
         }
     }
 
