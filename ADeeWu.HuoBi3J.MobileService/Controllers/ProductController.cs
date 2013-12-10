@@ -1,4 +1,5 @@
-﻿using ADeeWu.HuoBi3J.MobileService.Models;
+﻿using ADeeWu.HuoBi3J.MobileService.Helpers;
+using ADeeWu.HuoBi3J.MobileService.Models;
 using ADeeWu.HuoBi3J.SQL;
 using System;
 using System.Collections.Generic;
@@ -66,10 +67,10 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (radius > 1500) radius = 1500;
 
             //计算矩形四个点
-            var lat1 = lat + LAT_PER * radius / 100;
-            var lat2 = lat - LAT_PER * radius / 100;
-            var lng1 = lng + LNG_PER * radius / 100;
-            var lng2 = lng - LNG_PER * radius / 100;
+            var lat1 = lat + RadiusHelper.LAT_PER * radius / 100;
+            var lat2 = lat - RadiusHelper.LAT_PER * radius / 100;
+            var lng1 = lng + RadiusHelper.LNG_PER * radius / 100;
+            var lng2 = lng - RadiusHelper.LNG_PER * radius / 100;
 
             var strWhere = string.Format("cname='{4}' and pname='{5}' and positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", lat1, lat2, lng1, lng2, city, province);
             if (!string.IsNullOrWhiteSpace(keyword))
@@ -94,7 +95,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             {
                 var tempLat = double.Parse(product["positionX"].ToString());
                 var tempLng = double.Parse(product["positionY"].ToString());
-                var distance = GetDistance(lat, lng, tempLat, tempLng);
+                var distance = RadiusHelper.GetDistance(lat, lng, tempLat, tempLng);
                 distance = Math.Abs(distance);
                 if (radius >= distance)
                 {
@@ -145,45 +146,6 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             return GetJson(result);
         }
-
-        #region 坐标计算
-        /// <summary>
-        /// 地球半径
-        /// </summary>
-        private const double EARTH_RADIUS = 6378.137;
-        /// <summary>
-        /// 每100米经度相差值
-        /// </summary>
-        private const double LNG_PER = 0.00100;
-        /// <summary>
-        /// 每100米纬度相差值
-        /// </summary>
-        private const double LAT_PER = 0.00111;
-        private static double rad(double d)
-        {
-            return d * Math.PI / 180.0;
-        }
-        /// <summary>
-        /// 获取两个坐标点之间的距离，单位m，小数点后2位
-        /// </summary>
-        /// <param name="lat1"></param>
-        /// <param name="lng1"></param>
-        /// <param name="lat2"></param>
-        /// <param name="lng2"></param>
-        /// <returns></returns>
-        private double GetDistance(double lat1, double lng1, double lat2, double lng2)
-        {
-            double radLat1 = rad(lat1);
-            double radLat2 = rad(lat2);
-            double a = radLat1 - radLat2;
-            double b = rad(lng1) - rad(lng2);
-
-            double s = 2 * Math.Asin(Math.Sqrt(Math.Pow(Math.Sin(a / 2), 2) + Math.Cos(radLat1) * Math.Cos(radLat2) * Math.Pow(Math.Sin(b / 2), 2)));
-            s = s * EARTH_RADIUS;
-            s = Math.Round(s * 10000) / 10;
-            return s;
-        }
-        #endregion
 
         public class Product
         {

@@ -1076,7 +1076,9 @@
     <Compile Include="Tips.aspx.designer.cs">
       <DependentUpon>Tips.aspx</DependentUpon>
     </Compile>
-    <Content Include="ueditor\net\Uploader.cs" />
+    <Content Include="ueditor\net\Uploader.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="ValidateCode.aspx.cs">
       <DependentUpon>ValidateCode.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
