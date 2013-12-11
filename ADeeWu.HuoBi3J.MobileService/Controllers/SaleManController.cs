@@ -12,6 +12,13 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     {
         DAL.CA_CircleSaleMan salemanDAL = new DAL.CA_CircleSaleMan();
 
+        /// <summary>
+        /// 附近商家
+        /// </summary>
+        /// <param name="lat"></param>
+        /// <param name="lng"></param>
+        /// <param name="radius"></param>
+        /// <returns></returns>
         public ActionResult Index(double lat, double lng, int radius = 100)
         {
             if (radius > 1500) radius = 1500;
