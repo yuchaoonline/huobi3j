@@ -13,15 +13,15 @@ namespace ADeeWu.HuoBi3J.MobileService.Helpers
         /// <summary>
         /// 地球半径
         /// </summary>
-        public static double EARTH_RADIUS = 6378.137;
+        private static double EARTH_RADIUS = 6378.137;
         /// <summary>
         /// 每100米经度相差值
         /// </summary>
-        public static double LNG_PER = 0.00100;
+        private static double LNG_PER = 0.00100;
         /// <summary>
         /// 每100米纬度相差值
         /// </summary>
-        public static double LAT_PER = 0.00111;
+        private static double LAT_PER = 0.00111;
 
         /// <summary>
         /// 计算
@@ -53,5 +53,27 @@ namespace ADeeWu.HuoBi3J.MobileService.Helpers
             s = Math.Round(s * 10000) / 10;
             return s;
         }
+
+        #region 计算矩形四个点
+        public static double A(double lat, int radius)
+        {
+            return lat + LAT_PER * radius / 100;
+        }
+
+        public static double B(double lat, int radius)
+        {
+            return lat - LAT_PER * radius / 100;
+        }
+
+        public static double C(double lng, int radius)
+        {
+            return lng + LNG_PER * radius / 100;
+        }
+
+        public static double D(double lng, int radius)
+        {
+            return lng - LNG_PER * radius / 100;
+        } 
+        #endregion
     }
 }

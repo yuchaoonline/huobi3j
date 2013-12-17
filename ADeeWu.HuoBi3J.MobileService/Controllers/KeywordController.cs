@@ -23,7 +23,12 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
             if (attribute != null)
             {
-                return GetJson(new { ktype = attribute.KeyType.Split(new char[] { ';' }), kprice = attribute.KeyPrice.Split(new char[] { ';' }), kother = attribute.KeySize.Split(new char[] { ';' }) });
+                return GetJson(new
+                {
+                    ktype = attribute.KeyType.Split(new char[] { ';' }).Select(p => new { name = p }),
+                    kprice = attribute.KeyPrice.Split(new char[] { ';' }).Select(p => new { name = p }),
+                    kother = attribute.KeySize.Split(new char[] { ';' }).Select(p => new { name = p })
+                });
             }
 
             return GetJson(new { ktype = "", kprice = "", kother = "" });

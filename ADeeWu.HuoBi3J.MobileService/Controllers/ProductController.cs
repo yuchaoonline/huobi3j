@@ -60,34 +60,28 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="province">所在省份</param>
         /// <returns></returns>
         [OutputCache(Duration = 3600, VaryByParam = "keyword;lat;lng;type;price;size;radius;sort;desc;city;province")]
-        public ActionResult SearchProduct(string keyword,string productprice, double lat, double lng, string type, string price, string size, int radius = 100, string sort = "price", string desc = "asc", string city = "佛山市", string province = "广东省")
+        public ActionResult SearchProduct(string keyword, string productprice, double lat, double lng, string type, string price, string size, int radius = 100, string sort = "price", string desc = "asc", string city = "佛山市", string province = "广东省")
         {
             var result = new List<Product>();
 
             if (radius > 1500) radius = 1500;
 
-            //计算矩形四个点
-            var lat1 = lat + RadiusHelper.LAT_PER * radius / 100;
-            var lat2 = lat - RadiusHelper.LAT_PER * radius / 100;
-            var lng1 = lng + RadiusHelper.LNG_PER * radius / 100;
-            var lng2 = lng - RadiusHelper.LNG_PER * radius / 100;
-
-            var strWhere = string.Format("cname='{4}' and pname='{5}' and positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", lat1, lat2, lng1, lng2, city, province);
+            var strWhere = string.Format("cname='{4}' and pname='{5}' and positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", RadiusHelper.A(lat, radius), RadiusHelper.B(lat, radius), RadiusHelper.C(lng, radius), RadiusHelper.D(lng, radius), city, province);
             if (!string.IsNullOrWhiteSpace(keyword))
             {
                 strWhere += string.Format(" and kname like '%{0}%'", keyword);
             }
             if (!string.IsNullOrWhiteSpace(type))
             {
-                strWhere += string.Format(" and selecttype = {0}", type);
+                strWhere += string.Format(" and selecttype = '{0}'", type);
             }
             if (!string.IsNullOrWhiteSpace(price))
             {
-                strWhere += string.Format(" and selectprice = {0}", price);
+                strWhere += string.Format(" and selectprice = '{0}'", price);
             }
             if (!string.IsNullOrWhiteSpace(size))
             {
-                strWhere += string.Format(" and selectsize = {0}", size);
+                strWhere += string.Format(" and selectsize = '{0}'", size);
             }
             var sortdesc = sort + " " + desc;
             var products = db.Select("vw_Key_Product", strWhere, sort.ToLower() == "distance" ? "" : sortdesc);
@@ -97,43 +91,42 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 var tempLng = double.Parse(product["positionY"].ToString());
                 var distance = RadiusHelper.GetDistance(lat, lng, tempLat, tempLng);
                 distance = Math.Abs(distance);
-                if (radius >= distance)
+                if (radius < distance) continue;
+
+                result.Add(new Product
                 {
-                    result.Add(new Product
-                    {
-                        ID = product["ID"].ToString(),
-                        Price = product["Price"].ToString(),
-                        SimpleDesc = product["SimpleDesc"].ToString(),
-                        Description = product["Description"].ToString(),
-                        KName = product["KName"].ToString(),
-                        BID = product["BID"].ToString(),
-                        KCreateTime = product["KCreateTime"].ToString(),
-                        BName = product["BName"].ToString(),
-                        BCreateTime = product["BCreateTime"].ToString(),
-                        AID = product["AID"].ToString(),
-                        AName = product["AName"].ToString(),
-                        CID = product["CID"].ToString(),
-                        CName = product["CName"].ToString(),
-                        PID = product["PID"].ToString(),
-                        PName = product["PName"].ToString(),
-                        QuestionCount = product["QuestionCount"].ToString(),
-                        AttentionCount = product["AttentionCount"].ToString(),
-                        KID = product["KID"].ToString(),
-                        CreateUserID = product["CreateUserID"].ToString(),
-                        CompanyName = product["CompanyName"].ToString(),
-                        CompanyAddress = product["CompanyAddress"].ToString(),
-                        PositionX = product["PositionX"].ToString(),
-                        PositionY = product["PositionY"].ToString(),
-                        Phone = product["Phone"].ToString(),
-                        Memo = product["Memo"].ToString(),
-                        QQ = product["QQ"].ToString(),
-                        ClickCount = product["ClickCount"].ToString(),
-                        SelectType = product["SelectType"].ToString(),
-                        SelectPrice = product["SelectPrice"].ToString(),
-                        SelectSize = product["SelectSize"].ToString(),
-                        Distance = distance.ToString()
-                    });
-                }
+                    ID = product["ID"].ToString(),
+                    Price = product["Price"].ToString(),
+                    SimpleDesc = product["SimpleDesc"].ToString(),
+                    Description = product["Description"].ToString(),
+                    KName = product["KName"].ToString(),
+                    BID = product["BID"].ToString(),
+                    KCreateTime = product["KCreateTime"].ToString(),
+                    BName = product["BName"].ToString(),
+                    BCreateTime = product["BCreateTime"].ToString(),
+                    AID = product["AID"].ToString(),
+                    AName = product["AName"].ToString(),
+                    CID = product["CID"].ToString(),
+                    CName = product["CName"].ToString(),
+                    PID = product["PID"].ToString(),
+                    PName = product["PName"].ToString(),
+                    QuestionCount = product["QuestionCount"].ToString(),
+                    AttentionCount = product["AttentionCount"].ToString(),
+                    KID = product["KID"].ToString(),
+                    CreateUserID = product["CreateUserID"].ToString(),
+                    CompanyName = product["CompanyName"].ToString(),
+                    CompanyAddress = product["CompanyAddress"].ToString(),
+                    PositionX = product["PositionX"].ToString(),
+                    PositionY = product["PositionY"].ToString(),
+                    Phone = product["Phone"].ToString(),
+                    Memo = product["Memo"].ToString(),
+                    QQ = product["QQ"].ToString(),
+                    ClickCount = product["ClickCount"].ToString(),
+                    SelectType = product["SelectType"].ToString(),
+                    SelectPrice = product["SelectPrice"].ToString(),
+                    SelectSize = product["SelectSize"].ToString(),
+                    Distance = distance.ToString()
+                });
             }
 
             if ("distance" == sort.ToLower())

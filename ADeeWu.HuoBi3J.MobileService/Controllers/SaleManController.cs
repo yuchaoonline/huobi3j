@@ -2,6 +2,7 @@
 using ADeeWu.HuoBi3J.MobileService.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,16 +24,44 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         {
             if (radius > 1500) radius = 1500;
 
-            //计算矩形四个点
-            var lat1 = lat + RadiusHelper.LAT_PER * radius / 100;
-            var lat2 = lat - RadiusHelper.LAT_PER * radius / 100;
-            var lng1 = lng + RadiusHelper.LNG_PER * radius / 100;
-            var lng2 = lng - RadiusHelper.LNG_PER * radius / 100;
-
-            var strWhere = string.Format("positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", lat1, lat2, lng1, lng2);
+            var strWhere = string.Format("positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", RadiusHelper.A(lat, radius), RadiusHelper.B(lat, radius), RadiusHelper.C(lng, radius), RadiusHelper.D(lng, radius));
             var salemanDT = salemanDAL.Select(strWhere, "");
 
-            return GetJson(salemanDT.ToJson());
+            var salemans = new List<CircleSaleManRadius>();
+            foreach (DataRow dr in salemanDT.Rows)
+            {
+                var tempLat = double.Parse(dr["positionX"].ToString());
+                var tempLng = double.Parse(dr["positionY"].ToString());
+                var distance = RadiusHelper.GetDistance(lat, lng, tempLat, tempLng);
+                if (distance > radius) continue;
+
+                var saleman = new CircleSaleManRadius
+                {
+                    ID = long.Parse(dr["ID"].ToString()),
+                    Name = dr["Name"] as string,
+                    UserID = dr["UserID"] as long?,
+                    QQ = dr["QQ"] as string,
+                    Phone = dr["Phone"] as string,
+                    CompanyName = dr["CompanyName"] as string,
+                    CompanyAddress = dr["CompanyAddress"] as string,
+                    Job = dr["Job"] as string,
+                    PositionX = dr["PositionX"] as double?,
+                    PositionY = dr["PositionY"] as double?,
+                    CheckState = dr["CheckState"] as int?,
+                    ModifyTime = dr["ModifyTime"] as DateTime?,
+                    CreateTime = dr["CreateTime"] as DateTime?,
+                    Memo = dr["Memo"] as string,
+                    Radius = distance,
+                };
+                salemans.Add(saleman);
+            }
+
+            return GetJson(salemans.OrderByDescending(p => p.Radius));
+        }
+
+        public class CircleSaleManRadius : Model.CA_CircleSaleMan
+        {
+            public double Radius { get; set; }
         }
     }
 }
