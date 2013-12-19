@@ -52,7 +52,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 return GetJson(new JsonResponse { status = false, message = "用户不存在！" });
             }
 
-            return GetJson(new JsonResponse { status = true, data = JsonConvert.SerializeObject(user) });
+            return GetJson(new { status = true, data = user });
         }
 
         /// <summary>

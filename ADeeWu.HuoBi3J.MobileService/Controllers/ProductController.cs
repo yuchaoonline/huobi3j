@@ -13,6 +13,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     public class ProductController : JsonController
     {
         DataBase db = DataBase.Create();
+        DAL.Common_Count_Click commonCountDAL = new DAL.Common_Count_Click();
         /// <summary>
         /// 获取报价信息，http://mobile.huobi3j.com/product/details
         /// </summary>
@@ -138,6 +139,39 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             }
 
             return GetJson(result);
+        }
+
+        /// <summary>
+        /// 添加查看次数
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult AddViewCount(int id)
+        {
+            if (id == 0) return GetJson(new JsonResponse { status = false, message = "参数有误！" });
+
+            var countModel = new Model.Common_Count_Click
+            {
+                CreateDate = DateTime.Now,
+                DataID = id,
+                DataType = "center_product",
+                IP = Request.UserHostAddress,
+            };
+            commonCountDAL.Add(countModel);
+
+            return GetJson(new JsonResponse { status = true });
+        }
+
+        /// <summary>
+        /// 获取查看次数
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult GetViewCount(int id)
+        {
+            var count = commonCountDAL.GetEntityList("", new string[] { "dataid", "datatype" }, new object[] { id, "center_product" }).Count();
+
+            return GetJson(new { Count = count });
         }
 
         public class Product

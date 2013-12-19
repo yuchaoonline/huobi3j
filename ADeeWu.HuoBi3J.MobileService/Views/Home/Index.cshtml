@@ -43,3 +43,13 @@
         </ol>
     </section>
 </div>
+
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $.getJSON('/user/login?username=sanjia1&password=1', function (data) {
+            console.log(data);
+        });
+    })
+</script>
+}
