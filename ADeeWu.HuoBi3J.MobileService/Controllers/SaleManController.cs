@@ -12,6 +12,11 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     public class SaleManController : JsonController
     {
         DAL.CA_CircleSaleMan salemanDAL = new DAL.CA_CircleSaleMan();
+        DAL.Center_QR_Log qrLogDAL = new DAL.Center_QR_Log();
+        DAL.Users userDAL = new DAL.Users();
+        DAL.User_CoinUseHistories dealHistoryDAL = new DAL.User_CoinUseHistories();
+
+        int qrFee = 10;
 
         /// <summary>
         /// 附近商家
@@ -57,6 +62,55 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             }
 
             return GetJson(salemans.OrderByDescending(p => p.Radius));
+        }
+
+        /// <summary>
+        /// 扫描商家二维码
+        /// </summary>
+        /// <param name="userid">扫描人ID</param>
+        /// <param name="salemanuserid">商家ID</param>
+        /// <returns></returns>
+        public ActionResult ScanQR(int userid, int salemanuserid)
+        {
+            if (salemanuserid == 0 && userid == 0)
+            {
+                return GetJson(new JsonResponse { status = false, message = "参数错误！" });
+            }
+
+            if (qrLogDAL.Exist(new string[] { "userid", "salemanuserid" }, new object[] { userid, salemanuserid }))
+            {
+                return GetJson(new JsonResponse { status = false, message = "你已扫描过该商家！" });
+            }
+
+            var qrLog = new Model.Center_QR_Log
+            {
+                Coin = 10,
+                CreateDate = DateTime.Now,
+                SaleManUserID = salemanuserid,
+                UserID = userid,
+                Demo = ""
+            };
+            if (qrLogDAL.Add(qrLog) > 0)
+            {
+                var user = userDAL.GetEntity(userid);
+                user.Coins += qrFee;
+                userDAL.Update(user);
+
+                var deal = new Model.User_CoinUseHistories
+                {
+                    InCoin = qrFee,
+                    OutCoin = 0,
+                    UserID = userid,
+                    Notes = string.Format("获得扫描金币 {0} 个", qrFee),
+                    CreateTime = DateTime.Now,
+                    Remain = user.Coins
+                };
+                dealHistoryDAL.Add(deal);
+
+                return GetJson(new JsonResponse { status = true, message = string.Format("扫描成功，已入账{0}金币", qrFee), data = qrFee.ToString() });
+            }
+
+            return GetJson(new JsonResponse { status = false, message = "扫描失败，请重试！" });
         }
 
         public class CircleSaleManRadius : Model.CA_CircleSaleMan
