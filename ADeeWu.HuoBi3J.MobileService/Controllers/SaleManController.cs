@@ -64,6 +64,39 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             return GetJson(salemans.OrderByDescending(p => p.Radius));
         }
 
+        public ActionResult GetSaleManDetails(double lat, double lng, int userid)
+        {
+            if (userid <= 0) return GetJson(new JsonResponse{ status = false, message = "error"});
+
+            var user = salemanDAL.GetEntity(userid);
+            if (user == null) if (userid <= 0) return GetJson(new JsonResponse { status = false, message = "商家不存在!" });
+
+            var distance = 0d;
+            if (lat > 0 && lng > 0&&user.PositionY.HasValue&&user.PositionX.HasValue)
+            {
+                distance = RadiusHelper.GetDistance(lat, lng, user.PositionX.Value, user.PositionY.Value);
+            }
+
+            return GetJson(new CircleSaleManRadius
+            {
+                CheckState= user.CheckState,
+                CompanyAddress = user.CompanyAddress,
+                CompanyName = user.CompanyName,
+                CreateTime = user.CreateTime,
+                ID = user.ID,
+                Job = user.Job,
+                Memo = user.Memo,
+                ModifyTime = user.ModifyTime,
+                Name = user.Name,
+                Phone = user.Phone,
+                PositionX = user.PositionX,
+                PositionY = user.PositionY,
+                QQ = user.QQ,
+                Radius = distance,
+                UserID = user.UserID,
+            });
+        }
+
         /// <summary>
         /// 扫描商家二维码
         /// </summary>
