@@ -69,7 +69,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (userid <= 0) return GetJson(new JsonResponse{ status = false, message = "error"});
 
             var user = salemanDAL.GetEntity(userid);
-            if (user == null) if (userid <= 0) return GetJson(new JsonResponse { status = false, message = "商家不存在!" });
+            if (user == null) return GetJson(new JsonResponse { status = false, message = "商家不存在!" });
 
             var distance = 0d;
             if (lat > 0 && lng > 0&&user.PositionY.HasValue&&user.PositionX.HasValue)

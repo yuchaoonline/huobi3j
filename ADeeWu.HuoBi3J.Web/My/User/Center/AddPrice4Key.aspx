@@ -53,7 +53,7 @@
                     alert('简单描述不能为空！');
                     return false;
                 }
-                if (simpledesc.val().length > 10) {
+                if (simpledesc.val().length > 30) {
                     alert('简单描述长度不能超过10！');
                     return false;
                 }
@@ -153,7 +153,7 @@
             <td class="tdLeft">简单描述：
             </td>
             <td class="tdRight">
-                <input type="text" name="txtSimple" />（10字以内）
+                <input type="text" name="txtSimple" />（30字以内）
             </td>
         </tr>
         <tr>

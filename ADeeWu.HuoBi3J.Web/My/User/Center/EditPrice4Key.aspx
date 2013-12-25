@@ -52,7 +52,7 @@
                     alert('简单描述不能为空！');
                     return false;
                 }
-                if (simpledesc.val().length > 10) {
+                if (simpledesc.val().length > 30) {
                     alert('简单描述长度不能超过10！');
                     return false;
                 }
@@ -62,10 +62,10 @@
                     return false;
                 }
 
-                $.post(location.href, { method: 'post', selecttype: selecttype,selectprice:selectprice,selectsize:selectsize, price: price.val(), simpledesc: simpledesc.val(), description: content,kid: '<%= product.KID%>' }, function (data) {
+                $.post(location.href, { method: 'post', selecttype: selecttype.html(), selectprice: selectprice.html(), selectsize: selectsize.html(), price: price.val(), simpledesc: simpledesc.val(), description: content, kid: '<%= product.KID%>' }, function (data) {
                     var result = JSON.parse(data);
                     if (result.statue) {
-                        alert('添加成功！');
+                        alert('修改成功！');
                         location.href = location.href;
                         return false;
                     } else {
@@ -129,7 +129,7 @@
                 <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>选择：</div>
                     <ul class="inline-block-list">
-                        <li class="item"><span class="select-type"> <%= product.SelectType %></span></li>                        
+                        <li class="item"><span class="select-type"><%= product.SelectType %></span></li>                        
                         <li class="item"><span class="select-price"><%= product.SelectPrice %></span></li>
                         <li class="item"><span class="select-size"><%= product.SelectSize %></span></li>
                     </ul>
@@ -152,7 +152,7 @@
             <td class="tdLeft">简单描述：
             </td>
             <td class="tdRight">
-                <input type="text" name="txtSimple"  value="<%= product.SimpleDesc %>"/>（10字以内）
+                <input type="text" name="txtSimple"  value="<%= product.SimpleDesc %>"/>（30字以内）
             </td>
         </tr>
         <tr>

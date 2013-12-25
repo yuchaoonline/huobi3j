@@ -88,7 +88,8 @@
             })
 
             $('#btnApp').click(function () {
-                alert('即将到来...');
+                location.href = "app.apk";
+                //alert('即将到来...');
                 return false;
             })
         })
