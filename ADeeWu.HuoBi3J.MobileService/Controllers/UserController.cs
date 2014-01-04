@@ -134,5 +134,17 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 return GetJson(new JsonResponse { status = false, message = "操作失败，请重试！" });
             }
         }
+
+        /// <summary>
+        /// 金币扫描记录
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns></returns>
+        public ActionResult ScanQRLog(int userid)
+        {
+            var logs = DataBase.Create().Select("vw_Center_QR_Log", string.Format("userid = {0}", userid), "");
+
+            return GetJson(logs.ToJson());
+        }
     }
 }

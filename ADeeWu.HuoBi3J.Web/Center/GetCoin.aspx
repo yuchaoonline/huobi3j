@@ -11,6 +11,9 @@
         body {
             padding-top: 70px;
         }
+        .list-group-item img{
+            max-width: 80%;
+        }
     </style>
 </head>
 <body>

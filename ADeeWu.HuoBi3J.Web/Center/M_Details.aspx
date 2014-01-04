@@ -11,6 +11,9 @@
         body {
             padding-top: 70px;
         }
+        .panel-body img{
+            max-width: 80%;
+        }
     </style>
 </head>
 <body>

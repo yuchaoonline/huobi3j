@@ -1,5 +1,6 @@
 ﻿using ADeeWu.HuoBi3J.MobileService.Helpers;
 using ADeeWu.HuoBi3J.MobileService.Models;
+using ADeeWu.HuoBi3J.SQL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -68,7 +69,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         {
             if (userid <= 0) return GetJson(new JsonResponse{ status = false, message = "error"});
 
-            var user = salemanDAL.GetEntity(userid);
+            var user = salemanDAL.GetEntity("userid=" + userid);
             if (user == null) return GetJson(new JsonResponse { status = false, message = "商家不存在!" });
 
             var distance = 0d;
@@ -145,7 +146,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             return GetJson(new JsonResponse { status = false, message = "扫描失败，请重试！" });
         }
-
+        
         public class CircleSaleManRadius : Model.CA_CircleSaleMan
         {
             public double Radius { get; set; }

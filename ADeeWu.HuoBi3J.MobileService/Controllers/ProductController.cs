@@ -70,7 +70,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var strWhere = string.Format("cname='{4}' and pname='{5}' and positionX < {0} and positionX > {1} and positionY < {2} and positionY > {3}", RadiusHelper.A(lat, radius), RadiusHelper.B(lat, radius), RadiusHelper.C(lng, radius), RadiusHelper.D(lng, radius), city, province);
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-                strWhere += string.Format(" and kname like '%{0}%'", keyword);
+                strWhere += string.Format(" and kname = '{0}'", keyword);
             }
             if (!string.IsNullOrWhiteSpace(type))
             {

@@ -14,9 +14,13 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         [OutputCache(Duration=3600)]
         public ActionResult Index()
         {
-            var hotkeys = hotkeyDAL.GetEntityList("", new string[] { "DataType" }, new object[] { "热点" });
+            //var hotkeys = hotkeyDAL.GetEntityList("", new string[] { "DataType" }, new object[] { "热点" });
+            //var result = hotkeys.Select(p => new { name = p.Name });
 
-            return GetJson(hotkeys.Select(p => new { name = p.Name }));
+            var hotkeys = hotkeyDAL.GetEntityList("", new string[] { }, new object[] { });
+            var result = hotkeys.GroupBy(p => p.DataType).Select(p => new { name = p.Key, values = p.Select(v => new { value = v.Name }) });
+
+            return GetJson(result);
         }
 
     }
