@@ -53,14 +53,18 @@
     <PublishDatabases>false</PublishDatabases>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ADee.Project.LBS">
+      <HintPath>..\..\ADee.Project.LBS\ADee.Project.LBS\bin\Debug\ADee.Project.LBS.dll</HintPath>
+    </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding">
       <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net40\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -167,6 +171,7 @@
     <Content Include="ueditor\net\imageUp.ashx" />
     <Content Include="ueditor\net\scrawlUp.ashx" />
     <Content Include="ueditor\net\Web.config" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Properties\PublishProfiles\www.huobi3j.com.pubxml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
@@ -583,6 +588,7 @@
     <Compile Include="Center\SearchHotKey.aspx.designer.cs">
       <DependentUpon>SearchHotKey.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Class\LBSHelper.cs" />
     <Compile Include="Class\AccountHelper.cs" />
     <Compile Include="Center\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
@@ -1075,6 +1081,13 @@
     </Compile>
     <Compile Include="Tips.aspx.designer.cs">
       <DependentUpon>Tips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Content Include="ueditor\net\Uploader.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

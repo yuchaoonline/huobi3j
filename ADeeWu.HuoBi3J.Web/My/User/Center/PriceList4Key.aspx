@@ -42,13 +42,13 @@
                                         <a href="/Center/details.aspx?id=<%# Eval("id") %>" title="查看"><%# GetMoney(Eval("price")) %></a>
                                     </td>
                                     <td class="common">
-                                            <%# Eval("simpledesc")%>
+                                            <%# Eval("title")%>
                                     </td>
                                     <td class="common">
                                            类型：<%# Eval("selecttype")%>;价格：<%# Eval("selectprice")%>;其他：<%# Eval("selectsize")%>
                                     </td>
                                     <td class="num">
-                                            <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# Eval("ClickCount") %></a>
+                                            <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# GetCount(Eval("id")) %></a>
                                     </td>
                                     <td class="common">
                                         <a href="EditPrice4Key.aspx?id=<%# Eval("id") %>" title="修改" class="btn_blue">修改</a>

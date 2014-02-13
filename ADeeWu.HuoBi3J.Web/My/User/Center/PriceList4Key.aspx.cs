@@ -7,12 +7,15 @@ using System.Web.UI.WebControls;
 using ADeeWu.HuoBi3J.Web.Class;
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
+using ADee.Project.LBS.BLL;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
     public partial class PriceList4Key : PageBase_CircleSaleMan
     {
-        DAL.Key_Product productDAL = new DAL.Key_Product();
+        DAL.Common_Count_Click CountDAL = new DAL.Common_Count_Click();
+        PoiBLL poiBLL = new PoiBLL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -28,30 +31,41 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         private void Delete()
         {
-            var id = WebUtility.GetRequestInt("id", 0);
+            var id = WebUtility.GetRequestStr("id", "");
             var kid = WebUtility.GetRequestStr("kid", "");
-            if (productDAL.Delete(id) > 0)
+            try
             {
+                poiBLL.Delete(new List<string> { id }, LBSHelper.GeoProductTableID);
                 WebUtility.ShowMsg(this, "删除成功！", "pricelist4key.aspx?kid=" + kid);
-                return;
             }
-            else
+            catch (Exception ex)
             {
                 WebUtility.ShowMsg("删除失败，请重试！");
-                return;
             }
         }
 
         private void BandData()
         {
             var kid = WebUtility.GetRequestStr("kid", "");
-            rpQuestions.DataSource = DataBase.Create().Select("vw_key_product", string.Format("createuserid={0} and kid={1}", this.LoginUser.UserID, kid), "price asc");
+            var dic = new Dictionary<string, string>();
+            dic.Add("KID", kid + "," + kid);
+            dic.Add("CreateUserID", LoginUser.UserID + "," + LoginUser.UserID);
+            var productResult = poiBLL.List<ProductPoi>(LBSHelper.GeoProductTableID, dic);
+            rpQuestions.DataSource = productResult.pois;
             rpQuestions.DataBind();
         }
 
         public string GetMoney(object mon)
         {
             return Utility.GetDecimal(mon, 0).ToString("F2");
+        }
+
+        public string GetCount(object id)
+        {
+            var counts = CountDAL.GetEntityList("", new string[] { "DataType", "DataID" }, new object[] { "center_product", id });
+            if (counts != null) return counts.Length.ToString();
+
+            return "0";
         }
     }
 }

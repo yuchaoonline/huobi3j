@@ -10,6 +10,7 @@ using ADeeWu.HuoBi3J.Web.Class;
 using System.Data;
 using System.Linq;
 using Newtonsoft.Json;
+using ADee.Project.LBS.BLL;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
@@ -106,24 +107,41 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     return;
                 }
 
-                var attribute = new Model.Key_Product
-                {
-                    KID = kid,
-                    Description = txtDesc,
-                    Price = Utility.GetDecimal(txtPrice, 0),
-                    SelectType = selecttype.Split(new char[]{'：'}).LastOrDefault(),
-                    SelectPrice = selectprice.Split(new char[] { '：' }).LastOrDefault(),
-                    SelectSize = selectsize.Split(new char[] { '：' }).LastOrDefault(),
-                    SimpleDesc = txtSimpleDesc,
-                    CreateUserID = LoginUser.UserID,
-                };
+                var db = DataBase.Create();
+                var keyTB = db.Select("select * from vw_Keys where kid = " + kid);
+                if (keyTB.Rows.Count <= 0) throw new Exception("关键字未找到！");
+                var key = keyTB.Rows[0];
+                var salemanTB = db.Select("select * from vw_CircleSaleMan where UserID = " + LoginUser.UserID);
+                if (salemanTB.Rows.Count <= 0) throw new Exception("商家未找到！");
+                var saleman = salemanTB.Rows[0];
 
+                var dic = new Dictionary<string, string>();
+                dic.Add("KID", kid.ToString());
+                dic.Add("Description", txtDesc);
+                dic.Add("Price", txtPrice);
+                dic.Add("SelectType", selecttype.Split(new char[] { '：' }).LastOrDefault());
+                dic.Add("SelectPrice", selectprice.Split(new char[] { '：' }).LastOrDefault());
+                dic.Add("SelectSize", selectsize.Split(new char[] { '：' }).LastOrDefault());
+                dic.Add("CreateUserID", LoginUser.UserID.ToString());
+                dic.Add("KName", key["KName"].ToString());
+                dic.Add("BName", key["BName"].ToString());
+                dic.Add("CompanyName", saleman["CompanyName"].ToString());
+                dic.Add("SalemanMemo", saleman["Memo"].ToString());
+                dic.Add("QQ", saleman["QQ"].ToString());
+                dic.Add("Phone", saleman["Phone"].ToString());
+                dic.Add("AID", key["AID"].ToString());
 
-                if (new DAL.Key_Product().Add(attribute) > 0)
+                var poiBLL = new PoiBLL();
+                try
                 {
-                    result = JsonConvert.SerializeObject(new { statue = true });
+                    var id = poiBLL.Create(Utility.GetFloat(saleman["PositionX"], 0f), Utility.GetFloat(saleman["PositionY"], 0f), ADee.Project.LBS.Entity.CoordType.BaiduEncrypt, LBSHelper.GeoProductTableID, dic, txtSimpleDesc, saleman["CompanyAddress"].ToString(), key["KName"].ToString());
+
+                    if (!string.IsNullOrWhiteSpace(id)) 
+                        result = JsonConvert.SerializeObject(new { statue = true });
+                    else
+                        result = JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
                 }
-                else
+                catch
                 {
                     result = JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
                 }

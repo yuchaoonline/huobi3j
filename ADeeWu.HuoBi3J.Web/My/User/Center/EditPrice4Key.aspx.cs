@@ -1,4 +1,5 @@
-﻿using ADeeWu.HuoBi3J.Libary;
+﻿using ADee.Project.LBS.BLL;
+using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
 using Newtonsoft.Json;
@@ -15,7 +16,8 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
     public partial class EditPrice4Key : PageBase_CircleSaleMan
     {
         int id = 0;
-        public Model.Key_Product product;
+        public ProductPoi product;
+        PoiBLL poiBLL = new PoiBLL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -44,8 +46,8 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 return;
             }
 
-            product = new DAL.Key_Product().GetEntity(id);
-            
+            product = poiBLL.Details<ProductPoi>(id, Utility.GetInt(LBSHelper.GeoProductTableID, 0)).poi;
+
             DataBase db = DataBase.Create();
 
             db.Parameters.Append("kid", product.KID);
@@ -105,25 +107,19 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     return;
                 }
 
-                var attribute = new Model.Key_Product
-                {
-                    ID=id,
-                    KID = kid,
-                    Description = txtDesc,
-                    Price = Utility.GetDecimal(txtPrice, 0),
-                    SelectType=selecttype,
-                    SelectPrice=selectprice,
-                    SelectSize = selectsize,
-                    SimpleDesc = txtSimpleDesc,
-                    CreateUserID = LoginUser.UserID,
-                };
+                var dic = new Dictionary<string, string>();
+                dic.Add("Description", txtDesc);
+                dic.Add("Price", txtPrice);
+                dic.Add("SelectType", selecttype.Split(new char[] { '：' }).LastOrDefault());
+                dic.Add("SelectPrice", selectprice.Split(new char[] { '：' }).LastOrDefault());
+                dic.Add("SelectSize", selectsize.Split(new char[] { '：' }).LastOrDefault());
 
-
-                if (new DAL.Key_Product().Update(attribute) > 0)
+                try
                 {
+                    poiBLL.Update(id, LBSHelper.GeoProductTableID, ADee.Project.LBS.Entity.CoordType.BaiduEncrypt, dic, txtSimpleDesc);
                     result = JsonConvert.SerializeObject(new { statue = true });
                 }
-                else
+                catch
                 {
                     result = JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
                 }

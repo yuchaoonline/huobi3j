@@ -152,14 +152,14 @@
             <td class="tdLeft">简单描述：
             </td>
             <td class="tdRight">
-                <input type="text" name="txtSimple"  value="<%= product.SimpleDesc %>"/>（30字以内）
+                <input type="text" name="txtSimple"  value="<%= product.title %>"/>（30字以内）
             </td>
         </tr>
         <tr>
             <td class="tdLeft">详情描述：
             </td>
             <td class="tdRight">
-                <script type="text/plain" id="editor" name="txtDesc" style="width: 650px; height: 200px"> <%= product.Description %></script>
+                <script type="text/plain" id="editor" name="txtDesc" style="width: 650px; height: 200px"> <%= HttpUtility.HtmlDecode(product.Description) %></script>
             </td>
         </tr>
         <tr>
