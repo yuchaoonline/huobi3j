@@ -108,7 +108,7 @@
                             <span>»</span>
                             <a href="key4product.aspx?kid=<%# Eval("kid") %>"><%#Eval("kname") %></a>
                             <span>»</span>
-                            <%# Eval("simpledesc") %>
+                            <%# Eval("title") %>
                         </div>
                         <div id="content">
                             <div id="deal-intro" class="cf">
@@ -117,7 +117,7 @@
                                     <span class="STYLE10"><%# GetDecimal(Eval("price"),2) %></span>
                                 </div>
                                 <div class="deal-brand" style="margin-bottom: 15px;">
-                                    【<%#Eval("kname") %>】<span class="inline-block STYLE6"><%#Eval("simpledesc") %></span><a href="#<%# Eval("createuserid") %>" style="float: right;" class="add_fav btn_blue">收藏</a>
+                                    【<%#Eval("kname") %>】<span class="inline-block STYLE6"><%#Eval("title") %></span><a href="#<%# Eval("createuserid") %>" style="float: right;" class="add_fav btn_blue">收藏</a>
                                     <br />
                                     <span class="inline-block STYLE7" style="padding-left: 15px;">商家名称：<%#Eval("companyname") %></span></div>
                             </div>
@@ -140,14 +140,14 @@
                                         </div>
                                         <h2 class="content-title" id="business-info">商家介绍</h2>
                                         <div class="blk detail">
-                                            <%#Eval("memo") %>
+                                            <%#Eval("SalemanMemo") %>
                                         </div>
                                         <h2 class="content-title" id="anchor-address">商家地址</h2>
                                         <div id="side-business" class="cf blk detail">
                                             <div class="address-list cf">
                                                 <div class="left-content">
                                                     <div class="mapbody">
-                                                        <input type="hidden" class="maplocation" value="<%#Eval("PositionX") %>|<%#Eval("PositionY") %>" />
+                                                        <input type="hidden" class="maplocation" value="<%#Eval("location[1]") %>|<%#Eval("location[0]") %>" />
                                                         <div id="allmap" style="width: 555px; height: 400px;"></div>
                                                     </div>
                                                 </div>
@@ -160,7 +160,7 @@
                                                             <div class="biz-item">
                                                                 <label class="title-label">商家电话：</label><span style="font-family: Arial;font-size: 24px;font-weight: bold;"><%# Eval("phone") %></span></div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("companyaddress") %></div>
+                                                                <label class="title-label">商家地址：</label><%# Eval("address") %></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,10 +186,10 @@
                                                     <ItemTemplate>
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
                                                             <td class="arc_title"><%# GetDecimal(Eval("price"),2) %></td>
-                                                            <td><%# Eval("simpledesc") %></td>
+                                                            <td><%# Eval("title") %></td>
                                                             <td><a href="key4product.aspx?kid=<%# Eval("kid") %>"><%# Eval("kname") %></a></td>
-                                                            <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
-                                                            <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue" target="_blank">查看</a></td>
+                                                            <td><%# Eval("bname") %></td>
+                                                            <td><a href="Details.aspx?id=<%# Eval("uid") %>" class="btn_blue" target="_blank">查看</a></td>
                                                         </tr>
                                                     </ItemTemplate>
                                                     <FooterTemplate>

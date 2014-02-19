@@ -171,7 +171,7 @@
     <Content Include="ueditor\net\imageUp.ashx" />
     <Content Include="ueditor\net\scrawlUp.ashx" />
     <Content Include="ueditor\net\Web.config" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="lbs.aspx" />
     <None Include="Properties\PublishProfiles\www.huobi3j.com.pubxml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
@@ -588,7 +588,6 @@
     <Compile Include="Center\SearchHotKey.aspx.designer.cs">
       <DependentUpon>SearchHotKey.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Class\LBSHelper.cs" />
     <Compile Include="Class\AccountHelper.cs" />
     <Compile Include="Center\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
@@ -1082,12 +1081,12 @@
     <Compile Include="Tips.aspx.designer.cs">
       <DependentUpon>Tips.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="lbs.aspx.cs">
+      <DependentUpon>lbs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="lbs.aspx.designer.cs">
+      <DependentUpon>lbs.aspx</DependentUpon>
     </Compile>
     <Content Include="ueditor\net\Uploader.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -25,16 +25,12 @@
             <HeaderTemplate>
                 <tr>
                     <th>关键字</th>
-                    <th>所属地区</th>
-                    <th>所属商圈</th>
                     <th>操作</th>
                 </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <td><%# Eval("kname") %></td>
-                    <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"),Eval("aname"),Eval("cid"),Eval("cname"),Eval("pid"),Eval("pname")," - ") %></td>
-                    <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname"))%></td>
                     <td><a href="addattribute.aspx?kid=<%#Eval("KID") %>">属性</a></td>
                 </tr>
             </ItemTemplate>

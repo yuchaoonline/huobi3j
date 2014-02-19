@@ -13,35 +13,20 @@
         $(function () {
             $('.arc_title img').ReduceImage();
 
-            $('.selectType,.selectSize,.selectPrice').click(function () {
-                var $this = $(this);
-                if ($this.hasClass('selectType')) {
-                    $('.select-type').html('类型：'+$this.html());
-                }
-                if ($this.hasClass('selectSize')) {
-                    $('.select-size').html('其他：'+$this.html());
-                }
-                if ($this.hasClass('selectPrice')) {
-                    $('.select-price').html('价格：'+$this.html());
-                }
-
-                return false;
-            })
-
             var editor = UE.getEditor('editor');
             $('#btnSubmit').click(function () {
-                var selecttype = $('.select-type').html();
-                var selectprice = $('.select-price').html();
-                var selectsize = $('.select-size').html();
+                var selecttype = $('#ddlType');
+                var selectprice = $('#ddlPrice');
+                var selectsize = $('#ddlSize');
                 var price = $('input[name="txtPrice"]');
                 var simpledesc = $('input[name=txtSimple]');
                 var content = editor.getContent();
 
-                if (!selecttype) {
+                if (!selecttype.val()) {
                     alert('请选择类型!');
                     return false;
                 }
-                if (!selectprice) {
+                if (!selectprice.val()) {
                     alert('请选择价格!');
                     return false;
                 }
@@ -63,7 +48,18 @@
                     return false;
                 }
 
-                $.post(location.href, { method: 'post', selecttype: selecttype,selectprice:selectprice,selectsize:selectsize, price: price.val(), simpledesc: simpledesc.val(), description: content }, function (data) {
+                $.post(location.href, {
+                    method: 'post',
+                    selecttype: selecttype.find("option:selected").text(),
+                    selectprice: selectprice.find("option:selected").text(),
+                    selectsize: selectsize.find("option:selected").text(),
+                    selecttypeid: selecttype.val(),
+                    selectpriceid: selectprice.val(),
+                    selectsizeid: selectsize.val(),
+                    price: price.val(),
+                    simpledesc: simpledesc.val(),
+                    description: content
+                }, function (data) {
                     var result = JSON.parse(data);
                     if (result.statue) {
                         alert('添加成功！');
@@ -106,42 +102,18 @@
         </div>
     </div>
 
-    <div id="filter">
-        <div class="filter-sortbar-outer-box">
-            <div class="filter-section-wrapper">
-                <div class="filter-label-list filter-section category-filter-wrapper first-filter">
-                    <div class="label has-icon"><i></i>类型：</div>
-                    <ul class="inline-block-list">
-                        <asp:Literal runat="server" ID="litType"></asp:Literal>
-                    </ul>
-                </div>
-                <div class="filter-label-list filter-section category-filter-wrapper">
-                    <div class="label has-icon"><i></i>价格：</div>
-                    <ul class="inline-block-list">
-                        <asp:Literal runat="server" ID="litPrice"></asp:Literal>
-                    </ul>
-                </div>
-                <div class="filter-label-list filter-section category-filter-wrapper">
-                    <div class="label has-icon"><i></i>其他：</div>
-                    <ul class="inline-block-list">
-                        <asp:Literal runat="server" ID="litSize"></asp:Literal>
-                    </ul>
-                </div>
-                <div class="filter-label-list filter-section category-filter-wrapper">
-                    <div class="label has-icon"><i></i>选择：</div>
-                    <ul class="inline-block-list">
-                        <li class="item"><span class="select-type"></span></li>                        
-                        <li class="item"><span class="select-price"></span></li>
-                        <li class="item"><span class="select-size"></span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="cl"></div>
 
     <table class="formTable">
+        <tr>
+            <td class="tdLeft">属性：
+            </td>
+            <td class="tdRight" style="width: 650px">
+                类型：<asp:DropDownList ID="ddlType" runat="server" ClientIDMode="Static"></asp:DropDownList>
+                价格：<asp:DropDownList ID="ddlPrice" runat="server" ClientIDMode="Static"></asp:DropDownList>
+                其他：<asp:DropDownList ID="ddlSize" runat="server" ClientIDMode="Static"></asp:DropDownList>
+            </td>
+        </tr>
         <tr>
             <td class="tdLeft">价格：
             </td>

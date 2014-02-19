@@ -9,6 +9,7 @@ using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
 using System.Data;
 using System.Linq;
+using ADee.Project.LBS.BLL;
 
 namespace ADeeWu.HuoBi3J.Web.Center
 {
@@ -16,6 +17,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
     {
         public int kid = 0;
         DataBase db = DataBase.Create();
+        DAL.Key_Attribute attrDAL = new DAL.Key_Attribute();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,8 +34,8 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
         private void Search()
         {
-            var pageIndex = WebUtility.GetRequestLong("page", 1);
-            var pageSize = Utility.GetLong(Request["pagesize"], 10, 5, 40);
+            var pageIndex = WebUtility.GetRequestInt("page", 1);
+            var pageSize = Utility.GetInt(Request["pagesize"], 10, 5, 40);
 
             var selectType = WebUtility.GetRequestStr("selectType", "");
             var selectSize = WebUtility.GetRequestStr("selectSize", "");
@@ -48,38 +50,38 @@ namespace ADeeWu.HuoBi3J.Web.Center
             litType.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>全部</a></li>";
             litSize.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=&selectPrice=" + selectPrice + "' class='selectPrice'>全部</a></li>";
             litPrice.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectSize + "&selectSize=" + selectSize + "&selectPrice=' class='selectPrice'>全部</a></li>";
-            
-            var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
-            if (attribute != null)
+
+            var attributes = new DAL.Key_Attribute().GetEntityList("", new string[] { "kid" }, new object[] { kid });
+            if (attributes != null)
             {
-                litType.Text += string.Join("", attribute.KeyType.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + p + "&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
-                litSize.Text += string.Join("", attribute.KeySize.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + p + "&selectPrice=" + selectPrice + "' class='selectPrice'>" + p + "</a></li>"));
-                litPrice.Text += string.Join("", attribute.KeyPrice.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=" + selectType + "&selectSize=" + selectSize + "&selectPrice=" + p + "' class='selectPrice'>" + p + "</a></li>"));
-            }
-                        
-            var strWhere = "kid=@kid";
-            if (!string.IsNullOrWhiteSpace(keyword))
-            {
-                txtSearch.Text = keyword;
-                strWhere += string.Format(" and (companyname like '%{0}%' or companyaddress like '%{0}%' or simpledesc like '%{0}%')",keyword);
+                litType.Text += string.Join("", attributes.Where(p => p.DataType == "SelectType").Select(p => string.Format("<li class='item'><a href='key4product.aspx?kid={0}&selectType={4}-{1}&selectSize={2}&selectPrice={3}' class='selectPrice' title='{1}'>{1}</a></li>", kid, p.DataValue, selectSize, selectPrice, p.ID)));
+                litSize.Text += string.Join("", attributes.Where(p => p.DataType == "SelectSize").Select(p => string.Format("<li class='item'><a href='key4product.aspx?kid={0}&selectType={1}&selectSize={4}-{2}&selectPrice={3}' class='selectPrice' title='{2}'>{2}</a></li>", kid, selectType, p.DataValue, selectPrice, p.ID)));
+                litPrice.Text += string.Join("", attributes.Where(p => p.DataType == "SelectPrice").Select(p => string.Format("<li class='item'><a href='key4product.aspx?kid={0}&selectType={1}&selectSize={2}&selectPrice={4}-{3}' class='selectPrice' title='{3}'>{3}</a></li>", kid, selectType, selectSize, p.DataValue, p.ID)));
             }
 
+            var filter = string.Format("KID:{0},{0}", kid);
             if (!string.IsNullOrWhiteSpace(selectType))
             {
-                strWhere += string.Format(" and selecttype='{0}'", selectType);
+                var id = Utility.GetInt(selectType.Split(new char[] { '-' }).FirstOrDefault(), 0);
+                if (id > 0)
+                    filter += string.Format("|SelectTypeID:{0},{0}", id);
             }
             if (!string.IsNullOrWhiteSpace(selectPrice))
             {
-                strWhere += string.Format(" and selectPrice='{0}'", selectPrice);
+                var id = Utility.GetInt(selectPrice.Split(new char[] { '-' }).FirstOrDefault(), 0);
+                if (id > 0)
+                    filter += string.Format("|SelectPriceID:{0},{0}", id);
             }
             if (!string.IsNullOrWhiteSpace(selectSize))
             {
-                strWhere += string.Format(" and selectSize='{0}'", selectSize);
+                var id = Utility.GetInt(selectSize.Split(new char[] { '-' }).FirstOrDefault(), 0);
+                if (id > 0)
+                    filter += string.Format("|SelectSizeID:{0},{0}", id);
             }
 
-            db.EnableRecordCount = true;
-            db.Parameters.Append("kid", kid);
-            rpProduct.DataSource = db.Select(pageSize, pageIndex, "vw_Key_Product", "id", strWhere, "price asc"); ;
+            var geoSearchBLL = new GeoSearchBLL();
+            var productContents = geoSearchBLL.Local<LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, keyword, AccountHelper.City, pageIndex - 1, pageSize, keyword, "Price:1", filter);
+            rpProduct.DataSource = productContents.contents;
             rpProduct.DataBind();
 
             this.Pager1.AppendUrlParam("kid", kid.ToString());
@@ -89,7 +91,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.AppendUrlParam("keyword", keyword);
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
-            this.Pager1.TotalRecords = (int)db.RecordCount;
+            this.Pager1.TotalRecords = productContents.total;
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)

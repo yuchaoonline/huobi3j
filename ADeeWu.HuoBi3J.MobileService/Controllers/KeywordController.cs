@@ -20,14 +20,14 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <returns></returns>
         public ActionResult GetKeywordAttribute(int kid)
         {
-            var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
-            if (attribute != null)
+            var attributes = new DAL.Key_Attribute().GetEntityList("", new string[] { "kid" }, new object[] { kid });
+            if (attributes != null)
             {
                 return GetJson(new
                 {
-                    ktype = attribute.KeyType.Split(new char[] { ';' }).Select(p => new { name = p }),
-                    kprice = attribute.KeyPrice.Split(new char[] { ';' }).Select(p => new { name = p }),
-                    kother = attribute.KeySize.Split(new char[] { ';' }).Select(p => new { name = p })
+                    ktype = attributes.Where(p => p.DataType == "SelectType").Select(p => new { id = p.ID, name = p.DataValue }),
+                    kprice = attributes.Where(p => p.DataType == "SelectPrice").Select(p => new { id = p.ID, name = p.DataValue }),
+                    kother = attributes.Where(p => p.DataType == "SelectSize").Select(p => new { id = p.ID, name = p.DataValue }),
                 });
             }
 

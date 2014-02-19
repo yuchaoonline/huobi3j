@@ -35,7 +35,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             var kid = WebUtility.GetRequestStr("kid", "");
             try
             {
-                poiBLL.Delete(new List<string> { id }, LBSHelper.GeoProductTableID);
+                poiBLL.Delete(new List<string> { id }, ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID);
                 WebUtility.ShowMsg(this, "删除成功！", "pricelist4key.aspx?kid=" + kid);
             }
             catch (Exception ex)
@@ -50,7 +50,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             var dic = new Dictionary<string, string>();
             dic.Add("KID", kid + "," + kid);
             dic.Add("CreateUserID", LoginUser.UserID + "," + LoginUser.UserID);
-            var productResult = poiBLL.List<ProductPoi>(LBSHelper.GeoProductTableID, dic);
+            var productResult = poiBLL.List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, dic);
             rpQuestions.DataSource = productResult.pois;
             rpQuestions.DataBind();
         }

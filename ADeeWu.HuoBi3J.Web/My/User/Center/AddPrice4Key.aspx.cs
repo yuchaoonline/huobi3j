@@ -50,14 +50,27 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             rpKey.DataSource = keys;
             rpKey.DataBind();
 
-            litPrice.Text = "<li class='item'><a href='#' class='selectPrice'>无</a></li>";
-            litSize.Text = "<li class='item'><a href='#' class='selectSize'>无</a></li>";
-            litType.Text = "<li class='item'><a href='#' class='selectType'>无</a></li>";
+            var attributes = new DAL.Key_Attribute().GetEntityList("", new string[] { "kid" }, new object[] { kid });
+            ddlType.DataSource = attributes.Where(p => p.DataType == "SelectType").Select(p => new { ID = p.ID, Value = p.DataValue });
+            ddlType.DataTextField = "Value";
+            ddlType.DataValueField = "ID";            
+            ddlType.DataBind();
+            ddlType.AppendDataBoundItems = true;
+            ddlType.Items.Insert(0, new ListItem(""));
 
-            var attribute = new DAL.Key_Attribute().GetEntity("kid=" + kid);
-            litPrice.Text += string.Join("", attribute.KeyPrice.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='#' class='selectPrice'>" + p + "</a></li>"));
-            litSize.Text += string.Join("", attribute.KeySize.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='#' class='selectSize'>" + p + "</a></li>"));
-            litType.Text += string.Join("", attribute.KeyType.Split(new char[] { ';' }).Select(p => "<li class='item'><a href='#' class='selectType'>" + p + "</a></li>"));
+            ddlPrice.DataSource = attributes.Where(p => p.DataType == "SelectPrice").Select(p => new { ID = p.ID, Value = p.DataValue });
+            ddlPrice.DataTextField = "Value";
+            ddlPrice.DataValueField = "ID";            
+            ddlPrice.DataBind();
+            ddlPrice.AppendDataBoundItems = true;
+            ddlPrice.Items.Insert(0, new ListItem(""));
+
+            ddlSize.DataSource = attributes.Where(p => p.DataType == "SelectSize").Select(p => new { ID = p.ID, Value = p.DataValue });
+            ddlSize.DataTextField = "Value";
+            ddlSize.DataValueField = "ID";            
+            ddlSize.DataBind();
+            ddlSize.AppendDataBoundItems = true;
+            ddlSize.Items.Insert(0, new ListItem(""));
         }
 
         private void Save()
@@ -82,6 +95,9 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 var selecttype = WebUtility.GetRequestStr("selecttype", "");
                 var selectprice = WebUtility.GetRequestStr("selectprice", "");
                 var selectsize = WebUtility.GetRequestStr("selectsize", "");
+                var selecttypeid = WebUtility.GetRequestStr("selecttypeid", "");
+                var selectpriceid = WebUtility.GetRequestStr("selectpriceid", "");
+                var selectsizeid = WebUtility.GetRequestStr("selectsizeid", "");
 
                 if (string.IsNullOrWhiteSpace(txtPrice))
                 {
@@ -119,9 +135,12 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 dic.Add("KID", kid.ToString());
                 dic.Add("Description", txtDesc);
                 dic.Add("Price", txtPrice);
-                dic.Add("SelectType", selecttype.Split(new char[] { '：' }).LastOrDefault());
-                dic.Add("SelectPrice", selectprice.Split(new char[] { '：' }).LastOrDefault());
-                dic.Add("SelectSize", selectsize.Split(new char[] { '：' }).LastOrDefault());
+                dic.Add("SelectType", selecttype);
+                dic.Add("SelectPrice", selectprice);
+                dic.Add("SelectSize", selectsize);
+                dic.Add("SelectTypeID", selecttypeid);
+                dic.Add("SelectPriceID", selectpriceid);
+                dic.Add("SelectSizeID", selectsizeid);
                 dic.Add("CreateUserID", LoginUser.UserID.ToString());
                 dic.Add("KName", key["KName"].ToString());
                 dic.Add("BName", key["BName"].ToString());
@@ -134,7 +153,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 var poiBLL = new PoiBLL();
                 try
                 {
-                    var id = poiBLL.Create(Utility.GetFloat(saleman["PositionX"], 0f), Utility.GetFloat(saleman["PositionY"], 0f), ADee.Project.LBS.Entity.CoordType.BaiduEncrypt, LBSHelper.GeoProductTableID, dic, txtSimpleDesc, saleman["CompanyAddress"].ToString(), key["KName"].ToString());
+                    var id = poiBLL.Create(Utility.GetFloat(saleman["PositionX"], 0f), Utility.GetFloat(saleman["PositionY"], 0f), ADee.Project.LBS.Entity.CoordType.BaiduEncrypt, ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, dic, txtSimpleDesc, saleman["CompanyAddress"].ToString(), key["KName"].ToString());
 
                     if (!string.IsNullOrWhiteSpace(id)) 
                         result = JsonConvert.SerializeObject(new { statue = true });

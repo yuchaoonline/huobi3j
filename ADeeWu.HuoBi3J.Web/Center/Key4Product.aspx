@@ -23,9 +23,11 @@
                 selectValue(item.children, '<%=Request["selectSize"]%>');
             });
 
-            function selectValue(list,selectVal) {
+            function selectValue(list, selectVal) {
+                if (selectVal == '') return false;
+                var val = selectVal.substring(selectVal.indexOf('-') + 1, selectVal.length);
                 $.each(list, function (index, item) {
-                    if ($(item).text() == selectVal) {
+                    if ($(item).text() == val) {
                         $(item).addClass('current');
                     }
                 })
@@ -118,11 +120,11 @@
         <ItemTemplate>
             <tbody>
                 <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                    <td class="arc_title"><%# GetMoney(Eval("[Price]")) %></td>
-                    <td><%# Eval("[simpledesc]") %></td>
-                   <td><a href="SaleMan4Product.aspx?userid=<%# Eval("createuserid") %>" target="_blank"><%# Eval("companyname") %></a></td>
-                    <td><%# Eval("[selecttype]") %>;<%# Eval("[selectprice]") %>;<%# Eval("[selectsize]") %></td>             
-                    <td><a href="details.aspx?id=<%# Eval("[ID]") %>" class="btn_blue showinfo" title="详情">详情</a></td>
+                    <td class="arc_title"><%# GetMoney(Eval("Price")) %></td>
+                    <td><%# Eval("title") %></td>
+                   <td><a href="SaleMan4Product.aspx?userid=<%# Eval("CreateUserID") %>" target="_blank"><%# Eval("CompanyName") %></a></td>
+                    <td><%# Eval("SelectType") %>;<%# Eval("SelectPrice") %>;<%# Eval("SelectSize") %></td>             
+                    <td><a href="details.aspx?id=<%# Eval("uid") %>" class="btn_blue showinfo" title="详情">详情</a></td>
                 </tr>
             </tbody>
         </ItemTemplate>
