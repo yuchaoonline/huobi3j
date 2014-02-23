@@ -1,158 +1,359 @@
-<%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="SearchPrice.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.SearchPrice" %>
-
-<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
-<%@ Register Src="~/Controls/ucNav.ascx" TagPrefix="uc1" TagName="ucNav" %>
-
+Ôªø<%@ Page Language="C#" Title="" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="SearchPrice.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.SearchPrice" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
-    ªı±»»˝º“ - ªı±»»˝º“
+    Ë¥ßÊØî‰∏âÂÆ∂ - Ë¥ßÊØî‰∏âÂÆ∂ - ÊêúÁ¥¢‰ª∑Ê†º
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript" src="/JS/jquery.simplemodal.js"></script>
-    <script type="text/javascript" src="/js/jquery.watermark.js"></script>
-    <script type="text/javascript" src="/js/user.js"></script>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D10a875567626012d06af2387efa088e"></script>
-    <!-- Contact Form CSS files -->
-    <link type='text/css' href='/css/basic.css' rel='stylesheet' media='screen' />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        #l-map {
+            margin-right: 300px;
+            height: 550px;
+            width: 650px;
+        }
 
-    <!-- IE6 "fix" for the close png image -->
-    <!--[if lt IE 7]>
-    <link type='text/css' href='/css/basic_ie.css' rel='stylesheet' media='screen' />
-    <![endif]-->
-    <script type="text/javascript">
-        $(function () {
-            var val = $('.txtKeyword').val();
-            if(val=='')
-                val=' ‰»Îº€∏Ò';
-            $('.txtKeyword').val('');
-            $('.txtKeyword').watermark(val);
+        #result {
+            width: 290px;
+            position: absolute;
+            top: 10px;
+            right: 0px;
+            font-size: 12px;
+        }
 
-            $('.attentionCount').click(function(){
-                var kid = $(this).parents('#recruit_list').find('[name=kid]').val();
-                $.getJSON('/ajax/center.ashx',{method: 'getattention',kid: kid},function(data){
-                    if(data!=null){
-                        var html = "<ul class='attentionList'>";
-                        for(i=0;i<data.length;i++){
-                            var item = data[i];
-                            html+="<li><a href='#"+item.UID+"'>"+item.UName+"</a></li>";
-                        }
-                        html+="</ul>";
+        #searchResult th {
+            background-color: #508acb;
+            color: #fff;
+            height: 24px;
+        }
 
-                        $('#attentionDialog').html(html).dialog({modal: true});
-                    }
-                })
-            }).css('cursor','pointer');
+        #searchResult tr:hover {
+            cursor: pointer;
+            background-color: #eee;
+        }
 
-            $('.btn_search').click(function(){
-                var newVal = $(".txtKeyword").val();
-                if(newVal=='')
-                    newVal=val;
-                if(newVal==' ‰»Îº€∏Ò')
-                    newVal='';
-                var url = "<%=HttpContext.Current.Request.FilePath %>?keyword=" + newVal;
-                location.href=url;
-                return false;
-            });
+        .pagination {
+            margin: 10px 0;
+        }
 
-            $('.no-record').hide();
-
-            $('.result img').ReduceImage();
-
-            $('#txtKeyword').enter($('.btn_search'));
-
-            var map = new BMap.Map("allmap");
-            map.enableScrollWheelZoom();    //∆Ù”√πˆ¬÷∑≈¥ÛÀı–°£¨ƒ¨»œΩ˚”√
-            map.enableContinuousZoom();    //∆Ù”√µÿÕºπﬂ–‘Õœ◊ß£¨ƒ¨»œΩ˚”√
-            map.centerAndZoom('<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>', 14);
-            map.addEventListener("tilesloaded", function () {
-                getData();
-                map.removeEventListener('tilesloaded');
-            });
-            map.addEventListener("dragend", function () {
-                getData();
-            });
-
-            function getData() {
-                var bs = map.getBounds();   //ªÒ»°ø… ”«¯”Ú
-                var bssw = bs.getSouthWest();   //ø… ”«¯”Ú◊Ûœ¬Ω«
-                var bsne = bs.getNorthEast();   //ø… ”«¯”Ú”“…œΩ«
-                var keyword = '<%=Request["keyword"]%>';
-                //console.log("µ±«∞µÿÕºø… ”∑∂Œß «£∫" + bssw.lng + "," + bssw.lat + "µΩ" + bsne.lng + "," + bsne.lat);
-
-                $.getJSON('/ajax/center.ashx', { method: 'getpricedata', bssw_lng: bssw.lng, bssw_lat: bssw.lat, bsne_lng: bsne.lng, bsne_lat: bsne.lat,keyword: keyword }, function (data) {
-                    if (data && data.statue) {
-                        var products = JSON.parse(data.data);
-
-                        if (products.length <= 0) {
-                            alert('√ª”–≤È—ØµΩ '+keyword+' µƒ±®º€–≈œ¢£¨«Î≥¢ ‘∆‰À˚πÿº¸◊÷£°');
-                            return false;
-                        }                        
-                        $.each(products, function (index, item) {
-                            var marker = new BMap.Marker(new BMap.Point(item.pointY, item.pointX));
-                            map.addOverlay(marker);
-
-                            var html = '<table class="table_list" cellpadding="0" cellspacing="0" width="450px"><thead><tr height="30px" class="black70"><td width="30%" class="arc_title">º€∏Ò</td><td width="30%">ºÚµ•√Ë ˆ</td><td width="30%">…Ãº“</td><td width="10%">≤Ÿ◊˜</td></tr><thead><tbody>';
-                            $.each(item.data, function (i, product) {
-                                html += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
-                                html += '<td>' + product.price + '</td>';
-                                html += '<td>' + product.simpledesc + '</td>';
-                                html += '<td><a href="SaleMan4Product.aspx?userid=' + product.salemanid + '" target="_blank">' + product.companyname + '</a></td>';
-                                html += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">≤Èø¥</a></td>';
-                                html += '</tr>';
-                            })
-                            html += '</tbody></table>';
-
-                            //¥¥Ω®–≈œ¢¥∞ø⁄
-                            var infoWin = new BMap.InfoWindow(html);
-                            marker.addEventListener("click", function () { this.openInfoWindow(infoWin); });
-                        })
-
-                        var allRows = "";
-                        var notsortproduct = JSON.parse(data.data2);
-                        $.each(notsortproduct, function (i, product) {
-                            allRows += '<tr height="40px" onmouseover="this.className=\'jobMenu_hover\'" onmouseout="this.className=\'\'" class="">';
-                            allRows += '<td><a target="_blank" href="details.aspx?id=' + product.id + '">' + product.price + '</a></td>';
-                            allRows += '<td>' + product.simpledesc + '</td>';
-                            allRows += '<td><a href="SaleMan4Product.aspx?userid=' + product.salemanid + '" target="_blank">' + product.companyname + '</a></td>';
-                            allRows += '<td>' + product.bname + '</td>';
-                            allRows += '<td><a class="btn_blue" target="_blank" href="details.aspx?id=' + product.id + '">≤Èø¥</a></td>';
-                            allRows += '</tr>';
-                        })
-                        $('#rentP_list1 tbody').empty().html(allRows);
-                    } else {
-                        alert(data.msg);
-                    }
-                })
+            .pagination ul {
+                display: inline-block;
+                *display: inline;
+                margin-bottom: 0;
+                margin-left: 0;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                *zoom: 1;
+                -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+                -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
             }
-        })
-    </script>
+
+                .pagination ul > li {
+                    display: inline;
+                }
+
+                    .pagination ul > li > a,
+                    .pagination ul > li > span {
+                        float: left;
+                        padding: 4px 12px;
+                        line-height: 20px;
+                        text-decoration: none;
+                        background-color: #ffffff;
+                        border: 1px solid #dddddd;
+                        border-left-width: 0;
+                    }
+
+                        .pagination ul > li > a:hover,
+                        .pagination ul > li > a:focus,
+                        .pagination ul > .active > a,
+                        .pagination ul > .active > span {
+                            background-color: #f5f5f5;
+                        }
+
+                .pagination ul > .active > a,
+                .pagination ul > .active > span {
+                    color: #999999;
+                    cursor: default;
+                }
+
+                .pagination ul > .disabled > span,
+                .pagination ul > .disabled > a,
+                .pagination ul > .disabled > a:hover,
+                .pagination ul > .disabled > a:focus {
+                    color: #999999;
+                    cursor: default;
+                    background-color: transparent;
+                }
+
+                .pagination ul > li:first-child > a,
+                .pagination ul > li:first-child > span {
+                    border-left-width: 1px;
+                    -webkit-border-bottom-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                    -webkit-border-top-left-radius: 4px;
+                    border-top-left-radius: 4px;
+                    -moz-border-radius-bottomleft: 4px;
+                    -moz-border-radius-topleft: 4px;
+                }
+
+                .pagination ul > li:last-child > a,
+                .pagination ul > li:last-child > span {
+                    -webkit-border-top-right-radius: 4px;
+                    border-top-right-radius: 4px;
+                    -webkit-border-bottom-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                    -moz-border-radius-topright: 4px;
+                    -moz-border-radius-bottomright: 4px;
+                }
+
+        .pagination-centered {
+            text-align: center;
+        }
+
+        .pagination-right {
+            text-align: right;
+        }
+
+        .pagination-large ul > li > a,
+        .pagination-large ul > li > span {
+            padding: 11px 19px;
+            font-size: 17.5px;
+        }
+
+        .pagination-large ul > li:first-child > a,
+        .pagination-large ul > li:first-child > span {
+            -webkit-border-bottom-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            -webkit-border-top-left-radius: 6px;
+            border-top-left-radius: 6px;
+            -moz-border-radius-bottomleft: 6px;
+            -moz-border-radius-topleft: 6px;
+        }
+
+        .pagination-large ul > li:last-child > a,
+        .pagination-large ul > li:last-child > span {
+            -webkit-border-top-right-radius: 6px;
+            border-top-right-radius: 6px;
+            -webkit-border-bottom-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            -moz-border-radius-topright: 6px;
+            -moz-border-radius-bottomright: 6px;
+        }
+
+        .pagination-mini ul > li:first-child > a,
+        .pagination-small ul > li:first-child > a,
+        .pagination-mini ul > li:first-child > span,
+        .pagination-small ul > li:first-child > span {
+            -webkit-border-bottom-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            -webkit-border-top-left-radius: 3px;
+            border-top-left-radius: 3px;
+            -moz-border-radius-bottomleft: 3px;
+            -moz-border-radius-topleft: 3px;
+        }
+
+        .pagination-mini ul > li:last-child > a,
+        .pagination-small ul > li:last-child > a,
+        .pagination-mini ul > li:last-child > span,
+        .pagination-small ul > li:last-child > span {
+            -webkit-border-top-right-radius: 3px;
+            border-top-right-radius: 3px;
+            -webkit-border-bottom-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            -moz-border-radius-topright: 3px;
+            -moz-border-radius-bottomright: 3px;
+        }
+
+        .pagination-small ul > li > a,
+        .pagination-small ul > li > span {
+            padding: 2px 10px;
+            font-size: 11.9px;
+        }
+
+        .pagination-mini ul > li > a,
+        .pagination-mini ul > li > span {
+            padding: 0 6px;
+            font-size: 10.5px;
+        }
+
+        .pager {
+            margin: 20px 0;
+            text-align: center;
+            list-style: none;
+            *zoom: 1;
+        }
+
+            .pager:before,
+            .pager:after {
+                display: table;
+                line-height: 0;
+                content: "";
+            }
+
+            .pager:after {
+                clear: both;
+            }
+
+            .pager li {
+                display: inline;
+            }
+
+                .pager li > a,
+                .pager li > span {
+                    display: inline-block;
+                    padding: 5px 14px;
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                    -webkit-border-radius: 15px;
+                    -moz-border-radius: 15px;
+                    border-radius: 15px;
+                }
+
+                    .pager li > a:hover,
+                    .pager li > a:focus {
+                        text-decoration: none;
+                        background-color: #f5f5f5;
+                    }
+
+            .pager .next > a,
+            .pager .next > span {
+                float: right;
+            }
+
+            .pager .previous > a,
+            .pager .previous > span {
+                float: left;
+            }
+
+            .pager .disabled > a,
+            .pager .disabled > a:hover,
+            .pager .disabled > a:focus,
+            .pager .disabled > span {
+                color: #999999;
+                cursor: default;
+                background-color: #fff;
+            }
+    </style>
+    <script type="text/javascript" src="/JS/jquery.pager.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=xgLsN99uIaoe9vmqb5wGbt7F"></script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
-    <div class="cl"></div>
-
-    <div id="searchResult">
-        <div style="width: 950px;">
-            <div id="allmap"style="width: 950px; height: 555px;"></div>
-            <asp:HiddenField ID="hfData" runat="server" />
-        </div>
-        <table id="rentP_list1" class="table_list" cellpadding="0" cellspacing="0" width="950px">
-            <thead>
-                <tr height="30px" class="black70">
-                    <td width="20%" class="arc_title">º€∏Ò</td>
-                    <td width="25%">ºÚµ•√Ë ˆ</td>
-                    <td width="20%">…Ãº“</td>
-                    <td width="25%">À˘‘⁄…Ã»¶</td>
-                    <td width="10%">≤Èø¥</td>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+    <div id="l-map"></div>
+    <div id="result">
+        <table id="searchResult"></table>
+        <div id="mapPager" class="pagination text-center"></div>
     </div>
 
-    <div class="cl"></div>
+    <script type="text/javascript">
+        var map = new BMap.Map("l-map");
+        var points = [];
+        var keyword = '';
+        map.centerAndZoom('<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>', 14);
+        map.enableScrollWheelZoom();
+        map.addControl(new BMap.NavigationControl());
+        var customLayer;
+        function addCustomLayer(keyword) {
+            if (customLayer) {
+                map.removeTileLayer(customLayer);
+            }
+            customLayer = new BMap.CustomLayer({
+                geotableId: 49566,
+                q: keyword,
+                //tags: keyword,
+                filter: ''
+            });
+            map.addTileLayer(customLayer);
+            customLayer.addEventListener('hotspotclick', function (e) {
+                showInfo(e.content);
+            });
+        }
 
-    <div class="pager" align="center">
-        <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
-    </div>
-    <div id="loading"></div>
+        function searchAction(key, page) {
+            page = page || 1;
+            var filter = [];
+            keyword = key;
+
+            var url = "http://api.map.baidu.com/geosearch/v3/local?callback=?";
+            $.getJSON(url, {
+                'q': keyword,
+                //'tags': keyword,
+                'page_index': page - 1,
+                'page_size': 5,
+                'filter': filter.join('|'),
+                'region': '<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>',
+                'geotable_id': 49566,
+                'ak': 'xgLsN99uIaoe9vmqb5wGbt7F'
+            }, function (e) {
+                renderMap(e, page);
+            });
+
+            addCustomLayer(keyword);
+        }
+
+        function renderMap(res, page) {
+            var content = res.contents;
+            $('#searchResult').html('');
+            map.clearOverlays();
+            points.length = 0;
+
+            if (content.length == 0) {
+                $('#searchResult').append($('<p style="border-top:1px solid #DDDDDD;padding-top:10px;text-align:center;text-align:center;font-size:18px;" class="text-warning">Êä±Ê≠âÔºåÊ≤°ÊúâÊâæÂà∞ÊÇ®ÊÉ≥Ë¶ÅÁöÑ‰ø°ÊÅØÔºåËØ∑ÈáçÊñ∞Êü•ËØ¢</p>'));
+                return;
+            }
+
+            $('#searchResult').append($('<tr><th colspan="2">ÊêúÁ¥¢ÁªìÊûú</th></tr>'));
+            $.each(content, function (i, item) {
+                var point = new BMap.Point(item.location[0], item.location[1]),
+                    marker = new BMap.Marker(point);
+                points.push(point);
+                var tr = $("<tr><td width='90%'><a style='color: blue;' target='_blank' href='Details.aspx?id=" + item.uid + "'>" + item.title + "<a/><br />ÂÖ≥ÈîÆÂ≠óÔºö<a href='key4product.aspx?kid=" + item.KID + "' target='_blank' style='color: blue;'>" + item.KName + "</a><br />Âú∞ÂùÄÔºö" + item.address + "<br />ÁîµËØùÔºö " + item.Phone + "</td><td width='10%'><span style='color:red;'>Ôø•" + item.Price + "<br/></span></td></tr>").click(function () {
+                    showInfo(item);
+                });
+                $('#searchResult').append(tr);;
+                marker.addEventListener('click', function () {
+                    showInfo(item);
+                });
+                map.addOverlay(marker);
+            })
+
+            var pagecount = Math.ceil(res.total / 10);
+            InitPager(page, pagecount);
+
+            map.setViewport(points);
+        }
+
+        function InitPager(page, pagecount) {
+            $('#mapPager').pager({
+                pagenumber: page,
+                pagecount: pagecount,
+                showcount: 3,
+                buttonClickCallback: function (pageclickednumber) {
+                    //InitPager(page, pagecount);
+                    searchAction(keyword, pageclickednumber);
+                }
+            })
+        }
+
+        function showInfo(item) {
+            var content = "<table>" +
+                        "<tr><td>ÂÖ≥ÈîÆÂ≠óÔºö</td><td><a href='key4product.aspx?kid=" + item.KID + "' target='_blank' style='color: blue;'>" + item.KName + "</a></td>" +
+                        "<tr><td>‰ª∑Ê†ºÔºö</td><td>Ôø•" + item.Price + "</td>" +
+						"<tr><td>Âú∞ÂùÄÔºö</td><td>" + item.address + "</td>" +
+                        "<tr><td>ÁîµËØùÔºö</td><td>" + item.Phone + "</td>" +
+						"</table>"
+            var infoWindow = new BMap.InfoWindow(content, {
+                width: 400,
+                //height: 60,
+                title: '<a href="Details.aspx?id=' + item.uid + '" target="_blank"  style="color: blue;"/>' + item.title + '</a>',
+                enableMessage: false,
+                enableAutoPan: true
+            });
+            var point = new BMap.Point(item.location[0], item.location[1]);
+            map.openInfoWindow(infoWindow, point);
+        }
+
+        searchAction('<%=Request["Keyword"]%>');
+    </script>
 </asp:Content>

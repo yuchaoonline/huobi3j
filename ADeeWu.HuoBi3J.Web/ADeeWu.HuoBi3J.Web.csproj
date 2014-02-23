@@ -131,6 +131,7 @@
     <Content Include="JS\bootstrap.js" />
     <Content Include="JS\bootstrap.min.js" />
     <Content Include="JS\jquery.key.js" />
+    <Content Include="JS\jquery.pager.js" />
     <Content Include="JS\jquery.simplemodal.js" />
     <Content Include="MobileLogin.aspx" />
     <Content Include="MHTML.master" />
