@@ -66,16 +66,23 @@ namespace ADeeWu.HuoBi3J.Web.Center
             return decimal.Round(Utility.GetDecimal(obj, 0), length).ToString();
         }
 
+        public string Decode(object obj)
+        {
+            if (obj == null) return "";
+            if (string.IsNullOrWhiteSpace(obj.ToString())) return "";
+            return HttpUtility.HtmlDecode(obj.ToString());
+        }
+
         protected void rpResult_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var rpOtherPrice = (Repeater)e.Item.FindControl("rpOtherPrice");
             var poi = (ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi)e.Item.DataItem;
+            if (poi == null) return;
+
             var dic = new Dictionary<string, string>();
             dic.Add("CreateUserID", string.Format("{0},{0}", poi.CreateUserID));
-            //var poiListResult = poiBLL.List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, dic);
-            var a = searchBLL.Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 10, "", "Price:1", "CreateUserID=" + dic["CreateUserID"]);
 
-            rpOtherPrice.DataSource = a.contents;
+            rpOtherPrice.DataSource = searchBLL.Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 10, "", "Price:1", "CreateUserID=" + dic["CreateUserID"]).contents;
             rpOtherPrice.DataBind();
         }
     }

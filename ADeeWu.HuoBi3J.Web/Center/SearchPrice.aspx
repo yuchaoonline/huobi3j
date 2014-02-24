@@ -282,6 +282,7 @@
                 'page_index': page - 1,
                 'page_size': 5,
                 'filter': filter.join('|'),
+                'sortby': 'Price:1',
                 'region': '<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>',
                 'geotable_id': 49566,
                 'ak': 'xgLsN99uIaoe9vmqb5wGbt7F'
@@ -308,7 +309,7 @@
                 var point = new BMap.Point(item.location[0], item.location[1]),
                     marker = new BMap.Marker(point);
                 points.push(point);
-                var tr = $("<tr><td width='90%'><a style='color: blue;' target='_blank' href='Details.aspx?id=" + item.uid + "'>" + item.title + "<a/><br />关键字：<a href='key4product.aspx?kid=" + item.KID + "' target='_blank' style='color: blue;'>" + item.KName + "</a><br />地址：" + item.address + "<br />电话： " + item.Phone + "</td><td width='10%'><span style='color:red;'>￥" + item.Price + "<br/></span></td></tr>").click(function () {
+                var tr = $("<tr><td width='90%'><a style='color: blue;' target='_blank' href='Details.aspx?id=" + item.uid + "'>" + item.title + "<a/><br />关键字：<a href='key4product.aspx?kid=" + item.KID + "' target='_blank' style='color: blue;'>" + item.KName + "</a><br />商家：<a href='SaleMan4Product.aspx?userid=" + item.CreateUserID + "' target='_blank' style='color: blue;'>" + item.CompanyName + "</a><br />地址：" + item.address + "<br />电话： " + item.Phone + "</td><td width='10%'><span style='color:red;'>￥" + item.Price + "<br/></span></td></tr>").click(function () {
                     showInfo(item);
                 });
                 $('#searchResult').append(tr);;
@@ -339,7 +340,8 @@
         function showInfo(item) {
             var content = "<table>" +
                         "<tr><td>关键字：</td><td><a href='key4product.aspx?kid=" + item.KID + "' target='_blank' style='color: blue;'>" + item.KName + "</a></td>" +
-                        "<tr><td>价格：</td><td>￥" + item.Price + "</td>" +
+                        "<tr><td>商家：</td><td><a href='SaleMan4Product.aspx?userid=" + item.CreateUserID + "' target='_blank' style='color: blue;'>" + item.CompanyName + "</a></td>" +
+                        "<tr><td>价格：</td><td><font color='red'>￥" + item.Price + "</font></td>" +
 						"<tr><td>地址：</td><td>" + item.address + "</td>" +
                         "<tr><td>电话：</td><td>" + item.Phone + "</td>" +
 						"</table>"

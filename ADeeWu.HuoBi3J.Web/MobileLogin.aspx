@@ -8,26 +8,15 @@
     <link href="/CSS/bootstrap.css" rel="stylesheet" />
     <link href="/CSS/bootstrap-theme.css" rel="stylesheet" />
     <style type="text/css">
-        body { padding-top: 70px; }
+        body {
+            padding-top: 70px;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></a>
-            <button type="button" class="btn btn-default navbar-btn" id="btnApp">查看附近价格</button>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li></li>
-                <li></li>
-            </ul>
+            <h4><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
         </div>
     </nav>
 
@@ -88,7 +77,7 @@
             })
 
             $('#btnApp').click(function () {
-                location.href = "app.apk";
+                location.href = "/app.apk";
                 //alert('即将到来...');
                 return false;
             })

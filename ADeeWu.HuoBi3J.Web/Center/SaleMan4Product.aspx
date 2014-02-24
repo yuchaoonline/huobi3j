@@ -97,10 +97,10 @@
                                                     <ItemTemplate>
                                                         <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
                                                             <td class="arc_title"><%# GetDecimal(Eval("price"),2) %></td>
-                                                            <td><%# Eval("simpledesc") %></td>
+                                                            <td><%# Eval("title") %></td>
                                                             <td><a href="key4product.aspx?kid=<%# Eval("kid") %>"><%# Eval("kname") %></a></td>
-                                                            <td><%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></td>
-                                                            <td><a href="Details.aspx?id=<%# Eval("id") %>" class="btn_blue">查看</a></td>
+                                                            <td><%#Eval("BName") %></td>
+                                                            <td><a href="Details.aspx?id=<%# Eval("uid") %>" class="btn_blue" target="_blank">查看</a></td>
                                                         </tr>
                                                     </ItemTemplate>
                                                     <FooterTemplate>

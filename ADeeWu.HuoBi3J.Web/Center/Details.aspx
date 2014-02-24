@@ -136,11 +136,11 @@
                                     <div class="main">
                                         <h2 class="content-title" id="anchor-detail">报价详情</h2>
                                         <div class="blk detail">
-                                            <%#Eval("Description") %>
+                                            <%#Decode(Eval("Description")) %>
                                         </div>
                                         <h2 class="content-title" id="business-info">商家介绍</h2>
                                         <div class="blk detail">
-                                            <%#Eval("SalemanMemo") %>
+                                            <%#Decode(Eval("SalemanMemo")) %>
                                         </div>
                                         <h2 class="content-title" id="anchor-address">商家地址</h2>
                                         <div id="side-business" class="cf blk detail">

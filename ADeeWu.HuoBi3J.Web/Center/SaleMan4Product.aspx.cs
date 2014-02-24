@@ -1,4 +1,5 @@
-﻿using ADeeWu.HuoBi3J.Libary;
+﻿using ADee.Project.LBS.BLL;
+using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
 using System;
@@ -49,8 +50,13 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var datarowview = (DataRowView)e.Item.DataItem;
             var userid = Utility.GetInt(datarowview["userid"], 0);
 
-            rpOtherPrice.DataSource = db.Select("vw_key_product", string.Format("createuserid = {0} and pname='{1}' and cname='{2}'", userid, AccountHelper.Province, AccountHelper.City), "price asc");
-            rpOtherPrice.DataBind();
+            if (userid > 0)
+            {
+                var dic = new Dictionary<string, string>();
+                dic.Add("CreateUserID", userid.ToString());
+                rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 20, "", "Price:1", "CreateUserID=" + dic["CreateUserID"]).contents;
+                rpOtherPrice.DataBind();
+            }
         }
     }
 }

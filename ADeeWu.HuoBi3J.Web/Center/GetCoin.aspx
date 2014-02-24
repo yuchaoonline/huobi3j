@@ -47,8 +47,8 @@
                     <asp:Repeater ID="rpProduct" runat="server">
                         <ItemTemplate>
                             <tr>
-                                <td><a href="M_Details.aspx?id=<%# Eval("id") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
-                                <td><%# Eval("simpledesc") %></td>
+                                <td><a href="M_Details.aspx?id=<%# Eval("uid") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
+                                <td><%# Eval("title") %></td>
                                 <td><%# Eval("kname") %></td>
                             </tr>
                         </ItemTemplate>
@@ -70,6 +70,7 @@
             </div>
             <button type="button" id="btnLogin" class="btn btn-primary btn-block btn-lg">登录</button>
             <%} %>
+            <button type="button" id="btnDownload" class="btn btn-primary btn-block btn-lg">下载应用，对比附近价格</button>
         </div>
 
         <script src="/js/jquery.js"></script>
@@ -82,6 +83,10 @@
                 })
                 $('#btnConfirm').click(function () {
                     location.href = location.href + '&confirm=yes';
+                    return false;
+                })
+                $('#btnDownload').click(function () {
+                    location.href = '/app.apk';
                     return false;
                 })
             })

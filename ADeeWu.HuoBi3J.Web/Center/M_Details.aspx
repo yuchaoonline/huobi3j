@@ -28,23 +28,23 @@
                 <ItemTemplate>
                     <div class="panel panel-primary">
                         <div class="panel-heading">报价</div>
-                        <div class="panel-body" style="font-weight: bold; font-size: 1.2em;"><span style="font-size: 2em;background-color: #f0ad4e;" class="badge label-warning"><%# GetDecimal(Eval("price"),2) %></span>【<%# Eval("kname") %>】<%# Eval("simpledesc") %></div>                     
+                        <div class="panel-body" style="font-weight: bold; font-size: 1.2em;"><span style="font-size: 2em;background-color: #f0ad4e;" class="badge label-warning"><%# GetDecimal(Eval("price"),2) %></span>【<%# Eval("kname") %>】<%# Eval("title") %></div>                     
                     </div>
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">报价详情</div>
-                        <div class="panel-body"><%# Eval("Description") %></div>
+                        <div class="panel-body"><%#Decode(Eval("Description")) %></div>
                     </div>
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">商家介绍</div>
-                        <div class="panel-body"><%# Eval("memo") %></div>
+                        <div class="panel-body"><%#Decode(Eval("SalemanMemo")) %></div>
                     </div>
 
                     <div class="panel panel-primary">
                         <a href="#" class="list-group-item active">商家地址</a>
                         <p class="list-group-item">商家名称：<%# Eval("companyname") %></p>
-                        <p class="list-group-item">商家地址：<%# Eval("companyaddress") %></p>
+                        <p class="list-group-item">商家地址：<%# Eval("address") %></p>
                         <p class="list-group-item">商家电话：<%# Eval("phone") %></p>
                     </div>
 
@@ -59,8 +59,8 @@
                             <asp:Repeater ID="rpOtherPrice" runat="server">
                                 <ItemTemplate>
                                     <tr>
-                                        <td><a href="M_Details.aspx?id=<%# Eval("id") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
-                                        <td><%# Eval("simpledesc") %></td>
+                                        <td><a href="M_Details.aspx?id=<%# Eval("uid") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
+                                        <td><%# Eval("title") %></td>
                                         <td><%# Eval("kname") %></td>
                                     </tr>
                                 </ItemTemplate>
@@ -73,10 +73,6 @@
 
         <script src="/js/jquery.js"></script>
         <script src="/js/bootstrap.min.js"></script>
-        <script type="text/javascript">
-            $(function () {
-            })
-        </script>
     </form>
 </body>
 </html>

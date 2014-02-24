@@ -9,18 +9,20 @@
 		<a href="/html/Service.aspx" target="_blank" title="服务声明">服务声明</a>
     </div>
     <div>
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes"><img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes"><img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes"><img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
-        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes"><img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes">
+            <img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes">
+            <img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes">
+            <img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1959831331&site=qq&menu=yes">
+            <img src="/images/online_red.gif" width="95px" height="31px" alt="在线客服"></a>
     </div>
     <p>
         Copyright© 2009-2013 www.HuoBi3J.com All Rights Reserved 货比三家网 版权所有.<br>
         未经许可，不得擅自复制本网站内容！ 
     </p>
-    <%--<span class="Foot-51La">
-        <script language="javascript" type="text/javascript" src="http://js.users.51.la/4187056.js"></script>
-        <noscript><a href="http://www.51.la/?4187056" target="_blank">
-            <img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4187056.asp" style="border: none" /></a></noscript>
-    </span>--%>
+    <script language="javascript" type="text/javascript" src="http://js.users.51.la/16745095.js"></script>
+    <noscript><a href="http://www.51.la/?16745095" target="_blank">
+        <img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/16745095.asp" style="border: none" /></a></noscript>
 </div>
