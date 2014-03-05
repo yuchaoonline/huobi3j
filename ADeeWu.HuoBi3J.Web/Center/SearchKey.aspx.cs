@@ -55,16 +55,10 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             DataBase db = DataBase.Create();
 
-            var sql = string.Format(" bid != {0} and cname = '{1}' and pname = '{2}'", movebid, AccountHelper.City, AccountHelper.Province);
-            if (!string.IsNullOrEmpty(KeyWord)) sql += string.Format(" and (KName like '%{0}%' or BName like '%{0}%')", KeyWord);
-            //if (aid != -1)
-            //{
-            //    sql += " and aid=" + aid;
-            //    this.Pager1.AppendUrlParam("area", aid.ToString());
-            //}
+            var sql = string.Format(" KName like '%{0}%'", KeyWord);
 
             db.EnableRecordCount = true;
-            var dt = db.Select(pageSize, pageIndex, "vw_Keys", "kid", sql, "QuestionCount desc,BCreateTime");
+            var dt = db.Select(pageSize, pageIndex, "vw_Keys", "kid", sql, "QuestionCount desc");
             rpResult.DataSource = dt;
             rpResult.DataBind();
 
@@ -72,11 +66,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
-
-            var sql2 = string.Format("(KName like '%{0}%' or BName like '%{0}%') and bid={1}", KeyWord, movebid);
-            var defaultData = db.Select(20, 1, "vw_Keys", "kid", sql2, "QuestionCount desc,BCreateTime");
-            rpDefaultCenter.DataSource = defaultData;
-            rpDefaultCenter.DataBind();
 
             if (dt != null && dt.Rows.Count > 0)
             {

@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Text;
 using ADeeWu.HuoBi3J.SQL.ParameterCollection;
 using ADeeWu.HuoBi3J.SQL;
-using ADeeWu.HuoBi3J.Libary;
 
-namespace ADeeWu.HuoBi3J.DAL{
+namespace ADeeWu.HuoBi3J.DAL
+{
 	
 	public class Key{
 	
@@ -34,7 +34,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		
 		public Key()
 		{
-			this.db = ADeeWu.HuoBi3J.SQL.DataBase.Create();
+			this.db = DataBase.Create();
 		}
 		
 		
@@ -72,15 +72,14 @@ namespace ADeeWu.HuoBi3J.DAL{
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public long Add(ADeeWu.HuoBi3J.Model.Key model)
+		public int Add(ADeeWu.HuoBi3J.Model.Key model)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@BID",model.BID.HasValue ? (object)model.BID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
 		db.Parameters.Append("@IsDefault",model.IsDefault);
-		    DataTable dt = db.Select("insert into [Key]([Name],[BID],[CreateTime],[IsDefault]) values (@Name,@BID,@CreateTime,@IsDefault);select @@Identity;");
-			long newID = long.Parse(dt.Rows[0][0].ToString());
+		    DataTable dt = db.Select("insert into [Key]([KID],[Name],[CreateTime],[IsDefault]) values (@KID,@Name,@CreateTime,@IsDefault);select @@Identity;");
+			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.KID = newID;
 			return newID;
 		}
@@ -90,10 +89,9 @@ namespace ADeeWu.HuoBi3J.DAL{
 			db.Parameters.Clear();
 		db.Parameters.Append("@KID",model.KID);
 		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@BID",model.BID.HasValue ? (object)model.BID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
 		db.Parameters.Append("@IsDefault",model.IsDefault);
-			return db.ExecuteSql("update [Key] set [Name]=@Name,[BID]=@BID,[CreateTime]=@CreateTime,[IsDefault]=@IsDefault where [KID]=@KID");
+			return db.ExecuteSql("update [Key] set [Name]=@Name,[CreateTime]=@CreateTime,[IsDefault]=@IsDefault where [KID]=@KID");
 		}
 		
 	
@@ -207,9 +205,8 @@ namespace ADeeWu.HuoBi3J.DAL{
 			ADeeWu.HuoBi3J.Model.Key Entity = new ADeeWu.HuoBi3J.Model.Key();
 			Entity.KID = long.Parse(dr["KID"].ToString());
 			Entity.Name = dr["Name"] as string;
-			Entity.BID = dr["BID"] as long?;
 			Entity.CreateTime = dr["CreateTime"] as DateTime?;
-            Entity.IsDefault = Utility.GetBool(dr["IsDefault"], false);
+			Entity.IsDefault = bool.Parse(dr["IsDefault"].ToString());
 			return Entity;
 		}
 		
@@ -229,7 +226,6 @@ namespace ADeeWu.HuoBi3J.DAL{
 			ADeeWu.HuoBi3J.Model.Key Entity = new ADeeWu.HuoBi3J.Model.Key();
 			Entity.KID = long.Parse(dr["KID"].ToString());
 			Entity.Name = dr["Name"] as string;
-			Entity.BID = dr["BID"] as long?;
 			Entity.CreateTime = dr["CreateTime"] as DateTime?;
 			Entity.IsDefault = bool.Parse(dr["IsDefault"].ToString());
 			return Entity;
@@ -261,7 +257,6 @@ namespace ADeeWu.HuoBi3J.DAL{
                 ADeeWu.HuoBi3J.Model.Key Entity = new ADeeWu.HuoBi3J.Model.Key();
 				Entity.KID = long.Parse(dr["KID"].ToString());
 				Entity.Name = dr["Name"] as string;
-				Entity.BID = dr["BID"] as long?;
 				Entity.CreateTime = dr["CreateTime"] as DateTime?;
 				Entity.IsDefault = bool.Parse(dr["IsDefault"].ToString());
                 EntityList[i] = Entity;

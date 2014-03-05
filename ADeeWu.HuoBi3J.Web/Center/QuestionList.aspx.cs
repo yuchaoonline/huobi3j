@@ -21,9 +21,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
                 return Utility.GetInt(session.UserID, 0);
             }
         }
-
-        public bool? IsDefaultKey { get; set; }
-
+        
         public static int kid = -1;
         public static int bid =Utility.GetInt(System.Configuration.ConfigurationManager.AppSettings["movebid"],0);
 
@@ -38,7 +36,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     return;
                 }
                 var key = new DAL.Key().GetEntity(kid);
-                if (key.BID == bid) IsDefaultKey = true;
                 Search();
             }
         }

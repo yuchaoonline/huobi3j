@@ -73,8 +73,7 @@
                             <asp:Repeater ID="rpKey" runat="server">
                                 <ItemTemplate>
                                     <div class="black70 aaa">
-                                            <span style="font-weight: bold; font-size: 14px; margin-right: 100px;" id="kname"><%# Eval("KName") %></span>
-                                            <span>所属商圈：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %></span><span style="margin-left: 10px;">所属地区：<%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"),Eval("aname"),Eval("cid"),Eval("cname"),Eval("pid"),Eval("pname")," - ") %></span></div>
+                                            <span style="font-weight: bold; font-size: 14px; margin-right: 100px;" id="kname"><%# Eval("KName") %></span></div>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </li>
@@ -124,7 +123,7 @@
                     <td><%# Eval("title") %></td>
                    <td><a href="SaleMan4Product.aspx?userid=<%# Eval("CreateUserID") %>" target="_blank"><%# Eval("CompanyName") %></a></td>
                     <td><%# Eval("SelectType") %>;<%# Eval("SelectPrice") %>;<%# Eval("SelectSize") %></td>             
-                    <td><a href="details.aspx?id=<%# Eval("uid") %>" class="btn_blue showinfo" title="详情">详情</a></td>
+                    <td><a href="details.aspx?id=<%# Eval("uid") %>" class="btn_blue showinfo" title="详情" target="_blank">详情</a></td>
                 </tr>
             </tbody>
         </ItemTemplate>

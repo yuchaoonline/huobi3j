@@ -2,7 +2,7 @@
 using System;
 namespace ADeeWu.HuoBi3J.Model{
 	
-public class UserKey{
+public class Key_User{
 
 	#region Fields
 	private long _UKID = 0L;
@@ -13,11 +13,11 @@ public class UserKey{
 	#endregion
 	
 	#region Contructors
-	public UserKey()
+	public Key_User()
 	{
 	}
 	
-	public UserKey
+	public Key_User
 	(
 		long uKID,
 			long kID,

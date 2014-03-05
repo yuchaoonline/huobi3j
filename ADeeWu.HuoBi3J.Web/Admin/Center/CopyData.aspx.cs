@@ -83,7 +83,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
                     CreateTime = DateTime.Now,
                     Name = product.Name,
                     IsDefault = true,
-                    BID = bid
                 });
             }
             #endregion
@@ -93,7 +92,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
             {
                 keyDAL.Add(new Model.Key
                 {
-                    BID = bid,
                     CreateTime = DateTime.Now,
                     IsDefault = true,
                     Name = calling.Name

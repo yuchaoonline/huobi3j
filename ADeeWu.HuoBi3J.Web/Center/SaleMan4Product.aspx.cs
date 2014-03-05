@@ -54,7 +54,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             {
                 var dic = new Dictionary<string, string>();
                 dic.Add("CreateUserID", userid.ToString());
-                rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 20, "", "Price:1", "CreateUserID=" + dic["CreateUserID"]).contents;
+                rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 20, "", "Price:1", string.Format("CreateUserID=[{0}]", dic["CreateUserID"])).contents;
                 rpOtherPrice.DataBind();
             }
         }

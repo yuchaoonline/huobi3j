@@ -32,7 +32,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var corp = new DAL.Corporations().GetEntity(new string[] { "userid" }, new object[] { uid });
             litCorpName.Text = corp.CorpName;
 
-            var keys = new DAL.UserKey().GetEntityList("",new string[]{"uid"},new object[]{uid});
+            var keys = new DAL.Key_User().GetEntityList("", new string[] { "uid" }, new object[] { uid });
             if (keys == null) return;
 
             var db = DataBase.Create();

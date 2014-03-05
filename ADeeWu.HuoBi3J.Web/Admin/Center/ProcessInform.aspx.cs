@@ -52,7 +52,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
                 {
                     case 0:
                         {
-                            var dal = new DAL.BusinessCircle();
+                            var dal = new DAL.Key_BusinessCircle();
                             var business = dal.GetEntity(inform.ContentID.Value);
                             if (business == null) return;
 

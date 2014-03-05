@@ -68,7 +68,7 @@
             <div class="alert alert-warning">
                 登录后可获得10个金币，金币可在网站兑换金钱。         
             </div>
-            <button type="button" id="btnLogin" class="btn btn-primary btn-block btn-lg">登录</button>
+            <button type="button" id="btnLogin" class="btn btn-primary btn-block btn-lg">登陆/注册</button>
             <%} %>
             <button type="button" id="btnDownload" class="btn btn-primary btn-block btn-lg">下载应用，对比附近价格</button>
         </div>

@@ -70,7 +70,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             KID = Utility.GetInt(question["kid"], -1);
 
             //是业务员但没有关注，无权查看
-            var userkeyDAL = new DAL.UserKey();
+            var userkeyDAL = new DAL.Key_User();
             if (SaleManSession.IsSaleMan)
             {
                 if (!userkeyDAL.Exist(new string[] { "uid", "kid" }, new object[] { UserSession.GetSession().UserID, KID }))

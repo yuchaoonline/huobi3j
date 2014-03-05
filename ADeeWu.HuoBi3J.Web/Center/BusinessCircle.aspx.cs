@@ -43,18 +43,16 @@ namespace ADeeWu.HuoBi3J.Web.Center
                 return;
             }
 
-            DataBase db = DataBase.Create();
-            db.Parameters.Append("bid", BID);
-            var businessCircles = db.Select("vw_businesscircle", "bid=@bid", "");
-            if (businessCircles == null || businessCircles.Rows.Count <= 0) return;
+            var businessCircleDAL = new DAL.Key_BusinessCircle();
+            var businessCircle = businessCircleDAL.GetEntity(BID);
+            if (businessCircle == null) return;
+            litBName.Text = businessCircle.BName;
+            litBName2.Text = businessCircle.BName;
 
-            var businessCircle = businessCircles.Rows[0];
-            litBName.Text = businessCircle["BName"].ToString();
-            litLocation.Text = Helper.GetLocation(businessCircle["AreaID"], businessCircle["Area"], businessCircle["CityID"], businessCircle["City"], businessCircle["ProvinceID"], businessCircle["Province"], "-");
-
+            var db = DataBase.Create();
             db.EnableRecordCount = true;
             db.Parameters.Append("bid", BID);
-            var keys = db.Select(pageSize, pageIndex, "vw_Keys", "kid", "bid=@bid", "kcreatetime desc");
+            var keys = db.Select(pageSize, pageIndex, "vw_Key_BusinessCircle", "kid", "bid=@bid", "kcreatetime desc");
 
             rpResult.DataSource = keys;
             rpResult.DataBind();
@@ -63,15 +61,12 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
-
-            rpInfo.DataSource = new DAL.Center_Info().GetCenterInfo(BID, 1);
-            rpInfo.DataBind();
         }
 
         public string IsAttention(object _kid)
         {
             if (!SaleManSession.IsSaleMan) return "false";
-            var userkey = new DAL.UserKey().GetEntity(new string[] { "uid", "kid" }, new object[] { SaleManSession.SaleMan.UserID, _kid });
+            var userkey = new DAL.Key_User().GetEntity(new string[] { "uid", "kid" }, new object[] { SaleManSession.SaleMan.UserID, _kid });
             if (userkey == null) return "false";
             return userkey.IsGoOn ? "true" : "false";
         }

@@ -12,7 +12,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
     public partial class MoveCircle : System.Web.UI.Page
     {
         DAL.Key keyDAL = new DAL.Key();
-        DAL.BusinessCircle businessCircle = new DAL.BusinessCircle();
         DataBase db = DataBase.Create();
 
         public static int kid = 0;
@@ -42,7 +41,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             var newKey = new Model.Key
             {
-                BID = bid,
                 IsDefault = false,
                 CreateTime = DateTime.Now,
                 Name = key.Name,

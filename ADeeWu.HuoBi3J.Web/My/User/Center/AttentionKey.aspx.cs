@@ -38,7 +38,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
         {
             var kid = WebUtility.GetRequestInt("kid", -1);
 
-            var userkey = new DAL.UserKey().GetEntity(new string[] { "uid", "kid" }, new object[] { LoginUser.UserID,kid });
+            var userkey = new DAL.Key_User().GetEntity(new string[] { "uid", "kid" }, new object[] { LoginUser.UserID, kid });
             
             if (userkey != null)
             {
@@ -81,7 +81,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 return;
             }
 
-            Model.UserKey userKey = new Model.UserKey
+            Model.Key_User userKey = new Model.Key_User
             {
                 CreateTime = DateTime.Now,
                 KID = kid,
@@ -89,7 +89,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 IsGoOn = true,
             };
 
-            var userKeyDAL = new DAL.UserKey();
+            var userKeyDAL = new DAL.Key_User();
             if (userKeyDAL.Add(userKey) > 0)
             {                
                 user.Money -= BaseDataHelper.GetAttentionKeyFee;

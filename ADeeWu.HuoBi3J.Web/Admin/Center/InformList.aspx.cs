@@ -57,7 +57,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
             {
                 case 0:
                     {
-                        var business = new DAL.BusinessCircle().GetEntity(contentid);
+                        var business = new DAL.Key_BusinessCircle().GetEntity(contentid);
                         if (business == null) return "";
 
                         //return Helper.GetBusinessCircle(business.BID, business.BName);

@@ -54,7 +54,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
             DAL.Center_Key_Log logDAL = new DAL.Center_Key_Log();
             DAL.User_DealHistories dealDAL = new DAL.User_DealHistories();
             DAL.Key keyDAL = new DAL.Key ();
-            DAL.UserKey userKeyDAL = new DAL.UserKey();
+            DAL.Key_User userKeyDAL = new DAL.Key_User();
             DAL.Users userDAL = new DAL.Users();
 
             var manages = manageDAL.GetEntityList("", new string[] { }, new object[] { });
@@ -103,7 +103,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         /// </summary>
         public static void DoCenterAttentionKey()
         {
-            var userKeyDAL =new DAL.UserKey();
+            var userKeyDAL = new DAL.Key_User();
             var userDAL = new DAL.Users();
             var dealHistoryDAL = new DAL.User_DealHistories();
             var keyDAL = new DAL.Key();

@@ -85,7 +85,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                     pointY = product["positionY"].ToString(),
                     price = Utility.GetDecimal(product["price"], 0).ToString("F2"),
                     simpledesc = product["simpledesc"].ToString(),
-                    bname = Helper.GetBusinessCircle(product["bid"],product["bname"]),
+                    bname = Helper.GetBusinessCircle(product["bid"], product["bname"]),
                 });
             }
 
@@ -140,7 +140,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
         private string GetLocationPoint()
         {
-            var address = WebUtility.GetRequestStr("address","");
+            var address = WebUtility.GetRequestStr("address", "");
 
             if (string.IsNullOrWhiteSpace(address))
             {
@@ -157,8 +157,8 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             DataBase db = DataBase.Create();
             db.Parameters.Append("kid", kid);
-            var userkeys = db.Select("vw_UserKey", "kid=@kid", "");
-            if (userkeys == null || userkeys.Rows.Count <= 0) return JsonConvert.SerializeObject(new { statue = false });;
+            var userkeys = db.Select("vw_key_user", "kid=@kid", "");
+            if (userkeys == null || userkeys.Rows.Count <= 0) return JsonConvert.SerializeObject(new { statue = false }); ;
 
             var userkeyList = new List<object>();
             foreach (DataRow userkey in userkeys.Rows)
@@ -213,12 +213,12 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
             if (qid <= 0)
             {
                 return JsonConvert.SerializeObject(new { statue = false });
-            } 
+            }
             #endregion
 
             #region 添加关注人提醒
             var attentionQuestionDAL = new DAL.AttentionQuestion();
-            var userKeys = new DAL.UserKey().GetEntityList("", new string[] { "kid" }, new object[] { kid });
+            var userKeys = new DAL.Key_User().GetEntityList("", new string[] { "kid" }, new object[] { kid });
             if (userKeys == null) return JsonConvert.SerializeObject(new { statue = false });
 
             foreach (var userkey in userKeys)
@@ -267,7 +267,6 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
             var key = new Model.Key
             {
                 CreateTime = DateTime.Now,
-                BID = bid,
                 Name = name,
             };
             var keyid = keyDAL.Add(key);
@@ -354,26 +353,28 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
         private string AddBusinessCircle()
         {
-            var aid = WebUtility.GetRequestInt("aid", -1);
+            var lng = WebUtility.GetRequestFloat("lng", -1);
+            var lat = WebUtility.GetRequestFloat("lat", -1);
             var name = WebUtility.GetRequestStr("name", "");
 
-            if (aid == -1) return "";
+            if (lng == -1 || lat == -1) return "";
 
-            DAL.BusinessCircle businessCircleDAL = new DAL.BusinessCircle();
+            DAL.Key_BusinessCircle businessCircleDAL = new DAL.Key_BusinessCircle();
 
-            if (businessCircleDAL.Exist(string.Format("bname='{0}' and aid={1}", name, aid)))
+            if (businessCircleDAL.Exist(string.Format("bname='{0}' and lng={1} and lat={2}", name, lng, lat)))
             {
                 return JsonConvert.SerializeObject(new { statue = false, msg = "商圈已存在！" });
             }
 
-            var key = new Model.BusinessCircle
+            var key = new Model.Key_BusinessCircle
             {
                 CreateTime = DateTime.Now,
-                AID = aid,
+                Lng = lng,
+                Lat = lat,
                 BName = name,
             };
             var bid = businessCircleDAL.Add(key);
-            if ( bid > 0)
+            if (bid > 0)
             {
                 if (SaleManSession.IsSaleMan)
                 {
@@ -385,7 +386,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
                     });
                 }
 
-                return JsonConvert.SerializeObject(new { statue = true ,bid = bid});
+                return JsonConvert.SerializeObject(new { statue = true, bid = bid });
             }
             else
             {
@@ -397,10 +398,10 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
         {
             var count = 0;
             var db = DataBase.Create();
-            var uid = WebUtility.GetRequestInt("uid",0);
+            var uid = WebUtility.GetRequestInt("uid", 0);
             if (uid <= 0) return JsonConvert.SerializeObject(new { count = count });
 
-            count = Utility.GetInt(db.ExecuteScalar("select count(uid) from vw_userkey where uid = {0}", uid), 0);
+            count = Utility.GetInt(db.ExecuteScalar("select count(uid) from vw_key_user where uid = {0}", uid), 0);
 
             return JsonConvert.SerializeObject(new { count = count });
         }
@@ -408,7 +409,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
         private string AddInform()
         {
             var id = WebUtility.GetRequestInt("id", -1);
-            var typeid = WebUtility.GetRequestStr("typeid","");
+            var typeid = WebUtility.GetRequestStr("typeid", "");
 
             if (id == -1) return JsonConvert.SerializeObject(new { statue = false, msg = "id不存在" });
             if (string.IsNullOrEmpty(typeid)) return JsonConvert.SerializeObject(new { statue = false, msg = "typeid不存在" });
@@ -528,7 +529,9 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
             if (string.IsNullOrWhiteSpace(name))
             {
                 sql = string.Format("CategoryID={0}", cateid, name);
-            }else{
+            }
+            else
+            {
                 sql = string.Format("CategoryID={0} and name like '%{1}%'", cateid, name);
             }
             var dt = db.Select(sql, "");
@@ -539,8 +542,8 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
             {
                 products.Add(new
                 {
-                    productid = Utility.GetInt(row["id"],-1),
-                    categoryid = Utility.GetInt(row["categoryid"],-1),
+                    productid = Utility.GetInt(row["id"], -1),
+                    categoryid = Utility.GetInt(row["categoryid"], -1),
                     name = Utility.GetStr(row["name"], "N/A"),
                     content = Utility.GetStr(row["content"], "N/A"),
                     picture = Utility.GetStr(row["picture"], "N/A"),

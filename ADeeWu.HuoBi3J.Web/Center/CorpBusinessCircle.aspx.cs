@@ -26,7 +26,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
         private void Search(int uid)
         {
             var db = DataBase.Create();
-            rpResult.DataSource = db.Select(string.Format("select * from [BusinessCircle] where [bid] in (select bid from vw_userkey where uid = {0} group by bname,bid) order by bid", uid));
+            rpResult.DataSource = db.Select(string.Format("select * from [BusinessCircle] where [bid] in (select bid from vw_key_user where uid = {0} group by bname,bid) order by bid", uid));
             rpResult.DataBind();
 
             var corp = new DAL.Corporations().GetEntity(new string[] { "userid" }, new object[] { uid });

@@ -24,7 +24,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
         {
             var kid = WebUtility.GetRequestLong("kid", -1);
 
-            var userkeyDAL = new DAL.UserKey();
+            var userkeyDAL = new DAL.Key_User();
             var userkey = userkeyDAL.GetEntity(string.Format("kid={0} and uid={1}", kid, uid));
             userkey.IsGoOn = false;
             if (userkeyDAL.Update(userkey) > 0)

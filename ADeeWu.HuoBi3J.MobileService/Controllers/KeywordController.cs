@@ -46,11 +46,11 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var keys = new DataTable();
             if (pageindex != -1)
             {
-                keys = db.Select(pagesize, pageindex, "vw_UserKey", "ukid", string.Format("uid={0}", userid), "");
+                keys = db.Select(pagesize, pageindex, "vw_key_user", "ukid", string.Format("uid={0}", userid), "");
             }
             else
             {
-                keys = db.Select("vw_UserKey", string.Format("uid={0}", userid), "");
+                keys = db.Select("vw_key_user", string.Format("uid={0}", userid), "");
             }
 
             return GetJson(keys.ToJson());

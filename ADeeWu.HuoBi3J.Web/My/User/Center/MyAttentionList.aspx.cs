@@ -43,7 +43,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
             db.EnableRecordCount = true;
             db.Parameters.Append("UID", uid);
-            var dt = db.Select(pageSize, pageIndex, "vw_UserKey", "UKID", "UID=@UID", "");
+            var dt = db.Select(pageSize, pageIndex, "vw_key_user", "UKID", "UID=@UID", "");
             rpQuestions.DataSource = dt;
             rpQuestions.DataBind();
 

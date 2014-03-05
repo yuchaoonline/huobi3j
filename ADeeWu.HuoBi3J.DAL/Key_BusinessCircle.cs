@@ -7,9 +7,10 @@ using System.Text;
 using ADeeWu.HuoBi3J.SQL.ParameterCollection;
 using ADeeWu.HuoBi3J.SQL;
 
-namespace ADeeWu.HuoBi3J.DAL{
+namespace ADeeWu.HuoBi3J.DAL
+{
 	
-	public class UserKey{
+	public class Key_BusinessCircle{
 	
 		private DataBase db = null;
 		///<summary>
@@ -31,9 +32,9 @@ namespace ADeeWu.HuoBi3J.DAL{
             get { return db.Parameters; }
         }
 		
-		public UserKey()
+		public Key_BusinessCircle()
 		{
-			this.db = ADeeWu.HuoBi3J.SQL.DataBase.Create();
+			this.db = DataBase.Create();
 		}
 		
 		
@@ -41,7 +42,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		public bool Exist(string where)
         {
            StringBuilder builder = new StringBuilder();
-           builder.Append("select * from [UserKey] where 1=1");
+           builder.Append("select * from [Key_BusinessCircle] where 1=1");
            if (!string.IsNullOrEmpty(where) && where.Trim()!="")
            {
                builder.AppendFormat(" and ( {0} )", where);
@@ -58,7 +59,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         {
            
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [UserKey] where 1=1");
+            builder.Append("select * from [Key_BusinessCircle] where 1=1");
 			db.Parameters.Clear();
             for (int i = 0; i < columns.Length; i++)
             {
@@ -71,28 +72,28 @@ namespace ADeeWu.HuoBi3J.DAL{
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public long Add(ADeeWu.HuoBi3J.Model.UserKey model)
+		public int Add(ADeeWu.HuoBi3J.Model.Key_BusinessCircle model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@KID",model.KID.HasValue ? (object)model.KID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@UID",model.UID.HasValue ? (object)model.UID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@BName",model.BName );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
-		db.Parameters.Append("@IsGoOn",model.IsGoOn);
-		    DataTable dt = db.Select("insert into [UserKey]([KID],[UID],[CreateTime],[IsGoOn]) values (@KID,@UID,@CreateTime,@IsGoOn);select @@Identity;");
-			long newID = long.Parse(dt.Rows[0][0].ToString());
-			model.UKID = newID;
+		db.Parameters.Append("@Lat",model.Lat.HasValue ? (object)model.Lat.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Lng",model.Lng.HasValue ? (object)model.Lng.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Key_BusinessCircle]([BID],[BName],[CreateTime],[Lat],[Lng]) values (@BID,@BName,@CreateTime,@Lat,@Lng);select @@Identity;");
+			int newID = int.Parse(dt.Rows[0][0].ToString());
+			model.BID = newID;
 			return newID;
 		}
 		
-		public int Update(ADeeWu.HuoBi3J.Model.UserKey model)
+		public int Update(ADeeWu.HuoBi3J.Model.Key_BusinessCircle model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@UKID",model.UKID);
-		db.Parameters.Append("@KID",model.KID.HasValue ? (object)model.KID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@UID",model.UID.HasValue ? (object)model.UID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@BID",model.BID);
+		db.Parameters.Append("@BName",model.BName );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
-		db.Parameters.Append("@IsGoOn",model.IsGoOn);
-			return db.ExecuteSql("update [UserKey] set [KID]=@KID,[UID]=@UID,[CreateTime]=@CreateTime,[IsGoOn]=@IsGoOn where [UKID]=@UKID");
+		db.Parameters.Append("@Lat",model.Lat.HasValue ? (object)model.Lat.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Lng",model.Lng.HasValue ? (object)model.Lng.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Key_BusinessCircle] set [BName]=@BName,[CreateTime]=@CreateTime,[Lat]=@Lat,[Lng]=@Lng where [BID]=@BID");
 		}
 		
 	
@@ -108,7 +109,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public int Update(string columnName, object value, string where)
 		{
-			string sql = String.Format("update [{0}] set {1}=@{1}","UserKey",columnName);
+			string sql = String.Format("update [{0}] set {1}=@{1}","Key_BusinessCircle",columnName);
 			if(!string.IsNullOrEmpty(where)){
 				sql += " where " + where;
 			}
@@ -129,7 +130,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		{
 			if( updateColumns==null || updateColumns.Length==0 || updateValues== null || updateValues.Length != updateColumns.Length) return -1;
 			
-			string sql = String.Format("update [{0}] ","UserKey");
+			string sql = String.Format("update [{0}] ","Key_BusinessCircle");
 			
 			db.Parameters.Clear();
 			StringBuilder builder = new StringBuilder();
@@ -155,11 +156,11 @@ namespace ADeeWu.HuoBi3J.DAL{
 		
 		
 		
-		public int Delete(long  UKID)
+		public int Delete(long  BID)
 		{
 			db.Parameters.Clear();
-			db.Parameters.Append("@UKID",UKID);
-			return db.ExecuteSql("delete from [UserKey]  where  @UKID=UKID");
+			db.Parameters.Append("@BID",BID);
+			return db.ExecuteSql("delete from [Key_BusinessCircle]  where  @BID=BID");
 		}
 		
 		/// <summary>
@@ -169,7 +170,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		/// <returns>影响行数</returns>
 		public int DeleteAll()
 		{
-			string sql = string.Format("delete from [{0}] ", "UserKey");
+			string sql = string.Format("delete from [{0}] ", "Key_BusinessCircle");
 			return db.ExecuteSql(sql);
 
 		}
@@ -181,7 +182,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		/// <returns>影响行数</returns>
 		public int Delete(string where)
         {
-            string sql = string.Format("delete from [{0}] where 1=2 ", "UserKey");
+            string sql = string.Format("delete from [{0}] where 1=2 ", "Key_BusinessCircle");
 			if(string.IsNullOrEmpty(where)){
 				return -1;
 			}
@@ -190,54 +191,54 @@ namespace ADeeWu.HuoBi3J.DAL{
 
         public int Delete(string columnName, object value)
         {
-            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "UserKey",columnName);
+            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "Key_BusinessCircle",columnName);
 			db.Parameters.Clear();
             db.Parameters.Append("@" + columnName, value);
             return db.ExecuteSql(sql);
         }
 		
-		public ADeeWu.HuoBi3J.Model.UserKey GetEntity(long  UKID)
+		public ADeeWu.HuoBi3J.Model.Key_BusinessCircle GetEntity(long  BID)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@UKID",UKID);
-			DataTable dt = db.Select("select * from [UserKey] where 1=1  and [UKID]=@UKID");
+		db.Parameters.Append("@BID",BID);
+			DataTable dt = db.Select("select * from [Key_BusinessCircle] where 1=1  and [BID]=@BID");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.UserKey Entity = new ADeeWu.HuoBi3J.Model.UserKey();
-			Entity.UKID = long.Parse(dr["UKID"].ToString());
-			Entity.KID = dr["KID"] as long?;
-			Entity.UID = dr["UID"] as long?;
+			ADeeWu.HuoBi3J.Model.Key_BusinessCircle Entity = new ADeeWu.HuoBi3J.Model.Key_BusinessCircle();
+			Entity.BID = long.Parse(dr["BID"].ToString());
+			Entity.BName = dr["BName"] as string;
 			Entity.CreateTime = dr["CreateTime"] as DateTime?;
-			Entity.IsGoOn = bool.Parse(dr["IsGoOn"].ToString());
+			Entity.Lat = dr["Lat"] as double?;
+			Entity.Lng = dr["Lng"] as double?;
 			return Entity;
 		}
 		
 		
-		public ADeeWu.HuoBi3J.Model.UserKey GetEntity(string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Key_BusinessCircle GetEntity(string[] columns,params object[] values)
 		{
-			ADeeWu.HuoBi3J.Model.UserKey[] EntityList = GetEntityList("",columns,values);
+			ADeeWu.HuoBi3J.Model.Key_BusinessCircle[] EntityList = GetEntityList("",columns,values);
 			if(EntityList.Length==0)return null;
 			return EntityList[0];
 		}
 		
-		public ADeeWu.HuoBi3J.Model.UserKey GetEntity(string where)
+		public ADeeWu.HuoBi3J.Model.Key_BusinessCircle GetEntity(string where)
 		{
 			DataTable dt = this.Select(where,"");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.UserKey Entity = new ADeeWu.HuoBi3J.Model.UserKey();
-			Entity.UKID = long.Parse(dr["UKID"].ToString());
-			Entity.KID = dr["KID"] as long?;
-			Entity.UID = dr["UID"] as long?;
+			ADeeWu.HuoBi3J.Model.Key_BusinessCircle Entity = new ADeeWu.HuoBi3J.Model.Key_BusinessCircle();
+			Entity.BID = long.Parse(dr["BID"].ToString());
+			Entity.BName = dr["BName"] as string;
 			Entity.CreateTime = dr["CreateTime"] as DateTime?;
-			Entity.IsGoOn = bool.Parse(dr["IsGoOn"].ToString());
+			Entity.Lat = dr["Lat"] as double?;
+			Entity.Lng = dr["Lng"] as double?;
 			return Entity;
 		}
 		
-		public ADeeWu.HuoBi3J.Model.UserKey[] GetEntityList(string orderBy,string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Key_BusinessCircle[] GetEntityList(string orderBy,string[] columns,params object[] values)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [UserKey] where 1=1");
+            builder.Append("select * from [Key_BusinessCircle] where 1=1");
 			db.Parameters.Clear();
 			for(int i=0;i<columns.Length;i++)
 			{
@@ -252,17 +253,17 @@ namespace ADeeWu.HuoBi3J.DAL{
 
             DataTable dt = db.Select(builder.ToString());
            
-            ADeeWu.HuoBi3J.Model.UserKey[] EntityList = new ADeeWu.HuoBi3J.Model.UserKey[dt.Rows.Count];
+            ADeeWu.HuoBi3J.Model.Key_BusinessCircle[] EntityList = new ADeeWu.HuoBi3J.Model.Key_BusinessCircle[dt.Rows.Count];
 			 if (dt.Rows.Count == 0) return EntityList;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
 				DataRow dr = dt.Rows[i];
-                ADeeWu.HuoBi3J.Model.UserKey Entity = new ADeeWu.HuoBi3J.Model.UserKey();
-				Entity.UKID = long.Parse(dr["UKID"].ToString());
-				Entity.KID = dr["KID"] as long?;
-				Entity.UID = dr["UID"] as long?;
+                ADeeWu.HuoBi3J.Model.Key_BusinessCircle Entity = new ADeeWu.HuoBi3J.Model.Key_BusinessCircle();
+				Entity.BID = long.Parse(dr["BID"].ToString());
+				Entity.BName = dr["BName"] as string;
 				Entity.CreateTime = dr["CreateTime"] as DateTime?;
-				Entity.IsGoOn = bool.Parse(dr["IsGoOn"].ToString());
+				Entity.Lat = dr["Lat"] as double?;
+				Entity.Lng = dr["Lng"] as double?;
                 EntityList[i] = Entity;
             }
              return EntityList;
@@ -276,7 +277,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(string where,string orderBy)
 		{
-			return db.Select(-1,-1,"UserKey","UKID",where,orderBy);
+			return db.Select(-1,-1,"Key_BusinessCircle","BID",where,orderBy);
 		}
 		
 		
@@ -289,7 +290,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex)
 		{
-			return db.Select(pageSize,pageIndex,"UserKey","UKID","","");
+			return db.Select(pageSize,pageIndex,"Key_BusinessCircle","BID","","");
 		}
 		
 		/// <summary>
@@ -301,7 +302,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"UserKey","UKID","",orderBy);
+			return db.Select(pageSize,pageIndex,"Key_BusinessCircle","BID","",orderBy);
 		}
 		
 		/// <summary>
@@ -314,7 +315,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string where,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"UserKey","UKID",where,orderBy);
+			return db.Select(pageSize,pageIndex,"Key_BusinessCircle","BID",where,orderBy);
 		}
 		
 		

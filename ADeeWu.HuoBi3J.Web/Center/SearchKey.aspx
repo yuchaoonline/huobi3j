@@ -90,28 +90,34 @@
                 </div>
             </ItemTemplate>
         </asp:Repeater>
+
         <asp:Repeater ID="rpResult" runat="server">
-            <ItemTemplate>
-                <div id="recruit_list">
-                    <input type="hidden" name="kid" value="<%# Eval("KID") %>" />
-                    <div class="frame zoom">
-                        <div class="info1 l zoom">
-                            <a href="key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>" target="_blank"><span class="STYLE1 result"><%# Eval("KName") %></span></a>
-                            <span class="db intro">
-                                <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"), Eval("aname"), Eval("cid"), Eval("cname"), Eval("pid"), Eval("pname"), "-") %>>>
-                                <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("bname")) %>
-                                <label>
-                                    <div align="right">
-                                        <%--<span class="attentionCount">关注人数（<%# Eval("AttentionCount") %>）</span>问题数（<%# Eval("QuestionCount") %>）--%>
-                                        <span class="attentionCount">商品数（<%# Eval("PriceCount") %>）</span>商家数（<%# Eval("SaleManCount") %>）
-                                    </div>
-                                </label>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
+        <HeaderTemplate>
+            <table id="rentP_list" class="table_list font14" cellpadding="0" cellspacing="0">
+                <thead>
+                    <tr height="30px" class="black70 fb font12">
+                        <td style="width: 465px;">关键字</td>                        
+                        <td style="width: 200px;">商家数</td>
+                        <td style="width: 200px;">商品数</td>
+                        <td style="width: 80px;">详情</td>
+                    </tr>
+                </thead>
+        </HeaderTemplate>
+        <ItemTemplate>
+            <tbody>
+                <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
+                    <td class="arc_title"><%# Eval("KName") %></td>
+                   <td><%# Eval("SaleManCount") %></td>
+                    <td><%# Eval("PriceCount") %></td>             
+                    <td><a href="key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>" target="_blank" class="btn_blue showinfo">详情</td>
+                </tr>
+            </tbody>
+        </ItemTemplate>
+        <FooterTemplate>
+            </table>
+            <div id="window"></div>
+        </FooterTemplate>
+    </asp:Repeater>
     </div>
 
     <div class="pager" align="center">
