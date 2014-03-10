@@ -40,15 +40,11 @@
                 <table cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>
-                            <th class="by2">关键字
-                            </th>
-                            <th class="common">所属区域
-                            </th>
-                            <th class="by2">所属商圈
+                            <th class="common">关键字
                             </th>
                             <th class="num">提问数
                             </th>
-                            <th class="by2">关注时间
+                            <th class="common">关注时间
                             </th>
                             <th class="common">操作
                             </th>
@@ -64,20 +60,14 @@
                         <asp:Repeater ID="rpQuestions" runat="server">
                             <ItemTemplate>
                                 <tr>
-                                    <td class="by2">
-                                        <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>"><%# Eval("KName") %></a>
-                                    </td>
                                     <td class="common">
-                                        <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"), Eval("aname"), Eval("cid"), Eval("cname"), Eval("pid"), Eval("pname"), "-") %>
-                                    </td>
-                                    <td class="by2">
-                                        <a href="/Center/businesscircle.aspx?bid=<%# Eval("bid") %>" title="<%# Eval("BName") %>"><%# Eval("BName") %></a>
+                                        <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>"><%# Eval("KName") %></a>
                                     </td>
                                     <td class="num">
                                         <em class="xi2">
                                             <%# Eval("QuestionCount") %></em>
                                     </td>
-                                    <td class="by2">
+                                    <td class="common">
                                         <em>
                                             <%# Eval("CreateTime")%></em>
                                     </td>

@@ -45,10 +45,8 @@
                         <tr>
                             <td class="common">标题
                             </td>
-                            <td class="by2">所属区域
-                            </td>
-                            <td class="by2">所属商圈
-                            </td>
+                            <%--<td class="by2">所属商圈
+                            </td>--%>
                             <td class="by2">所属关键字
                             </td>
                             <td class="by2">提问时间
@@ -72,12 +70,9 @@
                                     <td class="common">
                                         <a class="xst question" href="/center/question.aspx?qid=<%# Eval("QID") %>"><%# GetTitle(Eval("Title")) %></a>
                                     </td>
-                                    <td class="by2">
-                                        <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"), Eval("aname"), Eval("cid"), Eval("cname"), Eval("pid"), Eval("pname"), "-") %>
-                                    </td>
-                                    <td class="by2">
+                                    <%--<td class="by2">
                                         <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"), Eval("BName"))%>
-                                    </td>
+                                    </td>--%>
                                     <td class="by2">
                                         <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetKey(Eval("kid"), Eval("kName"))%>
                                     </td>

@@ -44,7 +44,7 @@
                         <li><a href="/My/User/Center/RegSaleMan.aspx">申请开通价格发布服务</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
-                        <li><a href="/My/User/Center/MyAttentionList.aspx">发布和管理价格信息<span id="Span1"></span></a></li>
+                        <li><a href="/My/User/Center/Prices.aspx">发布和管理价格信息<span id="Span1"></span></a></li>
                         <% } %>
                         <li><a href="/My/User/Center/MyQuestionList.aspx">我的询价提问<span id="Span2"></span></a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)

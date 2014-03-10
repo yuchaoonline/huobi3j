@@ -78,10 +78,14 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var poi = (ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi)e.Item.DataItem;
             if (poi == null) return;
 
-            var dic = new Dictionary<string, string>();
-            dic.Add("CreateUserID", string.Format("{0},{0}", poi.CreateUserID));
-
-            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 20, "", "Price:1", string.Format("CreateUserID=[{0}]", dic["CreateUserID"])).contents;
+            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, 
+                "", AccountHelper.City, 
+                0, 
+                20, 
+                "", 
+                "Price:1", 
+                string.Format("CreateUserID:[{0}]", poi.CreateUserID)).contents;
             rpOtherPrice.DataBind();
         }
     }

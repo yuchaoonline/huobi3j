@@ -78,7 +78,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@Name",model.Name );
 		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
 		db.Parameters.Append("@IsDefault",model.IsDefault);
-		    DataTable dt = db.Select("insert into [Key]([KID],[Name],[CreateTime],[IsDefault]) values (@KID,@Name,@CreateTime,@IsDefault);select @@Identity;");
+		    DataTable dt = db.Select("insert into [Key]([Name],[CreateTime],[IsDefault]) values (@Name,@CreateTime,@IsDefault);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.KID = newID;
 			return newID;

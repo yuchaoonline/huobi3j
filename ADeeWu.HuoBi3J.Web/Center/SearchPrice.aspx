@@ -19,6 +19,9 @@
             top: 10px;
             right: 0px;
             font-size: 12px;
+            height: 550px;
+            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         #searchResult th {
@@ -260,8 +263,8 @@
             }
             customLayer = new BMap.CustomLayer({
                 geotableId: 49566,
-                q: keyword,
-                //tags: keyword,
+                //q: keyword,
+                tags: keyword,
                 filter: ''
             });
             map.addTileLayer(customLayer);
@@ -277,10 +280,10 @@
 
             var url = "http://api.map.baidu.com/geosearch/v3/local?callback=?";
             $.getJSON(url, {
-                'q': keyword,
-                //'tags': keyword,
+                //'q': keyword,
+                'tags': keyword,
                 'page_index': page - 1,
-                'page_size': 5,
+                //'page_size': 10,
                 'filter': filter.join('|'),
                 'sortby': 'Price:1',
                 'region': '<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>',

@@ -33,12 +33,7 @@
                 <table cellspacing="0" cellpadding="0">
                     <tbody>
                         <tr>
-                            <td class="common">关键字
-                            </td>
-                            <td class="common">所属区域
-                            </td>
-                            <td class="by2">所属商圈
-                            </td>
+                            <td class="common">关键字</td>
                             <td class="by2">操作
                             </td>
                         </tr>
@@ -54,14 +49,8 @@
                                     <td class="common">
                                         <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>"><%# Eval("KName") %></a>
                                     </td>
-                                    <td class="common">
-                                        <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetLocation(Eval("aid"), Eval("aname"), Eval("cid"), Eval("cname"), Eval("pid"), Eval("pname"), "-") %>
-                                    </td>
                                     <td class="by2">
-                                        <%# ADeeWu.HuoBi3J.Web.Class.Helper.GetBusinessCircle(Eval("bid"),Eval("BName")) %>
-                                    </td>
-                                    <td class="by2">
-                                        <a href="AttentionKey.aspx?kid=<%# Eval("kid") %>" title="关注关键字" class="btn_blue">关注</a>
+                                        <a href="AddKey4Price.aspx?kid=<%# Eval("kid") %>&id=<%=Request["id"] %>" title="绑定关键字" class="btn_blue">绑定</a>
                                     </td>
                                 </tr>
                             </ItemTemplate>

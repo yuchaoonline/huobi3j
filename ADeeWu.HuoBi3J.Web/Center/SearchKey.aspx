@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="SearchKey.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.SearchKey" %>
+
 <%@ Register Src="~/Controls/ucNav.ascx" TagPrefix="uc1" TagName="ucNav" %>
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
@@ -14,19 +15,19 @@
             $('#btnPageSearchKey').parent().addClass('currentSelect');
 
             var val = $('.txtKeyword').val();
-            if(val=='')
-                val='输入搜索关键字';
+            if (val == '')
+                val = '输入搜索关键字';
             $('.txtKeyword').val('');
             $('.txtKeyword').watermark(val);
 
-            $('.btn_search').click(function(){
+            $('.btn_search').click(function () {
                 var newVal = $(".txtKeyword").val();
-                if(newVal=='')
-                    newVal=val;
-                if(newVal=='输入搜索关键字')
-                    newVal='';
+                if (newVal == '')
+                    newVal = val;
+                if (newVal == '输入搜索关键字')
+                    newVal = '';
                 var url = "<%=HttpContext.Current.Request.FilePath %>?keyword=" + newVal;
-                location.href=url;
+                location.href = url;
                 return false;
             });
 
@@ -92,40 +93,40 @@
         </asp:Repeater>
 
         <asp:Repeater ID="rpResult" runat="server">
-        <HeaderTemplate>
-            <table id="rentP_list" class="table_list font14" cellpadding="0" cellspacing="0">
-                <thead>
-                    <tr height="30px" class="black70 fb font12">
-                        <td style="width: 465px;">关键字</td>                        
-                        <td style="width: 200px;">商家数</td>
-                        <td style="width: 200px;">商品数</td>
-                        <td style="width: 80px;">详情</td>
+            <HeaderTemplate>
+                <table id="rentP_list" class="table_list font14" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr height="30px" class="black70 fb font12">
+                            <td style="width: 465px;">关键字</td>
+                            <td style="width: 200px;">商家数</td>
+                            <td style="width: 200px;">商品数</td>
+                            <td style="width: 80px;">详情</td>
+                        </tr>
+                    </thead>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <tbody>
+                    <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
+                        <td class="arc_title"><%# Eval("KName") %></td>
+                        <td><%# Eval("SaleManCount") %></td>
+                        <td><%# Eval("PriceCount") %></td>
+                        <td><a href="key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>" target="_blank" class="btn_blue showinfo">详情</td>
                     </tr>
-                </thead>
-        </HeaderTemplate>
-        <ItemTemplate>
-            <tbody>
-                <tr height="40px" onmouseover="this.className='jobMenu_hover'" onmouseout="this.className=''" class="">
-                    <td class="arc_title"><%# Eval("KName") %></td>
-                   <td><%# Eval("SaleManCount") %></td>
-                    <td><%# Eval("PriceCount") %></td>             
-                    <td><a href="key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>" target="_blank" class="btn_blue showinfo">详情</td>
-                </tr>
-            </tbody>
-        </ItemTemplate>
-        <FooterTemplate>
-            </table>
+                </tbody>
+            </ItemTemplate>
+            <FooterTemplate>
+                </table>
             <div id="window"></div>
-        </FooterTemplate>
-    </asp:Repeater>
+            </FooterTemplate>
+        </asp:Repeater>
     </div>
 
     <div class="pager" align="center">
         <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
     </div>
 
-    <div id="noresult" runat="server" class="orange">
-        <p>请先<a href="/Center/Add.aspx" title="添加商圈">添加商圈</a>并添加关键字，或在推荐关键字列表为关键字指定商圈，再进行询价。</p>
+    <div id="noresult" runat="server">
+        <p>居然还没有<font color="red"><%=Request["keyword"] %></font>关键字，<a href="SearchKey.aspx?m=add&keyword=<%=Request["keyword"] %>" class="blue24D">点击添加</a></p>
     </div>
 
     <br />

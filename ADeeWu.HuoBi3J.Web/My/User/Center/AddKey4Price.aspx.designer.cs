@@ -10,16 +10,34 @@
 namespace ADeeWu.HuoBi3J.Web.My.User.Center {
     
     
-    public partial class AddPrice4Key {
+    public partial class AddKey4Price {
         
         /// <summary>
-        /// rpKey 控件。
+        /// litTitle 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpKey;
+        protected global::System.Web.UI.WebControls.Literal litTitle;
+        
+        /// <summary>
+        /// litPrice 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litPrice;
+        
+        /// <summary>
+        /// litKey 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litKey;
         
         /// <summary>
         /// ddlType 控件。

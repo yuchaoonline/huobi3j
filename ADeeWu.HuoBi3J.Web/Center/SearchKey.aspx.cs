@@ -19,9 +19,36 @@ namespace ADeeWu.HuoBi3J.Web.Center
             if (!IsPostBack)
             {
                 string strKeyword = WebUtility.GetRequestStr("keyword", "");
+                var m = WebUtility.GetRequestStr("m", "");
                 if (string.IsNullOrWhiteSpace("输入搜索关键字")) strKeyword = "";
-                Search(strKeyword);
+
+                if (m == "add")
+                    AddKey(strKeyword);
+                else
+                    Search(strKeyword);
             }
+        }
+
+        private void AddKey(string strKeyword)
+        {
+            var key = new Model.Key
+            {
+                CreateTime = DateTime.Now,
+                IsDefault = false,
+                Name = strKeyword,
+                KID=0,
+            };
+            var keyDAL = new DAL.Key();
+            if (keyDAL.Exist("Name", key.Name))
+            {
+                WebUtility.ShowAndGoBack(this, "关键字已存在！");
+                return;
+            }
+
+            if (keyDAL.Add(key) > 0)
+                WebUtility.ShowMsg(this, "感谢你添加关键字！", "/");
+            else
+                WebUtility.ShowMsg("添加失败！");
         }
 
         private void ShowQuestionIndex()

@@ -140,9 +140,12 @@
     <Content Include="MMain.Master" />
     <Content Include="MMyUser.master" />
     <Content Include="MobileRegister.aspx" />
+    <Content Include="My\User\Center\AddPrice.aspx" />
+    <Content Include="My\User\Center\EditPrice.aspx" />
     <Content Include="My\User\Center\EditPrice4Key.aspx" />
     <Content Include="My\User\Center\MyFavList.aspx" />
     <Content Include="My\User\Center\PriceCount4Key.aspx" />
+    <Content Include="My\User\Center\Prices.aspx" />
     <Content Include="My\User\Center\SaleManQR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\KeyManage\Default.aspx" />
@@ -619,6 +622,13 @@
     <Compile Include="MobileRegister.aspx.designer.cs">
       <DependentUpon>MobileRegister.aspx</DependentUpon>
     </Compile>
+    <Compile Include="My\User\Center\AddPrice.aspx.cs">
+      <DependentUpon>AddPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\AddPrice.aspx.designer.cs">
+      <DependentUpon>AddPrice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="My\User\Center\AttentionKey.aspx.cs">
       <DependentUpon>AttentionKey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -654,12 +664,12 @@
     <Compile Include="Center\SearchPrice.aspx.designer.cs">
       <DependentUpon>SearchPrice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="My\User\Center\AddPrice4Key.aspx.cs">
-      <DependentUpon>AddPrice4Key.aspx</DependentUpon>
+    <Compile Include="My\User\Center\AddKey4Price.aspx.cs">
+      <DependentUpon>AddKey4Price.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="My\User\Center\AddPrice4Key.aspx.designer.cs">
-      <DependentUpon>AddPrice4Key.aspx</DependentUpon>
+    <Compile Include="My\User\Center\AddKey4Price.aspx.designer.cs">
+      <DependentUpon>AddKey4Price.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\Key4Product.aspx.cs">
       <DependentUpon>Key4Product.aspx</DependentUpon>
@@ -816,6 +826,13 @@
     <Compile Include="MMyUser.master.designer.cs">
       <DependentUpon>MMyUser.master</DependentUpon>
     </Compile>
+    <Compile Include="My\User\Center\EditPrice.aspx.cs">
+      <DependentUpon>EditPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\EditPrice.aspx.designer.cs">
+      <DependentUpon>EditPrice.aspx</DependentUpon>
+    </Compile>
     <Compile Include="My\User\Center\EditPrice4Key.aspx.cs">
       <DependentUpon>EditPrice4Key.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -836,6 +853,13 @@
     </Compile>
     <Compile Include="My\User\Center\PriceCount4Key.aspx.designer.cs">
       <DependentUpon>PriceCount4Key.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\Prices.aspx.cs">
+      <DependentUpon>Prices.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\Prices.aspx.designer.cs">
+      <DependentUpon>Prices.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\SaleManQR.aspx.cs">
       <DependentUpon>SaleManQR.aspx</DependentUpon>
@@ -1269,7 +1293,7 @@
     <Content Include="Center\images\4.jpg" />
     <Content Include="Center\images\5.jpg" />
     <Content Include="Center\images\6.jpg" />
-    <Content Include="My\User\Center\AddPrice4Key.aspx" />
+    <Content Include="My\User\Center\AddKey4Price.aspx" />
     <Content Include="Center\Key4Product.aspx" />
     <Content Include="Center\Location.aspx" />
     <Content Include="Center\MoveCircle.aspx" />

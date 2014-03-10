@@ -10,21 +10,28 @@ using System.Web.UI.WebControls;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
-    public partial class SearchKey : System.Web.UI.Page
+    public partial class SearchKey : PageBase_CircleSaleMan
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 var keyword = WebUtility.GetRequestStr("keyword", "");
+                var id = WebUtility.GetRequestInt("id", 0);
+                if (id == 0)
+                {
+                    WebUtility.ShowAndGoBack(this, "参数有误！");
+                    return;
+                }
+
                 if (!string.IsNullOrWhiteSpace(keyword))
                 {
-                    BandData(keyword);
+                    BandData(keyword,id);
                 }
             }
         }
 
-        private void BandData(string keyword)
+        private void BandData(string keyword, int id)
         {
             var pageIndex = WebUtility.GetRequestLong("page", 1);
             var pageSize = Utility.GetLong(Request["pagesize"], 20, 5, 40);
@@ -38,6 +45,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             rpResult.DataBind();
 
             this.Pager1.AppendUrlParam("keyword", keyword);
+            this.Pager1.AppendUrlParam("id", id.ToString());
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
@@ -45,7 +53,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("searchkey.aspx?keyword=" + txtKeyword.Text, true);
+            Response.Redirect(string.Format("searchkey.aspx?id={0}&keyword={1}", Request["id"], txtKeyword.Text), true);
         }
     }
 }

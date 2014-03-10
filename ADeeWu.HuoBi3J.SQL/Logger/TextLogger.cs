@@ -54,20 +54,8 @@ namespace ADeeWu.HuoBi3J.SQL.Logger
         {
             lock (objLock)
             {
-                StreamWriter writer = null;
-                if (!File.Exists(_filePath))
-                {
-                    writer = File.CreateText(_filePath);
-                }
-                else
-                {
-                    writer = File.AppendText(_filePath);
-                }
-                writer.Write(msg);
-                writer.WriteLine();
-                writer.Flush();
-                writer.Close();
-                writer.Dispose();
+                Directory.CreateDirectory(new FileInfo(_filePath).DirectoryName);
+                File.AppendAllText(_filePath, msg);
             }
         }
 
