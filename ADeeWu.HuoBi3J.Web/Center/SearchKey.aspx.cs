@@ -31,24 +31,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
         private void AddKey(string strKeyword)
         {
-            var key = new Model.Key
-            {
-                CreateTime = DateTime.Now,
-                IsDefault = false,
-                Name = strKeyword,
-                KID=0,
-            };
-            var keyDAL = new DAL.Key();
-            if (keyDAL.Exist("Name", key.Name))
-            {
-                WebUtility.ShowAndGoBack(this, "关键字已存在！");
-                return;
-            }
-
-            if (keyDAL.Add(key) > 0)
-                WebUtility.ShowMsg(this, "感谢你添加关键字！", "/");
-            else
-                WebUtility.ShowMsg("添加失败！");
+            
         }
 
         private void ShowQuestionIndex()
@@ -65,8 +48,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
             db.EnableRecordCount = true;
             rpQuestionIndex.DataSource = db.Select("vw_Questions", string.Format("qid in ({0})", string.Join(",", indexIDs)), "createtime desc");
             rpQuestionIndex.DataBind();
-
-            noresult.Visible = false;
         }
 
         private void Search(string KeyWord)
@@ -93,16 +74,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
-
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                noresult.Visible = false;
-            }
-            else
-            {
-                if (!string.IsNullOrWhiteSpace(KeyWord))
-                    noresult.Visible = true;
-            }
         }
 
         public string GetTitle(object title)

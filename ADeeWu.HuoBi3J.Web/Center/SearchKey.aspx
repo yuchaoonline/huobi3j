@@ -125,8 +125,8 @@
         <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
     </div>
 
-    <div id="noresult" runat="server">
-        <p>居然还没有<font color="red"><%=Request["keyword"] %></font>关键字，<a href="SearchKey.aspx?m=add&keyword=<%=Request["keyword"] %>" class="blue24D">点击添加</a></p>
+    <div id="noresult">
+        <p>想添加关键字，<a href="SearchKey.aspx?m=add&keyword=<%=Request["keyword"] %>" class="blue24D">点击这里</a></p>
     </div>
 
     <br />

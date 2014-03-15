@@ -252,14 +252,12 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
         private string AddKey()
         {
-            var bid = WebUtility.GetRequestInt("bid", -1);
             var name = WebUtility.GetRequestStr("name", "");
-
-            if (bid == -1) return "";
+            if (string.IsNullOrWhiteSpace(name)) return "";
 
             DAL.Key keyDAL = new DAL.Key();
 
-            if (keyDAL.Exist(string.Format("name='{0}' and bid={1}", name, bid)))
+            if (keyDAL.Exist(string.Format(" name='{0}'", name)))
             {
                 return JsonConvert.SerializeObject(new { statue = false, msg = "关键字已存在！" });
             }
@@ -268,6 +266,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
             {
                 CreateTime = DateTime.Now,
                 Name = name,
+                IsDefault =false,
             };
             var keyid = keyDAL.Add(key);
             if (keyid > 0)
