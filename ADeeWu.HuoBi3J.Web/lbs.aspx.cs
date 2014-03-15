@@ -22,6 +22,9 @@ namespace ADeeWu.HuoBi3J.Web
             if (!IsPostBack)
             {
                 var method = Request["method"];
+
+                Response.Write("Start!" + DateTime.Now.ToString());
+
                 if (method == "upload")
                 {
                     Upload();
@@ -34,6 +37,12 @@ namespace ADeeWu.HuoBi3J.Web
                 {
                     Combine();
                 }
+                if (method == "attr")
+                {
+                    ConvertData();
+                }
+
+                Response.Write("\r\nOK!" + DateTime.Now.ToString());
             }
         }
 
@@ -81,7 +90,7 @@ namespace ADeeWu.HuoBi3J.Web
                             c.QQ
                     FROM    dbo.Key_Product p
                             LEFT JOIN dbo.[Key] k ON p.KID = k.KID
-                            LEFT JOIN dbo.CA_CircleSaleMan c ON c.ID = p.CreateUserID
+                            LEFT JOIN dbo.CA_CircleSaleMan c ON c.UserID = p.CreateUserID
             ";
             var rows = db.Select(sql);
             if (rows == null || rows.Rows.Count <= 0) return;
@@ -122,49 +131,72 @@ namespace ADeeWu.HuoBi3J.Web
 
         private void ConvertData()
         {
-            //var attributes = db.Key_Attribute;
-            //var kids = attributes.Select(p => p.KID).Distinct();
-            //foreach (var kid in kids)
-            //{
-            //    var attr = attributes.FirstOrDefault(p => p.KID == kid);
-            //    var types = attr.KeyType.Split(new char[] { ';' });
-            //    foreach (var t in types)
-            //    {
-            //        var attrType = new Key_Attribute2
-            //        {
-            //            KID = (int)attr.KID,
-            //            DataType = "SelectType",
-            //            DataValue = t,
-            //        };
-            //        db.Key_Attribute2.Add(attrType);
-            //    }
+            var db = DataBase.Create();
+            var attrDAL = new DAL.Key_Attribute();
+            var kids = db.Select("select Distinct(kid) from key_attribute2");
+            if(kids==null || kids.Rows.Count<=0)return;
 
-            //    var prices = attr.KeyPrice.Split(new char[] { ';' });
-            //    foreach (var p in prices)
-            //    {
-            //        var attrPrice = new Key_Attribute2
-            //        {
-            //            KID = (int)attr.KID,
-            //            DataType = "SelectPrice",
-            //            DataValue = p
-            //        };
-            //        db.Key_Attribute2.Add(attrPrice);
-            //    }
+            foreach (DataRow kidRow in kids.Rows)
+            {
+                var kid = Utility.GetInt(kidRow[0], 0);
+                if (kid <= 0) continue;
 
-            //    var sizes = attr.KeySize.Split(new char[] { ';' });
-            //    foreach (var s in sizes)
-            //    {
-            //        var attrPrice = new Key_Attribute2
-            //        {
-            //            KID = (int)attr.KID,
-            //            DataType = "SelectSize",
-            //            DataValue = s
-            //        };
-            //        db.Key_Attribute2.Add(attrPrice);
-            //    }
-            //}
+                var attrs = db.Select("select * from key_attribute2 where kid = " + kid);
+                if (attrs == null || attrs.Rows.Count <= 0) continue;
 
-            //db.SaveChanges();
+                var keyType = "";
+                var keyPrice = "";
+                var keySize = "";
+                foreach (DataRow attrRow in attrs.Rows)
+                {
+                    if (!attrRow.IsNull("KeyType"))
+                        keyType +=";"+ attrRow["KeyType"].ToString();
+                    if (!attrRow.IsNull("KeyPrice"))
+                        keyPrice += ";" + attrRow["KeyPrice"].ToString();
+                    if (!attrRow.IsNull("KeySize"))
+                        keySize += ";" + attrRow["KeySize"].ToString();
+                }
+
+                var keyTypes = keyType.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Distinct();
+                var keyPrices = keyPrice.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Distinct();
+                var keySizes = keySize.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries).Distinct();
+
+                //db.ExecuteSql("delete key_attribute2 where kid = " + kid);
+
+                //db.Parameters.Append("kid", kid);
+                //db.Parameters.Append("keytype", string.Join(";", keyTypes));
+                //db.Parameters.Append("keyprice", string.Join(";", keyPrices));
+                //db.Parameters.Append("keysize", string.Join(";", keySizes));
+                //db.ExecuteSql("insert into key_attribute2(kid,keytype,keyprice,keysize) values (@kid,@keytype,@keyprice,@keysize)");
+
+                foreach (var key in keyTypes)
+                {
+                    attrDAL.Add(new Model.Key_Attribute
+                    {
+                        KID = kid,
+                        DataType = "SelectType",
+                        DataValue = key,
+                    });
+                }
+                foreach (var price in keyPrices)
+                {
+                    attrDAL.Add(new Model.Key_Attribute
+                    {
+                        KID = kid,
+                        DataType = "SelectPrice",
+                        DataValue = price,
+                    });
+                }
+                foreach (var size in keySizes)
+                {
+                    attrDAL.Add(new Model.Key_Attribute
+                    {
+                        KID = kid,
+                        DataType = "SelectSize",
+                        DataValue = size,
+                    });
+                }
+            }
         }
 
         private void Combine()
@@ -189,7 +221,8 @@ namespace ADeeWu.HuoBi3J.Web
                 //key_product
                 db.ExecuteSql(string.Format("update Key_Product set kid = {0} where kid in ({1})", minkid, strOtherkids));
                 //key_attribute
-                db.ExecuteSql(string.Format("delete Key_Attribute2 where kid in ({0})", strOtherkids));
+                db.ExecuteSql(string.Format("update Key_Attribute2 set kid={0} where kid in ({1})", minkid, strOtherkids));                
+                //db.ExecuteSql(string.Format("delete Key_Attribute where kid in ({0})", strOtherkids));
                 //Center_Key_Refresh
                 db.ExecuteSql(string.Format("update Center_Key_Refresh set kid = {0} where kid in ({1})", minkid, strOtherkids));
                 //Center_Key_Manage
@@ -199,8 +232,10 @@ namespace ADeeWu.HuoBi3J.Web
                 //Center_HotKey_Ext
                 db.ExecuteSql(string.Format("update Center_HotKey_Ext set kid = {0} where kid in ({1})", minkid, strOtherkids));
                 //Center_HotKey_Ext
-                db.ExecuteSql(string.Format("delete [Key] where kid in ({1})", minkid, strOtherkids));
+                db.ExecuteSql(string.Format("delete [Key] where kid in ({0})", strOtherkids));
             }
+
+            ConvertData();
         }
     }
 }

@@ -126,7 +126,7 @@
     </div>
 
     <div id="noresult">
-        <p>想添加关键字，<a href="SearchKey.aspx?m=add&keyword=<%=Request["keyword"] %>" class="blue24D">点击这里</a></p>
+        <p>想添加关键字，<a href="Add.aspx?kname=<%=Request["keyword"] %>" class="blue24D">点击这里</a></p>
     </div>
 
     <br />

@@ -49,14 +49,19 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var rpOtherPrice = (Repeater)e.Item.FindControl("rpOtherPrice");
             var datarowview = (DataRowView)e.Item.DataItem;
             var userid = Utility.GetInt(datarowview["userid"], 0);
+            if (userid <= 0) return;
 
-            if (userid > 0)
-            {
-                var dic = new Dictionary<string, string>();
-                dic.Add("CreateUserID", userid.ToString());
-                rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 20, "", "Price:1", string.Format("CreateUserID=[{0}]", dic["CreateUserID"])).contents;
-                rpOtherPrice.DataBind();
-            }
+
+            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID,
+                "",
+                AccountHelper.City,
+                0,
+                20,
+                "",
+                "Price:1",
+                string.Format("CreateUserID:[{0}]", userid)).contents;
+            rpOtherPrice.DataBind();
         }
     }
 }

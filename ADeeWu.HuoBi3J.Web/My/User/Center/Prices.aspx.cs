@@ -26,6 +26,8 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     Delete();
                 }
                 BandData();
+                CalCoin();
+                CalQRCount();
             }
         }
 
@@ -70,6 +72,18 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             if (counts != null) return counts.Length.ToString();
 
             return "0";
+        }
+
+        private void CalCoin()
+        {
+            var coin = DataBase.Create().ExecuteScalar("select sum(coin) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
+            litCoin.Text = coin == null ? "0" : coin.ToString();
+        }
+
+        private void CalQRCount()
+        {
+            var count = DataBase.Create().ExecuteScalar("select count(*) from Center_QR_Log where userid = -1 and salemanuserid = " + SaleManSession.SaleMan.UserID);
+            litQRCount.Text = count == null ? "0" : count.ToString();
         }
     }
 }

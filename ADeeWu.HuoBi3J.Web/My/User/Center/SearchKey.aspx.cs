@@ -1,4 +1,6 @@
-﻿using ADeeWu.HuoBi3J.Libary;
+﻿using ADee.Project.LBS.BLL;
+using ADee.Project.LBS.Common;
+using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
 using System;
@@ -28,7 +30,18 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 {
                     BandData(keyword,id);
                 }
+
+                BandKey(id);
             }
+        }
+
+        private void BandKey(int id)
+        {
+            var productPoi = new PoiBLL().Details<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(id, ConfigHelper.GeoProductTableID);
+            if (productPoi == null||productPoi.status!=0) return;
+
+            rpKey.DataSource = new List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi> { productPoi.poi };
+            rpKey.DataBind();
         }
 
         private void BandData(string keyword, int id)

@@ -80,7 +80,8 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
                 ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, 
-                "", AccountHelper.City, 
+                "", 
+                AccountHelper.City, 
                 0, 
                 20, 
                 "", 

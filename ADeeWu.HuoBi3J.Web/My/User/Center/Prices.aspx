@@ -1,4 +1,5 @@
 <%@ Page Language="C#" Title="" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="Prices.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.Prices" %>
+
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
@@ -12,7 +13,16 @@
     <a href="/My/User/Center/MyQuestionList.aspx">货比三家</a>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
-    <a href="AddPrice.aspx" title="添加价格" class="btn_blue">添加价格</a>
+    <div class="box">
+        <div class="box_head1">
+            <label class="fb font14 black70">基本信息</label>
+        </div>
+        <div class="box_body">
+            <span style="color: blue;">手机扫描二维码次数：<font color="#ff9933"><asp:Literal ID="litQRCount" runat="server"></asp:Literal></font> 次，已经送出金币：<font color="#ff9933"><asp:Literal ID="litCoin" runat="server"></asp:Literal></font>个</span>
+            <a href="AddPrice.aspx" title="添加价格" class="btn_blue" style="float: right;">添加价格</a>
+        </div>
+    </div>
+
     <div class="mn">
         <div class="tl bm bmw" id="threadlist">
             <div class="th">
@@ -43,13 +53,13 @@
                                         <a href="/Center/details.aspx?id=<%# Eval("id") %>" title="查看"><%# GetMoney(Eval("price")) %></a>
                                     </td>
                                     <td class="common">
-                                            <%# Eval("title")%>
+                                        <%# Eval("title")%>
                                     </td>
                                     <%--<td class="common">
                                            类型：<%# Eval("selecttype")%>;价格：<%# Eval("selectprice")%>;其他：<%# Eval("selectsize")%>
                                     </td>--%>
                                     <td class="num">
-                                            <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# GetCount(Eval("id")) %></a>
+                                        <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# GetCount(Eval("id")) %></a>
                                     </td>
                                     <td class="common">
                                         <a href="EditPrice.aspx?id=<%# Eval("id") %>" title="修改" class="btn_blue">修改</a>
