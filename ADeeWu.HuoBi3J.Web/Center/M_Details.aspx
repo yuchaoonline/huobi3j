@@ -60,7 +60,7 @@
                                 <ItemTemplate>
                                     <tr>
                                         <td><a href="M_Details.aspx?id=<%# Eval("uid") %>"><%# GetDecimal(Eval("price"),2) %></a></td>
-                                        <td><%# Eval("title") %></td>
+                                        <td><a href="M_Details.aspx?id=<%# Eval("uid") %>"><%# Eval("title") %></a></td>
                                         <td><%# Eval("kname") %></td>
                                     </tr>
                                 </ItemTemplate>

@@ -70,7 +70,7 @@
             </div>
             <button type="button" id="btnLogin" class="btn btn-primary btn-block btn-lg">登陆/注册</button>
             <%} %>
-            <button type="button" id="btnDownload" class="btn btn-primary btn-block btn-lg">下载应用，对比附近价格</button>
+            <button type="button" id="btnDownload" class="btn btn-primary btn-block btn-lg">下载应用，更好用，可对比附近价格</button>
         </div>
 
         <script src="/js/jquery.js"></script>

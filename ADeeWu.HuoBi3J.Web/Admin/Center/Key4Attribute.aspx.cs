@@ -39,7 +39,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
             }
             else
             {
-                rpResultList.DataSource = db.Select(pageSize, pageIndex, "vw_Key_Attribute", "id");
+                rpResultList.DataSource = db.Select(pageSize, pageIndex, "vw_keys", "kid");
             }
             rpResultList.DataBind();
 
