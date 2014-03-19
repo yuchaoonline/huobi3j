@@ -5,6 +5,7 @@ using System.Data;
 using ADeeWu.HuoBi3J.SQL.Logger;
 using ADeeWu.HuoBi3J.SQL.ParameterCollection;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace ADeeWu.HuoBi3J.SQL
 {
@@ -643,6 +644,8 @@ namespace ADeeWu.HuoBi3J.SQL
                     else
                     {
                         logPath = System.Web.HttpContext.Current.Server.MapPath(logPath);
+                        if (!Directory.Exists(logPath))
+                            Directory.CreateDirectory(logPath);
                     }
                 }
 

@@ -72,21 +72,6 @@ namespace ADeeWu.HuoBi3J.Web
             set { HttpContext.Current.Application["MoneyToCoinsRate"] = value; }
         }
 
-
-        /// <summary>
-        /// 获取指定用户WebIM在线状态图标地址
-        /// </summary>
-        /// <param name="uin"></param>
-        /// <returns></returns>
-        public static string GetWebIMStateURL(string uin)
-        {
-           // return string.Format("http://imservice/Handler/External/GetImg.ashx?uin={0}", uin);
-            string webimStateURLFormat = System.Configuration.ConfigurationManager.AppSettings["WebIMStateURLFormat"];
-            if (string.IsNullOrEmpty(webimStateURLFormat)) return string.Empty;
-            return string.Format(webimStateURLFormat, uin);
-        }
-
-
         public static long DataList_PageSize
         {
             get { return ADeeWu.HuoBi3J.Libary.Utility.GetInt(HttpContext.Current.Application["DataList_PageSize"], 20); }

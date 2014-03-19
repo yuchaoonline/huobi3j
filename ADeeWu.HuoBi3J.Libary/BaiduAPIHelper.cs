@@ -12,7 +12,7 @@ namespace ADeeWu.HuoBi3J.Libary
         {
             get
             {
-                return System.Configuration.ConfigurationManager.AppSettings["BaiduApplicantionKey"].ToString();
+                return System.Configuration.ConfigurationManager.AppSettings["ak"].ToString();
             }
         }
 
