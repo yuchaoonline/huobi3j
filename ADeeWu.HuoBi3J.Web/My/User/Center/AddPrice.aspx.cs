@@ -77,7 +77,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 }
 
                 var db = DataBase.Create();
-                var salemanTB = db.Select("select * from vw_CircleSaleMan where UserID = " + LoginUser.UserID);
+                var salemanTB = db.Select("select * from vw_Key_CircleSaleMan where UserID = " + LoginUser.UserID);
                 if (salemanTB.Rows.Count <= 0) throw new Exception("商家未找到！");
                 var saleman = salemanTB.Rows[0];
 

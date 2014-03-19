@@ -16,7 +16,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
     public partial class Details : System.Web.UI.Page
     {
         DataBase db = DataBase.Create();
-        DAL.Corporations corDAL = new DAL.Corporations();
         PoiBLL poiBLL = new PoiBLL();
 
         protected void Page_Load(object sender, EventArgs e)

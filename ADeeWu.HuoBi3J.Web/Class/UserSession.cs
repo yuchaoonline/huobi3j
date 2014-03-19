@@ -126,39 +126,10 @@ namespace ADeeWu.HuoBi3J.Web.Class
             UserSession loginSession = null;
             DataBase db = DataBase.Create();
 
-            if (user.UserType == 1)
-            {
-                #region 1
-                db.Parameters.Append("@UserID", user.ID);
-                DataTable dtCorp = db.Select(@"select c.ID as CorpID , c.CorpName , c.CheckState from [Corporations] as c where c.UserID=@UserID");
-
-                if (dtCorp.Rows.Count > 0)
-                {
-                    long corpID = Utility.GetLong(dtCorp.Rows[0]["CorpID"], 0);
-                    int corpCheckState = Utility.GetInt(dtCorp.Rows[0]["CheckState"], 0);
-                    string corpName = Utility.GetStr(dtCorp.Rows[0]["CorpName"], "");
-
-
-                    Class.CorpSession corpSession = new Class.CorpSession(user.ID, user.UIN, user.LoginName, user.Email, corpID, corpName);
-                    corpSession.CorpCheckState = (UserSessionCheckState)corpCheckState;//企业用户审核状态
-
-                    loginSession = corpSession;
-                }
-                else//商家注册未通过审核
-                {
-                    loginSession = new Class.UserSession(user.ID, user.UIN, user.LoginName, user.Email, user.UserType);
-                }
-                loginSession.UserCheckState = (UserSessionCheckState)user.CheckState;//个人用户审核状态 
-                #endregion
-            }
-            else
-            {
-                loginSession = new UserSession(user.ID, user.UIN, user.LoginName, user.Email, 0);
-                loginSession.UserCheckState = (UserSessionCheckState)user.CheckState;
-            }
+            loginSession = new UserSession(user.ID, user.UIN, user.LoginName, user.Email, 0);
+            loginSession.UserCheckState = (UserSessionCheckState)user.CheckState;
 
             SaleManSession.SaveCircleSaleMan(user.ID);
-            //QualifiedAgentSession.SaveQualifiedAgent(user.ID);
 
             return loginSession;
         }

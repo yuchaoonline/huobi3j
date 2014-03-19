@@ -12,13 +12,13 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
     public partial class RegSaleMan : PageBase_MyUser
     {
-        DAL.CA_CircleSaleMan circleSaleMan = new ADeeWu.HuoBi3J.DAL.CA_CircleSaleMan();
+        DAL.Key_CircleSaleMan circleSaleMan = new ADeeWu.HuoBi3J.DAL.Key_CircleSaleMan();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                Model.CA_CircleSaleMan entApplication = circleSaleMan.GetEntity(new string[] { "UserID" }, this.LoginUser.UserID);
+                Model.Key_CircleSaleMan entApplication = circleSaleMan.GetEntity(new string[] { "UserID" }, this.LoginUser.UserID);
                 if (entApplication != null)
                 {
                     txtPhone.Text = entApplication.Phone;
@@ -75,10 +75,10 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             }
 
             bool isAdd = false;
-            Model.CA_CircleSaleMan entApplication = circleSaleMan.GetEntity(new string[] { "UserID" }, this.LoginUser.UserID);
+            Model.Key_CircleSaleMan entApplication = circleSaleMan.GetEntity(new string[] { "UserID" }, this.LoginUser.UserID);
             if (entApplication == null)
             {
-                entApplication = new ADeeWu.HuoBi3J.Model.CA_CircleSaleMan();
+                entApplication = new ADeeWu.HuoBi3J.Model.Key_CircleSaleMan();
                 entApplication.CreateTime = DateTime.Now;
                 entApplication.ModifyTime = DateTime.Now;
                 isAdd = true;

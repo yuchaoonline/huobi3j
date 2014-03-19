@@ -17,14 +17,14 @@ namespace ADeeWu.HuoBi3J.Web.Class
     /// </summary>
     public class SaleManSession
     {
-        public static Model.CA_CircleSaleMan SaleMan
+        public static Model.Key_CircleSaleMan SaleMan
         {
             get
             {
                 if (HttpContext.Current.Session["SaleMan"] == null)
                     return null;
 
-                return HttpContext.Current.Session["SaleMan"] as Model.CA_CircleSaleMan;
+                return HttpContext.Current.Session["SaleMan"] as Model.Key_CircleSaleMan;
             }
         }
 
@@ -49,11 +49,11 @@ namespace ADeeWu.HuoBi3J.Web.Class
         {
             DataBase db = DataBase.Create();
             db.Parameters.Append("@UserID", UserID);
-            var SaleMans = db.Select("vw_CircleSaleMan", "userid = @userid", "");
+            var SaleMans = db.Select("vw_Key_CircleSaleMan", "userid = @userid", "");
             if (SaleMans != null && SaleMans.Rows.Count > 0)
             {
                 var saleMan = SaleMans.Rows[0];
-                var circleMan = new Model.CA_CircleSaleMan
+                var circleMan = new Model.Key_CircleSaleMan
                 {
                     ID = Utility.GetLong(saleMan["id"], -1),
                     UserID = Utility.GetLong(saleMan["userid"], -1),

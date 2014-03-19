@@ -2,7 +2,7 @@
 using System;
 namespace ADeeWu.HuoBi3J.Model{
 	
-public class Center_QR_Log{
+public class Key_QR_Log{
 
 	#region Fields
 	private int _ID = 0;
@@ -14,11 +14,11 @@ public class Center_QR_Log{
 	#endregion
 	
 	#region Contructors
-	public Center_QR_Log()
+	public Key_QR_Log()
 	{
 	}
 	
-	public Center_QR_Log
+	public Key_QR_Log
 	(
 		int iD,
 			int userID,

@@ -67,7 +67,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
             this.LoginName.Value = loginName;
 
             db.EnableRecordCount = true;
-            this.gvData.DataSource = db.Select(pageSize, pageIndex, "vw_CircleSaleMan", "id", where, "ModifyTime desc");
+            this.gvData.DataSource = db.Select(pageSize, pageIndex, "vw_Key_CircleSaleMan", "id", where, "ModifyTime desc");
             this.gvData.DataBind();
             this.Pager1.PageSize = ADeeWu.HuoBi3J.Libary.Utility.GetInt(pageSize, 0);
             this.Pager1.PageIndex = ADeeWu.HuoBi3J.Libary.Utility.GetInt(pageIndex, 0);

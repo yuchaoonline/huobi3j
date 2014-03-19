@@ -142,7 +142,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <returns></returns>
         public ActionResult ScanQRLog(int userid)
         {
-            var logs = DataBase.Create().Select("vw_Center_QR_Log", string.Format("userid = {0}", userid), "");
+            var logs = DataBase.Create().Select("vw_Key_QR_Log", string.Format("userid = {0}", userid), "");
 
             return GetJson(logs.ToJson());
         }

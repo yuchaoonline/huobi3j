@@ -39,7 +39,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 poiBLL.Delete(new List<string> { id }, ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID);
                 WebUtility.ShowMsg(this, "删除成功！", "prices.aspx");
             }
-            catch (Exception ex)
+            catch
             {
                 WebUtility.ShowMsg("删除失败，请重试！");
             }
@@ -76,13 +76,13 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         private void CalCoin()
         {
-            var coin = DataBase.Create().ExecuteScalar("select sum(coin) from Center_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
+            var coin = DataBase.Create().ExecuteScalar("select sum(coin) from Key_QR_Log where salemanuserid = " + SaleManSession.SaleMan.UserID);
             litCoin.Text = coin == null ? "0" : coin.ToString();
         }
 
         private void CalQRCount()
         {
-            var count = DataBase.Create().ExecuteScalar("select count(*) from Center_QR_Log where userid = -1 and salemanuserid = " + SaleManSession.SaleMan.UserID);
+            var count = DataBase.Create().ExecuteScalar("select count(*) from Key_QR_Log where userid = -1 and salemanuserid = " + SaleManSession.SaleMan.UserID);
             litQRCount.Text = count == null ? "0" : count.ToString();
         }
     }

@@ -30,7 +30,7 @@
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
-                    <td><%# Eval("kname") %></td>
+                    <td><%# Eval("name") %></td>
                     <td><a href="addattribute.aspx?kid=<%#Eval("KID") %>">属性</a></td>
                 </tr>
             </ItemTemplate>

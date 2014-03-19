@@ -78,17 +78,6 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li id="menu_100" onmouseover="Menus.Show(this,0)" onclick="getleftbar(this);"><a
-                        href="default.html" target='frmright'>系统帮助</a>
-                        <div class="menu_childs" onmouseout="Menus.Hide(100);">
-                            <ul>
-                                <li><a href="/refreshbasedata.aspx" target='frmright'>刷新数据</a></li>
-                            </ul>
-                        </div>
-                        <div class="menu_div">
-                            <img src="skins/images/menu01_right.gif" style="vertical-align: bottom;">
-                        </div>
-                    </li>
                     <li id="menu_0" onmouseover="Menus.Show(this,0)" onclick="getleftbar(this);"><a href="javascript:void(0);"
                         target='frmright'>系统管理</a>
                         <div class="menu_childs" onmouseout="Menus.Hide(0);">
@@ -97,18 +86,6 @@
                                 <li><a href="SystemManage/AdminUsers/List.aspx" target='frmright'>用户列表</a></li>
                                 <li><a href="SystemManage/AdminRoles/Add.aspx" target='frmright'>添加角色</a></li>
                                 <li><a href="SystemManage/AdminRoles/List.aspx" target='frmright'>角色列表</a></li>
-                            </ul>
-                        </div>
-                        <div class="menu_div">
-                            <img src="skins/images/menu01_right.gif" style="vertical-align: bottom;">
-                        </div>
-                    </li>
-                    <li id="menu_1" onmouseover="Menus.Show(this,0)" onclick="getleftbar(this);"><a href="Corps/list.aspx"
-                        target='frmright'>商家管理</a>
-                        <div class="menu_childs" onmouseout="Menus.Hide(0);">
-                            <ul>
-                                <li><a href="Corps/list.aspx" target='frmright'>商家列表</a></li>
-                                <li><a href="Corps/listByAdmin.aspx" target='frmright'>商家列表[管理员]</a></li>
                             </ul>
                         </div>
                         <div class="menu_div">
@@ -152,11 +129,7 @@
                         <div class="menu_childs" onmouseout="Menus.Hide(0);">
                             <ul>
                                 <li><a href="Center/SaleMan.aspx" target='frmright'>业务员管理</a></li>
-                                <li><a href="Center/InformList.aspx" target='frmright'>举报管理</a></li>
-                                <li><a href="Center/CopyData.aspx" target='frmright'>复制分类</a></li>
-                                <li><a href="Center/QuestionList.aspx" target='frmright'>提问列表</a></li>
                                 <li><a href="Center/ProductList.aspx" target='frmright'>商品列表</a></li>
-                                <li><a href="Center/HotKeys.aspx" target='frmright'>有券热门关键字</a></li>
                                 <li><a href="Center/SearchHotKey.aspx" target='frmright'>首页热门关键字</a></li>
                                 <li><a href="Center/key4attribute.aspx" target='frmright'>关键字属性管理</a></li>
                             </ul>
@@ -171,7 +144,7 @@
     </div>
     <div style="height: 24px; background: #337ABB;"></div>
     <!--导航部分结束-->
-    <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="background: #337ABB;">
+    <table border="0" cellpadding="0" cellspacing="0" height="90%" width="100%" style="background: #337ABB;">
         <tbody>
             <tr>
                 <td align="middle" id="frmTitle" valign="top" name="fmTitle" class="main_left">

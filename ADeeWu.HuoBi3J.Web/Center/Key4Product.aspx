@@ -56,7 +56,7 @@
     <div id="filter">
         <div class="filter-sortbar-outer-box">
             <div class="filter-section-wrapper">
-                <div class="filter-label-list filter-section category-filter-wrapper first-filter">
+                <%--<div class="filter-label-list filter-section category-filter-wrapper first-filter">
                     <div class="label has-icon"><i></i>搜索：</div>
                     <ul class="inline-block-list">
                         <li class="item current">
@@ -65,7 +65,7 @@
                             <a style="display: inline-block;line-height: 24px;text-align: center;padding: 3px 5px;height: 24px;background-color: orange;margin-left: 115px;" href="questionlist.aspx?kid=<%=kid%>">发布信息找低价</a>
                         </li>
                     </ul>
-                </div>
+                </div>--%>
                 <div class="filter-label-list filter-section category-filter-wrapper">
                     <div class="label has-icon"><i></i>关键字：</div>
                     <ul class="inline-block-list">
@@ -73,7 +73,7 @@
                             <asp:Repeater ID="rpKey" runat="server">
                                 <ItemTemplate>
                                     <div class="black70 aaa">
-                                            <span style="font-weight: bold; font-size: 14px; margin-right: 100px;" id="kname"><%# Eval("KName") %></span></div>
+                                            <span style="font-weight: bold; font-size: 14px; margin-right: 100px;" id="kname"><%# Eval("Name") %></span></div>
                                 </ItemTemplate>
                             </asp:Repeater>
                         </li>

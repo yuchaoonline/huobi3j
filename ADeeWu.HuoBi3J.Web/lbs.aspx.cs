@@ -90,7 +90,7 @@ namespace ADeeWu.HuoBi3J.Web
                             c.QQ
                     FROM    dbo.Key_Product p
                             LEFT JOIN dbo.[Key] k ON p.KID = k.KID
-                            LEFT JOIN dbo.CA_CircleSaleMan c ON c.UserID = p.CreateUserID
+                            LEFT JOIN dbo.Key_CircleSaleMan c ON c.UserID = p.CreateUserID
             ";
             var rows = db.Select(sql);
             if (rows == null || rows.Rows.Count <= 0) return;
@@ -120,7 +120,7 @@ namespace ADeeWu.HuoBi3J.Web
 
                     poiBLL.Create(Utility.GetFloat(item["PositionX"], 0f), Utility.GetFloat(item["PositionY"], 0f), ADee.Project.LBS.Entity.CoordType.BaiduEncrypt, "49566", dic, item["SimpleDesc"].ToString(), item["CompanyAddress"].ToString(), item["SimpleDesc"].ToString() + " " + item["Name"].ToString());
                 }
-                catch (Exception ex)
+                catch
                 {
                     litText.Text += Environment.NewLine + id;
                 }

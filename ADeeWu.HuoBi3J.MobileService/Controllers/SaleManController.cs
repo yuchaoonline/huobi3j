@@ -12,8 +12,8 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 {
     public class SaleManController : JsonController
     {
-        DAL.CA_CircleSaleMan salemanDAL = new DAL.CA_CircleSaleMan();
-        DAL.Center_QR_Log qrLogDAL = new DAL.Center_QR_Log();
+        DAL.Key_CircleSaleMan salemanDAL = new DAL.Key_CircleSaleMan();
+        DAL.Key_QR_Log qrLogDAL = new DAL.Key_QR_Log();
         DAL.Users userDAL = new DAL.Users();
         DAL.User_CoinUseHistories dealHistoryDAL = new DAL.User_CoinUseHistories();
 
@@ -116,7 +116,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 return GetJson(new JsonResponse { status = false, message = "你已扫描过该商家！" });
             }
 
-            var qrLog = new Model.Center_QR_Log
+            var qrLog = new Model.Key_QR_Log
             {
                 Coin = 10,
                 CreateDate = DateTime.Now,
@@ -147,7 +147,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             return GetJson(new JsonResponse { status = false, message = "扫描失败，请重试！" });
         }
         
-        public class CircleSaleManRadius : Model.CA_CircleSaleMan
+        public class CircleSaleManRadius : Model.Key_CircleSaleMan
         {
             public double Radius { get; set; }
         }

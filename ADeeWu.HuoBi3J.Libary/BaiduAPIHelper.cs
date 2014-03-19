@@ -46,7 +46,7 @@ namespace ADeeWu.HuoBi3J.Libary
                 resultDic.Add("city", obj["content"]["address_detail"]["city"].ToString());
                 resultDic.Add("province", obj["content"]["address_detail"]["province"].ToString());
             }
-            catch (Exception ex)
+            catch
             {
                 resultDic.Add("city", "佛山市");
                 resultDic.Add("province", "广东省");

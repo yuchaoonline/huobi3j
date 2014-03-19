@@ -125,14 +125,14 @@
             <div style="clear:both;"></div>
             <div style="width: 100%; height: 36px;">
                 <div style="background-color: #508acb; float: left; width: 450px; height: 28px; padding: 4px 0; text-align: center">
-                    <input id="txtPageSearch" style="width: 442px; height: 28px; border: none; padding: 0; font-size: 18px; line-height: 28px;" value="<%=Request["keyword"] %>" />
+                    <input id="txtPageSearch" style="width: 442px; height: 28px; border: none; padding: 0; font-size: 18px; line-height: 28px;" value="<%=GetKeyword() %>" />
                 </div>
                 <div style="width: 100px; float: left; color: #508acb;">
                     <a href="#" id="btnPageSearch" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('ss','','/images/ss_1.gif',1)">
                         <img src="/images/ss.gif" width="100" height="36" border="0" id="ss"></a>
                 </div>
                 <div style="text-align: center;">
-                    <a href="/My/User/Center/MyAttentionList.aspx" title="发布价格">
+                    <a href="/My/User/Center/AddPrice.aspx" title="发布价格">
                         <img src="/images/news.gif" width="123" height="34"></a>
                 </div>
             </div>

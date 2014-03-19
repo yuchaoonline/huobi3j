@@ -42,9 +42,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var selectPrice = WebUtility.GetRequestStr("selectPrice", "");
             var keyword = WebUtility.GetRequestStr("keyword", "");
 
-            db.Parameters.Append("kid", kid);
-            var keys = db.Select("vw_Keys", "kid=@kid", "");
-            rpKey.DataSource = keys;
+            rpKey.DataSource = new DAL.Key().GetEntityList("", new string[] { "kid" }, new object[] { kid });
             rpKey.DataBind();
 
             litType.Text = "<li class='item'><a href='key4product.aspx?kid=" + kid + "&selectType=&selectSize=" + selectSize + "&selectPrice=" + selectPrice + "' class='selectPrice'>全部</a></li>";
@@ -101,7 +99,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var selectSize = WebUtility.GetRequestStr("selectSize", "");
             var selectPrice = WebUtility.GetRequestStr("selectPrice", "");
 
-            Response.Redirect(string.Format("/center/key4product.aspx?kid={0}&selectType={1}&selectSize={2}&selectPrice={3}&keyword={4}", id, selectType, selectSize, selectPrice, txtSearch.Text), true);
+            Response.Redirect(string.Format("/center/key4product.aspx?kid={0}&selectType={1}&selectSize={2}&selectPrice={3}&keyword={4}", id, selectType, selectSize, selectPrice, ""), true);
         }
 
         public string GetMoney(object mon)

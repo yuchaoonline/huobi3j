@@ -62,13 +62,5 @@ namespace ADeeWu.HuoBi3J.Web.Center
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
         }
-
-        public string IsAttention(object _kid)
-        {
-            if (!SaleManSession.IsSaleMan) return "false";
-            var userkey = new DAL.Key_User().GetEntity(new string[] { "uid", "kid" }, new object[] { SaleManSession.SaleMan.UserID, _kid });
-            if (userkey == null) return "false";
-            return userkey.IsGoOn ? "true" : "false";
-        }
     }
 }

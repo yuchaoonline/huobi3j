@@ -15,7 +15,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
     {
         DataBase db = DataBase.Create();
         DAL.Users userDAL = new DAL.Users();
-        DAL.Center_QR_Log qrLogDAL = new DAL.Center_QR_Log();
+        DAL.Key_QR_Log qrLogDAL = new DAL.Key_QR_Log();
         DAL.User_CoinUseHistories dealHistoryDAL = new DAL.User_CoinUseHistories();
         int qrFee = 10;
         protected void Page_Load(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var userid = WebUtility.GetRequestInt("salemanuserid", 0);
             if (userid > 0)
             {
-                rpSaleManInfo.DataSource = db.Select("vw_CircleSaleMan", "userid = " + userid, "");
+                rpSaleManInfo.DataSource = db.Select("vw_Key_CircleSaleMan", "userid = " + userid, "");
                 rpSaleManInfo.DataBind();
             }
         }
@@ -82,7 +82,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     return;
                 }
 
-                var qrLog = new Model.Center_QR_Log
+                var qrLog = new Model.Key_QR_Log
                 {
                     Coin = 10,
                     CreateDate = DateTime.Now,
@@ -117,7 +117,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             if (LoginUser == null)
             {
                 var salemanUserID = WebUtility.GetRequestInt("salemanuserid", 0);
-                var qrLog = new Model.Center_QR_Log
+                var qrLog = new Model.Key_QR_Log
                 {
                     Coin = 0,
                     CreateDate = DateTime.Now,

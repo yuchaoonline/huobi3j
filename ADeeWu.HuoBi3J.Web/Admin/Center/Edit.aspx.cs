@@ -25,7 +25,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
         }
 
         ADeeWu.HuoBi3J.DAL.Users userDAL = new ADeeWu.HuoBi3J.DAL.Users();
-        ADeeWu.HuoBi3J.DAL.CA_CircleSaleMan circleSaleManDAL = new ADeeWu.HuoBi3J.DAL.CA_CircleSaleMan();
+        ADeeWu.HuoBi3J.DAL.Key_CircleSaleMan circleSaleManDAL = new ADeeWu.HuoBi3J.DAL.Key_CircleSaleMan();
 
         protected long id = 0;
         protected void Page_Load(object sender, EventArgs e)
@@ -39,7 +39,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
             
             if (!IsPostBack)
             {
-                ADeeWu.HuoBi3J.Model.CA_CircleSaleMan entity = circleSaleManDAL.GetEntity(id);
+                ADeeWu.HuoBi3J.Model.Key_CircleSaleMan entity = circleSaleManDAL.GetEntity(id);
                 if (entity == null)
                 {
                     ADeeWu.HuoBi3J.Libary.WebUtility.ShowMsg(this, "没有找到相关记录", "list.aspx");
@@ -59,7 +59,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
 
         protected void btnSubmit_OnClick(object sender, EventArgs e)
         {
-            ADeeWu.HuoBi3J.Model.CA_CircleSaleMan entity = circleSaleManDAL.GetEntity(id);
+            ADeeWu.HuoBi3J.Model.Key_CircleSaleMan entity = circleSaleManDAL.GetEntity(id);
             if (entity == null) return;
             entity.CheckState = ADeeWu.HuoBi3J.Libary.Utility.GetInt(this.ddlCheckState.SelectedValue, 0);
             entity.ModifyTime = DateTime.Now;

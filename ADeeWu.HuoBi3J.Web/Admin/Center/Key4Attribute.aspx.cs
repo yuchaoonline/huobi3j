@@ -34,12 +34,12 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Center
 
             if (!string.IsNullOrWhiteSpace(keyword))
             {
-                strWhere = string.Format("kname like '%{0}%'", keyword);
-                rpResultList.DataSource = db.Select("vw_keys", strWhere, "");
+                strWhere = string.Format("name like '%{0}%'", keyword);
+                rpResultList.DataSource = db.Select("[key]", strWhere, "");
             }
             else
             {
-                rpResultList.DataSource = db.Select(pageSize, pageIndex, "vw_keys", "kid");
+                rpResultList.DataSource = db.Select(pageSize, pageIndex, "[key]", "kid");
             }
             rpResultList.DataBind();
 

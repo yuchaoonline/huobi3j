@@ -46,29 +46,9 @@
                           { %>
                         <li><a href="/My/User/Center/Prices.aspx">发布和管理价格信息<span id="Span1"></span></a></li>
                         <% } %>
-                        <li><a href="/My/User/Center/MyQuestionList.aspx">我的询价提问<span id="Span2"></span></a></li>
-                        <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
-                          { %>
-                        <li><a href="/My/User/Center/MyAnswerList.aspx">我收到的询价提问<span id="Span3"></span></a></li>
-                        <% } %>
                         <li><a href="/My/User/Center/MyFavList.aspx">我的收藏<span id="Span4"></span></a></li>
                     </ul>
                 </div>
-                <div class="box_bottom"></div>
-            </div>
-
-            <div class="box">
-                <div class="box_head">
-                    <label class="fb font14">营销代理商</label>
-                </div>
-                <div class="box_body">
-                    <ul>
-                        <li><a href="/My/User/CorpAgent/">网络营销专员</a></li>
-                        <li><a href="/My/User/CorpAgent/Customer.aspx">我的营销伙伴</a></li>
-                        <li><a href="/My/User/CorpAgent/CustomerBenefit.aspx">营销伙伴收益</a></li>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
             </div>
         </div>
         <div class="side_content r">

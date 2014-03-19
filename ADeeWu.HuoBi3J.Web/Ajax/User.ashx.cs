@@ -53,7 +53,7 @@ namespace ADeeWu.HuoBi3J.Web.Ajax
 
             var db = DataBase.Create();
             db.Parameters.Append("uid", uid);
-            var salemans = db.Select("vw_circlesaleman", "userid=@uid", "");
+            var salemans = db.Select("vw_Key_CircleSaleMan", "userid=@uid", "");
             if (salemans == null || salemans.Rows.Count <= 0) return JsonConvert.SerializeObject(new { Statue = false, msg = "无此即时业务员" });
 
             var saleman = salemans.Rows[0];

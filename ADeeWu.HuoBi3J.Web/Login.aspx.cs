@@ -58,18 +58,7 @@ namespace ADeeWu.HuoBi3J.Web
                 return;
             }
 
-            string redirect = Request.Url.ToString();
-
-            //企业用户未通过审核
-            if ((loginSession as Class.CorpSession) != null && (loginSession as Class.CorpSession).CorpCheckState == ADeeWu.HuoBi3J.Web.Class.UserSessionCheckState.Audited)
-            {
-                redirect = "/My/Corp/";
-            }
-            else
-            {
-                redirect = "/My/User/";
-            }
-            Response.Redirect(Request.QueryString["url"] ?? redirect);
+            Response.Redirect(Request.QueryString["url"] ?? "/My/User/");
         }
     }
 }

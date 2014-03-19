@@ -34,7 +34,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var userid = WebUtility.GetRequestInt("userid", 0);
             if (userid > 0)
             {
-                rpResult.DataSource = db.Select("vw_CircleSaleMan", "userid = " + userid, "");
+                rpResult.DataSource = db.Select("vw_Key_CircleSaleMan", "userid = " + userid, "");
                 rpResult.DataBind();
             }
         }

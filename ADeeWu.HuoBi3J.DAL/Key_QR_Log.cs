@@ -7,9 +7,10 @@ using System.Text;
 using ADeeWu.HuoBi3J.SQL.ParameterCollection;
 using ADeeWu.HuoBi3J.SQL;
 
-namespace ADeeWu.HuoBi3J.DAL{
+namespace ADeeWu.HuoBi3J.DAL
+{
 	
-	public class TicketHotKey{
+	public class Key_QR_Log{
 	
 		private DataBase db = null;
 		///<summary>
@@ -31,9 +32,9 @@ namespace ADeeWu.HuoBi3J.DAL{
             get { return db.Parameters; }
         }
 		
-		public TicketHotKey()
+		public Key_QR_Log()
 		{
-			this.db = ADeeWu.HuoBi3J.SQL.DataBase.Create();
+			this.db = DataBase.Create();
 		}
 		
 		
@@ -41,7 +42,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		public bool Exist(string where)
         {
            StringBuilder builder = new StringBuilder();
-           builder.Append("select * from [TicketHotKey] where 1=1");
+           builder.Append("select * from [Key_QR_Log] where 1=1");
            if (!string.IsNullOrEmpty(where) && where.Trim()!="")
            {
                builder.AppendFormat(" and ( {0} )", where);
@@ -58,7 +59,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         {
            
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [TicketHotKey] where 1=1");
+            builder.Append("select * from [Key_QR_Log] where 1=1");
 			db.Parameters.Clear();
             for (int i = 0; i < columns.Length; i++)
             {
@@ -71,24 +72,30 @@ namespace ADeeWu.HuoBi3J.DAL{
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public long Add(ADeeWu.HuoBi3J.Model.TicketHotKey model)
+		public int Add(ADeeWu.HuoBi3J.Model.Key_QR_Log model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@Link",model.Link );
-		    DataTable dt = db.Select("insert into [TicketHotKey]([Name],[Link]) values (@Name,@Link);select @@Identity;");
+		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CreateDate",model.CreateDate.HasValue ? (object)model.CreateDate.Value : (object)DBNull.Value );
+		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Coin",model.Coin.HasValue ? (object)model.Coin.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Demo",model.Demo );
+		    DataTable dt = db.Select("insert into [Key_QR_Log]([UserID],[CreateDate],[SaleManUserID],[Coin],[Demo]) values (@UserID,@CreateDate,@SaleManUserID,@Coin,@Demo);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
 		}
 		
-		public int Update(ADeeWu.HuoBi3J.Model.TicketHotKey model)
+		public int Update(ADeeWu.HuoBi3J.Model.Key_QR_Log model)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",model.ID);
-		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@Link",model.Link );
-			return db.ExecuteSql("update [TicketHotKey] set [Name]=@Name,[Link]=@Link where [ID]=@ID");
+		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CreateDate",model.CreateDate.HasValue ? (object)model.CreateDate.Value : (object)DBNull.Value );
+		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Coin",model.Coin.HasValue ? (object)model.Coin.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Demo",model.Demo );
+			return db.ExecuteSql("update [Key_QR_Log] set [UserID]=@UserID,[CreateDate]=@CreateDate,[SaleManUserID]=@SaleManUserID,[Coin]=@Coin,[Demo]=@Demo where [ID]=@ID");
 		}
 		
 	
@@ -104,7 +111,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public int Update(string columnName, object value, string where)
 		{
-			string sql = String.Format("update [{0}] set {1}=@{1}","TicketHotKey",columnName);
+			string sql = String.Format("update [{0}] set {1}=@{1}","Key_QR_Log",columnName);
 			if(!string.IsNullOrEmpty(where)){
 				sql += " where " + where;
 			}
@@ -125,7 +132,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		{
 			if( updateColumns==null || updateColumns.Length==0 || updateValues== null || updateValues.Length != updateColumns.Length) return -1;
 			
-			string sql = String.Format("update [{0}] ","TicketHotKey");
+			string sql = String.Format("update [{0}] ","Key_QR_Log");
 			
 			db.Parameters.Clear();
 			StringBuilder builder = new StringBuilder();
@@ -155,7 +162,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		{
 			db.Parameters.Clear();
 			db.Parameters.Append("@ID",ID);
-			return db.ExecuteSql("delete from [TicketHotKey]  where  @ID=ID");
+			return db.ExecuteSql("delete from [Key_QR_Log]  where  @ID=ID");
 		}
 		
 		/// <summary>
@@ -165,7 +172,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		/// <returns>影响行数</returns>
 		public int DeleteAll()
 		{
-			string sql = string.Format("delete from [{0}] ", "TicketHotKey");
+			string sql = string.Format("delete from [{0}] ", "Key_QR_Log");
 			return db.ExecuteSql(sql);
 
 		}
@@ -177,7 +184,7 @@ namespace ADeeWu.HuoBi3J.DAL{
 		/// <returns>影响行数</returns>
 		public int Delete(string where)
         {
-            string sql = string.Format("delete from [{0}] where 1=2 ", "TicketHotKey");
+            string sql = string.Format("delete from [{0}] where 1=2 ", "Key_QR_Log");
 			if(string.IsNullOrEmpty(where)){
 				return -1;
 			}
@@ -186,50 +193,56 @@ namespace ADeeWu.HuoBi3J.DAL{
 
         public int Delete(string columnName, object value)
         {
-            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "TicketHotKey",columnName);
+            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "Key_QR_Log",columnName);
 			db.Parameters.Clear();
             db.Parameters.Append("@" + columnName, value);
             return db.ExecuteSql(sql);
         }
 		
-		public ADeeWu.HuoBi3J.Model.TicketHotKey GetEntity(int  ID)
+		public ADeeWu.HuoBi3J.Model.Key_QR_Log GetEntity(int  ID)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",ID);
-			DataTable dt = db.Select("select * from [TicketHotKey] where 1=1  and [ID]=@ID");
+			DataTable dt = db.Select("select * from [Key_QR_Log] where 1=1  and [ID]=@ID");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.TicketHotKey Entity = new ADeeWu.HuoBi3J.Model.TicketHotKey();
+			ADeeWu.HuoBi3J.Model.Key_QR_Log Entity = new ADeeWu.HuoBi3J.Model.Key_QR_Log();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Name = dr["Name"] as string;
-			Entity.Link = dr["Link"] as string;
+			Entity.UserID = dr["UserID"] as int?;
+			Entity.CreateDate = dr["CreateDate"] as DateTime?;
+			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
+			Entity.Coin = dr["Coin"] as int?;
+			Entity.Demo = dr["Demo"] as string;
 			return Entity;
 		}
 		
 		
-		public ADeeWu.HuoBi3J.Model.TicketHotKey GetEntity(string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Key_QR_Log GetEntity(string[] columns,params object[] values)
 		{
-			ADeeWu.HuoBi3J.Model.TicketHotKey[] EntityList = GetEntityList("",columns,values);
+			ADeeWu.HuoBi3J.Model.Key_QR_Log[] EntityList = GetEntityList("",columns,values);
 			if(EntityList.Length==0)return null;
 			return EntityList[0];
 		}
 		
-		public ADeeWu.HuoBi3J.Model.TicketHotKey GetEntity(string where)
+		public ADeeWu.HuoBi3J.Model.Key_QR_Log GetEntity(string where)
 		{
 			DataTable dt = this.Select(where,"");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.TicketHotKey Entity = new ADeeWu.HuoBi3J.Model.TicketHotKey();
+			ADeeWu.HuoBi3J.Model.Key_QR_Log Entity = new ADeeWu.HuoBi3J.Model.Key_QR_Log();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Name = dr["Name"] as string;
-			Entity.Link = dr["Link"] as string;
+			Entity.UserID = dr["UserID"] as int?;
+			Entity.CreateDate = dr["CreateDate"] as DateTime?;
+			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
+			Entity.Coin = dr["Coin"] as int?;
+			Entity.Demo = dr["Demo"] as string;
 			return Entity;
 		}
 		
-		public ADeeWu.HuoBi3J.Model.TicketHotKey[] GetEntityList(string orderBy,string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Key_QR_Log[] GetEntityList(string orderBy,string[] columns,params object[] values)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [TicketHotKey] where 1=1");
+            builder.Append("select * from [Key_QR_Log] where 1=1");
 			db.Parameters.Clear();
 			for(int i=0;i<columns.Length;i++)
 			{
@@ -244,15 +257,18 @@ namespace ADeeWu.HuoBi3J.DAL{
 
             DataTable dt = db.Select(builder.ToString());
            
-            ADeeWu.HuoBi3J.Model.TicketHotKey[] EntityList = new ADeeWu.HuoBi3J.Model.TicketHotKey[dt.Rows.Count];
+            ADeeWu.HuoBi3J.Model.Key_QR_Log[] EntityList = new ADeeWu.HuoBi3J.Model.Key_QR_Log[dt.Rows.Count];
 			 if (dt.Rows.Count == 0) return EntityList;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
 				DataRow dr = dt.Rows[i];
-                ADeeWu.HuoBi3J.Model.TicketHotKey Entity = new ADeeWu.HuoBi3J.Model.TicketHotKey();
+                ADeeWu.HuoBi3J.Model.Key_QR_Log Entity = new ADeeWu.HuoBi3J.Model.Key_QR_Log();
 				Entity.ID = int.Parse(dr["ID"].ToString());
-				Entity.Name = dr["Name"] as string;
-				Entity.Link = dr["Link"] as string;
+				Entity.UserID = dr["UserID"] as int?;
+				Entity.CreateDate = dr["CreateDate"] as DateTime?;
+				Entity.SaleManUserID = dr["SaleManUserID"] as int?;
+				Entity.Coin = dr["Coin"] as int?;
+				Entity.Demo = dr["Demo"] as string;
                 EntityList[i] = Entity;
             }
              return EntityList;
@@ -266,7 +282,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(string where,string orderBy)
 		{
-			return db.Select(-1,-1,"TicketHotKey","ID",where,orderBy);
+			return db.Select(-1,-1,"Key_QR_Log","ID",where,orderBy);
 		}
 		
 		
@@ -279,7 +295,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex)
 		{
-			return db.Select(pageSize,pageIndex,"TicketHotKey","ID","","");
+			return db.Select(pageSize,pageIndex,"Key_QR_Log","ID","","");
 		}
 		
 		/// <summary>
@@ -291,7 +307,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"TicketHotKey","ID","",orderBy);
+			return db.Select(pageSize,pageIndex,"Key_QR_Log","ID","",orderBy);
 		}
 		
 		/// <summary>
@@ -304,7 +320,7 @@ namespace ADeeWu.HuoBi3J.DAL{
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string where,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"TicketHotKey","ID",where,orderBy);
+			return db.Select(pageSize,pageIndex,"Key_QR_Log","ID",where,orderBy);
 		}
 		
 		

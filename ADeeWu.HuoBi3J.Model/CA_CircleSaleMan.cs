@@ -2,7 +2,7 @@
 using System;
 namespace ADeeWu.HuoBi3J.Model{
 	
-public class CA_CircleSaleMan{
+public class Key_CircleSaleMan{
 
 	#region Fields
 	private long _ID = 0L;
@@ -22,11 +22,11 @@ public class CA_CircleSaleMan{
 	#endregion
 	
 	#region Contructors
-	public CA_CircleSaleMan()
+	public Key_CircleSaleMan()
 	{
 	}
 	
-	public CA_CircleSaleMan
+	public Key_CircleSaleMan
 	(
 		long iD,
 			string name,

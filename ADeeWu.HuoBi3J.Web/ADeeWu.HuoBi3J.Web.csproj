@@ -85,22 +85,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Center\AddSearchHotKey.aspx" />
-    <Content Include="Admin\Center\CopyData.aspx" />
     <Content Include="Admin\Center\SearchHotKey.aspx" />
     <Content Include="Admin\default.html" />
     <Content Include="Admin\MAdmin.Master" />
     <Content Include="Ajax\Center.ashx" />
-    <Content Include="Ajax\GroupBuy.ashx" />
     <Content Include="Ajax\User.ashx" />
     <Content Include="Center\ChangeCity.aspx" />
     <Content Include="Center\Default.aspx" />
     <Content Include="Center\GetCoin.aspx" />
     <Content Include="Center\Key.aspx" />
     <Content Include="Center\M_Details.aspx" />
-    <Content Include="Center\Question.aspx" />
-    <Content Include="Center\QuestionList.aspx" />
     <Content Include="Center\SaleMan4Product.aspx" />
-    <Content Include="Center\SearchHotKey.aspx" />
     <Content Include="Center\SearchKey.aspx" />
     <Content Include="Center\Details.aspx" />
     <Content Include="CSS\base.css" />
@@ -118,14 +113,7 @@
     <Content Include="Handler\LoginHandler.ashx" />
     <Content Include="Handler\WebIM\GetUser.ashx" />
     <Content Include="Handler\WebIM\Login.ashx" />
-    <Content Include="images\biaoti.psd" />
-    <Content Include="images\biaoti111.psd" />
-    <Content Include="images\biaotiqie1.psd" />
-    <Content Include="images\centerbiaoti.psd" />
-    <Content Include="images\nav_current2.psd" />
     <Content Include="images\news.gif" />
-    <Content Include="images\radius_3_r11.psd" />
-    <Content Include="images\radius_3_rl11.psd" />
     <Content Include="images\ss.gif" />
     <Content Include="images\ss_1.gif" />
     <Content Include="images\tit_bg.gif" />
@@ -142,25 +130,11 @@
     <Content Include="MobileRegister.aspx" />
     <Content Include="My\User\Center\AddPrice.aspx" />
     <Content Include="My\User\Center\EditPrice.aspx" />
-    <Content Include="My\User\Center\EditPrice4Key.aspx" />
     <Content Include="My\User\Center\MyFavList.aspx" />
     <Content Include="My\User\Center\PriceCount4Key.aspx" />
     <Content Include="My\User\Center\Prices.aspx" />
     <Content Include="My\User\Center\SaleManQR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
-    <Content Include="My\User\Center\KeyManage\Default.aspx" />
-    <Content Include="My\User\Center\KeyManage\Income.aspx" />
-    <Content Include="My\User\Center\KeyManage\Refresh.aspx" />
-    <Content Include="My\User\Center\KeyManage\RefreshLog.aspx" />
-    <Content Include="My\User\Center\PriceList4Key.aspx" />
-    <Content Include="My\User\CorpAgent\Customer.aspx" />
-    <Content Include="My\User\CorpAgent\CustomerAjax.aspx" />
-    <Content Include="My\User\CorpAgent\CustomerBenefit.aspx" />
-    <Content Include="My\User\CorpAgent\CustomerKeyword.aspx" />
-    <Content Include="My\User\CorpAgent\Default.aspx" />
-    <Content Include="My\User\CorpAgent\Income.aspx" />
-    <Content Include="My\User\CorpAgent\SearchHireInfo.aspx" />
-    <Content Include="My\User\CorpAgent\ViewHireInfo.aspx" />
     <Content Include="My\User\TradeOrders\Default.aspx" />
     <Content Include="My\User\TradeOrders\Order.aspx" />
     <Content Include="My\User\TradeOrders\PayNow.aspx" />
@@ -190,26 +164,12 @@
     <Compile Include="Admin\Center\AddAttribute.aspx.designer.cs">
       <DependentUpon>AddAttribute.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Center\AddHotKey.aspx.cs">
-      <DependentUpon>AddHotKey.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\AddHotKey.aspx.designer.cs">
-      <DependentUpon>AddHotKey.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Center\AddSearchHotKey.aspx.cs">
       <DependentUpon>AddSearchHotKey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Center\AddSearchHotKey.aspx.designer.cs">
       <DependentUpon>AddSearchHotKey.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\CopyData.aspx.cs">
-      <DependentUpon>CopyData.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\CopyData.aspx.designer.cs">
-      <DependentUpon>CopyData.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Center\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
@@ -218,47 +178,12 @@
     <Compile Include="Admin\Center\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Center\HotKeys.aspx.cs">
-      <DependentUpon>HotKeys.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\HotKeys.aspx.designer.cs">
-      <DependentUpon>HotKeys.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\InformList.aspx.cs">
-      <DependentUpon>InformList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\InformList.aspx.designer.cs">
-      <DependentUpon>InformList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Admin\Center\Key4Attribute.aspx.cs">
       <DependentUpon>Key4Attribute.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Center\Key4Attribute.aspx.designer.cs">
       <DependentUpon>Key4Attribute.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\ProcessInform.aspx.cs">
-      <DependentUpon>ProcessInform.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\ProcessInform.aspx.designer.cs">
-      <DependentUpon>ProcessInform.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\QuestionIndexList.aspx.cs">
-      <DependentUpon>QuestionIndexList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\QuestionIndexList.aspx.designer.cs">
-      <DependentUpon>QuestionIndexList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Center\QuestionList.aspx.cs">
-      <DependentUpon>QuestionList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Center\QuestionList.aspx.designer.cs">
-      <DependentUpon>QuestionList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Center\SaleMan.aspx.cs">
       <DependentUpon>SaleMan.aspx</DependentUpon>
@@ -298,55 +223,6 @@
     </Compile>
     <Compile Include="Admin\Coins\Sub.aspx.designer.cs">
       <DependentUpon>Sub.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\Applications\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\Applications\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\Applications\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\Applications\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\UserInCorps\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\UserInCorps\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\UserInCorps\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\CorpAgent\UserInCorps\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Corps\Edit.aspx.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Corps\Edit.aspx.designer.cs">
-      <DependentUpon>Edit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Corps\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Corps\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Corps\ListByAdmin.aspx.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Corps\ListByAdmin.aspx.designer.cs">
-      <DependentUpon>ListByAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -491,9 +367,6 @@
     <Compile Include="Ajax\Center.ashx.cs">
       <DependentUpon>Center.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Ajax\GroupBuy.ashx.cs">
-      <DependentUpon>GroupBuy.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Ajax\User.ashx.cs">
       <DependentUpon>User.ashx</DependentUpon>
     </Compile>
@@ -501,34 +374,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SyncSelector.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Cashtickets\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cashtickets\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\1.aspx.cs">
-      <DependentUpon>1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\1.aspx.designer.cs">
-      <DependentUpon>1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\2.aspx.cs">
-      <DependentUpon>2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\2.aspx.designer.cs">
-      <DependentUpon>2.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\3.aspx.cs">
-      <DependentUpon>3.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\3.aspx.designer.cs">
-      <DependentUpon>3.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\Add.aspx.cs">
       <DependentUpon>Add.aspx</DependentUpon>
@@ -572,33 +417,12 @@
     <Compile Include="Center\M_Details.aspx.designer.cs">
       <DependentUpon>M_Details.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\Question.aspx.cs">
-      <DependentUpon>Question.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\Question.aspx.designer.cs">
-      <DependentUpon>Question.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\QuestionList.aspx.cs">
-      <DependentUpon>QuestionList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\QuestionList.aspx.designer.cs">
-      <DependentUpon>QuestionList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Center\SaleMan4Product.aspx.cs">
       <DependentUpon>SaleMan4Product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Center\SaleMan4Product.aspx.designer.cs">
       <DependentUpon>SaleMan4Product.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\SearchHotKey.aspx.cs">
-      <DependentUpon>SearchHotKey.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\SearchHotKey.aspx.designer.cs">
-      <DependentUpon>SearchHotKey.aspx</DependentUpon>
     </Compile>
     <Compile Include="Class\AccountHelper.cs" />
     <Compile Include="Center\Details.aspx.cs">
@@ -629,33 +453,12 @@
     <Compile Include="My\User\Center\AddPrice.aspx.designer.cs">
       <DependentUpon>AddPrice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="My\User\Center\AttentionKey.aspx.cs">
-      <DependentUpon>AttentionKey.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\AttentionKey.aspx.designer.cs">
-      <DependentUpon>AttentionKey.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Center\BusinessCircle.aspx.cs">
       <DependentUpon>BusinessCircle.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Center\BusinessCircle.aspx.designer.cs">
       <DependentUpon>BusinessCircle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\CorpBusinessCircle.aspx.cs">
-      <DependentUpon>CorpBusinessCircle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\CorpBusinessCircle.aspx.designer.cs">
-      <DependentUpon>CorpBusinessCircle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\CorpKeys.aspx.cs">
-      <DependentUpon>CorpKeys.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\CorpKeys.aspx.designer.cs">
-      <DependentUpon>CorpKeys.aspx</DependentUpon>
     </Compile>
     <Compile Include="Center\SearchPrice.aspx.cs">
       <DependentUpon>SearchPrice.aspx</DependentUpon>
@@ -678,20 +481,6 @@
     <Compile Include="Center\Key4Product.aspx.designer.cs">
       <DependentUpon>Key4Product.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\Location.aspx.cs">
-      <DependentUpon>Location.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\Location.aspx.designer.cs">
-      <DependentUpon>Location.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Center\MoveCircle.aspx.cs">
-      <DependentUpon>MoveCircle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\MoveCircle.aspx.designer.cs">
-      <DependentUpon>MoveCircle.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Center\SearchKey.aspx.cs">
       <DependentUpon>SearchKey.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -699,21 +488,12 @@
     <Compile Include="Center\SearchKey.aspx.designer.cs">
       <DependentUpon>SearchKey.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Center\TicketSearch.aspx.cs">
-      <DependentUpon>TicketSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Center\TicketSearch.aspx.designer.cs">
-      <DependentUpon>TicketSearch.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Class\Alipay\AliPay.cs" />
     <Compile Include="Class\Alipay\alipay_function.cs" />
     <Compile Include="Class\Alipay\alipay_notify.cs" />
     <Compile Include="Class\Alipay\alipay_service.cs" />
     <Compile Include="Class\BaseDataHelper.cs" />
-    <Compile Include="Class\CorpSession.cs" />
     <Compile Include="Class\GlobalParameter.cs" />
-    <Compile Include="Class\Helper.cs" />
     <Compile Include="Class\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -724,16 +504,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Class\SaleManSession.cs" />
-    <Compile Include="Class\TaskHelper.cs" />
     <Compile Include="Class\Tips.cs" />
     <Compile Include="Class\UserSession.cs" />
-    <Compile Include="Controls\FavControl.ascx.cs">
-      <DependentUpon>FavControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Controls\FavControl.ascx.designer.cs">
-      <DependentUpon>FavControl.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Controls\ucFooter.ascx.cs">
       <DependentUpon>ucFooter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -833,13 +605,6 @@
     <Compile Include="My\User\Center\EditPrice.aspx.designer.cs">
       <DependentUpon>EditPrice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="My\User\Center\EditPrice4Key.aspx.cs">
-      <DependentUpon>EditPrice4Key.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\EditPrice4Key.aspx.designer.cs">
-      <DependentUpon>EditPrice4Key.aspx</DependentUpon>
-    </Compile>
     <Compile Include="My\User\Center\MyFavList.aspx.cs">
       <DependentUpon>MyFavList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -875,75 +640,12 @@
     <Compile Include="My\User\Center\SearchKey.aspx.designer.cs">
       <DependentUpon>SearchKey.aspx</DependentUpon>
     </Compile>
-    <Compile Include="My\User\Center\ChangeGoOn.aspx.cs">
-      <DependentUpon>ChangeGoOn.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\ChangeGoOn.aspx.designer.cs">
-      <DependentUpon>ChangeGoOn.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\Income.aspx.cs">
-      <DependentUpon>Income.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\Income.aspx.designer.cs">
-      <DependentUpon>Income.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\Refresh.aspx.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\Refresh.aspx.designer.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\RefreshLog.aspx.cs">
-      <DependentUpon>RefreshLog.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\KeyManage\RefreshLog.aspx.designer.cs">
-      <DependentUpon>RefreshLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\MyAnswerList.aspx.cs">
-      <DependentUpon>MyAnswerList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\MyAnswerList.aspx.designer.cs">
-      <DependentUpon>MyAnswerList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\MyAttentionList.aspx.cs">
-      <DependentUpon>MyAttentionList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\MyAttentionList.aspx.designer.cs">
-      <DependentUpon>MyAttentionList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\MyQuestionList.aspx.cs">
-      <DependentUpon>MyQuestionList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\MyQuestionList.aspx.designer.cs">
-      <DependentUpon>MyQuestionList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="My\User\Center\RegSaleMan.aspx.cs">
       <DependentUpon>RegSaleMan.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="My\User\Center\RegSaleMan.aspx.designer.cs">
       <DependentUpon>RegSaleMan.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\Center\PriceList4Key.aspx.cs">
-      <DependentUpon>PriceList4Key.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\Center\PriceList4Key.aspx.designer.cs">
-      <DependentUpon>PriceList4Key.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Coins\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -958,62 +660,6 @@
     </Compile>
     <Compile Include="My\User\Coins\Purchase.aspx.designer.cs">
       <DependentUpon>Purchase.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\Customer.aspx.cs">
-      <DependentUpon>Customer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\Customer.aspx.designer.cs">
-      <DependentUpon>Customer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\CustomerAjax.aspx.cs">
-      <DependentUpon>CustomerAjax.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\CustomerAjax.aspx.designer.cs">
-      <DependentUpon>CustomerAjax.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\CustomerBenefit.aspx.cs">
-      <DependentUpon>CustomerBenefit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\CustomerBenefit.aspx.designer.cs">
-      <DependentUpon>CustomerBenefit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\CustomerKeyword.aspx.cs">
-      <DependentUpon>CustomerKeyword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\CustomerKeyword.aspx.designer.cs">
-      <DependentUpon>CustomerKeyword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\Income.aspx.cs">
-      <DependentUpon>Income.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\Income.aspx.designer.cs">
-      <DependentUpon>Income.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\SearchHireInfo.aspx.cs">
-      <DependentUpon>SearchHireInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\SearchHireInfo.aspx.designer.cs">
-      <DependentUpon>SearchHireInfo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\ViewHireInfo.aspx.cs">
-      <DependentUpon>ViewHireInfo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="My\User\CorpAgent\ViewHireInfo.aspx.designer.cs">
-      <DependentUpon>ViewHireInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1072,26 +718,12 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Refresh.aspx.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Refresh.aspx.designer.cs">
-      <DependentUpon>Refresh.aspx</DependentUpon>
-    </Compile>
     <Compile Include="RefreshBaseData.aspx.cs">
       <DependentUpon>RefreshBaseData.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RefreshBaseData.aspx.designer.cs">
       <DependentUpon>RefreshBaseData.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="RegCorporations.aspx.cs">
-      <DependentUpon>RegCorporations.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="RegCorporations.aspx.designer.cs">
-      <DependentUpon>RegCorporations.aspx</DependentUpon>
     </Compile>
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -1161,25 +793,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\Center\AddAttribute.aspx" />
-    <Content Include="Admin\Center\AddHotKey.aspx" />
     <Content Include="Admin\Center\Edit.aspx" />
-    <Content Include="Admin\Center\HotKeys.aspx" />
-    <Content Include="Admin\Center\InformList.aspx" />
     <Content Include="Admin\Center\Key4Attribute.aspx" />
-    <Content Include="Admin\Center\ProcessInform.aspx" />
-    <Content Include="Admin\Center\QuestionIndexList.aspx" />
-    <Content Include="Admin\Center\QuestionList.aspx" />
     <Content Include="Admin\Center\SaleMan.aspx" />
     <Content Include="Admin\Coins\Add.aspx" />
     <Content Include="Admin\Coins\List.aspx" />
     <Content Include="Admin\Coins\Sub.aspx" />
-    <Content Include="Admin\CorpAgent\Applications\Edit.aspx" />
-    <Content Include="Admin\CorpAgent\Applications\List.aspx" />
-    <Content Include="Admin\CorpAgent\UserInCorps\Edit.aspx" />
-    <Content Include="Admin\CorpAgent\UserInCorps\List.aspx" />
-    <Content Include="Admin\Corps\Edit.aspx" />
-    <Content Include="Admin\Corps\List.aspx" />
-    <Content Include="Admin\Corps\ListByAdmin.aspx" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\js\admin.js" />
     <Content Include="Admin\js\default.js" />
@@ -1266,39 +885,11 @@
     <Content Include="Admin\WebIM\UINS\Add.aspx" />
     <Content Include="Admin\WebIM\UINS\Edit.aspx" />
     <Content Include="Admin\WebIM\UINS\List.aspx" />
-    <Content Include="Cashtickets\Default.aspx" />
-    <Content Include="Center\1.aspx" />
-    <Content Include="Center\2.aspx" />
-    <Content Include="Center\3.3.png" />
-    <Content Include="Center\3.4.png" />
-    <Content Include="Center\3.aspx" />
     <Content Include="Center\Add.aspx" />
-    <Content Include="My\User\Center\AttentionKey.aspx" />
     <Content Include="Center\BusinessCircle.aspx" />
-    <Content Include="Center\CorpBusinessCircle.aspx" />
-    <Content Include="Center\CorpKeys.aspx" />
     <Content Include="Center\SearchPrice.aspx" />
-    <Content Include="Center\images\1.jpg" />
-    <Content Include="Center\images\2.1.jpg" />
-    <Content Include="Center\images\2.2.jpg" />
-    <Content Include="Center\images\2.3.jpg" />
-    <Content Include="Center\images\2.4.jpg" />
-    <Content Include="Center\images\2.5.jpg" />
-    <Content Include="Center\images\2.6.jpg" />
-    <Content Include="Center\images\2.jpg" />
-    <Content Include="Center\images\3.2.jpg" />
-    <Content Include="Center\images\3.5.jpg" />
-    <Content Include="Center\images\3.6.jpg" />
-    <Content Include="Center\images\3.jpg" />
-    <Content Include="Center\images\4.jpg" />
-    <Content Include="Center\images\5.jpg" />
-    <Content Include="Center\images\6.jpg" />
     <Content Include="My\User\Center\AddKey4Price.aspx" />
     <Content Include="Center\Key4Product.aspx" />
-    <Content Include="Center\Location.aspx" />
-    <Content Include="Center\MoveCircle.aspx" />
-    <Content Include="Center\TicketSearch.aspx" />
-    <Content Include="Controls\FavControl.ascx" />
     <Content Include="Controls\ucFooter.ascx" />
     <Content Include="Controls\ucHeader.ascx" />
     <Content Include="Controls\ucNav.ascx" />
@@ -1439,7 +1030,6 @@
     <Content Include="images\workflow2.gif" />
     <Content Include="images\workflow3.gif" />
     <Content Include="index.html" />
-    <Content Include="JS\attentionCount.js" />
     <Content Include="JS\CategoryNav.js" />
     <Content Include="JS\CheckBoxUtil.js" />
     <Content Include="JS\common.js" />
@@ -1575,10 +1165,6 @@
     <Content Include="JS\user.js" />
     <Content Include="Login.aspx" />
     <Content Include="LogOut.aspx" />
-    <Content Include="My\User\Center\ChangeGoOn.aspx" />
-    <Content Include="My\User\Center\MyAnswerList.aspx" />
-    <Content Include="My\User\Center\MyAttentionList.aspx" />
-    <Content Include="My\User\Center\MyQuestionList.aspx" />
     <Content Include="My\User\Center\RegSaleMan.aspx" />
     <Content Include="My\User\Coins\Default.aspx" />
     <Content Include="My\User\Coins\Purchase.aspx" />
@@ -1588,9 +1174,7 @@
     <Content Include="My\User\TransferApplications\Application.aspx" />
     <Content Include="My\User\TransferApplications\Default.aspx" />
     <Content Include="My\User\VMoney\Default.aspx" />
-    <Content Include="Refresh.aspx" />
     <Content Include="RefreshBaseData.aspx" />
-    <Content Include="RegCorporations.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="selectUIN.aspx" />
     <Content Include="Tips.aspx" />

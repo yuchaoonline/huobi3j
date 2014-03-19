@@ -13,5 +13,11 @@ namespace ADeeWu.HuoBi3J.Web.Controls
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+
+        protected string GetKeyword()
+        {
+            var keyword = ADeeWu.HuoBi3J.Libary.WebUtility.GetRequestStr("keyword", "");
+            return string.IsNullOrWhiteSpace(keyword) ? "快餐" : keyword;
+        }
     }
 }
