@@ -55,5 +55,10 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             return GetJson(keys.ToJson());
         }
+
+        public ActionResult GetKeyword(string name)
+        {
+            return GetJson(new DAL.Key().GetEntity("name='" + name + "'"));
+        }
     }
 }

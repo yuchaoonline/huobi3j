@@ -13,7 +13,7 @@ using ADeeWu.HuoBi3J.Libary;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ADeeWu.HuoBi3J.Web.Class
+namespace ADeeWu.HuoBi3J.MobileService.Helpers
 {
     public class BaseDataHelper
     {
@@ -44,8 +44,6 @@ namespace ADeeWu.HuoBi3J.Web.Class
 
         public static void RefreshData()
         {
-            GlobalParameter.MinTransferMoney = ADeeWu.HuoBi3J.Libary.Utility.GetDecimal(System.Configuration.ConfigurationManager.AppSettings["mintransfermoney"], 10);
-
             var db = new DAL.BaseData();
             var datas = db.GetEntityList("", new string[] { }, new object[] { });
             HttpContext.Current.Application["BaseDta"] = datas;

@@ -80,6 +80,8 @@
     </Compile>
     <Compile Include="BaseData.cs" />
     <Compile Include="CA_CircleSaleMan.cs" />
+    <Compile Include="Coupons_List.cs" />
+    <Compile Include="Coupons_Subject.cs" />
     <Compile Include="Key_QR_Log.cs" />
     <Compile Include="Citys.cs">
       <SubType>Code</SubType>

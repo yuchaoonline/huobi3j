@@ -86,6 +86,11 @@
   <ItemGroup>
     <Content Include="Admin\Center\AddSearchHotKey.aspx" />
     <Content Include="Admin\Center\SearchHotKey.aspx" />
+    <Content Include="Admin\Coupons\AddList.aspx" />
+    <Content Include="Admin\Coupons\AddSubject.aspx" />
+    <Content Include="Admin\Coupons\Default.aspx" />
+    <Content Include="Admin\Coupons\EditSubject.aspx" />
+    <Content Include="Admin\Coupons\Lists.aspx" />
     <Content Include="Admin\default.html" />
     <Content Include="Admin\MAdmin.Master" />
     <Content Include="Ajax\Center.ashx" />
@@ -223,6 +228,41 @@
     </Compile>
     <Compile Include="Admin\Coins\Sub.aspx.designer.cs">
       <DependentUpon>Sub.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\AddList.aspx.cs">
+      <DependentUpon>AddList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\AddList.aspx.designer.cs">
+      <DependentUpon>AddList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\AddSubject.aspx.cs">
+      <DependentUpon>AddSubject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\AddSubject.aspx.designer.cs">
+      <DependentUpon>AddSubject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\EditSubject.aspx.cs">
+      <DependentUpon>EditSubject.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\EditSubject.aspx.designer.cs">
+      <DependentUpon>EditSubject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\Lists.aspx.cs">
+      <DependentUpon>Lists.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\Lists.aspx.designer.cs">
+      <DependentUpon>Lists.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
