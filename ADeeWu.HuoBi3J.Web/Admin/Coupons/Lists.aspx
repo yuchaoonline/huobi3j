@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/MAdmin.Master" AutoEventWireup="true" CodeBehind="Lists.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Admin.Coupons.Lists" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
@@ -33,9 +35,12 @@
                     <td><%# Eval("startdate") %> - <%# Eval("enddate") %></td>
                     <td><%# Eval("loginname") %></td>
                     <td><%# Eval("usedate") %></td>
-                    <td><%# Eval("isuse").ToString().ToLower()=="true"?"已使用":"未使用"%></td>
+                    <td><%# Eval("isuse").ToString().ToLower()=="true"?string.Format("已使用({0})",Eval("password")):"未使用"%></td>
                 </tr>
             </ItemTemplate>
         </asp:Repeater>
     </table>
+    <div class="pager">
+        <ADeeWuControl:Pager ID="Pager1" runat="server" />
+    </div>
 </asp:Content>

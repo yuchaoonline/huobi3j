@@ -44,9 +44,24 @@
                         <li><a href="/My/User/Center/RegSaleMan.aspx">申请开通价格发布服务</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
-                        <li><a href="/My/User/Center/Prices.aspx">发布和管理价格信息<span id="Span1"></span></a></li>
+                        <li><a href="/My/User/Center/Prices.aspx">发布和管理价格信息</a></li>
                         <% } %>
                         <li><a href="/My/User/Center/MyFavList.aspx">我的收藏<span id="Span4"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="box_head">
+                    <label class="fb font14">优惠券</label>
+                </div>
+                <div class="box_body">
+                    <ul>
+                        <li><a href="/My/User/Coupons/Default.aspx">我的优惠券</a></li>
+                        <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
+                          { %>
+                        <li><a href="/My/User/Coupons/Exchange.aspx">兑换优惠券</a></li>
+                        <% } %>
                     </ul>
                 </div>
             </div>

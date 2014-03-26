@@ -101,6 +101,7 @@
     <Content Include="Center\Key.aspx" />
     <Content Include="Center\M_Details.aspx" />
     <Content Include="Center\SaleMan4Product.aspx" />
+    <Content Include="Center\SearchHotKey.aspx" />
     <Content Include="Center\SearchKey.aspx" />
     <Content Include="Center\Details.aspx" />
     <Content Include="CSS\base.css" />
@@ -140,6 +141,8 @@
     <Content Include="My\User\Center\Prices.aspx" />
     <Content Include="My\User\Center\SaleManQR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
+    <Content Include="My\User\Coupons\Default.aspx" />
+    <Content Include="My\User\Coupons\Exchange.aspx" />
     <Content Include="My\User\TradeOrders\Default.aspx" />
     <Content Include="My\User\TradeOrders\Order.aspx" />
     <Content Include="My\User\TradeOrders\PayNow.aspx" />
@@ -464,6 +467,13 @@
     <Compile Include="Center\SaleMan4Product.aspx.designer.cs">
       <DependentUpon>SaleMan4Product.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Center\SearchHotKey.aspx.cs">
+      <DependentUpon>SearchHotKey.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center\SearchHotKey.aspx.designer.cs">
+      <DependentUpon>SearchHotKey.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Class\AccountHelper.cs" />
     <Compile Include="Center\Details.aspx.cs">
       <DependentUpon>Details.aspx</DependentUpon>
@@ -700,6 +710,20 @@
     </Compile>
     <Compile Include="My\User\Coins\Purchase.aspx.designer.cs">
       <DependentUpon>Purchase.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Coupons\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Coupons\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Coupons\Exchange.aspx.cs">
+      <DependentUpon>Exchange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Coupons\Exchange.aspx.designer.cs">
+      <DependentUpon>Exchange.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

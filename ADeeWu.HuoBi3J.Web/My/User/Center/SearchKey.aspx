@@ -96,7 +96,7 @@
                                                     <ItemTemplate>
                                                         <tr>
                                                             <td class="common">
-                                                                <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("KName") %>"><%# Eval("KName") %></a>
+                                                                <a class="xst question" href="/Center/key4product.aspx?kid=<%# Eval("KID") %>" title="<%# Eval("Name") %>"><%# Eval("Name") %></a>
                                                             </td>
                                                             <td class="by2">
                                                                 <a href="AddKey4Price.aspx?kid=<%# Eval("kid") %>&id=<%=Request["id"] %>" title="绑定关键字" class="btn_blue">绑定</a>

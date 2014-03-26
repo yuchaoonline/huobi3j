@@ -52,7 +52,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             DataBase db = DataBase.Create();
 
             db.EnableRecordCount = true;
-            var keys = db.Select("vw_keys", "kname like '%" + keyword + "%'", "");
+            var keys = db.Select("[key]", "name like '%" + keyword + "%'", "");
 
             rpResult.DataSource = keys;
             rpResult.DataBind();

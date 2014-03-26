@@ -28,8 +28,14 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
             var pageSize = ADeeWu.HuoBi3J.Libary.WebUtility.GetUrlLong("pagesize", PageBase.DataList_PageSize);
             var pageIndex = ADeeWu.HuoBi3J.Libary.WebUtility.GetUrlLong("page", 1);
 
+            db.EnableRecordCount = true;
             rpResult.DataSource = db.Select(pageSize, pageIndex,"vw_coupons_list","id", "subjectid = " + subjectid, "isuse, userid desc, money desc");
             rpResult.DataBind();
+
+            this.Pager1.AppendUrlParam("subjectid", subjectid.ToString());
+            this.Pager1.PageSize = ADeeWu.HuoBi3J.Libary.Utility.GetInt(pageSize, 0);
+            this.Pager1.PageIndex = ADeeWu.HuoBi3J.Libary.Utility.GetInt(pageIndex, 0);
+            this.Pager1.TotalRecords = ADeeWu.HuoBi3J.Libary.Utility.GetInt(db.RecordCount, 0);
 
             var Counts = new List<string>();
             var count = 0;

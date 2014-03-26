@@ -272,7 +272,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(string where,string orderBy)
 		{
-			return db.Select(-1,-1,"Key","KID",where,orderBy);
+			return db.Select(-1,-1,"[Key]","KID",where,orderBy);
 		}
 		
 		
@@ -285,7 +285,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex)
 		{
-			return db.Select(pageSize,pageIndex,"Key","KID","","");
+			return db.Select(pageSize,pageIndex,"[Key]","KID","","");
 		}
 		
 		/// <summary>
@@ -297,7 +297,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"Key","KID","",orderBy);
+			return db.Select(pageSize,pageIndex,"[Key]","KID","",orderBy);
 		}
 		
 		/// <summary>
@@ -310,7 +310,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string where,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"Key","KID",where,orderBy);
+			return db.Select(pageSize,pageIndex,"[Key]","KID",where,orderBy);
 		}
 		
 		
