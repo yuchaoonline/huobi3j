@@ -22,15 +22,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons {
         protected global::System.Web.UI.WebControls.HiddenField hfID;
         
         /// <summary>
-        /// hfIsMoney 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfIsMoney;
-        
-        /// <summary>
         /// txtName 控件。
         /// </summary>
         /// <remarks>
@@ -38,24 +29,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtName;
-        
-        /// <summary>
-        /// txtMoney 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMoney;
-        
-        /// <summary>
-        /// litIsMoney 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litIsMoney;
         
         /// <summary>
         /// dtStartDate 控件。

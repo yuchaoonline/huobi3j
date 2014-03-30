@@ -20,8 +20,6 @@
                     <th>名称</th>
                     <th>开始时间</th>
                     <th>结束时间</th>
-                    <th>金额</th>
-                    <th>金钱类型</th>
                     <th>数量</th>
                     <th>状态</th>
                     <th>操作</th>
@@ -32,13 +30,11 @@
                     <td><%# Eval("name")%></td>
                     <td><%# Eval("startdate")%></td>
                     <td><%# Eval("enddate") %></td>
-                    <td><%# Eval("money")%></td>
-                    <td><%# Eval("ismoney").ToString().ToLower()=="true"?"金钱":"金币"%></td>
                     <td><%# Eval("money_count") %></td>
                     <td><%# Eval("inactive").ToString().ToLower()=="true"?"过期":"正常"%></td>
                     <td>
                         <a href="EditSubject.aspx?id=<%#Eval("ID") %>">编辑</a>
-                        <a href="Default.aspx?id=<%#Eval("ID") %>&method=del">删除</a>
+                        <a href="Default.aspx?id=<%#Eval("ID") %>&method=del">过期</a>
                         <a href="Lists.aspx?subjectid=<%# Eval("ID") %>">查看券</a>
                     </td>
                 </tr>

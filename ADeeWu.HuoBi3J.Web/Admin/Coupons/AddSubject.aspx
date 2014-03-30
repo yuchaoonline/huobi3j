@@ -18,22 +18,6 @@
             </td>
         </tr>
         <tr>
-            <td class="tdLeft">金额:</td>
-            <td class="tdRight">
-                <asp:TextBox ID="txtMoney" runat="server" CssClass="txtBox"></asp:TextBox>
-                <span class="require">*</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="tdLeft">消费券类型:</td>
-            <td class="tdRight">
-                <asp:DropDownList ID="ddlIsMoney" runat="server">
-                    <asp:ListItem Value="0" Selected="True">金币</asp:ListItem>
-                    <asp:ListItem Value="1">金钱</asp:ListItem>
-                </asp:DropDownList>
-            </td>
-        </tr>
-        <tr>
             <td class="tdLeft">活动时间:</td>
             <td class="tdRight">
                 <UserControl:DateTimeSelector ID="dtStartDate" runat="server"></UserControl:DateTimeSelector>

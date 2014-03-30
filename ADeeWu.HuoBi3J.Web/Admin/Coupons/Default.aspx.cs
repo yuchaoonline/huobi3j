@@ -50,12 +50,12 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
             subject.Inactive = true;
             if (dal.Update(subject) > 0)
             {
-                WebUtility.ShowMsg(this, "删除成功！","Default.aspx");
+                WebUtility.ShowMsg(this, "过期成功！", "Default.aspx");
                 return;
             }
             else
             {
-                WebUtility.ShowAndGoBack(this, "删除失败！");
+                WebUtility.ShowAndGoBack(this, "过期失败！");
                 return;
             }
         }

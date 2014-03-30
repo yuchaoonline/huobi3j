@@ -265,7 +265,7 @@
                 geotableId: 49566,
                 q: keyword,
                 //tags: keyword,
-                filter: ''
+                //filter: ''
             });
             map.addTileLayer(customLayer);
             customLayer.addEventListener('hotspotclick', function (e) {
@@ -286,7 +286,7 @@
                 //'page_size': 10,
                 'filter': filter.join('|'),
                 'sortby': 'Price:1',
-                'region': '<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>',
+                //'region': '<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>',
                 'geotable_id': 49566,
                 'ak': 'xgLsN99uIaoe9vmqb5wGbt7F'
             }, function (e) {

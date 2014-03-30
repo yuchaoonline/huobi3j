@@ -85,7 +85,8 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@UseDate",model.UseDate.HasValue ? (object)model.UseDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
-		    DataTable dt = db.Select("insert into [Coupons_List]([SubjectID],[Money],[IsMoney],[Password],[StartDate],[EndDate],[IsUse],[UserID],[UseDate],[Memo]) values (@SubjectID,@Money,@IsMoney,@Password,@StartDate,@EndDate,@IsUse,@UserID,@UseDate,@Memo);select @@Identity;");
+		db.Parameters.Append("@Inactive",model.Inactive);
+		    DataTable dt = db.Select("insert into [Coupons_List]([SubjectID],[Money],[IsMoney],[Password],[StartDate],[EndDate],[IsUse],[UserID],[UseDate],[Memo],[Inactive]) values (@SubjectID,@Money,@IsMoney,@Password,@StartDate,@EndDate,@IsUse,@UserID,@UseDate,@Memo,@Inactive);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -105,7 +106,8 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@UseDate",model.UseDate.HasValue ? (object)model.UseDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
-			return db.ExecuteSql("update [Coupons_List] set [SubjectID]=@SubjectID,[Money]=@Money,[IsMoney]=@IsMoney,[Password]=@Password,[StartDate]=@StartDate,[EndDate]=@EndDate,[IsUse]=@IsUse,[UserID]=@UserID,[UseDate]=@UseDate,[Memo]=@Memo where [ID]=@ID");
+		db.Parameters.Append("@Inactive",model.Inactive);
+			return db.ExecuteSql("update [Coupons_List] set [SubjectID]=@SubjectID,[Money]=@Money,[IsMoney]=@IsMoney,[Password]=@Password,[StartDate]=@StartDate,[EndDate]=@EndDate,[IsUse]=@IsUse,[UserID]=@UserID,[UseDate]=@UseDate,[Memo]=@Memo,[Inactive]=@Inactive where [ID]=@ID");
 		}
 		
 	
@@ -228,6 +230,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.UserID = dr["UserID"] as int?;
 			Entity.UseDate = dr["UseDate"] as DateTime?;
 			Entity.Memo = dr["Memo"] as string;
+			Entity.Inactive = bool.Parse(dr["Inactive"].ToString());
 			return Entity;
 		}
 		
@@ -256,6 +259,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.UserID = dr["UserID"] as int?;
 			Entity.UseDate = dr["UseDate"] as DateTime?;
 			Entity.Memo = dr["Memo"] as string;
+			Entity.Inactive = bool.Parse(dr["Inactive"].ToString());
 			return Entity;
 		}
 		
@@ -294,6 +298,7 @@ namespace ADeeWu.HuoBi3J.DAL
 				Entity.UserID = dr["UserID"] as int?;
 				Entity.UseDate = dr["UseDate"] as DateTime?;
 				Entity.Memo = dr["Memo"] as string;
+				Entity.Inactive = bool.Parse(dr["Inactive"].ToString());
                 EntityList[i] = Entity;
             }
              return EntityList;

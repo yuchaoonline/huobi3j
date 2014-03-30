@@ -16,6 +16,7 @@ public class Coupons_List{
 	private int? _UserID = null;
 	private DateTime? _UseDate = null;
 	private string _Memo = null;
+	private bool _Inactive = false;
 	#endregion
 	
 	#region Contructors
@@ -35,7 +36,8 @@ public class Coupons_List{
 			bool isUse,
 			int userID,
 			DateTime useDate,
-			string memo
+			string memo,
+			bool inactive
 	)
 	{
 		_ID        = iD;
@@ -49,6 +51,7 @@ public class Coupons_List{
 			_UserID    = userID;
 			_UseDate   = useDate;
 			_Memo      = memo;
+			_Inactive  = inactive;
 			
 	}
 	#endregion
@@ -64,6 +67,7 @@ public class Coupons_List{
 	public int? UserID { set{ _UserID = value; } get{ return _UserID; }}
 	public DateTime? UseDate { set{ _UseDate = value; } get{ return _UseDate; }}
 	public string Memo { set{ _Memo = value; } get{ return _Memo; }}
+	public bool Inactive { set{ _Inactive = value; } get{ return _Inactive; }}
 }
 }
 

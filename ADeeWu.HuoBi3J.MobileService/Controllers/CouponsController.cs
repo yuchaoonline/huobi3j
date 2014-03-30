@@ -96,13 +96,6 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             return GetJson(db.Select(PageSize, PageIndex, "vw_Coupons_List", "id", "userid=" + UserID, "isuse desc, money desc, enddate desc").ToJson());
         }
 
-        private string GeneralCode()
-        {
-            return Guid.NewGuid().ToString();
-            //throw new Exception("生成码未完成！");
-            //return "123456";
-        }
-
         private void GetTicket(int SubjectID, int UserID)
         {
             var subject = new DAL.Coupons_Subject().GetEntity(SubjectID);
@@ -110,7 +103,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (!subject.Inactive.HasValue || subject.Inactive.Value) throw new Exception("活动已结束！");
             if (listDAL.Exist(new string[] { "subjectid", "userid" }, new object[] { SubjectID, UserID })) throw new Exception("已参加该活动");
 
-            var lists = listDAL.GetEntityList("money desc", new string[] { "subjectid", "isuse" }, new object[] { SubjectID, 0 });
+            var lists = listDAL.GetEntityList("ismoney desc, money desc", new string[] { "subjectid", "isuse" }, new object[] { SubjectID, 0 });
             if (lists != null && lists.Any())
             {
                 listDAL.Update("UserID", UserID, "id=" + lists.FirstOrDefault().ID);

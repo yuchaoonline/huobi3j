@@ -26,16 +26,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
                 WebUtility.ShowMsg("活动名称不能为空！");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(txtMoney.Text))
-            {
-                WebUtility.ShowMsg("金额不能为空！");
-                return;
-            }
-            if(!Utility.IsFloat(txtMoney.Text))
-            {
-                WebUtility.ShowMsg("金额格式不正确！");
-                return;
-            }
             if (!Utility.IsDateTime(dtStartDate.Text) || !Utility.IsDateTime(dtEndDate.Text))
             {
                 WebUtility.ShowMsg("日期格式不正确！");
@@ -45,8 +35,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
             var subject = new Model.Coupons_Subject
             {
                 Inactive = false,
-                IsMoney = Utility.GetBool(ddlIsMoney.SelectedValue, false),
-                Money = Utility.GetDecimal(txtMoney.Text, 0),
                 Name = txtName.Text,
                 StartDate = Utility.GetDateTime(dtStartDate.Text, DateTime.Now),
                 EndDate = Utility.GetDateTime(dtEndDate.Text, DateTime.Now.AddDays(7))

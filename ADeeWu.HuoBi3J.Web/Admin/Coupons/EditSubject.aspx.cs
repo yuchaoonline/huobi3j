@@ -29,10 +29,7 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
             if (subject == null) return;
 
             hfID.Value = subject.ID.ToString();
-            hfIsMoney.Value = subject.IsMoney.Value.ToString();
             txtName.Text = subject.Name;
-            txtMoney.Text = subject.Money.ToString();
-            litIsMoney.Text = subject.IsMoney.Value ? "金钱" : "金币";
             dtEndDate.Text = subject.EndDate.Value.ToString("yyyy/MM/dd");
             dtStartDate.Text = subject.StartDate.Value.ToString("yyyy/MM/dd");
         }
@@ -42,16 +39,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
             if (string.IsNullOrWhiteSpace(txtName.Text))
             {
                 WebUtility.ShowMsg("活动名称不能为空！");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(txtMoney.Text))
-            {
-                WebUtility.ShowMsg("金额不能为空！");
-                return;
-            }
-            if (!Utility.IsFloat(txtMoney.Text))
-            {
-                WebUtility.ShowMsg("金额格式不正确！");
                 return;
             }
             if (!Utility.IsDateTime(dtStartDate.Text) || !Utility.IsDateTime(dtEndDate.Text))
@@ -64,8 +51,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
             {
                 ID = Utility.GetInt(hfID.Value,0),
                 Inactive = false,
-                IsMoney = Utility.GetBool(hfIsMoney.Value, false),
-                Money = Utility.GetDecimal(txtMoney.Text, 0),
                 Name = txtName.Text,
                 StartDate = Utility.GetDateTime(dtStartDate.Text, DateTime.Now),
                 EndDate = Utility.GetDateTime(dtEndDate.Text, DateTime.Now.AddDays(7))

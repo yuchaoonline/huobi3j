@@ -9,26 +9,12 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <asp:HiddenField ID="hfID" runat="server" />
-    <asp:HiddenField ID="hfIsMoney" runat="server" />
     <table border="0" cellspacing="0" cellpadding="0" class="formTable">
         <tr>
             <td class="tdLeft">活动名称:</td>
             <td class="tdRight">
                 <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
                 <span class="require">*</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="tdLeft">金额:</td>
-            <td class="tdRight">
-                <asp:TextBox ID="txtMoney" runat="server" CssClass="txtBox"></asp:TextBox>
-                <span class="require">*</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="tdLeft">消费券类型:</td>
-            <td class="tdRight">
-                <asp:Literal ID="litIsMoney" runat="server"></asp:Literal>
             </td>
         </tr>
         <tr>

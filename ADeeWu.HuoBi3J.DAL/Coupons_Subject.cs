@@ -76,12 +76,10 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
-		db.Parameters.Append("@IsMoney",model.IsMoney.HasValue ? (object)model.IsMoney.Value : (object)DBNull.Value );
 		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Inactive",model.Inactive.HasValue ? (object)model.Inactive.Value : (object)DBNull.Value );
-		    DataTable dt = db.Select("insert into [Coupons_Subject]([Name],[Money],[IsMoney],[StartDate],[EndDate],[Inactive]) values (@Name,@Money,@IsMoney,@StartDate,@EndDate,@Inactive);select @@Identity;");
+		    DataTable dt = db.Select("insert into [Coupons_Subject]([Name],[StartDate],[EndDate],[Inactive]) values (@Name,@StartDate,@EndDate,@Inactive);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -92,12 +90,10 @@ namespace ADeeWu.HuoBi3J.DAL
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",model.ID);
 		db.Parameters.Append("@Name",model.Name );
-		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
-		db.Parameters.Append("@IsMoney",model.IsMoney.HasValue ? (object)model.IsMoney.Value : (object)DBNull.Value );
 		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Inactive",model.Inactive.HasValue ? (object)model.Inactive.Value : (object)DBNull.Value );
-			return db.ExecuteSql("update [Coupons_Subject] set [Name]=@Name,[Money]=@Money,[IsMoney]=@IsMoney,[StartDate]=@StartDate,[EndDate]=@EndDate,[Inactive]=@Inactive where [ID]=@ID");
+			return db.ExecuteSql("update [Coupons_Subject] set [Name]=@Name,[StartDate]=@StartDate,[EndDate]=@EndDate,[Inactive]=@Inactive where [ID]=@ID");
 		}
 		
 	
@@ -211,8 +207,6 @@ namespace ADeeWu.HuoBi3J.DAL
 			ADeeWu.HuoBi3J.Model.Coupons_Subject Entity = new ADeeWu.HuoBi3J.Model.Coupons_Subject();
 			Entity.ID = int.Parse(dr["ID"].ToString());
 			Entity.Name = dr["Name"] as string;
-			Entity.Money = dr["Money"] as decimal?;
-			Entity.IsMoney = dr["IsMoney"] as bool?;
 			Entity.StartDate = dr["StartDate"] as DateTime?;
 			Entity.EndDate = dr["EndDate"] as DateTime?;
 			Entity.Inactive = dr["Inactive"] as bool?;
@@ -235,8 +229,6 @@ namespace ADeeWu.HuoBi3J.DAL
 			ADeeWu.HuoBi3J.Model.Coupons_Subject Entity = new ADeeWu.HuoBi3J.Model.Coupons_Subject();
 			Entity.ID = int.Parse(dr["ID"].ToString());
 			Entity.Name = dr["Name"] as string;
-			Entity.Money = dr["Money"] as decimal?;
-			Entity.IsMoney = dr["IsMoney"] as bool?;
 			Entity.StartDate = dr["StartDate"] as DateTime?;
 			Entity.EndDate = dr["EndDate"] as DateTime?;
 			Entity.Inactive = dr["Inactive"] as bool?;
@@ -269,8 +261,6 @@ namespace ADeeWu.HuoBi3J.DAL
                 ADeeWu.HuoBi3J.Model.Coupons_Subject Entity = new ADeeWu.HuoBi3J.Model.Coupons_Subject();
 				Entity.ID = int.Parse(dr["ID"].ToString());
 				Entity.Name = dr["Name"] as string;
-				Entity.Money = dr["Money"] as decimal?;
-				Entity.IsMoney = dr["IsMoney"] as bool?;
 				Entity.StartDate = dr["StartDate"] as DateTime?;
 				Entity.EndDate = dr["EndDate"] as DateTime?;
 				Entity.Inactive = dr["Inactive"] as bool?;

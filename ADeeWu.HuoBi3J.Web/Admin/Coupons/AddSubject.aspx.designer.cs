@@ -22,24 +22,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtMoney 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMoney;
-        
-        /// <summary>
-        /// ddlIsMoney 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIsMoney;
-        
-        /// <summary>
         /// dtStartDate 控件。
         /// </summary>
         /// <remarks>
