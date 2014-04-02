@@ -262,7 +262,7 @@
                 map.removeTileLayer(customLayer);
             }
             customLayer = new BMap.CustomLayer({
-                geotableId: 49566,
+                geotableId: <%=ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID%>,
                 q: keyword,
                 //tags: keyword,
                 //filter: ''
@@ -287,7 +287,7 @@
                 'filter': filter.join('|'),
                 'sortby': 'Price:1',
                 //'region': '<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>',
-                'geotable_id': 49566,
+                'geotable_id': <%=ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID%>,
                 'ak': 'xgLsN99uIaoe9vmqb5wGbt7F'
             }, function (e) {
                 renderMap(e, page);

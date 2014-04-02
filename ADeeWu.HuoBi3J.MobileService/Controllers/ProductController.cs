@@ -57,12 +57,12 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <summary>
         /// 搜索报价，http://mobile.huobi3j.com/product/searchproduct
         /// </summary>
-        /// <param name="keyword">关键字</param>
+        /// <param name="kid">关键字ID</param>
         /// <param name="lat">所在位置LAT</param>
         /// <param name="lng">所在位置LNG</param>
-        /// <param name="typeid">报价类型</param>
-        /// <param name="priceid">报价范围</param>
-        /// <param name="sizeid">报价其他信息</param>
+        /// <param name="typeid">报价类型ID</param>
+        /// <param name="priceid">报价范围ID</param>
+        /// <param name="sizeid">报价其他信息ID</param>
         /// <param name="radius">半径，默认1000</param>
         /// <param name="sort">排序方式，默认Price</param>
         /// <param name="desc">升降序，默认asc，可选desc</param>
@@ -70,20 +70,24 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="pagesize">页容量，默认10</param>
         /// <returns></returns>
         //[OutputCache(Duration = 3600, VaryByParam = "keyword;lat;lng;type;price;size;radius;sort;desc;pageindex,pagesize")]
-        public ActionResult SearchProduct(string keyword, double lat, double lng, string typeid, string priceid, string sizeid, int radius = 1000, string sort = "Price", string desc = "asc", int pageindex = 1, int pagesize = 10)
+        public ActionResult SearchProduct(int kid, double lat, double lng, string typeid, string priceid, string sizeid, int radius = 1000, string sort = "Price", string desc = "asc", int pageindex = 1, int pagesize = 10)
         {
             var filter = "";
+            if (kid > 0)
+            {
+                filter += string.Format("|KID:[{0}]", kid);
+            }
             if (!string.IsNullOrWhiteSpace(typeid))
             {
-                filter += string.Format("|SelectType:{0}", typeid);
+                filter += string.Format("|SelectTypeID:[{0}]", typeid);
             }
             if (!string.IsNullOrWhiteSpace(priceid))
             {
-                filter += string.Format("|SelectPrice:{0}", priceid);
+                filter += string.Format("|SelectPriceID:[{0}]", priceid);
             }
             if (!string.IsNullOrWhiteSpace(sizeid))
             {
-                filter += string.Format("|SelectSize:{0}", sizeid);
+                filter += string.Format("|SelectSizeID:[{0}]", sizeid);
             }
             if (filter.StartsWith("|")) filter = filter.Substring(1);
 
@@ -99,7 +103,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             var geoSearchBLL = new GeoSearchBLL();
 
-            var productGeoSearchResult = geoSearchBLL.NearBy<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, keyword, lat, lng, radius, pageindex - 1, pagesize, keyword, sortby, filter);
+            var productGeoSearchResult = geoSearchBLL.NearBy<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", lat, lng, radius, pageindex - 1, pagesize, "", sortby, filter);
 
             return GetJson(productGeoSearchResult);
         }

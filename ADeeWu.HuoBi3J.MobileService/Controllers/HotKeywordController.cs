@@ -24,22 +24,5 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             return GetJson(result);
         }
-
-        private int GetExt(int id)
-        {
-            var kidTB = db.Select("select kid from Center_HotKey_Ext where dataid = " + id);
-            if (kidTB != null && kidTB.Rows.Count > 0)
-                return (int)kidTB.Rows[0][0];
-
-            return 0;
-        }
-
-        public ActionResult Index2()
-        {
-            var hotkeys = hotkeyDAL.GetEntityList("", new string[] { }, new object[] { });
-            var result = hotkeys.GroupBy(p => p.DataType).Select(p => new { name = p.Key, values = p.Select(v => new { value = v.Name, kid = GetExt(v.ID) }) });
-
-            return GetJson(result);
-        }
     }
 }
