@@ -252,7 +252,6 @@
     <script type="text/javascript">
         var map = new BMap.Map("l-map");
         var points = [];
-        var keyword = '';
         map.centerAndZoom('<%=ADeeWu.HuoBi3J.Web.Class.AccountHelper.City%>', 14);
         map.enableScrollWheelZoom();
         map.addControl(new BMap.NavigationControl());
@@ -273,10 +272,9 @@
             });
         }
 
-        function searchAction(key, page) {
+        function searchAction(keyword, page) {
             page = page || 1;
             var filter = [];
-            keyword = key;
 
             var url = "http://api.map.baidu.com/geosearch/v3/local?callback=?";
             $.getJSON(url, {

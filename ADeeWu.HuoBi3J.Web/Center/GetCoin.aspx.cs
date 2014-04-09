@@ -51,7 +51,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             rpProduct.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
                 ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, 
                 "", 
-                AccountHelper.City,
+                "",
                 0,
                 10,
                 "", 

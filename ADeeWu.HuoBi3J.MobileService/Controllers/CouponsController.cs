@@ -103,10 +103,11 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (!subject.Inactive.HasValue || subject.Inactive.Value) throw new Exception("活动已结束！");
             if (listDAL.Exist(new string[] { "subjectid", "userid" }, new object[] { SubjectID, UserID })) throw new Exception("已参加该活动");
 
-            var lists = listDAL.GetEntityList("ismoney desc, money desc", new string[] { "subjectid", "isuse" }, new object[] { SubjectID, 0 });
-            if (lists != null && lists.Any())
+            //var lists = listDAL.GetEntityList("ismoney desc, money desc", new string[] { "subjectid", "userid" }, new object[] { SubjectID,"is not null" });
+            var lists = listDAL.Select(string.Format("subjectid={0} and userid is null", SubjectID), "ismoney desc, money desc");
+            if (lists != null && lists.Rows.Count>0)
             {
-                listDAL.Update("UserID", UserID, "id=" + lists.FirstOrDefault().ID);
+                listDAL.Update("UserID", UserID, "id=" + lists.Rows[0]["ID"].ToString());
             }
             else
             {

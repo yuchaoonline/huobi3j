@@ -66,7 +66,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var poi = (ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi)e.Item.DataItem;
             if (poi == null) return;
 
-            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", AccountHelper.City, 0, 10, "", "Price:1", string.Format("CreateUserID:[{0}]", poi.CreateUserID)).contents;
+            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", "", 0, 10, "", "Price:1", string.Format("CreateUserID:[{0}]", poi.CreateUserID)).contents;
             rpOtherPrice.DataBind();
         }
 

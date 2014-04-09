@@ -31,7 +31,10 @@
             <ItemTemplate>
                 <tr>
                     <td><%# Eval("name") %></td>
-                    <td><a href="addattribute.aspx?kid=<%#Eval("KID") %>">属性</a></td>
+                    <td>
+                        <a href="addattribute.aspx?kid=<%#Eval("KID") %>">属性</a>
+                        <a href="ViewClick.aspx?kid=<%#Eval("KID") %>">点击</a>
+                    </td>
                 </tr>
             </ItemTemplate>
         </asp:Repeater>

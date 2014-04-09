@@ -86,6 +86,7 @@
   <ItemGroup>
     <Content Include="Admin\Center\AddSearchHotKey.aspx" />
     <Content Include="Admin\Center\SearchHotKey.aspx" />
+    <Content Include="Admin\Center\ViewClick.aspx" />
     <Content Include="Admin\Coupons\AddList.aspx" />
     <Content Include="Admin\Coupons\AddSubject.aspx" />
     <Content Include="Admin\Coupons\Default.aspx" />
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="Admin\Center\SearchHotKey.aspx.designer.cs">
       <DependentUpon>SearchHotKey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Center\ViewClick.aspx.cs">
+      <DependentUpon>ViewClick.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Center\ViewClick.aspx.designer.cs">
+      <DependentUpon>ViewClick.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Class\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
