@@ -23,7 +23,6 @@ namespace ADeeWu.HuoBi3J.Web.Center
             if (!IsPostBack)
             {
                 BandData();
-                AddClickCount();
             }
         }
 
@@ -36,22 +35,45 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             rpResult.DataSource = new List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi> { product };
             rpResult.DataBind();
+
+            AddClickCount(product.KID);
         }
 
-        private void AddClickCount()
+        public void AddClickCount(int kid)
         {
             try
             {
                 var id = WebUtility.GetRequestInt("id", 0);
                 if (id == 0) return;
 
-                new DAL.Common_Count_Click().Add(new Model.Common_Count_Click
+                var clickID = new DAL.Common_Count_Click().Add(new Model.Common_Count_Click
                 {
                     CreateDate = DateTime.Now,
                     DataID = id,
                     DataType = "center_product",
                     IP = Request.UserHostAddress,
                 });
+                if (clickID <= 0) return;
+                
+                var keyPrice = new DAL.Key_ViewPrice().GetEntity("kid=" + kid);
+                if (keyPrice != null)
+                {
+                    var countClickDAL = new DAL.Common_Count_Click();
+                    var productCount = Utility.GetInt(db.ExecuteScalar(string.Format("select count(*) from common_count_click c where c.dataid={0} and datatype='center_product' and datediff(DD,c.createdate,getdate())=0", id)), 0);
+
+                    if (keyPrice.Count > productCount)
+                    {
+                        new DAL.Key_ViewPrice_Log().Add(new Model.Key_ViewPrice_Log
+                        {
+                            CountClickID = clickID,
+                            Price = keyPrice.Price,
+                        });
+
+                        //扣费
+                    }
+                }
+
+                
             }
             catch
             {

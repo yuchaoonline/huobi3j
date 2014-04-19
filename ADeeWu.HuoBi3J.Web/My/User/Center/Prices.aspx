@@ -19,7 +19,8 @@
         </div>
         <div class="box_body">
             <span style="color: blue;">手机扫描二维码次数：<font color="#ff9933"><asp:Literal ID="litQRCount" runat="server"></asp:Literal></font> 次，已经送出金币：<font color="#ff9933"><asp:Literal ID="litCoin" runat="server"></asp:Literal></font>个</span>
-            <a href="AddPrice.aspx" title="添加价格" class="btn_blue" style="float: right;">添加价格</a>
+            <a href="AddPrice.aspx" title="添加价格" class="btn_blue" style="float: right; margin-left: 10px;">添加价格</a>
+            <a href="ViewClick.aspx" title="查看记录" class="btn_blue" style="float: right;">记录</a>
         </div>
     </div>
 

@@ -87,6 +87,7 @@
     <Content Include="Admin\Center\AddSearchHotKey.aspx" />
     <Content Include="Admin\Center\SearchHotKey.aspx" />
     <Content Include="Admin\Center\ViewClick.aspx" />
+    <Content Include="Admin\Center\ViewClickCount.aspx" />
     <Content Include="Admin\Coupons\AddList.aspx" />
     <Content Include="Admin\Coupons\AddSubject.aspx" />
     <Content Include="Admin\Coupons\Default.aspx" />
@@ -142,6 +143,7 @@
     <Content Include="My\User\Center\Prices.aspx" />
     <Content Include="My\User\Center\SaleManQR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
+    <Content Include="My\User\Center\ViewClick.aspx" />
     <Content Include="My\User\Coupons\Default.aspx" />
     <Content Include="My\User\Coupons\Exchange.aspx" />
     <Content Include="My\User\TradeOrders\Default.aspx" />
@@ -214,6 +216,13 @@
     </Compile>
     <Compile Include="Admin\Center\ViewClick.aspx.designer.cs">
       <DependentUpon>ViewClick.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Center\ViewClickCount.aspx.cs">
+      <DependentUpon>ViewClickCount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Center\ViewClickCount.aspx.designer.cs">
+      <DependentUpon>ViewClickCount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Class\PageBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -704,6 +713,13 @@
     </Compile>
     <Compile Include="My\User\Center\RegSaleMan.aspx.designer.cs">
       <DependentUpon>RegSaleMan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\ViewClick.aspx.cs">
+      <DependentUpon>ViewClick.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\ViewClick.aspx.designer.cs">
+      <DependentUpon>ViewClick.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Coins\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

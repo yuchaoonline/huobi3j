@@ -17,8 +17,10 @@ namespace ADeeWu.HuoBi3J.Web.Center
         DataBase db = DataBase.Create();
         protected void Page_Load(object sender, EventArgs e)
         {
-            BandData();
-            AddClickCount();
+            if (!IsPostBack)
+            {
+                BandData();
+            }
         }
 
         private void BandData()
@@ -30,6 +32,8 @@ namespace ADeeWu.HuoBi3J.Web.Center
 
             rpProduct.DataSource = new List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi> { product };
             rpProduct.DataBind();
+
+            AddClickCount(product.KID);
         }
 
         public string Decode(object obj)
@@ -39,25 +43,10 @@ namespace ADeeWu.HuoBi3J.Web.Center
             return HttpUtility.HtmlDecode(obj.ToString());
         }
 
-        private void AddClickCount()
+        private void AddClickCount(int kid)
         {
-            try
-            {
-                var id = WebUtility.GetRequestInt("id", 0);
-                if (id == 0) return;
-
-                new DAL.Common_Count_Click().Add(new Model.Common_Count_Click
-                {
-                    CreateDate = DateTime.Now,
-                    DataID = id,
-                    DataType = "center_product",
-                    IP = Request.UserHostAddress,
-                });
-            }
-            catch
-            {
-
-            }
+            Details details = new Details();
+            details.AddClickCount(kid);
         }
 
         protected void rpProduct_ItemDataBound(object sender, RepeaterItemEventArgs e)

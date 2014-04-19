@@ -87,6 +87,8 @@
     <Compile Include="Key_Attribute.cs" />
     <Compile Include="Key_BusinessCircle.cs" />
     <Compile Include="Key_HotKey.cs" />
+    <Compile Include="Key_ViewPrice.cs" />
+    <Compile Include="Key_ViewPrice_Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provinces.cs" />
     <Compile Include="TradeSystem_Tasks.cs" />

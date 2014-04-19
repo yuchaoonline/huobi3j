@@ -27,7 +27,7 @@
                     alert('请选择价格!');
                     return false;
                 }
-
+                if (!confirm($('#alertmsg').text())) return false;
                 $.post(location.href, {
                     method: 'post',
                     selecttype: selecttype.find("option:selected").text(),
@@ -61,6 +61,7 @@
     货比三家 - 添加价格
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="main" runat="server">
+    <span id="alertmsg" style="display: none;"><asp:Literal ID="litmsg" runat="server"></asp:Literal></span>
     <table class="formTable">
         <tr>
             <td class="tdLeft">简单描述：

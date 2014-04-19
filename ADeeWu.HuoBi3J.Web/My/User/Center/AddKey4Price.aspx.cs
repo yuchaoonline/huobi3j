@@ -73,6 +73,12 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             ddlSize.DataBind();
             ddlSize.AppendDataBoundItems = true;
             ddlSize.Items.Insert(0, new ListItem(""));
+
+            var viewPrice = new DAL.Key_ViewPrice().GetEntity(new string[] { "KID" }, new object[] { kid });
+            if (viewPrice != null && viewPrice.ID > 0)
+                litmsg.Text = string.Format("该关键字每天扣费点击 {0} 次，每次扣费点击扣除 {1} 元，当前优惠期，暂不收费！", viewPrice.Count, viewPrice.Price);
+            else
+                litmsg.Text = "请注意，该关键字的报价点击免费，有可能会在未来收费";
         }
 
         private void Save()

@@ -81,6 +81,7 @@
     <asp:TemplateField HeaderText="操作" HeaderStyle-CssClass="col_option" ItemStyle-CssClass="col_option">
         <ItemTemplate>
             <a href="Edit.aspx?id=<%#Eval("ID") %>">修改</a>
+            <a href="ViewClickCount.aspx?userid=<%#Eval("UserID") %>">点击统计</a>
         </ItemTemplate>
 
 <HeaderStyle CssClass="col_option"></HeaderStyle>
