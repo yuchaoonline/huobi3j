@@ -2,6 +2,7 @@
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
+using ADeeWu.HuoBi3J.WebUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,21 +48,29 @@ namespace ADeeWu.HuoBi3J.Web.Center
         protected void rpResult_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             var rpOtherPrice = (Repeater)e.Item.FindControl("rpOtherPrice");
-            var datarowview = (DataRowView)e.Item.DataItem;
-            var userid = Utility.GetInt(datarowview["userid"], 0);
-            if (userid <= 0) return;
 
+            var pageIndex = WebUtility.GetRequestInt("page", 1);
+            var pageSize = Utility.GetInt(Request["pagesize"], 20, 5, 40);
+            var userid = WebUtility.GetRequestInt("userid", 0);
 
-            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+            var pois = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
                 ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID,
                 "",
                 AccountHelper.City,
-                0,
-                20,
+                pageIndex - 1,
+                pageSize,
                 "",
                 "Price:1",
-                string.Format("CreateUserID:[{0}]", userid)).contents;
+                string.Format("CreateUserID:[{0}]", userid));
+            rpOtherPrice.DataSource = pois.contents;
             rpOtherPrice.DataBind();
+
+            var Pager1 = (Pager3)e.Item.FindControl("Pager1");
+            if (Pager1 == null) return;
+            Pager1.AppendUrlParam("userid", userid.ToString());
+            Pager1.PageSize = (int)pageSize;
+            Pager1.PageIndex = (int)pageIndex;
+            Pager1.TotalRecords = (int)pois.total;
         }
     }
 }

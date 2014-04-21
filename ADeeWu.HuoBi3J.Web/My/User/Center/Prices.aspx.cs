@@ -50,15 +50,22 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
             var pageIndex = WebUtility.GetRequestInt("page", 1);
             var pageSize = Utility.GetInt(Request["pagesize"], 10, 5, 40);
 
-            var dic = new Dictionary<string, string>();
-            dic.Add("CreateUserID", string.Format("{0},{0}", LoginUser.UserID));
-            var productResult = poiBLL.List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, dic, "", "", "", pageIndex - 1, pageSize);
-            rpQuestions.DataSource = productResult.pois;
+            var pois = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID,
+                "",
+                AccountHelper.City,
+                pageIndex - 1,
+                pageSize,
+                "",
+                "Price:1",
+                string.Format("CreateUserID:[{0}]", LoginUser.UserID));
+
+            rpQuestions.DataSource = pois.contents;
             rpQuestions.DataBind();
 
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
-            this.Pager1.TotalRecords = (int)productResult.total;
+            this.Pager1.TotalRecords = (int)pois.total;
         }
 
         public string GetMoney(object mon)

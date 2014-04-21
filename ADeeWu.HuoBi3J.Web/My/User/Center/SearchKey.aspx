@@ -52,6 +52,14 @@
                                 <td class="tr">其他：</td>
                                 <td class="font14 black4B"><%# Eval("SelectSize") %></td>
                             </tr>
+                            <tr height="35px">
+                                <td class="tr">点击单价：</td>
+                                <td class="font14 black4B"><%# ADeeWu.HuoBi3J.Libary.Utility.GetFloat(Eval("Price"),0).ToString("0.00") %></td>
+                            </tr>
+                            <tr height="35px">
+                                <td class="tr">日点击数：</td>
+                                <td class="font14 black4B"><%# Eval("Count") %></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

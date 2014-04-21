@@ -22,7 +22,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         {
             get
             {
-                return LocationSession["city"];
+                return "";// LocationSession["city"];
             }
         }
 
@@ -30,7 +30,7 @@ namespace ADeeWu.HuoBi3J.Web.Class
         {
             get
             {
-                return LocationSession.Keys.Contains("province") ? LocationSession["province"] : "";
+                return "";// LocationSession.Keys.Contains("province") ? LocationSession["province"] : "";
             }
         }
 

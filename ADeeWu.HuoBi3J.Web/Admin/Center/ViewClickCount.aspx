@@ -19,7 +19,7 @@
                 <tr>
                     <td><%# Eval("Date") %></td>
                     <td><%# Eval("ViewCount") %></td>
-                    <td><%# ADeeWu.HuoBi3J.Libary.Utility.GetStr(Eval("Fee"),"0") %></td>
+                    <td><%# ADeeWu.HuoBi3J.Libary.Utility.GetFloat(Eval("Fee"),0).ToString("0.00") %></td>
                 </tr>
             </ItemTemplate>
         </asp:Repeater>
@@ -36,7 +36,7 @@
                 <tr>
                     <td><%# Eval("Month") %></td>
                     <td><%# Eval("ViewCount") %></td>
-                    <td><%# ADeeWu.HuoBi3J.Libary.Utility.GetStr(Eval("Fee"),"0") %></td>
+                    <td><%# ADeeWu.HuoBi3J.Libary.Utility.GetFloat(Eval("Fee"),0).ToString("0.00") %></td>
                 </tr>
             </ItemTemplate>
         </asp:Repeater>

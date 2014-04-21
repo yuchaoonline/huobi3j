@@ -288,13 +288,13 @@
                 'geotable_id': <%=ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID%>,
                 'ak': 'xgLsN99uIaoe9vmqb5wGbt7F'
             }, function (e) {
-                renderMap(e, page);
+                renderMap(keyword ,e, page);
             });
 
             addCustomLayer(keyword);
         }
 
-        function renderMap(res, page) {
+        function renderMap(keyword, res, page) {
             var content = res.contents;
             $('#searchResult').html('');
             map.clearOverlays();
@@ -321,12 +321,12 @@
             })
 
             var pagecount = Math.ceil(res.total / 10);
-            InitPager(page, pagecount);
+            InitPager(keyword, page, pagecount);
 
             map.setViewport(points);
         }
 
-        function InitPager(page, pagecount) {
+        function InitPager(keyword, page, pagecount) {
             $('#mapPager').pager({
                 pagenumber: page,
                 pagecount: pagecount,

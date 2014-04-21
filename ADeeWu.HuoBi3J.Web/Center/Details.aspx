@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MIndex.master" AutoEventWireup="true" CodeBehind="Details.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.Details" %>
 
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
@@ -48,7 +50,8 @@
             color: #ff9801;
             font-weight: bold;
         }
-        .biz-item{
+
+        .biz-item {
             margin-bottom: 10px;
         }
     </style>
@@ -119,7 +122,8 @@
                                 <div class="deal-brand" style="margin-bottom: 15px;">
                                     【<%#Eval("kname") %>】<span class="inline-block STYLE6"><%#Eval("title") %></span><a href="#<%# Eval("createuserid") %>" style="float: right;" class="add_fav btn_blue">收藏</a>
                                     <br />
-                                    <span class="inline-block STYLE7" style="padding-left: 15px;">商家名称：<%#Eval("companyname") %></span></div>
+                                    <span class="inline-block STYLE7" style="padding-left: 15px;">商家名称：<%#Eval("companyname") %></span>
+                                </div>
                             </div>
                             <div id="J-content-navbar" class="content-navbar">
                                 <ul class="cf">
@@ -155,12 +159,14 @@
                                                     <div class="all-biz cf">
                                                         <div class="biz-info biz-info--open biz-info--first biz-info--only">
                                                             <div class="biz-item">
-                                                                <span style="font-size: 24px;color: #ff9801;font-family: 黑体;"><%# Eval("companyname") %></span>
+                                                                <span style="font-size: 24px; color: #ff9801; font-family: 黑体;"><%# Eval("companyname") %></span>
                                                             </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家电话：</label><span style="font-family: Arial;font-size: 24px;font-weight: bold;"><%# Eval("phone") %></span></div>
+                                                                <label class="title-label">商家电话：</label><span style="font-family: Arial; font-size: 24px; font-weight: bold;"><%# Eval("phone") %></span>
+                                                            </div>
                                                             <div class="biz-item">
-                                                                <label class="title-label">商家地址：</label><%# Eval("address") %></div>
+                                                                <label class="title-label">商家地址：</label><%# Eval("address") %>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -197,6 +203,8 @@
                                                         </table>
                                                     </FooterTemplate>
                                                 </asp:Repeater>
+
+                                                <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
                                             </div>
                                         </div>
                                     </div>

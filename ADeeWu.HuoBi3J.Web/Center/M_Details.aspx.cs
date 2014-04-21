@@ -2,6 +2,7 @@
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
+using ADeeWu.HuoBi3J.WebUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -43,11 +44,57 @@ namespace ADeeWu.HuoBi3J.Web.Center
             return HttpUtility.HtmlDecode(obj.ToString());
         }
 
-        private void AddClickCount(int kid)
+        public void AddClickCount(int kid)
         {
-            Details details = new Details();
-            details.AddClickCount(kid);
+            try
+            {
+                var id = WebUtility.GetRequestInt("id", 0);
+                if (id == 0) return;
+
+                var clickID = new DAL.Common_Count_Click().Add(new Model.Common_Count_Click
+                {
+                    CreateDate = DateTime.Now,
+                    DataID = id,
+                    DataType = "center_product",
+                    IP = Request.UserHostAddress,
+                });
+                if (clickID <= 0) return;
+
+                var keyPrice = new DAL.Key_ViewPrice().GetEntity("kid=" + kid);
+                if (keyPrice != null)
+                {
+                    var countClickDAL = new DAL.Common_Count_Click();
+                    var productCount = Utility.GetInt(db.ExecuteScalar(string.Format("select count(*) from common_count_click c where c.dataid={0} and datatype='center_product' and datediff(DD,c.createdate,getdate())=0", id)), 0);
+
+                    if (keyPrice.Count > productCount)
+                    {
+                        new DAL.Key_ViewPrice_Log().Add(new Model.Key_ViewPrice_Log
+                        {
+                            CountClickID = clickID,
+                            Price = keyPrice.Price,
+                        });
+
+                        //扣费
+                    }
+                }
+
+
+            }
+            catch
+            {
+
+            }
         }
+
+        //protected void rpProduct_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        //{
+        //    var rpOtherPrice = (Repeater)e.Item.FindControl("rpOtherPrice");
+        //    var poi = (ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi)e.Item.DataItem;
+        //    if (poi == null) return;
+
+        //    rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", "", 0, 10, "", "Price:1", string.Format("CreateUserID:[{0}]", poi.CreateUserID)).contents;
+        //    rpOtherPrice.DataBind();
+        //}
 
         protected void rpProduct_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -55,8 +102,27 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var poi = (ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi)e.Item.DataItem;
             if (poi == null) return;
 
-            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", "", 0, 10, "", "Price:1", string.Format("CreateUserID:[{0}]", poi.CreateUserID)).contents;
+            var pageIndex = WebUtility.GetRequestInt("page", 1);
+            var pageSize = Utility.GetInt(Request["pagesize"], 10, 5, 20);
+
+            var pois = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID,
+                "",
+                AccountHelper.City,
+                pageIndex - 1,
+                pageSize,
+                "",
+                "Price:1",
+                string.Format("CreateUserID:[{0}]", poi.CreateUserID));
+            rpOtherPrice.DataSource = pois.contents;
             rpOtherPrice.DataBind();
+
+            var Pager1 = (Pager3)e.Item.FindControl("Pager1");
+            if (Pager1 == null) return;
+            Pager1.AppendUrlParam("id", WebUtility.GetRequestStr("id", "0"));
+            Pager1.PageSize = (int)pageSize;
+            Pager1.PageIndex = (int)pageIndex;
+            Pager1.TotalRecords = (int)pois.total;
         }
 
         public string GetDecimal(object obj, int length)

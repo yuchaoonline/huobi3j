@@ -12,16 +12,16 @@ namespace ADeeWu.HuoBi3J.SQL
 
     public enum DataBaseType
     {
-        MsSQL =0,
+        MsSQL = 0,
         MySQL = 1,
         OleDB = 2,
         Odbc = 3
     }
-    
+
     /// <summary>
     /// 数据库抽象,每次执行数据库操作可使用Parameters添加参数,在执行完数据库操作后,将自动调用Parameters.Clear()方法清除
     /// </summary>
-    public abstract class DataBase:IDisposable
+    public abstract class DataBase : IDisposable
     {
 
         #region 日志记录状态
@@ -35,9 +35,9 @@ namespace ADeeWu.HuoBi3J.SQL
         /// <summary>
         /// 表示执行数据库操作命令的参数集合,每次调用数据库操作前请调用该属性Clear()后再重新添加新的项
         /// </summary>
-        public abstract CommandParameters Parameters { get;  }
-        
-       
+        public abstract CommandParameters Parameters { get; }
+
+
         /// <summary>
         /// 分页查询数据(pageSize或pageIndex小于0时查询所有)
         /// </summary>
@@ -68,8 +68,6 @@ namespace ADeeWu.HuoBi3J.SQL
         /// <returns></returns>
         public virtual DataTable Select(string sourceName, string where, string orderBy)
         {
-             
-
             StringBuilder sqlBuilder = new StringBuilder();
             sqlBuilder.AppendFormat("select * from {0}", sourceName);
             if (!string.IsNullOrEmpty(where))
@@ -113,21 +111,7 @@ namespace ADeeWu.HuoBi3J.SQL
                         ad.Fill(ds);
 
                         cmd.Parameters.Clear();
-                        //if (this.EnableRecordCount && this.UseParameters && scalarParams != null && scalarParams.Length > 0)
-                        //{
-                        //    string countSql = string.Format("select count(*) from {0}", sourceName);
-                        //    if (!string.IsNullOrEmpty(where))
-                        //    {
-                        //        countSql += " where " + where;
-                        //    }
-                        //    if (this.EnableAlwaysTrace)
-                        //    {
-                        //        AlwaysLog("Select", countSql, string.Empty);
-                        //    }
-                        //    object obj = this.ExecuteScalar(countSql);
-                        //    this.RecordCount = (obj == null) ? -1 : long.Parse(obj.ToString());
-                        //}
-                        
+
                         return ds.Tables[0];
                     }
                     catch (Exception ex)
@@ -140,7 +124,7 @@ namespace ADeeWu.HuoBi3J.SQL
                         if (EnableErrorTrace)
                         {
                             LogMessage("Select",
-                                sql, ex.Source, ex.Message,""
+                                sql, ex.Source, ex.Message, ""
                                 );
                         }
                         if (EnableDebug)
@@ -185,7 +169,7 @@ namespace ADeeWu.HuoBi3J.SQL
             {
                 AlwaysLog("Select", sql, string.Empty);
             }
-            
+
             using (IDbConnection connection = CreateConnection())
             {
                 using (IDbCommand cmd = CreateDbCommand())
@@ -203,7 +187,7 @@ namespace ADeeWu.HuoBi3J.SQL
                                 cmd.Parameters.Add(this.Parameters[i]);
                             }
                         }
-                          
+
                         IDbDataAdapter ad = CreateDataAdpater();
                         ad.SelectCommand = cmd;
                         FormatSQL(sql);
@@ -224,9 +208,7 @@ namespace ADeeWu.HuoBi3J.SQL
                         AfterExecute();
                         if (EnableErrorTrace)
                         {
-                            LogMessage("Select",
-                                sql, ex.Source, ex.Message, ""
-                                );
+                            LogMessage("Select", sql, ex.Source, ex.Message, "");
                         }
                         if (EnableDebug)
                         {
@@ -295,7 +277,7 @@ namespace ADeeWu.HuoBi3J.SQL
         /// <param name="sqlFormat">格式化字符串</param>
         /// <param name="args">格式化变量</param>
         /// <returns></returns>
-        public abstract int ExecuteSql(string sqlFormat,params object[] args);
+        public abstract int ExecuteSql(string sqlFormat, params object[] args);
 
 
         /// <summary>
@@ -332,7 +314,7 @@ namespace ADeeWu.HuoBi3J.SQL
         /// <param name="sqlFormat">格式化字符串</param>
         /// <param name="args">格式化变量</param>
         /// <returns></returns>
-        public abstract bool Exist(string sqlFormat,params object[] args);
+        public abstract bool Exist(string sqlFormat, params object[] args);
 
 
         /// <summary>
@@ -346,7 +328,7 @@ namespace ADeeWu.HuoBi3J.SQL
             //{
             //    foreach (Match match in matchs)
             //    {
-                    
+
             //    }
             //}
         }
@@ -398,8 +380,8 @@ namespace ADeeWu.HuoBi3J.SQL
 
 
         public abstract CommandParameters CreateCommandParameters();
-        
-        
+
+
 
         /*
         /// <summary>
@@ -451,7 +433,7 @@ namespace ADeeWu.HuoBi3J.SQL
             internal set { this._hasError = value; }
             get { return this._hasError; }
         }
-        
+
         /// <summary>
         /// 设置或获取是否启动调试模式,可通过AppSetting 节点下名为ADeeWu.HuoBi3J.SQL.DataBase.Debug元素配置
         /// </summary>
@@ -507,7 +489,7 @@ namespace ADeeWu.HuoBi3J.SQL
             get { return _useParameters; }
             set { _useParameters = value; }
         }
-        
+
         /// <summary>
         /// 当前日志记录模式
         /// </summary>
@@ -536,17 +518,18 @@ namespace ADeeWu.HuoBi3J.SQL
             }
         }
 
-       
+
         /// <summary>
         /// 表示调用Select 函数进行分页后,返回的总记录行数
         /// </summary>
-        public long RecordCount {
-            get { return _recordCount; } 
-            internal set{ _recordCount=value; } 
+        public long RecordCount
+        {
+            get { return _recordCount; }
+            internal set { _recordCount = value; }
         }
 
-       
-        
+
+
 
         protected string ConnectionString
         {
@@ -569,7 +552,7 @@ namespace ADeeWu.HuoBi3J.SQL
         {
 
         }
-        
+
         public DataBase(string connectionString)
         {
             string strDebug = System.Configuration.ConfigurationManager.AppSettings["ADeeWu.HuoBi3J.SQL.DataBase.Debug"];
@@ -599,7 +582,7 @@ namespace ADeeWu.HuoBi3J.SQL
                 }
             }
 
-            
+
 
             _connectionString = connectionString;
         }
@@ -662,16 +645,23 @@ namespace ADeeWu.HuoBi3J.SQL
 
         #endregion
 
-        
+
 
         protected void LogMessage(string methodName, string sql, string source, string message, string otherMsg)
         {
             this.HasError = true;
             List<string> msgList = new List<string>();
             msgList.Add("******************** 错误捕捉 ********************");
-            if (System.Web.HttpContext.Current != null && System.Web.HttpContext.Current.Request != null)
+            try
             {
-                msgList.Add("URL:" + System.Web.HttpContext.Current.Request.Url.ToString());
+                if (System.Web.HttpContext.Current != null && System.Web.HttpContext.Current.Request != null)
+                {
+                    msgList.Add("URL:" + System.Web.HttpContext.Current.Request.Url.ToString());
+                }
+            }
+            catch
+            {
+                msgList.Add("URL:");
             }
             msgList.Add(string.Format("{0} 调用方法 {1}", DateTime.Now.ToLongTimeString(), methodName));
             msgList.Add(string.Format("SQL:      {0}", sql));
@@ -709,7 +699,7 @@ namespace ADeeWu.HuoBi3J.SQL
                     IDataParameter parameter = this.Parameters[i];
                     builder.AppendFormat("{0} = {1}\r\n", parameter.ParameterName, parameter.Value);
                 }
-               
+
             }
             builder.AppendFormat("其它信息: {0}", otherMsg);
             builder.AppendFormat("\r\n");
@@ -725,7 +715,7 @@ namespace ADeeWu.HuoBi3J.SQL
         {
             _connectionString = connStr;
         }
-        
+
         /// <summary>
         /// 重设连接字符串,可通过AppSetting 节点下名为ADeeWu.HuoBi3J.SQL.DataBase.ConnectionString元素配置
         /// </summary>
@@ -751,7 +741,7 @@ namespace ADeeWu.HuoBi3J.SQL
         /// <returns></returns>
         public static DataBase Create(string connectionString)
         {
-            
+
             DBProvider.IDBProvider provider = GetProvider("default");
             if (provider == null)
             {
@@ -764,7 +754,7 @@ namespace ADeeWu.HuoBi3J.SQL
             DataBase db = provider.Create(connectionString);
             return db;
         }
-        
+
         /// <summary>
         /// 根据已有的数据库类型创建DataBase
         /// </summary>
@@ -776,16 +766,16 @@ namespace ADeeWu.HuoBi3J.SQL
             switch (dbType)
             {
                 case DataBaseType.MsSQL:
-                    provider= new ADeeWu.HuoBi3J.SQL.DBProvider.MsSqlProvider();
+                    provider = new ADeeWu.HuoBi3J.SQL.DBProvider.MsSqlProvider();
                     break;
                 case DataBaseType.MySQL:
-                    provider = new  ADeeWu.HuoBi3J.SQL.DBProvider.MySqlProvider();
+                    provider = new ADeeWu.HuoBi3J.SQL.DBProvider.MySqlProvider();
                     break;
                 case DataBaseType.Odbc:
                     provider = new ADeeWu.HuoBi3J.SQL.DBProvider.OdbcProvider();
                     break;
                 case DataBaseType.OleDB:
-                    provider =new  ADeeWu.HuoBi3J.SQL.DBProvider.OledbProvider();
+                    provider = new ADeeWu.HuoBi3J.SQL.DBProvider.OledbProvider();
                     break;
                 default:
                     throw new Exception("错误的数据库类型");
@@ -825,7 +815,7 @@ namespace ADeeWu.HuoBi3J.SQL
         /// <param name="name"></param>
         /// <param name="connectionString"></param>
         /// <returns></returns>
-        public static DataBase Create(string name,string connectionString)
+        public static DataBase Create(string name, string connectionString)
         {
             DBProvider.IDBProvider provider = GetProvider(name);
             if (provider == null) return null;
@@ -851,7 +841,7 @@ namespace ADeeWu.HuoBi3J.SQL
         /// 注册新的数据库提供器(动态注射数据库提供器)到缓存中
         /// </summary>
         /// <param name="provider"></param>
-        public static void RegisterProvider(string name,DBProvider.IDBProvider provider)
+        public static void RegisterProvider(string name, DBProvider.IDBProvider provider)
         {
             if (providerList == null)
             {
@@ -865,7 +855,7 @@ namespace ADeeWu.HuoBi3J.SQL
                 }
                 providerList.Add(name, provider);
             }
-           
+
         }
 
         private static DBProvider.IDBProvider GetProvider(string name)
@@ -889,7 +879,7 @@ namespace ADeeWu.HuoBi3J.SQL
         //    }
         //}
 
-        
+
 
         public virtual void Dispose()
         {

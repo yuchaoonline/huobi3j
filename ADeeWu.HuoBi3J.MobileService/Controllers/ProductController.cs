@@ -41,17 +41,31 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="pagesize">页容量</param>
         /// <returns></returns>
         //[OutputCache(Duration = 3600, VaryByParam = "userid;pageindex;pagesize")]
-        public ActionResult GetProductOfSaleMan(int userid, int pageindex=0,int pagesize=10)
+        public ActionResult GetProductOfSaleMan(int userid, int pageindex = 0, int pagesize = 10, string sort = "Price", string desc = "asc")
         {
             if (userid == 0) return Json(new JsonResponse { status = false, message = "参数有误！" });
 
-            var dic = new Dictionary<string,string>();
-            dic.Add("CreateUserID", userid + "," + userid);
+            var sortby = "";
+            if (!string.IsNullOrWhiteSpace(sort))
+            {
+                sortby = sort + ":1";
+                if (desc == "desc")
+                {
+                    sortby = sort + ":0";
+                }
+            }
 
-            var poiBLL = new PoiBLL();
-            var productPoiResult = poiBLL.List<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, dic, "", "", "", pageindex, pagesize);
+            var pois = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID,
+                "",
+                "",
+                pageindex,
+                pagesize,
+                "",
+                sortby,
+                string.Format("CreateUserID:[{0}]", userid)).contents;
 
-            return GetJson(productPoiResult);
+            return GetJson(pois);
         }
         
         /// <summary>
@@ -70,10 +84,10 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="pagesize">页容量，默认10</param>
         /// <returns></returns>
         //[OutputCache(Duration = 3600, VaryByParam = "keyword;lat;lng;type;price;size;radius;sort;desc;pageindex,pagesize")]
-        public ActionResult SearchProduct(int kid, double lat, double lng, string typeid, string priceid, string sizeid, int radius = 1000, string sort = "Price", string desc = "asc", int pageindex = 1, int pagesize = 10)
+        public ActionResult SearchProduct(int? kid, double lat, double lng, string typeid, string priceid, string sizeid, int radius = 1000, string sort = "Price", string desc = "asc", int pageindex = 1, int pagesize = 10)
         {
             var filter = "";
-            if (kid > 0)
+            if (kid.HasValue && kid.Value > 0)
             {
                 filter += string.Format("|KID:[{0}]", kid);
             }

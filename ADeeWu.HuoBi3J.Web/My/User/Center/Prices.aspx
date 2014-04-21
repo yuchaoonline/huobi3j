@@ -20,7 +20,7 @@
         <div class="box_body">
             <span style="color: blue;">手机扫描二维码次数：<font color="#ff9933"><asp:Literal ID="litQRCount" runat="server"></asp:Literal></font> 次，已经送出金币：<font color="#ff9933"><asp:Literal ID="litCoin" runat="server"></asp:Literal></font>个</span>
             <a href="AddPrice.aspx" title="添加价格" class="btn_blue" style="float: right; margin-left: 10px;">添加价格</a>
-            <a href="ViewClick.aspx" title="查看记录" class="btn_blue" style="float: right;">记录</a>
+            <a href="ViewClick.aspx" title="查看记录" class="btn_blue" style="float: right;">费用记录</a>
         </div>
     </div>
 
@@ -51,7 +51,7 @@
                             <ItemTemplate>
                                 <tr>
                                     <td class="num">
-                                        <a href="/Center/details.aspx?id=<%# Eval("id") %>" title="查看"><%# GetMoney(Eval("price")) %></a>
+                                        <a href="/Center/details.aspx?id=<%# Eval("uid") %>" title="查看"><%# GetMoney(Eval("price")) %></a>
                                     </td>
                                     <td class="common">
                                         <%# Eval("title")%>
@@ -60,12 +60,12 @@
                                            类型：<%# Eval("selecttype")%>;价格：<%# Eval("selectprice")%>;其他：<%# Eval("selectsize")%>
                                     </td>--%>
                                     <td class="num">
-                                        <a href="PriceCount4Key.aspx?id=<%# Eval("id") %>"><%# GetCount(Eval("id")) %></a>
+                                        <a href="PriceCount4Key.aspx?id=<%# Eval("uid") %>"><%# GetCount(Eval("uid")) %></a>
                                     </td>
                                     <td class="common">
-                                        <a href="EditPrice.aspx?id=<%# Eval("id") %>" title="修改" class="btn_blue">修改</a>
-                                        <a href="Prices.aspx?method=delete&id=<%# Eval("id") %>" title="删除" class="btn_blue">删除</a>
-                                        <a href="SearchKey.aspx?id=<%# Eval("id") %>" title="指定关键字" class="btn_blue">关键字</a>
+                                        <a href="EditPrice.aspx?id=<%# Eval("uid") %>" title="修改" class="btn_blue">修改</a>
+                                        <a href="Prices.aspx?method=delete&id=<%# Eval("uid") %>" title="删除" class="btn_blue">删除</a>
+                                        <a href="SearchKey.aspx?id=<%# Eval("uid") %>" title="指定关键字" class="btn_blue">关键字</a>
                                         <%--<a href="AddBusinessCircleToPrice.aspx?id=<%# Eval("id") %>" title="指定商圈" class="btn_blue">商圈</a>--%>
                                     </td>
                                 </tr>

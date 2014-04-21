@@ -3,6 +3,7 @@ using ADee.Project.LBS.Entity;
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
+using ADeeWu.HuoBi3J.WebUI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -54,7 +55,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     IP = Request.UserHostAddress,
                 });
                 if (clickID <= 0) return;
-                
+
                 var keyPrice = new DAL.Key_ViewPrice().GetEntity("kid=" + kid);
                 if (keyPrice != null)
                 {
@@ -73,7 +74,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     }
                 }
 
-                
+
             }
             catch
             {
@@ -99,16 +100,27 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var poi = (ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi)e.Item.DataItem;
             if (poi == null) return;
 
-            rpOtherPrice.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
-                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, 
-                "", 
-                AccountHelper.City, 
-                0, 
-                20, 
-                "", 
-                "Price:1", 
-                string.Format("CreateUserID:[{0}]", poi.CreateUserID)).contents;
+            var pageIndex = WebUtility.GetRequestInt("page", 1);
+            var pageSize = Utility.GetInt(Request["pagesize"], 20, 5, 40);
+
+            var pois = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+                ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID,
+                "",
+                AccountHelper.City,
+                pageIndex - 1,
+                pageSize,
+                "",
+                "Price:1",
+                string.Format("CreateUserID:[{0}]", poi.CreateUserID));
+            rpOtherPrice.DataSource = pois.contents;
             rpOtherPrice.DataBind();
+
+            var Pager1 = (Pager3)e.Item.FindControl("Pager1");
+            if (Pager1 == null) return;
+            Pager1.AppendUrlParam("id", WebUtility.GetRequestStr("id", "0"));
+            Pager1.PageSize = (int)pageSize;
+            Pager1.PageIndex = (int)pageIndex;
+            Pager1.TotalRecords = (int)pois.total;
         }
     }
 }
