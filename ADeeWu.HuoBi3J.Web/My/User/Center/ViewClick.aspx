@@ -18,6 +18,7 @@
                             <td class="common">日期</td>
                             <td class="common">点击量</td>
                             <td class="common">花费</td>
+                            <td class="common">扣费详情</td>
                         </tr>
                     </tbody>
                 </table>
@@ -31,6 +32,7 @@
                                     <td><%# Eval("Date") %></td>
                                     <td><%# Eval("ViewCount") %></td>
                                     <td><%# ADeeWu.HuoBi3J.Libary.Utility.GetFloat(Eval("Fee"),0).ToString("0.00") %></td>
+                                    <td><a href="ViewPriceLog.aspx?month=<%# Eval("Date") %>" class="btn_blue">详情</a></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -50,6 +52,7 @@
                             <td class="common">月份</td>
                             <td class="common">点击量</td>
                             <td class="common">花费</td>
+                            <td class="common">扣费详情</td>
                         </tr>
                     </tbody>
                 </table>
@@ -63,6 +66,7 @@
                                     <td><%# Eval("Month") %></td>
                                     <td><%# Eval("ViewCount") %></td>
                                     <td><%# ADeeWu.HuoBi3J.Libary.Utility.GetFloat(Eval("Fee"),0).ToString("0.00") %></td>
+                                    <td><a href="ViewPriceLog.aspx?month=<%# Eval("Month") %>" class="btn_blue">详情</a></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>

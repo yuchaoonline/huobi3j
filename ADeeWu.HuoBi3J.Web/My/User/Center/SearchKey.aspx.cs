@@ -28,7 +28,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
                 if (!string.IsNullOrWhiteSpace(keyword))
                 {
-                    BandData(keyword,id);
+                    BandData(keyword, id);
                 }
 
                 BandKey(id);
@@ -38,11 +38,20 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
         private void BandKey(int id)
         {
             var productPoi = new PoiBLL().Details<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(id, ConfigHelper.GeoProductTableID);
-            if (productPoi == null||productPoi.status!=0) return;
+            if (productPoi == null || productPoi.status != 0) return;
 
             var viewprice = new DAL.Key_ViewPrice().GetEntity("kid=" + productPoi.poi.KID);
 
-            rpKey.DataSource = new List<object> { new { KName = productPoi.poi.KName, SelectType = productPoi.poi.SelectType, SelectPrice = productPoi.poi.SelectPrice, SelectSize = productPoi.poi.SelectSize, Count = viewprice.Count, Price = viewprice.Price } };
+            rpKey.DataSource = new List<object> { 
+                new { 
+                    KName = productPoi.poi.KName, 
+                    SelectType = productPoi.poi.SelectType, 
+                    SelectPrice = productPoi.poi.SelectPrice, 
+                    SelectSize = productPoi.poi.SelectSize, 
+                    Count = viewprice != null ? viewprice.Count : 0, 
+                    Price = viewprice != null ? viewprice.Price : 0 
+                } 
+            };
             rpKey.DataBind();
         }
 

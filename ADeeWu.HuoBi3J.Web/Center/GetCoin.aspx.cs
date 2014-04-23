@@ -2,6 +2,7 @@
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
 using ADeeWu.HuoBi3J.Web.Class;
+using ADeeWu.HuoBi3J.WebUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,16 +49,25 @@ namespace ADeeWu.HuoBi3J.Web.Center
             var userid = WebUtility.GetRequestInt("salemanuserid", 0);
             if (userid <= 0) return;
 
-            rpProduct.DataSource = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
+            var pageIndex = WebUtility.GetRequestInt("page", 1);
+            var pageSize = Utility.GetInt(Request["pagesize"], 10, 5, 20);
+
+            var pois = new GeoSearchBLL().Local<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductContent>(
                 ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, 
                 "", 
                 "",
-                0,
-                10,
+                pageIndex - 1,
+                pageSize,
                 "", 
                 "Price:1",
-                string.Format("CreateUserID:[{0}]", userid)).contents;
+                string.Format("CreateUserID:[{0}]", userid));
+            rpProduct.DataSource = pois.contents;
             rpProduct.DataBind();
+
+            Pager1.AppendUrlParam("salemanuserid", userid.ToString());
+            Pager1.PageSize = (int)pageSize;
+            Pager1.PageIndex = (int)pageIndex;
+            Pager1.TotalRecords = (int)pois.total;
         }
 
         private void CalCoin()

@@ -66,7 +66,7 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     var countClickDAL = new DAL.Common_Count_Click();
                     var productCount = Utility.GetInt(db.ExecuteScalar(string.Format("select count(*) from common_count_click c where c.dataid={0} and datatype='center_product' and datediff(DD,c.createdate,getdate())=0", id)), 0);
 
-                    if (keyPrice.Count > productCount)
+                    if (keyPrice.Count >= productCount)
                     {
                         new DAL.Key_ViewPrice_Log().Add(new Model.Key_ViewPrice_Log
                         {

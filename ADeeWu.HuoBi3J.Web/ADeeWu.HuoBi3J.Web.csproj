@@ -144,6 +144,7 @@
     <Content Include="My\User\Center\SaleManQR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\ViewClick.aspx" />
+    <Content Include="My\User\Center\ViewPriceLog.aspx" />
     <Content Include="My\User\Coupons\Default.aspx" />
     <Content Include="My\User\Coupons\Exchange.aspx" />
     <Content Include="My\User\TradeOrders\Default.aspx" />
@@ -720,6 +721,13 @@
     </Compile>
     <Compile Include="My\User\Center\ViewClick.aspx.designer.cs">
       <DependentUpon>ViewClick.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Center\ViewPriceLog.aspx.cs">
+      <DependentUpon>ViewPriceLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Center\ViewPriceLog.aspx.designer.cs">
+      <DependentUpon>ViewPriceLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Coins\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

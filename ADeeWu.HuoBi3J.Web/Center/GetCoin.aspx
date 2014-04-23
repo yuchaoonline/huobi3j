@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" AutoEventWireup="true" CodeBehind="GetCoin.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Center.GetCoin" %>
+<%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <!DOCTYPE html>
 <html>
@@ -53,6 +54,11 @@
                             </tr>
                         </ItemTemplate>
                     </asp:Repeater>
+                    <tr>
+                        <td colspan="3">
+                            <ADeeWuControl:Pager3 ID="Pager1" runat="server" />
+                        </td>
+                    </tr>
                 </table>
             </div>
 
