@@ -24,7 +24,11 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 if (string.IsNullOrWhiteSpace(method))
                     Search();
                 else
-                    Save();
+                {
+                    Response.Write(Save());
+                    Response.Flush();
+                    Response.End();
+                }
             }
         }
 
@@ -33,12 +37,11 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
         }
 
-        private void Save()
+        private string Save()
         {
-            var result = "";
             if (LoginUser == null)
             {
-                result = JsonConvert.SerializeObject(new { statue = false, msg = "请登录！" });
+                return JsonConvert.SerializeObject(new { statue = false, msg = "请登录！" });
             }
             else
             {
@@ -48,37 +51,32 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
 
                 if (string.IsNullOrWhiteSpace(txtPrice))
                 {
-                    WebUtility.ShowMsg("价格不能为空！");
-                    return;
+                    return JsonConvert.SerializeObject(new { statue = false, msg = "价格不能为空！" });
                 }
 
                 if (!Utility.IsFloat(txtPrice))
                 {
-                    WebUtility.ShowMsg("价格格式不正确！");
-                    return;
+                    return JsonConvert.SerializeObject(new { statue = false, msg = "价格格式不正确！" });
                 }
 
                 if (string.IsNullOrWhiteSpace(txtPrice))
                 {
-                    WebUtility.ShowMsg("商品简单描述不能为空！");
-                    return;
+                    return JsonConvert.SerializeObject(new { statue = false, msg = "商品简单描述不能为空！" });
                 }
 
                 if (string.IsNullOrWhiteSpace(txtDesc))
                 {
-                    WebUtility.ShowMsg("商品详情描述不能为空！");
-                    return;
+                    return JsonConvert.SerializeObject(new { statue = false, msg = "商品详情描述不能为空！" });
                 }
 
                 if (txtDesc.Length>200)
                 {
-                    WebUtility.ShowMsg("商品详情描述长度应小于200！");
-                    return;
+                    return JsonConvert.SerializeObject(new { statue = false, msg = "商品详情描述长度应小于200！" });
                 }
 
                 var db = DataBase.Create();
                 var salemanTB = db.Select("select * from vw_Key_CircleSaleMan where UserID = " + LoginUser.UserID);
-                if (salemanTB.Rows.Count <= 0) throw new Exception("商家未找到！");
+                if (salemanTB.Rows.Count <= 0) return JsonConvert.SerializeObject(new { statue = false, msg = "商家未找到！" });
                 var saleman = salemanTB.Rows[0];
 
                 var dic = new Dictionary<string, string>();
@@ -104,19 +102,15 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                         txtSimpleDesc);
 
                     if (!string.IsNullOrWhiteSpace(id)) 
-                        result = JsonConvert.SerializeObject(new { statue = true });
+                        return JsonConvert.SerializeObject(new { statue = true });
                     else
-                        result = JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
+                        return JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
                 }
                 catch
                 {
-                    result = JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
+                    return JsonConvert.SerializeObject(new { statue = false, msg = "添加失败！" });
                 }
             }
-
-            Response.Write(result);
-            Response.Flush();
-            Response.End();
         }
     }
 }

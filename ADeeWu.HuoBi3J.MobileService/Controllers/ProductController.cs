@@ -1,4 +1,5 @@
 ﻿using ADee.Project.LBS.BLL;
+using ADee.Project.LBS.Common;
 using ADee.Project.LBS.Entity;
 using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.MobileService.Helpers;
@@ -127,18 +128,48 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public ActionResult AddViewCount(int id)
+        public ActionResult AddClickCount(int id = 0)
         {
-            if (id == 0) return GetJson(new JsonResponse { status = false, message = "参数有误！" });
-
-            var countModel = new Model.Common_Count_Click
+            try
             {
-                CreateDate = DateTime.Now,
-                DataID = id,
-                DataType = "center_product",
-                IP = Request.UserHostAddress,
-            };
-            commonCountDAL.Add(countModel);
+                if (id == 0) return GetJson(new JsonResponse { status = false, message = "参数有误！" });
+
+                var product = new PoiBLL().Details<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(id, ConfigHelper.GeoProductTableID);
+                if (product.poi == null) return GetJson(new JsonResponse { status = false, message = "报价不存在！" });
+
+                var clickID = new DAL.Common_Count_Click().Add(new Model.Common_Count_Click
+                {
+                    CreateDate = System.DateTime.Now,
+                    DataID = id,
+                    DataType = "center_product",
+                    IP = Request.UserHostAddress,
+                });
+                if (clickID <= 0) return GetJson(new JsonResponse { status = false, message = "统计出错！" });               
+
+                var keyPrice = new DAL.Key_ViewPrice().GetEntity("kid=" + product.poi.KID);
+                if (keyPrice != null)
+                {
+                    var countClickDAL = new DAL.Common_Count_Click();
+                    var productCount = Utility.GetInt(DataBase.Create().ExecuteScalar(string.Format("select count(*) from common_count_click c where c.dataid={0} and datatype='center_product' and datediff(DD,c.createdate,getdate())=0", id)), 0);
+
+                    if (keyPrice.Count >= productCount)
+                    {
+                        new DAL.Key_ViewPrice_Log().Add(new Model.Key_ViewPrice_Log
+                        {
+                            CountClickID = clickID,
+                            Price = keyPrice.Price,
+                        });
+
+                        //扣费
+                    }
+                }
+
+
+            }
+            catch
+            {
+
+            }
 
             return GetJson(new JsonResponse { status = true });
         }
