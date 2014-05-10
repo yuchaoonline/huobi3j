@@ -23,7 +23,7 @@
                     <asp:ListItem Value="1">扣除</asp:ListItem>
                 </asp:DropDownList>
                 <asp:Button ID="btnSubmit" runat="server" Text="搜索" OnClick="btnSubmit_Click" />
-
+                <span style="color: red;">当前1个金币可兑换0.1元钱，满10元可通过支付宝等方式取出，详情请联系客服QQ：1959831331</span>
             </td>
         </tr>
     </table>

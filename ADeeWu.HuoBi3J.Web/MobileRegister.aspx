@@ -47,8 +47,8 @@
                     <div class="form-group">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-primary btn-lg" id="btnSubmit">注册</button>
                         <button class="btn btn-primary btn-lg" id="btnLogin">登录</button>
+                        <button class="btn btn-primary btn-lg" id="btnSubmit">注册</button>                        
                     </div>
                 </form>
             </div>

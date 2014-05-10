@@ -92,7 +92,7 @@
                     return false;
                 })
                 $('#btnDownload').click(function () {
-                    location.href = '/app.apk';
+                    location.href = '/hbsj.apk';
                     return false;
                 })
             })

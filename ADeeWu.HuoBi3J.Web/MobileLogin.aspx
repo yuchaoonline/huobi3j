@@ -31,9 +31,9 @@
                     <div class="form-group">
                         <input type="password" class="form-control input-lg" id="Password" placeholder="ÃÜÂë" />
                     </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-lg" id="btnSubmit">µÇÂ¼</button>
+                    <div class="form-group">                        
                         <button class="btn btn-primary btn-lg" id="btnRegister">×¢²á</button>
+                        <button class="btn btn-primary btn-lg" id="btnSubmit">µÇÂ¼</button>
                     </div>
                 </form>
             </div>
@@ -77,7 +77,7 @@
             })
 
             $('#btnApp').click(function () {
-                location.href = "/app.apk";
+                location.href = "/hbsj.apk";
                 //alert('¼´½«µ½À´...');
                 return false;
             })

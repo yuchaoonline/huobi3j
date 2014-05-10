@@ -31,6 +31,8 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var poiBLL = new PoiBLL();
             var poi =  poiBLL.Details<ADeeWu.HuoBi3J.Libary.LBSHelper.ProductPoi>(id, ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID);
 
+            AddClickCount(id);
+
             return GetJson(poi);
         }
 

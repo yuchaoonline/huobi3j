@@ -22,15 +22,30 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                 var month = WebUtility.GetRequestStr("month", "");
 
                 var geoSearchBLL = new GeoSearchBLL();
-                var productContents = geoSearchBLL.Local<LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", "", 0, 500, "", "", string.Format("CreateUserID:{0},{0}", LoginUser.UserID));
-                var kids = productContents.contents.Select(p => p.uid).ToList();
+                var kids = new List<string>();
+                var index = 0;
+                var totalIndex = 0;
+                while (true)
+                {
+                    var productContents = geoSearchBLL.Local<LBSHelper.ProductContent>(ADee.Project.LBS.Common.ConfigHelper.GeoProductTableID, "", "", index, 50, "", "", string.Format("CreateUserID:{0},{0}", LoginUser.UserID));
+                    kids.AddRange(productContents.contents.Select(p => p.uid).ToList());
+
+                    if (index == 0 && productContents.total > 0)
+                    {
+                        totalIndex = productContents.total / 50;
+                        if (productContents.total % 50 != 0) totalIndex++;
+                    }
+
+                    if (index + 1 >= totalIndex) break;
+                    index++;
+                }
 
                 if (kids.Any())
                 {
                     if (!string.IsNullOrWhiteSpace(date))
-                        BandWeak(kids,date);
+                        BandWeak(kids, date);
                     if (!string.IsNullOrWhiteSpace(month))
-                        BandMonth(kids,month);
+                        BandMonth(kids, month);
                 }
             }
         }
