@@ -13,14 +13,15 @@ using System.Web.UI.WebControls;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Center
 {
-    public partial class SaleManQR : System.Web.UI.Page
+    public partial class QR : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 var content = WebUtility.GetRequestStr("s", "");
-                content = HttpUtility.UrlDecode(content);
+                if (!content.StartsWith("http"))
+                    content = string.Format("http://{0}:{1}{2}", Request.Url.Host, Request.Url.Port, HttpUtility.UrlDecode(content));
 
                 QrEncoder qrEncoder = new QrEncoder(ErrorCorrectionLevel.H);
                 QrCode qrCode = new QrCode();
@@ -32,7 +33,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Center
                     MemoryStream ms = new MemoryStream();
                     renderer.WriteToStream(qrCode.Matrix, ImageFormat.Png, ms);
 
-                    Response.Cache.SetNoStore();		
+                    Response.Cache.SetNoStore();
                     Response.ClearContent();
                     Response.ContentType = "image/Png";
                     Response.BinaryWrite(ms.ToArray());

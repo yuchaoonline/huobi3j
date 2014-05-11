@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SaleManQR.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.SaleManQR" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QR.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Center.QR" %>
 
 <!DOCTYPE html>
 

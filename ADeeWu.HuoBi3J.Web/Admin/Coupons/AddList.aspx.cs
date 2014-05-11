@@ -64,6 +64,12 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons
                 return;
             }
 
+            if (subject.CreateUserID.HasValue)
+            {
+                WebUtility.ShowMsg("这是商家活动，只有系统新建的活动才能添加优惠券！");
+                return;
+            }
+
             var successCount = 0;
             var isMoney = false;
             if (ddlIsMoney.SelectedValue == "1") isMoney = true;

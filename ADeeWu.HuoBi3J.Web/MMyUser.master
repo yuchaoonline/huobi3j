@@ -60,7 +60,8 @@
                         <li><a href="/My/User/Coupons/Default.aspx">我的优惠券</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
-                        <li><a href="/My/User/Coupons/Exchange.aspx">兑换优惠券</a></li>
+                        <li><a href="/My/User/Coupons/CashWhenFee.aspx">现金抵扣券</a></li>
+                        <li><a href="/My/User/Coupons/Exchange.aspx">兑换优惠券</a></li>                        
                         <% } %>
                     </ul>
                 </div>

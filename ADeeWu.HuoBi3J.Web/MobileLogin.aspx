@@ -1,27 +1,12 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MobileLogin.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.MobileLogin" %>
+<%@ Page Language="C#" MasterPageFile="~/MMobileIndex.Master" AutoEventWireup="true" CodeBehind="MobileLogin.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.MobileLogin"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>登录 - 货比三家</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link href="/CSS/bootstrap.css" rel="stylesheet" />
-    <link href="/CSS/bootstrap-theme.css" rel="stylesheet" />
-    <style type="text/css">
-        body {
-            padding-top: 70px;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="navbar-header">
-            <h4><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
-        </div>
-    </nav>
-
-    <div class="container">
-        <div class="panel panel-primary">
+<asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
+    登录
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
+    <div class="panel panel-primary">
             <div class="panel-heading">登录 - 货比三家</div>
             <div class="panel-body">
                 <form role="form">
@@ -38,10 +23,8 @@
                 </form>
             </div>
         </div>
-    </div>
-
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script type="text/javascript">
         $(function () {
             $('#btnSubmit').click(function () {
@@ -83,5 +66,4 @@
             })
         })
     </script>
-</body>
-</html>
+</asp:Content>

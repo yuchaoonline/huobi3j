@@ -10,7 +10,7 @@ using ADeeWu.HuoBi3J.SQL;
 namespace ADeeWu.HuoBi3J.DAL
 {
 	
-	public class Coupons_Subject{
+	public class Coupons_CashWhenFee{
 	
 		private DataBase db = null;
 		///<summary>
@@ -32,7 +32,7 @@ namespace ADeeWu.HuoBi3J.DAL
             get { return db.Parameters; }
         }
 		
-		public Coupons_Subject()
+		public Coupons_CashWhenFee()
 		{
 			this.db = DataBase.Create();
 		}
@@ -42,7 +42,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		public bool Exist(string where)
         {
            StringBuilder builder = new StringBuilder();
-           builder.Append("select * from [Coupons_Subject] where 1=1");
+           builder.Append("select * from [Coupons_CashWhenFee] where 1=1");
            if (!string.IsNullOrEmpty(where) && where.Trim()!="")
            {
                builder.AppendFormat(" and ( {0} )", where);
@@ -59,7 +59,7 @@ namespace ADeeWu.HuoBi3J.DAL
         {
            
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [Coupons_Subject] where 1=1");
+            builder.Append("select * from [Coupons_CashWhenFee] where 1=1");
 			db.Parameters.Clear();
             for (int i = 0; i < columns.Length; i++)
             {
@@ -72,32 +72,32 @@ namespace ADeeWu.HuoBi3J.DAL
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public int Add(ADeeWu.HuoBi3J.Model.Coupons_Subject model)
+		public int Add(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@Name",model.Name );
+		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CouponsSubjectID",model.CouponsSubjectID.HasValue ? (object)model.CouponsSubjectID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Inactive",model.Inactive.HasValue ? (object)model.Inactive.Value : (object)DBNull.Value );
-		db.Parameters.Append("@SubjectType",model.SubjectType );
-		db.Parameters.Append("@CreateUserID",model.CreateUserID.HasValue ? (object)model.CreateUserID.Value : (object)DBNull.Value );
-		    DataTable dt = db.Select("insert into [Coupons_Subject]([Name],[StartDate],[EndDate],[Inactive],[SubjectType],[CreateUserID]) values (@Name,@StartDate,@EndDate,@Inactive,@SubjectType,@CreateUserID);select @@Identity;");
+		db.Parameters.Append("@CreateDate",model.CreateDate.HasValue ? (object)model.CreateDate.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee]([Money],[Fee],[CouponsSubjectID],[StartDate],[EndDate],[CreateDate]) values (@Money,@Fee,@CouponsSubjectID,@StartDate,@EndDate,@CreateDate);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
 		}
 		
-		public int Update(ADeeWu.HuoBi3J.Model.Coupons_Subject model)
+		public int Update(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee model)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",model.ID);
-		db.Parameters.Append("@Name",model.Name );
+		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CouponsSubjectID",model.CouponsSubjectID.HasValue ? (object)model.CouponsSubjectID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Inactive",model.Inactive.HasValue ? (object)model.Inactive.Value : (object)DBNull.Value );
-		db.Parameters.Append("@SubjectType",model.SubjectType );
-		db.Parameters.Append("@CreateUserID",model.CreateUserID.HasValue ? (object)model.CreateUserID.Value : (object)DBNull.Value );
-			return db.ExecuteSql("update [Coupons_Subject] set [Name]=@Name,[StartDate]=@StartDate,[EndDate]=@EndDate,[Inactive]=@Inactive,[SubjectType]=@SubjectType,[CreateUserID]=@CreateUserID where [ID]=@ID");
+		db.Parameters.Append("@CreateDate",model.CreateDate.HasValue ? (object)model.CreateDate.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Coupons_CashWhenFee] set [Money]=@Money,[Fee]=@Fee,[CouponsSubjectID]=@CouponsSubjectID,[StartDate]=@StartDate,[EndDate]=@EndDate,[CreateDate]=@CreateDate where [ID]=@ID");
 		}
 		
 	
@@ -113,7 +113,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public int Update(string columnName, object value, string where)
 		{
-			string sql = String.Format("update [{0}] set {1}=@{1}","Coupons_Subject",columnName);
+			string sql = String.Format("update [{0}] set {1}=@{1}","Coupons_CashWhenFee",columnName);
 			if(!string.IsNullOrEmpty(where)){
 				sql += " where " + where;
 			}
@@ -134,7 +134,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			if( updateColumns==null || updateColumns.Length==0 || updateValues== null || updateValues.Length != updateColumns.Length) return -1;
 			
-			string sql = String.Format("update [{0}] ","Coupons_Subject");
+			string sql = String.Format("update [{0}] ","Coupons_CashWhenFee");
 			
 			db.Parameters.Clear();
 			StringBuilder builder = new StringBuilder();
@@ -164,7 +164,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			db.Parameters.Clear();
 			db.Parameters.Append("@ID",ID);
-			return db.ExecuteSql("delete from [Coupons_Subject]  where  @ID=ID");
+			return db.ExecuteSql("delete from [Coupons_CashWhenFee]  where  @ID=ID");
 		}
 		
 		/// <summary>
@@ -174,7 +174,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		/// <returns>影响行数</returns>
 		public int DeleteAll()
 		{
-			string sql = string.Format("delete from [{0}] ", "Coupons_Subject");
+			string sql = string.Format("delete from [{0}] ", "Coupons_CashWhenFee");
 			return db.ExecuteSql(sql);
 
 		}
@@ -186,7 +186,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		/// <returns>影响行数</returns>
 		public int Delete(string where)
         {
-            string sql = string.Format("delete from [{0}] where 1=2 ", "Coupons_Subject");
+            string sql = string.Format("delete from [{0}] where 1=2 ", "Coupons_CashWhenFee");
 			if(string.IsNullOrEmpty(where)){
 				return -1;
 			}
@@ -195,58 +195,58 @@ namespace ADeeWu.HuoBi3J.DAL
 
         public int Delete(string columnName, object value)
         {
-            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "Coupons_Subject",columnName);
+            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "Coupons_CashWhenFee",columnName);
 			db.Parameters.Clear();
             db.Parameters.Append("@" + columnName, value);
             return db.ExecuteSql(sql);
         }
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_Subject GetEntity(int  ID)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee GetEntity(int  ID)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",ID);
-			DataTable dt = db.Select("select * from [Coupons_Subject] where 1=1  and [ID]=@ID");
+			DataTable dt = db.Select("select * from [Coupons_CashWhenFee] where 1=1  and [ID]=@ID");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.Coupons_Subject Entity = new ADeeWu.HuoBi3J.Model.Coupons_Subject();
+			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Name = dr["Name"] as string;
+			Entity.Money = dr["Money"] as decimal?;
+			Entity.Fee = dr["Fee"] as decimal?;
+			Entity.CouponsSubjectID = dr["CouponsSubjectID"] as int?;
 			Entity.StartDate = dr["StartDate"] as DateTime?;
 			Entity.EndDate = dr["EndDate"] as DateTime?;
-			Entity.Inactive = dr["Inactive"] as bool?;
-			Entity.SubjectType = dr["SubjectType"] as string;
-			Entity.CreateUserID = dr["CreateUserID"] as int?;
+			Entity.CreateDate = dr["CreateDate"] as DateTime?;
 			return Entity;
 		}
 		
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_Subject GetEntity(string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee GetEntity(string[] columns,params object[] values)
 		{
-			ADeeWu.HuoBi3J.Model.Coupons_Subject[] EntityList = GetEntityList("",columns,values);
+			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee[] EntityList = GetEntityList("",columns,values);
 			if(EntityList.Length==0)return null;
 			return EntityList[0];
 		}
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_Subject GetEntity(string where)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee GetEntity(string where)
 		{
 			DataTable dt = this.Select(where,"");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.Coupons_Subject Entity = new ADeeWu.HuoBi3J.Model.Coupons_Subject();
+			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Name = dr["Name"] as string;
+			Entity.Money = dr["Money"] as decimal?;
+			Entity.Fee = dr["Fee"] as decimal?;
+			Entity.CouponsSubjectID = dr["CouponsSubjectID"] as int?;
 			Entity.StartDate = dr["StartDate"] as DateTime?;
 			Entity.EndDate = dr["EndDate"] as DateTime?;
-			Entity.Inactive = dr["Inactive"] as bool?;
-			Entity.SubjectType = dr["SubjectType"] as string;
-			Entity.CreateUserID = dr["CreateUserID"] as int?;
+			Entity.CreateDate = dr["CreateDate"] as DateTime?;
 			return Entity;
 		}
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_Subject[] GetEntityList(string orderBy,string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee[] GetEntityList(string orderBy,string[] columns,params object[] values)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [Coupons_Subject] where 1=1");
+            builder.Append("select * from [Coupons_CashWhenFee] where 1=1");
 			db.Parameters.Clear();
 			for(int i=0;i<columns.Length;i++)
 			{
@@ -261,19 +261,19 @@ namespace ADeeWu.HuoBi3J.DAL
 
             DataTable dt = db.Select(builder.ToString());
            
-            ADeeWu.HuoBi3J.Model.Coupons_Subject[] EntityList = new ADeeWu.HuoBi3J.Model.Coupons_Subject[dt.Rows.Count];
+            ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee[] EntityList = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee[dt.Rows.Count];
 			 if (dt.Rows.Count == 0) return EntityList;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
 				DataRow dr = dt.Rows[i];
-                ADeeWu.HuoBi3J.Model.Coupons_Subject Entity = new ADeeWu.HuoBi3J.Model.Coupons_Subject();
+                ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee();
 				Entity.ID = int.Parse(dr["ID"].ToString());
-				Entity.Name = dr["Name"] as string;
+				Entity.Money = dr["Money"] as decimal?;
+				Entity.Fee = dr["Fee"] as decimal?;
+				Entity.CouponsSubjectID = dr["CouponsSubjectID"] as int?;
 				Entity.StartDate = dr["StartDate"] as DateTime?;
 				Entity.EndDate = dr["EndDate"] as DateTime?;
-				Entity.Inactive = dr["Inactive"] as bool?;
-				Entity.SubjectType = dr["SubjectType"] as string;
-				Entity.CreateUserID = dr["CreateUserID"] as int?;
+				Entity.CreateDate = dr["CreateDate"] as DateTime?;
                 EntityList[i] = Entity;
             }
              return EntityList;
@@ -287,7 +287,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(string where,string orderBy)
 		{
-			return db.Select(-1,-1,"Coupons_Subject","ID",where,orderBy);
+			return db.Select(-1,-1,"Coupons_CashWhenFee","ID",where,orderBy);
 		}
 		
 		
@@ -300,7 +300,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex)
 		{
-			return db.Select(pageSize,pageIndex,"Coupons_Subject","ID","","");
+			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee","ID","","");
 		}
 		
 		/// <summary>
@@ -312,7 +312,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"Coupons_Subject","ID","",orderBy);
+			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee","ID","",orderBy);
 		}
 		
 		/// <summary>
@@ -325,7 +325,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string where,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"Coupons_Subject","ID",where,orderBy);
+			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee","ID",where,orderBy);
 		}
 		
 		

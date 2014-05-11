@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MMobileIndex.Master.cs" Inherits="ADeeWu.HuoBi3J.Web.MMobileIndex" %>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title><asp:ContentPlaceHolder ID="title" runat="server"></asp:ContentPlaceHolder> - 货比三家</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="/CSS/bootstrap-theme.css" rel="stylesheet" />
+    <style type="text/css">
+        body {
+            padding-top: 70px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <h4><span style="color: #428bca;">货比<span style="color: #f0ad4e">三</span>家</span><small>——身边价格，一目了然</small></h4>
+        </div>
+    </nav>
+
+    <div class="container">
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <asp:ContentPlaceHolder ID="script" runat="server">
+    </asp:ContentPlaceHolder>
+</body>
+</html>
