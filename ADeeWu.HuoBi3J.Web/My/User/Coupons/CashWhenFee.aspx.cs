@@ -61,6 +61,13 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             {
                 subjectID = AddSubject(string.Format("{0}商家的现金抵扣活动",this.LoginUser.LoginName),startDate.Value,endDate.Value);
             }
+            else
+            {
+                var subject = subjectDAL.GetEntity(subjectID);
+                subject.StartDate = startDate;
+                subject.EndDate = endDate;
+                subjectDAL.Update(subject);
+            }
             var cashWhenFee = new Model.Coupons_CashWhenFee
             {
                 CouponsSubjectID = subjectID,
