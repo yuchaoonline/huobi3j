@@ -10,6 +10,8 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Home Page";
+
             return View();
         }
     }

@@ -9,10 +9,6 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 {
     public class ValuesController : ApiController
     {
-        public ValuesController()
-        {
-
-        }
         // GET api/values
         public IEnumerable<string> Get()
         {
