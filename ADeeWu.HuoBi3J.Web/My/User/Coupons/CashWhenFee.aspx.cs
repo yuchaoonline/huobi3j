@@ -36,6 +36,9 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             txtFee.Text = casewhenfee.Fee.Value.ToString("0.00");
             dtStartDate.Text = subject.StartDate.Value.ToString("yyyy/MM/dd");
             dtEndDate.Text = subject.EndDate.Value.ToString("yyyy/MM/dd");
+
+            rpLog.DataSource = cashWhenFeeDAL.Select("CouponsSubjectID=" + subject.ID, "createdate desc");
+            rpLog.DataBind();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             };
             if (cashWhenFeeDAL.Add(cashWhenFee) > 0)
             {
-                WebUtility.ShowMsg("处理成功！");
+                WebUtility.ShowMsg(this,"处理成功！","CashWhenFee.aspx");
                 return;
             }
 
