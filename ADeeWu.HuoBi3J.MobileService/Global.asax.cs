@@ -9,8 +9,14 @@ using System.Web.Routing;
 
 namespace ADeeWu.HuoBi3J.MobileService
 {
+    /// <summary>
+    /// 程序池
+    /// </summary>
     public class WebApiApplication : System.Web.HttpApplication
     {
+        /// <summary>
+        /// 程序启动
+        /// </summary>
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();

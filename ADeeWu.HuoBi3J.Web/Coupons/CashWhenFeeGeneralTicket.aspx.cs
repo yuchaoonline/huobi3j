@@ -53,7 +53,7 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
                 StartDate = cashWhenFee.StartDate,
                 SubjectID = subject.ID,
                 Password = GetCode(),
-                Memo = string.Format("订单满{0}起",cashWhenFee.Fee.Value.ToString("0.00")),
+                Memo = cashWhenFee.Fee.Value.ToString("0.00"),
                 Inactive = false,
                 UserID = (int)LoginUser.UserID
             };

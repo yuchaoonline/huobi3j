@@ -83,6 +83,7 @@
     <Compile Include="HttpHelper.cs" />
     <Compile Include="LBSHelper.cs" />
     <Compile Include="Security\DESEncrypt.cs" />
+    <Compile Include="UtilityExtention.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="PasswordGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

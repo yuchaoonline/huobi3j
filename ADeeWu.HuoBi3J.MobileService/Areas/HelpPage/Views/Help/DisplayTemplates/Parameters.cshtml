@@ -5,14 +5,14 @@
 
 <table class="help-page-table">
     <thead>
-    <tr><th>Name</th><th>Description</th><th>Additional information</th></tr>
+    <tr><th>参数名称</th><th>参数说明</th><th>其他信息</th></tr>
     </thead>
     <tbody>
     @foreach (ApiParameterDescription parameter in Model)
     {
         string parameterDocumentation = parameter.Documentation != null ?
             parameter.Documentation :
-            "No documentation available.";
+            "没有相关文档";
 
         // Don't show CancellationToken because it's a special parameter
         if (parameter.ParameterDescriptor == null || 
@@ -26,10 +26,10 @@
                     @switch (parameter.Source)
                     {
                         case ApiParameterSource.FromBody:
-                            <p>Define this parameter in the request <b>body</b>.</p>
+                            <p>内容来自请求的 <b>body</b>.</p>
                             break;
                         case ApiParameterSource.FromUri:
-                            <p>Define this parameter in the request <b>URI</b>.</p>
+                            <p>内容来自请求的 <b>URI</b>.</p>
                             break;
                         case ApiParameterSource.Unknown:
                         default:

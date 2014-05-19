@@ -16,36 +16,36 @@
     }
     else
     {
-        <p>No documentation available.</p>
+        <p>没有相关文档</p>
     }
 
     @if (hasParameters || hasRequestSamples)
     {
-        <h2>Request Information</h2>
+        <h2>请求参数</h2>
         if (hasParameters)
         {
-            <h3>Parameters</h3>
+            <h3>参数说明</h3>
             @Html.DisplayFor(apiModel => apiModel.ApiDescription.ParameterDescriptions, "Parameters")
         }
         if (hasRequestSamples)
         {
-            <h3>Request body formats</h3>
+            <h3>请求例子</h3>
             @Html.DisplayFor(apiModel => apiModel.SampleRequests, "Samples")
         }
     } 
 
     @if (hasResponseSamples)
     {
-        <h2>Response Information</h2>
+        <h2>返回说明</h2>
         if (description.ResponseDescription.Documentation != null)
         {
             <p>@description.ResponseDescription.Documentation</p>
         }
         else
         {
-            <p>No documentation available.</p>
+            <p>没有相关文档</p>
         }
-        <h3>Response body formats</h3>
+        <h3>返回内容格式</h3>
         @Html.DisplayFor(apiModel => apiModel.SampleResponses, "Samples")
     }
 </div>
