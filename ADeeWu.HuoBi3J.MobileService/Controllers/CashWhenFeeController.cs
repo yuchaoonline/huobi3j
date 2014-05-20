@@ -15,7 +15,29 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     /// </summary>
     public class CashWhenFeeController : ApiController
     {
-        DataBase db = DataBase.Create();        
+        DataBase db = DataBase.Create();
+
+        /// <summary>
+        /// 商家现金抵扣券活动，扫描二维码后使用
+        /// </summary>
+        /// <param name="salemanuserid">商家ID</param>
+        /// <returns>返回商家活动的信息</returns>
+        public SaleManCashWhenFee Get(int salemanuserid)
+        {
+            var subject = new DAL.Coupons_Subject().GetEntity(new string[] { "CreateUserID", "SubjectType" }, new object[] { salemanuserid, "CashWhenFee" });
+            if (subject == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            var cashWhenFees = new DAL.Coupons_CashWhenFee().GetEntityList("createdate desc", new string[] { "CouponsSubjectID" }, new object[] { subject.ID });
+            if (cashWhenFees == null || !cashWhenFees.Any()) throw new HttpResponseException(HttpStatusCode.NotFound);
+            var cashWhenFee = cashWhenFees.FirstOrDefault();
+            return new SaleManCashWhenFee
+            {
+                SaleManUserID = salemanuserid,
+                EndDate = cashWhenFee.EndDate.Value,
+                Fee = cashWhenFee.Fee.Value,
+                Money = cashWhenFee.Money.Value
+            };
+        }
 
         /// <summary>
         /// 我的现金抵扣券(按商家)
@@ -34,13 +56,17 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// 我的现金抵扣券
         /// </summary>
         /// <param name="userid">用户ID</param>
+        /// <param name="salemanuserid">商家ID</param>
         /// <param name="pageindex">页码</param>
         /// <param name="pagesize">页容量</param>
         /// <returns>返回我所有的现金抵扣券</returns>
         [HttpGet]
-        public IEnumerable<MyTicketModel> MyTicket(int userid, int pageindex, int pagesize)
+        public IEnumerable<MyTicketModel> MyTicket(int userid, int salemanuserid, int pageindex, int pagesize)
         {
-            var ticketTable = db.Select(pagesize, pageindex, "vw_Coupons_CashWhenFee_UserTicket", "id", "userid=" + userid, "");
+            var strWhere = "userid=" + userid;
+            if (salemanuserid > 0)
+                strWhere += "SaleManUserID = " + salemanuserid;
+            var ticketTable = db.Select(pagesize, pageindex, "vw_Coupons_CashWhenFee_UserTicket", "id", strWhere, "");
 
             return GetMyTicket(ticketTable);
         }
@@ -75,6 +101,18 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             }
 
             return code;
+        }
+
+        /// <summary>
+        /// 领取商家优惠券
+        /// </summary>
+        /// <param name="userid">领取人ID</param>
+        /// <param name="salemanuserid">商家ID</param>
+        /// <param name="count">张数</param>
+        /// <returns>http200 领取成功</returns>
+        public string ObtainTicket(int userid, int salemanuserid, int count)
+        {
+            throw new HttpResponseException(HttpStatusCode.OK);
         }
 
         /// <summary>
@@ -182,6 +220,29 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             /// 消费券密码
             /// </summary>
             public string Code { get; set; }
+        }
+
+        /// <summary>
+        /// 商家活动信息
+        /// </summary>
+        public class SaleManCashWhenFee
+        {
+            /// <summary>
+            /// 商家ID
+            /// </summary>
+            public int SaleManUserID { get; set; }
+            /// <summary>
+            /// 消费金额
+            /// </summary>
+            public decimal Fee { get; set; }
+            /// <summary>
+            /// 抵扣金额
+            /// </summary>
+            public decimal Money { get; set; }
+            /// <summary>
+            /// 到期时间
+            /// </summary>
+            public DateTime EndDate { get; set; }
         }
     }
 }

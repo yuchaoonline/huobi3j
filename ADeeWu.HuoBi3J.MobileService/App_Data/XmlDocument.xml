@@ -401,6 +401,13 @@
             现金抵扣
             </summary>
         </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.Get(System.Int32)">
+            <summary>
+            商家现金抵扣券活动，扫描二维码后使用
+            </summary>
+            <param name="salemanuserid">商家ID</param>
+            <returns>返回商家活动的信息</returns>
+        </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicketOfSaleman(System.Int32)">
             <summary>
             我的现金抵扣券(按商家)
@@ -408,11 +415,12 @@
             <param name="userid">用户ID</param>
             <returns>返回各个商家拥有的券数</returns>
         </member>
-        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicket(System.Int32,System.Int32,System.Int32)">
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicket(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             我的现金抵扣券
             </summary>
             <param name="userid">用户ID</param>
+            <param name="salemanuserid">商家ID</param>
             <param name="pageindex">页码</param>
             <param name="pagesize">页容量</param>
             <returns>返回我所有的现金抵扣券</returns>
@@ -423,6 +431,15 @@
             </summary>
             <param name="IDs">凑单的现金抵扣券ID</param>
             <returns>返回券使用后的消费密码, 当http404:上传的ID都没能使用</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.ObtainTicket(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            领取商家优惠券
+            </summary>
+            <param name="userid">领取人ID</param>
+            <param name="salemanuserid">商家ID</param>
+            <param name="count">张数</param>
+            <returns>http200 领取成功</returns>
         </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.GetMyTicket(System.Data.DataTable)">
             <summary>
@@ -500,6 +517,31 @@
         <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicketModel.Code">
             <summary>
             消费券密码
+            </summary>
+        </member>
+        <member name="T:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.SaleManCashWhenFee">
+            <summary>
+            商家活动信息
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.SaleManCashWhenFee.SaleManUserID">
+            <summary>
+            商家ID
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.SaleManCashWhenFee.Fee">
+            <summary>
+            消费金额
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.SaleManCashWhenFee.Money">
+            <summary>
+            抵扣金额
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.SaleManCashWhenFee.EndDate">
+            <summary>
+            到期时间
             </summary>
         </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CouponsController.RegisterTicket(System.Int32)">
