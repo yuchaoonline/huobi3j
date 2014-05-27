@@ -106,7 +106,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 
         public string GetQRURL(int count)
         {
-            return "/QR.aspx?s=" + HttpUtility.UrlEncode("/coupons/cashwhenfeegeneralticket.aspx?userid=" + this.LoginUser.UserID + "&count=1");
+            return "/QR.aspx?s=" + HttpUtility.UrlEncode("/coupons/cashwhenfeegeneralticket.aspx?salemanuserid=" + this.LoginUser.UserID + "&count=1");
         }
     }
 }

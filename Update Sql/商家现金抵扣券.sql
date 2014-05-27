@@ -51,3 +51,6 @@ FROM      dbo.Coupons_List AS l LEFT OUTER JOIN
 WHERE   (ca.CouponsSubjectID IS NOT NULL)
 
 GO
+
+INSERT  INTO [dbo].[BaseData]([Name] ,[Value] ,[IDentity])VALUES('接口站点' ,'http://mobile.huobi3j.com',2)
+GO

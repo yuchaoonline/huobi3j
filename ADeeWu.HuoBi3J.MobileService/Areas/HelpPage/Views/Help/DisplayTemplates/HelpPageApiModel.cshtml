@@ -34,17 +34,18 @@
         }
     } 
 
-    @if (hasResponseSamples)
+    <h2>返回说明</h2>
+    @if (description.ResponseDescription.Documentation != null)
     {
-        <h2>返回说明</h2>
-        if (description.ResponseDescription.Documentation != null)
-        {
-            <p>@description.ResponseDescription.Documentation</p>
-        }
-        else
-        {
-            <p>没有相关文档</p>
-        }
+    <p>@description.ResponseDescription.Documentation</p>
+    }
+    else
+    {
+    <p>没有相关文档</p>
+    }
+
+    @if (hasResponseSamples)
+    {        
         <h3>返回内容格式</h3>
         @Html.DisplayFor(apiModel => apiModel.SampleResponses, "Samples")
     }

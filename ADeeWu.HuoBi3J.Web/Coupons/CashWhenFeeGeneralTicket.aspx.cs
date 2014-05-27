@@ -60,7 +60,7 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
 
             if (listDAL.Add(list) > 0)
             {
-                WebUtility.ShowMsg(this, "领取成功！", "/");
+                WebUtility.ShowMsg(this, "领取成功！", "/center");
             }
             else
             {

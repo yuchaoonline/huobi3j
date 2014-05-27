@@ -10,7 +10,10 @@
         <a href="#" class="list-group-item active">商家信息</a>
         <asp:Repeater ID="rpSaleManInfo" runat="server">
             <ItemTemplate>
-                <a href="#" class="list-group-item">商家名称：<%# Eval("companyname") %></a><a href="#" class="list-group-item">商家地址：<%# Eval("companyaddress") %></a><a href="#" class="list-group-item">商家电话：<%# Eval("phone") %></a>
+                <input type="hidden" name="salemanuserid" value="<%# Eval("userid") %>" />
+                <a href="#" class="list-group-item">商家名称：<%# Eval("companyname") %></a>
+                <a href="#" class="list-group-item">商家地址：<%# Eval("companyaddress") %></a>
+                <a href="#" class="list-group-item">商家电话：<%# Eval("phone") %></a>
             </ItemTemplate>
         </asp:Repeater>
     </div>
@@ -20,7 +23,7 @@
         <table class="table">
             <tr>
                 <th>消费金额</th>
-                <th>金额</th>
+                <th>抵扣金额</th>
                 <th>抵扣券数</th>
             </tr>
             <asp:Repeater ID="rpTicket" runat="server">
@@ -28,7 +31,7 @@
                     <tr>
                         <td><%# Eval("fee") %></td>
                         <td><%# Eval("money") %></td>
-                        <td><%# Eval("count") %></td>
+                        <td class="count"><%# Eval("count") %></td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
@@ -60,11 +63,32 @@
     <script type="text/javascript">
         $(function () {
             $('#btnLogin').click(function () {
-                location.href = "/mobilelogin.aspx?url=" + location.href;
+                location.href = "/mobilelogin.aspx?url=" + encodeURIComponent(location.href);
                 return false;
             })
             $('#btnConfirm').click(function () {
-                location.href = location.href + '&confirm=yes';
+                var salemanuserid = $('input[name=salemanuserid]').val();
+                var count = 0;
+                $('.count').each(function (index, item) {
+                    count += parseInt($(this).text());
+                })
+
+                $.ajax({
+                    url: '<%=ADeeWu.HuoBi3J.Web.Class.BaseDataHelper.MobileServiceSite%>/api/CashWhenFee?userid=<%=this.LoginUser==null?0:this.LoginUser.UserID %>&salemanuserid=' + salemanuserid + '&count=' + count,
+                    //contentType: 'application/json; charset=utf-8',
+                    type: 'Post',
+                    success: function (data) {
+                        alert('领取成功！');
+                        location.href = '/';
+                    },
+                    statusCode: {
+                        404: function () {
+                            alert('活动不存在或者该商家未参加现金抵扣活动！');
+                            return false;
+                        }
+                    }
+                });
+
                 return false;
             })
             $('#btnDownload').click(function () {

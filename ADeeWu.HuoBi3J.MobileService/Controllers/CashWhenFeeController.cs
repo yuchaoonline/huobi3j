@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using ADeeWu.HuoBi3J.Libary;
+using System.Web;
 
 namespace ADeeWu.HuoBi3J.MobileService.Controllers
 {
@@ -16,6 +17,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     public class CashWhenFeeController : ApiController
     {
         DataBase db = DataBase.Create();
+        DAL.Coupons_List listDAL = new DAL.Coupons_List();
 
         /// <summary>
         /// 商家现金抵扣券活动，扫描二维码后使用
@@ -76,7 +78,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// </summary>
         /// <param name="IDs">凑单的现金抵扣券ID</param>
         /// <returns>返回券使用后的消费密码, 当http404:上传的ID都没能使用</returns>
-        public string UseTicket(List<int> IDs)
+        public HttpResponseMessage UseTicket(List<int> IDs)
         {
             var successIDs = new List<int>();
             DAL.Coupons_List listDAL = new DAL.Coupons_List();
@@ -100,7 +102,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 });
             }
 
-            return code;
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         /// <summary>
@@ -110,9 +112,34 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="salemanuserid">商家ID</param>
         /// <param name="count">张数</param>
         /// <returns>http200 领取成功</returns>
-        public string ObtainTicket(int userid, int salemanuserid, int count)
+        public HttpResponseMessage ObtainTicket(int userid, int salemanuserid, int count)
         {
-            throw new HttpResponseException(HttpStatusCode.OK);
+            var subject = new DAL.Coupons_Subject().GetEntity(new string[] { "CreateUserID", "SubjectType" }, new object[] { salemanuserid, "CashWhenFee" });
+            if (subject == null) throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            var cashWhenFees = new DAL.Coupons_CashWhenFee().GetEntityList("createdate desc", new string[] { "CouponsSubjectID" }, new object[] { subject.ID });
+            if (cashWhenFees == null || !cashWhenFees.Any()) throw new HttpResponseException(HttpStatusCode.NotFound);
+            var cashWhenFee = cashWhenFees.FirstOrDefault();
+
+            for (int i = 0; i < count; i++)
+            {
+                var list = new Model.Coupons_List
+                {
+                    EndDate = cashWhenFee.EndDate,
+                    IsMoney = true,
+                    IsUse = false,
+                    Money = cashWhenFee.Money,
+                    StartDate = cashWhenFee.StartDate,
+                    SubjectID = subject.ID,
+                    Password = GeneralCode(),
+                    Memo = cashWhenFee.Fee.Value.ToString("0.00"),
+                    Inactive = false,
+                    UserID = userid
+                };
+                listDAL.Add(list);
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK);
         }
 
         /// <summary>
