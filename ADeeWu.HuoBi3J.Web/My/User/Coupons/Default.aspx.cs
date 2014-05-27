@@ -27,6 +27,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             var pageIndex = WebUtility.GetRequestInt("page", 1);
             var pageSize = Utility.GetInt(Request["pagesize"], 10, 5, 40);
 
+            db.EnableRecordCount = true;
             rpQuestions.DataSource = db.Select(pageSize, pageIndex, "vw_Coupons_List", "id", "userid=" + LoginUser.UserID, "isuse desc, money desc, enddate desc");
             rpQuestions.DataBind();
 

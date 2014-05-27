@@ -23,7 +23,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// 商家现金抵扣券活动，扫描二维码后使用
         /// </summary>
         /// <param name="salemanuserid">商家ID</param>
-        /// <returns>返回商家活动的信息</returns>
+        /// <returns>返回商家活动的信息，http404 商家未找到或商家未参加现金抵扣活动</returns>
         public SaleManCashWhenFee Get(int salemanuserid)
         {
             var subject = new DAL.Coupons_Subject().GetEntity(new string[] { "CreateUserID", "SubjectType" }, new object[] { salemanuserid, "CashWhenFee" });
@@ -111,7 +111,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="userid">领取人ID</param>
         /// <param name="salemanuserid">商家ID</param>
         /// <param name="count">张数</param>
-        /// <returns>http200 领取成功</returns>
+        /// <returns>http200 领取成功；http404 商家未找到或商家未参加现金抵扣活动</returns>
         public HttpResponseMessage ObtainTicket(int userid, int salemanuserid, int count)
         {
             var subject = new DAL.Coupons_Subject().GetEntity(new string[] { "CreateUserID", "SubjectType" }, new object[] { salemanuserid, "CashWhenFee" });

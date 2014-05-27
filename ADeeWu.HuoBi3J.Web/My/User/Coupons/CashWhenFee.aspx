@@ -13,7 +13,36 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <div class="box">
         <div class="box_head1">
-            <label class="fb font14 black70">基本信息</label>
+            <label class="fb font14 black70">获得现金抵扣券赠送条件设置</label>
+        </div>
+        <div class="box_body">
+            <table>
+                <tbody>
+                    <tr height="35px">
+                        <td class="tr">消费金额：</td>
+                        <td class="font14 black4B">
+                            <asp:TextBox ID="txtConditionMoney" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr height="35px">
+                        <td class="tr">备注：</td>
+                        <td class="font14 black4B">
+                            <asp:TextBox ID="txtMemo" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr height="35px">
+                        <td colspan="2" align="center">
+                            <asp:Button ID="btnCondition" runat="server" Text="修改" CssClass="btn_blue" BorderStyle="None" OnClick="btnCondition_Click" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box_head1">
+            <label class="fb font14 black70">现金抵扣券设置</label>
             <asp:HiddenField ID="hfSubjectID" runat="server" />
         </div>
         <div class="box_body">

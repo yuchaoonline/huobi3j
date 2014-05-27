@@ -54,3 +54,16 @@ GO
 
 INSERT  INTO [dbo].[BaseData]([Name] ,[Value] ,[IDentity])VALUES('接口站点' ,'http://mobile.huobi3j.com',2)
 GO
+
+CREATE TABLE [dbo].[Coupons_CashWhenFee_Condition](
+	[ID] [int] NOT NULL,
+	[SalemanUserID] [int] NULL,
+	[Money] [money] NULL,
+	[Memo] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Coupons_CashWhenFee_Condition] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO

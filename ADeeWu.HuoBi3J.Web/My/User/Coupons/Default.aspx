@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Coupons.Default" %>
-
+<%@ Import Namespace="ADeeWu.HuoBi3J.Libary" %>
 <%@ Register Assembly="ADeeWu.HuoBi3J.WebUI" Namespace="ADeeWu.HuoBi3J.WebUI" TagPrefix="ADeeWuControl" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
@@ -25,9 +25,9 @@
                             </td>
                             <td class="common">有效期
                             </td>
-                            <td class="common">使用
+                            <td class="num">使用
                             </td>
-                            <td class="common">密码
+                            <td class="num">密码
                             </td>
                         </tr>
                     </tbody>
@@ -46,12 +46,12 @@
                                         <%# Eval("money") %>(<%# Eval("ismoney").ToString().ToLower()=="true"?"金钱":"虚拟币" %>)
                                     </td>
                                     <td class="common">
-                                        <%# Eval("startdate")%> - <%#Eval("enddate") %>
+                                        <%# Eval("startdate").GetDateTime().ToString("yyyy/MM/dd")%> - <%#Eval("enddate").GetDateTime().ToString("yyyy/MM/dd") %>
                                     </td>
-                                    <td class="common">
+                                    <td class="num">
                                         <%# Eval("isuse").ToString().ToLower()=="true"?"已使用("+Eval("usedate")+")":"未使用" %>
                                     </td>
-                                    <td class="common">
+                                    <td class="num">
                                         <%# Eval("password") %>
                                     </td>
                                 </tr>

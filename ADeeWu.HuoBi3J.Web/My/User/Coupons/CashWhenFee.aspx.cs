@@ -13,6 +13,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
     {
         DAL.Coupons_Subject subjectDAL = new DAL.Coupons_Subject();
         DAL.Coupons_CashWhenFee cashWhenFeeDAL = new DAL.Coupons_CashWhenFee();
+        DAL.Coupons_CashWhenFee_Condition conditionDAL = new DAL.Coupons_CashWhenFee_Condition();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,6 +37,13 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             txtFee.Text = casewhenfee.Fee.Value.ToString("0.00");
             dtStartDate.Text = subject.StartDate.Value.ToString("yyyy/MM/dd");
             dtEndDate.Text = subject.EndDate.Value.ToString("yyyy/MM/dd");
+
+            var condition = conditionDAL.GetEntity("[SalemanUserID] = " + this.LoginUser.UserID);
+            if (condition != null)
+            {
+                txtConditionMoney.Text = condition.Money.Value.ToString("0.00");
+                txtMemo.Text = condition.Memo;
+            }
 
             rpLog.DataSource = cashWhenFeeDAL.Select("CouponsSubjectID=" + subject.ID, "createdate desc");
             rpLog.DataBind();
@@ -107,6 +115,37 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
         public string GetQRURL(int count)
         {
             return "/QR.aspx?s=" + HttpUtility.UrlEncode("/coupons/cashwhenfeegeneralticket.aspx?salemanuserid=" + this.LoginUser.UserID + "&count=1");
+        }
+
+        protected void btnCondition_Click(object sender, EventArgs e)
+        {
+            var money = txtConditionMoney.Text.GetDecimal(0);
+            var memo = txtMemo.Text;
+
+            if (money == 0)
+            {
+                WebUtility.ShowMsg("获取现金抵扣券的消费金额应该大于0！");
+                return;
+            }
+
+            var condition = conditionDAL.GetEntity("[SalemanUserID] = " + this.LoginUser.UserID);
+            if (condition == null){
+                condition = new Model.Coupons_CashWhenFee_Condition
+                {
+                    SalemanUserID =(int) this.LoginUser.UserID,
+                    Money = money,
+                    Memo = memo,
+                };
+
+                conditionDAL.Add(condition);
+                WebUtility.ShowMsg("修改成功！");
+                return;
+            }
+
+            condition.Memo = memo;
+            condition.Money = money;
+            conditionDAL.Update(condition);
+            WebUtility.ShowMsg("修改成功！");
         }
     }
 }

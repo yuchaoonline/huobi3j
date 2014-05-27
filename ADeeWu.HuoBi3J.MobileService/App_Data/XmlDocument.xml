@@ -406,7 +406,7 @@
             商家现金抵扣券活动，扫描二维码后使用
             </summary>
             <param name="salemanuserid">商家ID</param>
-            <returns>返回商家活动的信息</returns>
+            <returns>返回商家活动的信息，http404 商家未找到或商家未参加现金抵扣活动</returns>
         </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicketOfSaleman(System.Int32)">
             <summary>
@@ -439,7 +439,7 @@
             <param name="userid">领取人ID</param>
             <param name="salemanuserid">商家ID</param>
             <param name="count">张数</param>
-            <returns>http200 领取成功</returns>
+            <returns>http200 领取成功；http404 商家未找到或商家未参加现金抵扣活动</returns>
         </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.GetMyTicket(System.Data.DataTable)">
             <summary>
