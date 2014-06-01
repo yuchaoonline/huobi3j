@@ -14,6 +14,7 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
     {
         DataBase db = DataBase.Create();
         DAL.Coupons_List listDAL = new DAL.Coupons_List();
+        public string ConditionAlert = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,7 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
                 {
                     SaleManInfo(userid);
                     TicketInfo(userid, count);
+                    Condition(userid);
                 }
             }
         }
@@ -85,6 +87,13 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
         {
             rpSaleManInfo.DataSource = db.Select("vw_Key_CircleSaleMan", "userid = " + userid, "");
             rpSaleManInfo.DataBind();
+        }
+
+        private void Condition(int userid)
+        {
+            var condition = new DAL.Coupons_CashWhenFee_Condition().GetEntity("SalemanUserID=" + userid);
+            if (condition != null && condition.IsShow.HasValue && condition.IsShow.Value)
+                ConditionAlert = string.Format("alert('温馨提示：本次消费满{0}元，结账时即可获得商家代金券，请向服务员索取。');", condition.Money.Value.ToString("0.00"));
         }
 
         private void TicketInfo(int userid, int count)

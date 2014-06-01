@@ -4,6 +4,7 @@
     注册
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
     <div class="panel panel-primary">
@@ -70,7 +71,7 @@
                     if (data && data.statue) {
                         alert(data.msg);
                         var url = '/mobilelogin.aspx';
-                        if ('<%=Request["url"]%>' != '') url += '?url=<%=Request["url"]%>';
+                        if ('<%=Request["url"]%>' != '') url += '?url=<%=HttpUtility.UrlEncode(Request["url"])%>';
                         location.href = url;
                     } else {
                         alert(data.msg);
@@ -84,7 +85,7 @@
 
             $('#btnLogin').click(function () {
                 var url = '/mobilelogin.aspx';
-                if ('<%=Request["url"]%>' != '') url += '?url=<%=Request["url"]%>';
+                if ('<%=Request["url"]%>' != '') url += '?url=<%=HttpUtility.UrlEncode(Request["url"])%>';
                 location.href = url;
                 return false;
             })

@@ -9,6 +9,7 @@ public class Coupons_CashWhenFee_Condition{
 	private int? _SalemanUserID = null;
 	private decimal? _Money = null;
 	private string _Memo = null;
+	private bool? _IsShow = null;
 	#endregion
 	
 	#region Contructors
@@ -21,13 +22,15 @@ public class Coupons_CashWhenFee_Condition{
 		int iD,
 			int salemanUserID,
 			decimal money,
-			string memo
+			string memo,
+			bool isShow
 	)
 	{
 		_ID            = iD;
 			_SalemanUserID = salemanUserID;
 			_Money         = money;
 			_Memo          = memo;
+			_IsShow        = isShow;
 			
 	}
 	#endregion
@@ -36,6 +39,7 @@ public class Coupons_CashWhenFee_Condition{
 	public int? SalemanUserID { set{ _SalemanUserID = value; } get{ return _SalemanUserID; }}
 	public decimal? Money { set{ _Money = value; } get{ return _Money; }}
 	public string Memo { set{ _Memo = value; } get{ return _Memo; }}
+	public bool? IsShow { set{ _IsShow = value; } get{ return _IsShow; }}
 }
 }
 

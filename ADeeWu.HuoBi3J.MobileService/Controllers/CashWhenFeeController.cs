@@ -18,6 +18,8 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
     {
         DataBase db = DataBase.Create();
         DAL.Coupons_List listDAL = new DAL.Coupons_List();
+        DAL.Key_CircleSaleMan salemanDAL = new DAL.Key_CircleSaleMan();
+
 
         /// <summary>
         /// 商家现金抵扣券活动，扫描二维码后使用
@@ -32,12 +34,18 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var cashWhenFees = new DAL.Coupons_CashWhenFee().GetEntityList("createdate desc", new string[] { "CouponsSubjectID" }, new object[] { subject.ID });
             if (cashWhenFees == null || !cashWhenFees.Any()) throw new HttpResponseException(HttpStatusCode.NotFound);
             var cashWhenFee = cashWhenFees.FirstOrDefault();
+
+            var saleman = new DAL.Key_CircleSaleMan().GetEntity("userid=" + subject.CreateUserID);
+            if (saleman == null) saleman = new Model.Key_CircleSaleMan();
             return new SaleManCashWhenFee
             {
                 SaleManUserID = salemanuserid,
                 EndDate = cashWhenFee.EndDate.Value,
                 Fee = cashWhenFee.Fee.Value,
-                Money = cashWhenFee.Money.Value
+                Money = cashWhenFee.Money.Value,
+                CompanyAddress = saleman.CompanyAddress,
+                CompanyName = saleman.CompanyName,
+                Phone = saleman.Phone,
             };
         }
 
@@ -51,7 +59,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         {
             var ticketTable = db.Select("vw_Coupons_CashWhenFee_UserTicket", "userid=" + userid, "");
 
-            return GetMyTicket(ticketTable).GroupBy(p => p.SaleMan).Select(p => new TicketCountOfSalemanModel { SaleMan = p.Key, Count = p.Count() });
+            return GetMyTicket(ticketTable).GroupBy(p => p.SaleManUserID).Select(p => new TicketCountOfSalemanModel { SaleManUserID = p.Key, SaleMan = GetSalemanCompanyName(p.Key), Count = p.Count() });
         }
 
         /// <summary>
@@ -67,7 +75,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         {
             var strWhere = "userid=" + userid;
             if (salemanuserid > 0)
-                strWhere += "SaleManUserID = " + salemanuserid;
+                strWhere += "and SaleManUserID = " + salemanuserid;
             var ticketTable = db.Select(pagesize, pageindex, "vw_Coupons_CashWhenFee_UserTicket", "id", strWhere, "");
 
             return GetMyTicket(ticketTable);
@@ -164,7 +172,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                     SaleManUserID = row["SaleManUserID"].GetInt(),
                     SaleMan = row["SaleMan"].GetStr(),
                     StartDate = row["StartDate"].GetDateTime(),
-                    Code = row["Password"].GetStr(),
+                    Code = row["code"].GetStr(),
                 });
             }
 
@@ -191,11 +199,22 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             return code;
         }
 
+        private string GetSalemanCompanyName(int userid)
+        {
+            var saleman = salemanDAL.GetEntity("UserID=" + userid);
+            if (saleman == null) return "";
+            return saleman.CompanyName;
+        }
+
         /// <summary>
         /// 各个商家的票券数
         /// </summary>
         public class TicketCountOfSalemanModel
         {
+            /// <summary>
+            /// 商家ID
+            /// </summary>
+            public int SaleManUserID { get; set; }
             /// <summary>
             /// 商家名称
             /// </summary>
@@ -258,6 +277,18 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             /// 商家ID
             /// </summary>
             public int SaleManUserID { get; set; }
+            /// <summary>
+            /// 商家名称
+            /// </summary>
+            public string CompanyName { get; set; }
+            /// <summary>
+            /// 商家地址
+            /// </summary>
+            public string CompanyAddress { get; set; }
+            /// <summary>
+            /// 联系方式
+            /// </summary>
+            public string Phone { get; set; }
             /// <summary>
             /// 消费金额
             /// </summary>

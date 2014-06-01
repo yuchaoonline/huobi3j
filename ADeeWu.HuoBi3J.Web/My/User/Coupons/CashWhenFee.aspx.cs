@@ -43,6 +43,8 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             {
                 txtConditionMoney.Text = condition.Money.Value.ToString("0.00");
                 txtMemo.Text = condition.Memo;
+
+                btnShow.Text = condition.IsShow.Value ? "隐藏" : "显示";
             }
 
             rpLog.DataSource = cashWhenFeeDAL.Select("CouponsSubjectID=" + subject.ID, "createdate desc");
@@ -114,7 +116,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 
         public string GetQRURL(int count)
         {
-            return "/QR.aspx?s=" + HttpUtility.UrlEncode("/coupons/cashwhenfeegeneralticket.aspx?salemanuserid=" + this.LoginUser.UserID + "&count=1");
+            return "/QR.aspx?s=" + HttpUtility.UrlEncode("/coupons/cashwhenfeegeneralticket.aspx?salemanuserid=" + this.LoginUser.UserID + "&count="+count);
         }
 
         protected void btnCondition_Click(object sender, EventArgs e)
@@ -135,6 +137,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
                     SalemanUserID =(int) this.LoginUser.UserID,
                     Money = money,
                     Memo = memo,
+                    IsShow = true,
                 };
 
                 conditionDAL.Add(condition);
@@ -146,6 +149,21 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             condition.Money = money;
             conditionDAL.Update(condition);
             WebUtility.ShowMsg("修改成功！");
+        }
+
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            var condition = conditionDAL.GetEntity("[SalemanUserID] = " + this.LoginUser.UserID);
+            if (condition == null)
+            {
+                WebUtility.ShowMsg("还没有设置获赠条件，请先设置！");
+                return;
+            }
+
+            condition.IsShow = !condition.IsShow.Value;
+            conditionDAL.Update(condition);
+
+            WebUtility.ShowMsg(this, "设置成功！", "CashWhenFee.aspx");
         }
     }
 }

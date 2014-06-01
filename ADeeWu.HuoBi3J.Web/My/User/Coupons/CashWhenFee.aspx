@@ -13,13 +13,13 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
     <div class="box">
         <div class="box_head1">
-            <label class="fb font14 black70">获得现金抵扣券赠送条件设置</label>
+            <label class="fb font14 black70">获得代金券赠送所需条件设置</label>
         </div>
         <div class="box_body">
             <table>
                 <tbody>
                     <tr height="35px">
-                        <td class="tr">消费金额：</td>
+                        <td class="tr">需要消费满的金额设置：</td>
                         <td class="font14 black4B">
                             <asp:TextBox ID="txtConditionMoney" runat="server"></asp:TextBox>
                         </td>
@@ -32,6 +32,8 @@
                     </tr>
                     <tr height="35px">
                         <td colspan="2" align="center">
+                            <asp:Button ID="btnShow" runat="server" Text="隐藏" CssClass="btn_blue" BorderStyle="None" OnClick="btnShow_Click" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;
                             <asp:Button ID="btnCondition" runat="server" Text="修改" CssClass="btn_blue" BorderStyle="None" OnClick="btnCondition_Click" />
                         </td>
                     </tr>
@@ -42,7 +44,7 @@
 
     <div class="box">
         <div class="box_head1">
-            <label class="fb font14 black70">现金抵扣券设置</label>
+            <label class="fb font14 black70">代金券设置</label>
             <asp:HiddenField ID="hfSubjectID" runat="server" />
         </div>
         <div class="box_body">
@@ -84,7 +86,7 @@
 
     <div class="box">
         <div class="box_head1">
-            <label class="fb font14 black70">优惠券二维码</label>
+            <label class="fb font14 black70">代金券二维码</label>
         </div>
         <div class="box_body">
             <table>

@@ -6,6 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="body" runat="server">
+    <h3>您将获得商家代金券</h3>
     <div class="list-group">
         <a href="#" class="list-group-item active">商家信息</a>
         <asp:Repeater ID="rpSaleManInfo" runat="server">
@@ -53,6 +54,7 @@
     <% if (LoginUser != null && LoginUser.UserID > 0)
        { %>
     <button type="button" id="btnConfirm" class="btn btn-primary btn-block btn-lg">领取</button>
+    <div class="alert alert-warning">重要提示：点击确定后，将不能变更，请仔细确认信息</div>
     <%}
        else
        { %>
@@ -62,6 +64,8 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script type="text/javascript">
         $(function () {
+            <%=ConditionAlert%>
+
             $('#btnLogin').click(function () {
                 location.href = "/mobilelogin.aspx?url=" + encodeURIComponent(location.href);
                 return false;
@@ -78,7 +82,7 @@
                     //contentType: 'application/json; charset=utf-8',
                     type: 'Post',
                     success: function (data) {
-                        alert('领取成功！');
+                        alert('您已经获得代金券，请下载货比三家手机应用查看代金券！');
                         location.href = '/';
                     },
                     statusCode: {

@@ -78,7 +78,8 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@SalemanUserID",model.SalemanUserID.HasValue ? (object)model.SalemanUserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
-		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Condition]([SalemanUserID],[Money],[Memo]) values (@SalemanUserID,@Money,@Memo);select @@Identity;");
+		db.Parameters.Append("@IsShow",model.IsShow.HasValue ? (object)model.IsShow.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Condition]([SalemanUserID],[Money],[Memo],[IsShow]) values (@SalemanUserID,@Money,@Memo,@IsShow);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -91,7 +92,8 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@SalemanUserID",model.SalemanUserID.HasValue ? (object)model.SalemanUserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
-			return db.ExecuteSql("update [Coupons_CashWhenFee_Condition] set [SalemanUserID]=@SalemanUserID,[Money]=@Money,[Memo]=@Memo where [ID]=@ID");
+		db.Parameters.Append("@IsShow",model.IsShow.HasValue ? (object)model.IsShow.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Coupons_CashWhenFee_Condition] set [SalemanUserID]=@SalemanUserID,[Money]=@Money,[Memo]=@Memo,[IsShow]=@IsShow where [ID]=@ID");
 		}
 		
 	
@@ -207,6 +209,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.SalemanUserID = dr["SalemanUserID"] as int?;
 			Entity.Money = dr["Money"] as decimal?;
 			Entity.Memo = dr["Memo"] as string;
+			Entity.IsShow = dr["IsShow"] as bool?;
 			return Entity;
 		}
 		
@@ -228,6 +231,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.SalemanUserID = dr["SalemanUserID"] as int?;
 			Entity.Money = dr["Money"] as decimal?;
 			Entity.Memo = dr["Memo"] as string;
+			Entity.IsShow = dr["IsShow"] as bool?;
 			return Entity;
 		}
 		
@@ -259,6 +263,7 @@ namespace ADeeWu.HuoBi3J.DAL
 				Entity.SalemanUserID = dr["SalemanUserID"] as int?;
 				Entity.Money = dr["Money"] as decimal?;
 				Entity.Memo = dr["Memo"] as string;
+				Entity.IsShow = dr["IsShow"] as bool?;
                 EntityList[i] = Entity;
             }
              return EntityList;

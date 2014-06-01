@@ -55,7 +55,7 @@
             })
 
             $('#btnRegister').click(function () {
-                location.href = "/mobileregister.aspx?url=<%=Request["url"]%>";
+                location.href = "/mobileregister.aspx?url=<%= HttpUtility.UrlEncode(Request["url"])%>";
                 return false;
             })
 

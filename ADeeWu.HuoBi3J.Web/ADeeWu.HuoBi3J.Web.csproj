@@ -144,6 +144,7 @@
     <Content Include="My\User\Center\MyFavList.aspx" />
     <Content Include="My\User\Center\PriceCount4Key.aspx" />
     <Content Include="My\User\Center\Prices.aspx" />
+    <Content Include="My\User\Coupons\CashWhenFeeValidate.aspx" />
     <Content Include="QR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\ViewClick.aspx" />
@@ -712,6 +713,13 @@
     </Compile>
     <Compile Include="My\User\Center\Prices.aspx.designer.cs">
       <DependentUpon>Prices.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Coupons\CashWhenFeeValidate.aspx.cs">
+      <DependentUpon>CashWhenFeeValidate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Coupons\CashWhenFeeValidate.aspx.designer.cs">
+      <DependentUpon>CashWhenFeeValidate.aspx</DependentUpon>
     </Compile>
     <Compile Include="QR.aspx.cs">
       <DependentUpon>QR.aspx</DependentUpon>
