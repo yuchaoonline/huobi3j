@@ -75,11 +75,12 @@ namespace ADeeWu.HuoBi3J.DAL
 		public int Add(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@SalemanUserID",model.SalemanUserID.HasValue ? (object)model.SalemanUserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
 		db.Parameters.Append("@IsShow",model.IsShow.HasValue ? (object)model.IsShow.Value : (object)DBNull.Value );
-		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Condition]([SalemanUserID],[Money],[Memo],[IsShow]) values (@SalemanUserID,@Money,@Memo,@IsShow);select @@Identity;");
+		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Condition]([SaleManUserID],[Money],[Memo],[IsShow],[CreateTime]) values (@SaleManUserID,@Money,@Memo,@IsShow,@CreateTime);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -89,11 +90,12 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",model.ID);
-		db.Parameters.Append("@SalemanUserID",model.SalemanUserID.HasValue ? (object)model.SalemanUserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Memo",model.Memo );
 		db.Parameters.Append("@IsShow",model.IsShow.HasValue ? (object)model.IsShow.Value : (object)DBNull.Value );
-			return db.ExecuteSql("update [Coupons_CashWhenFee_Condition] set [SalemanUserID]=@SalemanUserID,[Money]=@Money,[Memo]=@Memo,[IsShow]=@IsShow where [ID]=@ID");
+		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Coupons_CashWhenFee_Condition] set [SaleManUserID]=@SaleManUserID,[Money]=@Money,[Memo]=@Memo,[IsShow]=@IsShow,[CreateTime]=@CreateTime where [ID]=@ID");
 		}
 		
 	
@@ -206,10 +208,11 @@ namespace ADeeWu.HuoBi3J.DAL
 			DataRow dr = dt.Rows[0];
 			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.SalemanUserID = dr["SalemanUserID"] as int?;
+			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
 			Entity.Money = dr["Money"] as decimal?;
 			Entity.Memo = dr["Memo"] as string;
 			Entity.IsShow = dr["IsShow"] as bool?;
+			Entity.CreateTime = dr["CreateTime"] as DateTime?;
 			return Entity;
 		}
 		
@@ -228,10 +231,11 @@ namespace ADeeWu.HuoBi3J.DAL
 			DataRow dr = dt.Rows[0];
 			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.SalemanUserID = dr["SalemanUserID"] as int?;
+			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
 			Entity.Money = dr["Money"] as decimal?;
 			Entity.Memo = dr["Memo"] as string;
 			Entity.IsShow = dr["IsShow"] as bool?;
+			Entity.CreateTime = dr["CreateTime"] as DateTime?;
 			return Entity;
 		}
 		
@@ -260,10 +264,11 @@ namespace ADeeWu.HuoBi3J.DAL
 				DataRow dr = dt.Rows[i];
                 ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Condition();
 				Entity.ID = int.Parse(dr["ID"].ToString());
-				Entity.SalemanUserID = dr["SalemanUserID"] as int?;
+				Entity.SaleManUserID = dr["SaleManUserID"] as int?;
 				Entity.Money = dr["Money"] as decimal?;
 				Entity.Memo = dr["Memo"] as string;
 				Entity.IsShow = dr["IsShow"] as bool?;
+				Entity.CreateTime = dr["CreateTime"] as DateTime?;
                 EntityList[i] = Entity;
             }
              return EntityList;

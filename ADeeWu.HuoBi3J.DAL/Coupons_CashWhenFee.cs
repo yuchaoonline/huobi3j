@@ -77,11 +77,11 @@ namespace ADeeWu.HuoBi3J.DAL
 			db.Parameters.Clear();
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
-		db.Parameters.Append("@CouponsSubjectID",model.CouponsSubjectID.HasValue ? (object)model.CouponsSubjectID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CreateUserID",model.CreateUserID.HasValue ? (object)model.CreateUserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CreateDate",model.CreateDate.HasValue ? (object)model.CreateDate.Value : (object)DBNull.Value );
-		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee]([Money],[Fee],[CouponsSubjectID],[StartDate],[EndDate],[CreateDate]) values (@Money,@Fee,@CouponsSubjectID,@StartDate,@EndDate,@CreateDate);select @@Identity;");
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee]([Money],[Fee],[CreateUserID],[StartDate],[EndDate],[CreateDate]) values (@Money,@Fee,@CreateUserID,@StartDate,@EndDate,@CreateDate);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -93,11 +93,11 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@ID",model.ID);
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
 		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
-		db.Parameters.Append("@CouponsSubjectID",model.CouponsSubjectID.HasValue ? (object)model.CouponsSubjectID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CreateUserID",model.CreateUserID.HasValue ? (object)model.CreateUserID.Value : (object)DBNull.Value );
 		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
 		db.Parameters.Append("@CreateDate",model.CreateDate.HasValue ? (object)model.CreateDate.Value : (object)DBNull.Value );
-			return db.ExecuteSql("update [Coupons_CashWhenFee] set [Money]=@Money,[Fee]=@Fee,[CouponsSubjectID]=@CouponsSubjectID,[StartDate]=@StartDate,[EndDate]=@EndDate,[CreateDate]=@CreateDate where [ID]=@ID");
+			return db.ExecuteSql("update [Coupons_CashWhenFee] set [Money]=@Money,[Fee]=@Fee,[CreateUserID]=@CreateUserID,[StartDate]=@StartDate,[EndDate]=@EndDate,[CreateDate]=@CreateDate where [ID]=@ID");
 		}
 		
 	
@@ -212,7 +212,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.ID = int.Parse(dr["ID"].ToString());
 			Entity.Money = dr["Money"] as decimal?;
 			Entity.Fee = dr["Fee"] as decimal?;
-			Entity.CouponsSubjectID = dr["CouponsSubjectID"] as int?;
+			Entity.CreateUserID = dr["CreateUserID"] as int?;
 			Entity.StartDate = dr["StartDate"] as DateTime?;
 			Entity.EndDate = dr["EndDate"] as DateTime?;
 			Entity.CreateDate = dr["CreateDate"] as DateTime?;
@@ -236,7 +236,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.ID = int.Parse(dr["ID"].ToString());
 			Entity.Money = dr["Money"] as decimal?;
 			Entity.Fee = dr["Fee"] as decimal?;
-			Entity.CouponsSubjectID = dr["CouponsSubjectID"] as int?;
+			Entity.CreateUserID = dr["CreateUserID"] as int?;
 			Entity.StartDate = dr["StartDate"] as DateTime?;
 			Entity.EndDate = dr["EndDate"] as DateTime?;
 			Entity.CreateDate = dr["CreateDate"] as DateTime?;
@@ -270,7 +270,7 @@ namespace ADeeWu.HuoBi3J.DAL
 				Entity.ID = int.Parse(dr["ID"].ToString());
 				Entity.Money = dr["Money"] as decimal?;
 				Entity.Fee = dr["Fee"] as decimal?;
-				Entity.CouponsSubjectID = dr["CouponsSubjectID"] as int?;
+				Entity.CreateUserID = dr["CreateUserID"] as int?;
 				Entity.StartDate = dr["StartDate"] as DateTime?;
 				Entity.EndDate = dr["EndDate"] as DateTime?;
 				Entity.CreateDate = dr["CreateDate"] as DateTime?;

@@ -45,7 +45,6 @@
     <div class="box">
         <div class="box_head1">
             <label class="fb font14 black70">代金券设置</label>
-            <asp:HiddenField ID="hfSubjectID" runat="server" />
         </div>
         <div class="box_body">
             <table>

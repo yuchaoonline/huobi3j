@@ -1,7 +1,9 @@
 ﻿using ADeeWu.HuoBi3J.Libary;
 using ADeeWu.HuoBi3J.SQL;
+using ADeeWu.HuoBi3J.Web.Class;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,7 +11,7 @@ using System.Web.UI.WebControls;
 
 namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 {
-    public partial class CashWhenFeeValidate : System.Web.UI.Page
+    public partial class CashWhenFeeValidate : PageBase_MyUser
     {
         DataBase db = DataBase.Create();
 
@@ -24,11 +26,27 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 
         private void BandData(string code)
         {
-            var list = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("code= '{0}'", code), "money desc");
+            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UserCode= '{0}'", code), "UseCount desc");
             if (list == null || list.Rows.Count <= 0) return;
 
             rpResult.DataSource = list;
             rpResult.DataBind();
+
+            decimal totalFee = 0;
+            decimal totalMoney = 0;
+            foreach (DataRow item in list.Rows)
+            {
+                totalFee += item["fee"].GetDecimal();
+                totalMoney += item["money"].GetDecimal();
+            }
+
+            rpTotal.DataSource = new List<object> { new {
+                totalfee=totalFee.ToString("0.00"),
+                totalmoney=totalMoney.ToString("0.00"),
+                createtime=list.Rows[0]["createtime"].GetDateTime(),
+                usecode=list.Rows[0]["usercode"].GetStr()} 
+            };
+            rpTotal.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)

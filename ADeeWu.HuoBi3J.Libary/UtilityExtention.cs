@@ -7,6 +7,7 @@ using System.Text;
 using System.Web.UI.WebControls;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ADeeWu.HuoBi3J.Libary
 {
@@ -348,6 +349,30 @@ namespace ADeeWu.HuoBi3J.Libary
                 return fileName.Substring(index);
             }
             return string.Empty;
+        }
+
+        /// <summary>
+        /// 不是空且含有内容
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsNotNullAndAny<TSource>(this List<TSource> obj)
+        {
+            if (obj == null) return false;
+            return obj.Any();
+        }
+
+        /// <summary>
+        /// 不是空且含有内容
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsNotNullAndAny<TSource>(this IEnumerable<TSource> obj)
+        {
+            if (obj == null) return false;
+            return obj.Any();
         }
     }
 }

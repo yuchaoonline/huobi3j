@@ -142,6 +142,7 @@
                         <div class="menu_childs" onmouseout="Menus.Hide(0);">
                             <ul>
                                 <li><a href="Coupons/Default.aspx" target='frmright'>活动列表</a></li>
+                                <li><a href="Coupons/CashWhenFee.aspx" target='frmright'>商家代金券</a></li>
                             </ul>
                         </div>
                         <div class="menu_div">

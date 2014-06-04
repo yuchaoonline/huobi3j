@@ -57,28 +57,33 @@
                 </div>
                 <div class="box_body">
                     <ul>
-                        <li><a href="/My/User/Coupons/Default.aspx">我的优惠券</a></li>
+                        <li><a href="/My/User/Coupons/Default.aspx">货比三家优惠券</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
-                        <li><a href="/My/User/Coupons/Exchange.aspx">兑换优惠券</a></li>                        
+                        <li><a href="/My/User/Coupons/Exchange.aspx">兑换优惠券</a></li>
                         <% } %>
                     </ul>
                 </div>
             </div>
-            <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
-              { %>
+
             <div class="box">
                 <div class="box_head">
                     <label class="fb font14">商家代金券</label>
                 </div>
                 <div class="box_body">
                     <ul>
+                        <li><a href="/My/User/Coupons/MyCashWhenFee.aspx">我的代金券</a></li>
+                        <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
+                          { %>
                         <li><a href="/My/User/Coupons/CashWhenFee.aspx">设置代金券</a></li>
                         <li><a href="/My/User/Coupons/CashWhenFeeValidate.aspx">验证优惠券</a></li>
+                        <li><a href="/My/User/Coupons/CashWhenFeeCode.aspx">领取优惠券记录</a></li>
+                        <li><a href="/My/User/Coupons/CashWhenFeeCodeLog.aspx">验证优惠券记录</a></li>
+                        <% } %>
                     </ul>
                 </div>
             </div>
-            <% } %>
+
         </div>
         <div class="side_content r">
             <asp:ContentPlaceHolder ID="main" runat="server"></asp:ContentPlaceHolder>

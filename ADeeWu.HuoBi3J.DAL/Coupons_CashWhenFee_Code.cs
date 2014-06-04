@@ -75,9 +75,16 @@ namespace ADeeWu.HuoBi3J.DAL
 		public int Add(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@Coupons_ListID",model.Coupons_ListID.HasValue ? (object)model.Coupons_ListID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Code",model.Code );
-		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Code]([Coupons_ListID],[Code]) values (@Coupons_ListID,@Code);select @@Identity;");
+		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Count",model.Count.HasValue ? (object)model.Count.Value : (object)DBNull.Value );
+		db.Parameters.Append("@UseCount",model.UseCount.HasValue ? (object)model.UseCount.Value : (object)DBNull.Value );
+		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
+		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Code]([Fee],[Money],[Count],[UseCount],[UserID],[SaleManUserID],[StartDate],[EndDate],[CreateTime]) values (@Fee,@Money,@Count,@UseCount,@UserID,@SaleManUserID,@StartDate,@EndDate,@CreateTime);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -87,9 +94,16 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",model.ID);
-		db.Parameters.Append("@Coupons_ListID",model.Coupons_ListID.HasValue ? (object)model.Coupons_ListID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Code",model.Code );
-			return db.ExecuteSql("update [Coupons_CashWhenFee_Code] set [Coupons_ListID]=@Coupons_ListID,[Code]=@Code where [ID]=@ID");
+		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
+		db.Parameters.Append("@Count",model.Count.HasValue ? (object)model.Count.Value : (object)DBNull.Value );
+		db.Parameters.Append("@UseCount",model.UseCount.HasValue ? (object)model.UseCount.Value : (object)DBNull.Value );
+		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
+		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
+		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Coupons_CashWhenFee_Code] set [Fee]=@Fee,[Money]=@Money,[Count]=@Count,[UseCount]=@UseCount,[UserID]=@UserID,[SaleManUserID]=@SaleManUserID,[StartDate]=@StartDate,[EndDate]=@EndDate,[CreateTime]=@CreateTime where [ID]=@ID");
 		}
 		
 	
@@ -202,8 +216,15 @@ namespace ADeeWu.HuoBi3J.DAL
 			DataRow dr = dt.Rows[0];
 			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Coupons_ListID = dr["Coupons_ListID"] as int?;
-			Entity.Code = dr["Code"] as string;
+			Entity.Fee = dr["Fee"] as decimal?;
+			Entity.Money = dr["Money"] as decimal?;
+			Entity.Count = dr["Count"] as int?;
+			Entity.UseCount = dr["UseCount"] as int?;
+			Entity.UserID = dr["UserID"] as int?;
+			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
+			Entity.StartDate = dr["StartDate"] as DateTime?;
+			Entity.EndDate = dr["EndDate"] as DateTime?;
+			Entity.CreateTime = dr["CreateTime"] as DateTime?;
 			return Entity;
 		}
 		
@@ -222,8 +243,15 @@ namespace ADeeWu.HuoBi3J.DAL
 			DataRow dr = dt.Rows[0];
 			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Coupons_ListID = dr["Coupons_ListID"] as int?;
-			Entity.Code = dr["Code"] as string;
+			Entity.Fee = dr["Fee"] as decimal?;
+			Entity.Money = dr["Money"] as decimal?;
+			Entity.Count = dr["Count"] as int?;
+			Entity.UseCount = dr["UseCount"] as int?;
+			Entity.UserID = dr["UserID"] as int?;
+			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
+			Entity.StartDate = dr["StartDate"] as DateTime?;
+			Entity.EndDate = dr["EndDate"] as DateTime?;
+			Entity.CreateTime = dr["CreateTime"] as DateTime?;
 			return Entity;
 		}
 		
@@ -252,8 +280,15 @@ namespace ADeeWu.HuoBi3J.DAL
 				DataRow dr = dt.Rows[i];
                 ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code();
 				Entity.ID = int.Parse(dr["ID"].ToString());
-				Entity.Coupons_ListID = dr["Coupons_ListID"] as int?;
-				Entity.Code = dr["Code"] as string;
+				Entity.Fee = dr["Fee"] as decimal?;
+				Entity.Money = dr["Money"] as decimal?;
+				Entity.Count = dr["Count"] as int?;
+				Entity.UseCount = dr["UseCount"] as int?;
+				Entity.UserID = dr["UserID"] as int?;
+				Entity.SaleManUserID = dr["SaleManUserID"] as int?;
+				Entity.StartDate = dr["StartDate"] as DateTime?;
+				Entity.EndDate = dr["EndDate"] as DateTime?;
+				Entity.CreateTime = dr["CreateTime"] as DateTime?;
                 EntityList[i] = Entity;
             }
              return EntityList;

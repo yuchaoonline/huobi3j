@@ -13,74 +13,22 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
     public partial class CashWhenFeeGeneralTicket : PageBase
     {
         DataBase db = DataBase.Create();
-        DAL.Coupons_List listDAL = new DAL.Coupons_List();
+        DAL.Coupons_CashWhenFee feeDAL = new DAL.Coupons_CashWhenFee();
+        DAL.Coupons_CashWhenFee_Condition conditionDAL = new DAL.Coupons_CashWhenFee_Condition();
+
         public string ConditionAlert = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                var confirm = WebUtility.GetRequestStr("confirm", "");
                 var count = WebUtility.GetRequestInt("count", 0);
                 var userid = WebUtility.GetRequestInt("salemanuserid", 0);
 
-                if (!string.IsNullOrWhiteSpace(confirm))
-                {
-                    SaveData(count,userid);
-                }
-                else
-                {
-                    SaleManInfo(userid);
-                    TicketInfo(userid, count);
-                    Condition(userid);
-                }
+                SaleManInfo(userid);
+                TicketInfo(userid, count);
+                Condition(userid);
             }
-        }
-
-        private void SaveData(int count, int userid)
-        {
-            var subject = new DAL.Coupons_Subject().GetEntity(new string[] { "CreateUserID", "SubjectType" }, new object[] { userid, "CashWhenFee" });
-            if (subject == null) return;
-
-            var cashWhenFees = new DAL.Coupons_CashWhenFee().GetEntityList("createdate desc", new string[] { "CouponsSubjectID" }, new object[] { subject.ID });
-            if (cashWhenFees == null || !cashWhenFees.Any()) return;
-            var cashWhenFee = cashWhenFees.FirstOrDefault();
-
-            var list = new Model.Coupons_List
-            {
-                EndDate = cashWhenFee.EndDate,
-                IsMoney = true,
-                IsUse = false,
-                Money = cashWhenFee.Money,
-                StartDate = cashWhenFee.StartDate,
-                SubjectID = subject.ID,
-                Password = GetCode(),
-                Memo = cashWhenFee.Fee.Value.ToString("0.00"),
-                Inactive = false,
-                UserID = (int)LoginUser.UserID
-            };
-
-            if (listDAL.Add(list) > 0)
-            {
-                WebUtility.ShowMsg(this, "领取成功！", "/center");
-            }
-            else
-            {
-                WebUtility.ShowMsg("领取失败！");
-            }
-        }
-
-        private string GetCode()
-        {
-            var code = "";
-            var r = new Random(DateTime.Now.Millisecond);
-            while (true)
-            {
-                code = r.Next(10000000, 99999999).ToString();
-                if (!listDAL.Exist("password", code)) break;
-            }
-
-            return code;
         }
 
         private void SaleManInfo(int userid)
@@ -91,17 +39,18 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
 
         private void Condition(int userid)
         {
-            var condition = new DAL.Coupons_CashWhenFee_Condition().GetEntity("SalemanUserID=" + userid);
-            if (condition != null && condition.IsShow.HasValue && condition.IsShow.Value)
-                ConditionAlert = string.Format("alert('温馨提示：本次消费满{0}元，结账时即可获得商家代金券，请向服务员索取。');", condition.Money.Value.ToString("0.00"));
+            var conditions = conditionDAL.GetEntityList("CreateTime desc", new string[] { "salemanuserid" }, new object[] { userid });
+            if (conditions.IsNotNullAndAny())
+            {
+                var condition = conditions.FirstOrDefault();
+                if (condition.IsShow.HasValue && condition.IsShow.Value)
+                    ConditionAlert = string.Format("alert('温馨提示：本次消费满{0}元，结账时即可获得商家代金券，请向服务员索取。');", condition.Money.Value.ToString("0.00"));
+            }
         }
 
         private void TicketInfo(int userid, int count)
         {
-            var subject = new DAL.Coupons_Subject().GetEntity(new string[] { "CreateUserID", "SubjectType" }, new object[] { userid, "CashWhenFee" });
-            if (subject == null) return;
-
-            var cashWhenFees = new DAL.Coupons_CashWhenFee().GetEntityList("createdate desc", new string[] { "CouponsSubjectID" }, new object[] { subject.ID });
+            var cashWhenFees = feeDAL.GetEntityList("CreateDate desc", new string[] { "CreateUserID" }, new object[] { userid }).ToList();
             if (cashWhenFees == null || !cashWhenFees.Any()) return;
             var cashWhenFee = cashWhenFees.FirstOrDefault();
 
