@@ -27,9 +27,9 @@
                             </td>
                             <td class="common">有效期
                             </td>
-                            <td class="num">券数
+                            <td class="common">券数/已使用
                             </td>
-                            <td class="num">已使用
+                            <td class="common">操作时间
                             </td>
                         </tr>
                     </tbody>
@@ -53,11 +53,11 @@
                                     <td class="common">
                                         <%# Eval("startdate").GetDateTime().ToString("yyyy/MM/dd")%> - <%#Eval("enddate").GetDateTime().ToString("yyyy/MM/dd") %>
                                     </td>
-                                    <td class="num">
-                                        <%# Eval("count") %>
+                                    <td class="common">
+                                        <%# Eval("count") %>/<%# Eval("usecount") %>
                                     </td>
-                                    <td class="num">
-                                        <%# Eval("usecount") %>
+                                    <td class="common">
+                                        <%# Eval("createtime").GetDateTime().ToString("yyyy/MM/dd hh:mm") %>
                                     </td>
                                 </tr>
                             </ItemTemplate>

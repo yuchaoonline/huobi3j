@@ -75,13 +75,27 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         }
 
         /// <summary>
+        /// 我的现金抵扣券(按商家)
+        /// </summary>
+        /// <param name="userid">用户ID</param>
+        /// <returns>返回各个商家拥有的券数</returns>
+        [HttpGet]
+        public IEnumerable<TicketCountOfSalemanModel> MyTicketOfSaleman(int userid)
+        {
+            var strWhere = string.Format("userid={0} and usecount<count and enddate >= '{1}'", userid, DateTime.Now);
+            var ticketTable = db.Select("vw_Coupons_CashWhenFee_UserTicket", strWhere, "");
+
+            return GetMyTicket(ticketTable).GroupBy(p => p.SaleManUserID).Select(p => new TicketCountOfSalemanModel { SaleManUserID = p.Key.Value, SaleMan = p.FirstOrDefault().CompanyName, Count = p.Sum(s => s.Count.Value - s.UseCount.Value) });
+        }
+
+        /// <summary>
         /// 使用现金抵扣券
         /// </summary>
         /// <param name="userid">使用者ID</param>
         /// <param name="ids">使用的券ID，例如：1,2,3</param>
         /// <param name="counts">相对应券的使用数量，例如：1,2,3</param>
         /// <returns>返回券使用后的消费密码；http400：参数不正确，ids与counts个数没有一一对应或者是有些券不是该用户的；http404：上传的ID都没能使用；http500：其中一项抵扣券的使用数量超过所拥有的券数</returns>
-        public HttpResponseMessage UseTicket(int userid, string ids,string counts)
+        public HttpResponseMessage UseTicket(int userid, string ids, string counts)
         {
             var IDs = ids.Split(',').Select(p => p.GetInt()).ToList();
             var Counts = counts.Split(',').Select(p => p.GetInt()).ToList();
@@ -125,7 +139,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="userid">领取人ID</param>
         /// <param name="salemanuserid">商家ID</param>
         /// <param name="count">张数</param>
-        /// <returns>http200 领取成功；http204领取券数小于0；http404 商家未找到或商家未参加现金抵扣活动</returns>
+        /// <returns>http200 领取成功；http204领取券数小于0；http404 商家未找到或商家未参加现金抵扣活动；http409：今天count次数已经领取过</returns>
         public HttpResponseMessage ObtainTicket(int userid, int salemanuserid, int count)
         {
             if (count <= 0) throw new HttpResponseException(HttpStatusCode.NoContent);
@@ -133,6 +147,9 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             var cashWhenFees = feeDAL.GetEntityList("createdate desc", new string[] { "createuserid" }, new object[] { salemanuserid });
             if (cashWhenFees == null || !cashWhenFees.Any()) throw new HttpResponseException(HttpStatusCode.NotFound);
             var cashWhenFee = cashWhenFees.FirstOrDefault();
+
+            if (codeDAL.Select(string.Format("count={0} and userid={1} and datediff(dd,createtime,getdate()) = 0", count, userid), "").Rows.Count > 0)
+                throw new HttpResponseException(HttpStatusCode.Conflict);
 
             codeDAL.Add(new Model.Coupons_CashWhenFee_Code
             {
@@ -176,6 +193,8 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                     UseCount = row["UseCount"].GetInt(),
                     LeftCount = row["Count"].GetInt() - row["UseCount"].GetInt(),
                     CreateTime = row["CreateTime"].GetDateTime(),
+                    CompanyName = row["CompanyName"].GetStr(),
+                    UserName = row["UserName"].GetStr(),
                 });
             }
 
@@ -215,6 +234,14 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             /// 剩下券数
             /// </summary>
             public int LeftCount { get; set; }
+            /// <summary>
+            /// 领取人
+            /// </summary>
+            public string UserName { get; set; }
+            /// <summary>
+            /// 商家名
+            /// </summary>
+            public string CompanyName { get; set; }
         }
 
         /// <summary>
@@ -258,6 +285,25 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             /// 现金抵扣券发放备注
             /// </summary>
             public string GetTicketMemo { get; set; }
+        }
+
+        /// <summary>
+        /// 各个商家的票券数
+        /// </summary>
+        public class TicketCountOfSalemanModel
+        {
+            /// <summary>
+            /// 商家ID
+            /// </summary>
+            public int SaleManUserID { get; set; }
+            /// <summary>
+            /// 商家名称
+            /// </summary>
+            public string SaleMan { get; set; }
+            /// <summary>
+            /// 券数
+            /// </summary>
+            public int Count { get; set; }
         }
     }
 }

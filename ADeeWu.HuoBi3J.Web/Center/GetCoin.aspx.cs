@@ -18,7 +18,10 @@ namespace ADeeWu.HuoBi3J.Web.Center
         DAL.Users userDAL = new DAL.Users();
         DAL.Key_QR_Log qrLogDAL = new DAL.Key_QR_Log();
         DAL.User_CoinUseHistories dealHistoryDAL = new DAL.User_CoinUseHistories();
+        DAL.Coupons_CashWhenFee_Condition conditionDAL = new DAL.Coupons_CashWhenFee_Condition();
         int qrFee = 10;
+        public string ConditionAlert = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -136,6 +139,17 @@ namespace ADeeWu.HuoBi3J.Web.Center
                     Demo = ""
                 };
                 qrLogDAL.Add(qrLog);
+            }
+        }
+
+        private void Condition(int userid)
+        {
+            var conditions = conditionDAL.GetEntityList("CreateTime desc", new string[] { "salemanuserid" }, new object[] { userid });
+            if (conditions.IsNotNullAndAny())
+            {
+                var condition = conditions.FirstOrDefault();
+                if (condition.IsShow.HasValue && condition.IsShow.Value)
+                    ConditionAlert = string.Format("alert('温馨提示：本次消费满{0}元，结账时即可获得商家代金券，请向服务员索取。');", condition.Money.Value.ToString("0.00"));
             }
         }
 

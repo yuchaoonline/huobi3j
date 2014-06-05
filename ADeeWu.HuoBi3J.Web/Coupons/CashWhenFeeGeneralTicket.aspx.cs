@@ -13,10 +13,7 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
     public partial class CashWhenFeeGeneralTicket : PageBase
     {
         DataBase db = DataBase.Create();
-        DAL.Coupons_CashWhenFee feeDAL = new DAL.Coupons_CashWhenFee();
-        DAL.Coupons_CashWhenFee_Condition conditionDAL = new DAL.Coupons_CashWhenFee_Condition();
-
-        public string ConditionAlert = "";
+        DAL.Coupons_CashWhenFee feeDAL = new DAL.Coupons_CashWhenFee();        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,7 +24,6 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
 
                 SaleManInfo(userid);
                 TicketInfo(userid, count);
-                Condition(userid);
             }
         }
 
@@ -35,17 +31,6 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
         {
             rpSaleManInfo.DataSource = db.Select("vw_Key_CircleSaleMan", "userid = " + userid, "");
             rpSaleManInfo.DataBind();
-        }
-
-        private void Condition(int userid)
-        {
-            var conditions = conditionDAL.GetEntityList("CreateTime desc", new string[] { "salemanuserid" }, new object[] { userid });
-            if (conditions.IsNotNullAndAny())
-            {
-                var condition = conditions.FirstOrDefault();
-                if (condition.IsShow.HasValue && condition.IsShow.Value)
-                    ConditionAlert = string.Format("alert('温馨提示：本次消费满{0}元，结账时即可获得商家代金券，请向服务员索取。');", condition.Money.Value.ToString("0.00"));
-            }
         }
 
         private void TicketInfo(int userid, int count)

@@ -83,6 +83,8 @@
         <script src="/js/bootstrap.min.js"></script>
         <script type="text/javascript">
             $(function () {
+                <%=ConditionAlert%>
+
                 $('#btnLogin').click(function () {
                     location.href = "/mobilelogin.aspx?url=" + location.href;
                     return false;

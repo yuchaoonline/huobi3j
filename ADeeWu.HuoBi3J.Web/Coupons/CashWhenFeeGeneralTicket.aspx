@@ -63,9 +63,7 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="script" runat="server">
     <script type="text/javascript">
-        $(function () {
-            <%=ConditionAlert%>
-
+        $(function () {           
             $('#btnLogin').click(function () {
                 location.href = "/mobilelogin.aspx?url=" + encodeURIComponent(location.href);
                 return false;
@@ -82,12 +80,15 @@
                     //contentType: 'application/json; charset=utf-8',
                     type: 'Post',
                     success: function (data) {
-                        alert('您已经获得代金券，请下载货比三家手机应用查看代金券！');
-                        location.href = '/';
+                        location.href = '/mobileresult.aspx?url=/&msg=您已经获得代金券，请下载货比三家手机应用查看代金券！';
                     },
                     statusCode: {
                         404: function () {
                             alert('活动不存在或者该商家未参加现金抵扣活动！');
+                            return false;
+                        },
+                        409: function () {
+                            alert('你今天已领取该商家的代金券，请不要重复领取！');
                             return false;
                         }
                     }

@@ -92,6 +92,7 @@
     <Content Include="Admin\Center\ViewClickCount.aspx" />
     <Content Include="Admin\Coupons\AddList.aspx" />
     <Content Include="Admin\Coupons\AddSubject.aspx" />
+    <Content Include="Admin\Coupons\CashWhenFee.aspx" />
     <Content Include="Admin\Coupons\Default.aspx" />
     <Content Include="Admin\Coupons\EditSubject.aspx" />
     <Content Include="Admin\Coupons\Lists.aspx" />
@@ -139,6 +140,7 @@
     <Content Include="MMain.Master" />
     <Content Include="MMyUser.master" />
     <Content Include="MobileRegister.aspx" />
+    <Content Include="MobileResult.aspx" />
     <Content Include="My\User\Center\AddPrice.aspx" />
     <Content Include="My\User\Center\EditPrice.aspx" />
     <Content Include="My\User\Center\MyFavList.aspx" />
@@ -271,6 +273,13 @@
     </Compile>
     <Compile Include="Admin\Coupons\AddSubject.aspx.designer.cs">
       <DependentUpon>AddSubject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\CashWhenFee.aspx.cs">
+      <DependentUpon>CashWhenFee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\CashWhenFee.aspx.designer.cs">
+      <DependentUpon>CashWhenFee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Coupons\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -535,6 +544,13 @@
     </Compile>
     <Compile Include="MobileRegister.aspx.designer.cs">
       <DependentUpon>MobileRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MobileResult.aspx.cs">
+      <DependentUpon>MobileResult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MobileResult.aspx.designer.cs">
+      <DependentUpon>MobileResult.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Center\AddPrice.aspx.cs">
       <DependentUpon>AddPrice.aspx</DependentUpon>
