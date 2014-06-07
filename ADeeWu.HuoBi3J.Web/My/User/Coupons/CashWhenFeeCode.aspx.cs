@@ -19,6 +19,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             if (!IsPostBack)
             {
                 BandData();
+                BandCount();
             }
         }
 
@@ -36,6 +37,17 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             this.Pager1.PageSize = (int)pageSize;
             this.Pager1.PageIndex = (int)pageIndex;
             this.Pager1.TotalRecords = (int)db.RecordCount;
+        }
+
+        private void BandCount()
+        {
+            var sql = "SELECT Count(*) AS TotalCount,SUM([Count]) AS TotalUseCount FROM dbo.Coupons_CashWhenFee_Code WHERE SaleManUserID = " + this.LoginUser.UserID;
+            var result = db.Select(sql);
+            if (result.Rows.Count > 0)
+            {
+                litCount.Text = result.Rows[0]["TotalCount"].GetStr();
+                litUseCount.Text = result.Rows[0]["TotalUseCount"].GetStr();
+            }
         }
     }
 }

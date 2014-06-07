@@ -10,42 +10,24 @@
 namespace ADeeWu.HuoBi3J.Web.My.User.Coupons {
     
     
-    public partial class CashWhenFeeCode {
+    public partial class ObtainLog {
         
         /// <summary>
-        /// litCount 控件。
+        /// rpDate 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litCount;
+        protected global::System.Web.UI.WebControls.Repeater rpDate;
         
         /// <summary>
-        /// litUseCount 控件。
+        /// rpMonth 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litUseCount;
-        
-        /// <summary>
-        /// rpGet 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rpGet;
-        
-        /// <summary>
-        /// Pager1 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::ADeeWu.HuoBi3J.WebUI.Pager3 Pager1;
+        protected global::System.Web.UI.WebControls.Repeater rpMonth;
     }
 }

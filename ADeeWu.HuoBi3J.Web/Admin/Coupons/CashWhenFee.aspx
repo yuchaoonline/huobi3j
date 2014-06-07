@@ -10,6 +10,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
+    <table class="searchTable">
+        <tr>
+            <td><a href="CashWhenFeeLog.aspx">统计数据</a></td>
+        </tr>
+    </table>
     <table class="gridView" width="100%">
         <asp:Repeater ID="rpResult" runat="server">
             <HeaderTemplate>

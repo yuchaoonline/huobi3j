@@ -93,6 +93,7 @@
     <Content Include="Admin\Coupons\AddList.aspx" />
     <Content Include="Admin\Coupons\AddSubject.aspx" />
     <Content Include="Admin\Coupons\CashWhenFee.aspx" />
+    <Content Include="Admin\Coupons\CashWhenFeeLog.aspx" />
     <Content Include="Admin\Coupons\Default.aspx" />
     <Content Include="Admin\Coupons\EditSubject.aspx" />
     <Content Include="Admin\Coupons\Lists.aspx" />
@@ -149,6 +150,7 @@
     <Content Include="My\User\Coupons\CashWhenFeeCode.aspx" />
     <Content Include="My\User\Coupons\CashWhenFeeValidate.aspx" />
     <Content Include="My\User\Coupons\MyCashWhenFee.aspx" />
+    <Content Include="My\User\Coupons\ObtainLog.aspx" />
     <Content Include="QR.aspx" />
     <Content Include="My\User\Center\SearchKey.aspx" />
     <Content Include="My\User\Center\ViewClick.aspx" />
@@ -280,6 +282,13 @@
     </Compile>
     <Compile Include="Admin\Coupons\CashWhenFee.aspx.designer.cs">
       <DependentUpon>CashWhenFee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Coupons\CashWhenFeeLog.aspx.cs">
+      <DependentUpon>CashWhenFeeLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Coupons\CashWhenFeeLog.aspx.designer.cs">
+      <DependentUpon>CashWhenFeeLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Coupons\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -752,6 +761,13 @@
     </Compile>
     <Compile Include="My\User\Coupons\MyCashWhenFee.aspx.designer.cs">
       <DependentUpon>MyCashWhenFee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Coupons\ObtainLog.aspx.cs">
+      <DependentUpon>ObtainLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Coupons\ObtainLog.aspx.designer.cs">
+      <DependentUpon>ObtainLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="QR.aspx.cs">
       <DependentUpon>QR.aspx</DependentUpon>

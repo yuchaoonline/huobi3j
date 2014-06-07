@@ -11,6 +11,16 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="siteposition" runat="server">
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="main" runat="server">
+    <div class="box">
+        <div class="box_head1">
+            <label class="fb font14 black70">统计信息</label>
+        </div>
+        <div class="box_body">
+            <span style="color: blue;">领取次数：<font color="#ff9933"><asp:Literal ID="litCount" runat="server"></asp:Literal></font> ，领取使用次数：<font color="#ff9933"><asp:Literal ID="litUseCount" runat="server"></asp:Literal></font></span>
+            <a href="ObtainLog.aspx" title="查看记录" class="btn_blue" style="float: right;">领取统计</a>
+        </div>
+    </div>
+
     <div class="mn">
         <div class="tl bm bmw" id="threadlist">
             <div class="th">
