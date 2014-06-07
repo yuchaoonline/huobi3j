@@ -80,7 +80,7 @@
                     //contentType: 'application/json; charset=utf-8',
                     type: 'Post',
                     success: function (data) {
-                        location.href = '/mobileresult.aspx?url=/&msg=您已经获得代金券，请下载货比三家手机应用查看代金券！';
+                        location.href = '/mobileresult.aspx?url=/hbsj.apk&msg=您已经获得代金券，请点击确认下载货比三家手机应用查看代金券！';
                     },
                     statusCode: {
                         404: function () {

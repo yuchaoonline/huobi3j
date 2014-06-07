@@ -45,6 +45,8 @@ namespace ADeeWu.HuoBi3J.Web.Center
                 rpSaleManInfo.DataSource = db.Select("vw_Key_CircleSaleMan", "userid = " + userid, "");
                 rpSaleManInfo.DataBind();
             }
+
+            Condition(userid);
         }
 
         private void SaleManProduct()

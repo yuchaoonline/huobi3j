@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ADeeWu.HuoBi3J.Libary;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace ADeeWu.HuoBi3J.MobileService.Controllers
 {
@@ -95,7 +96,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="ids">使用的券ID，例如：1,2,3</param>
         /// <param name="counts">相对应券的使用数量，例如：1,2,3</param>
         /// <returns>返回券使用后的消费密码；http400：参数不正确，ids与counts个数没有一一对应或者是有些券不是该用户的；http404：上传的ID都没能使用；http500：其中一项抵扣券的使用数量超过所拥有的券数</returns>
-        public HttpResponseMessage UseTicket(int userid, string ids, string counts)
+        public string UseTicket(int userid, string ids, string counts)
         {
             var IDs = ids.Split(',').Select(p => p.GetInt()).ToList();
             var Counts = counts.Split(',').Select(p => p.GetInt()).ToList();
@@ -130,7 +131,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 });
             }
 
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            return JsonConvert.SerializeObject(new { code = ticketCode });
         }
 
         /// <summary>
