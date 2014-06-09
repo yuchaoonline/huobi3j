@@ -41,9 +41,9 @@
                 </div>
                 <div class="box_body">
                     <ul>
+                        <li><a href="/My/User/Center/RegSaleMan.aspx">申请开通价格发布服务</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
-                        <li><a href="/My/User/Center/RegSaleMan.aspx">申请开通价格发布服务</a></li>
                         <li><a href="/My/User/Center/Prices.aspx">发布和管理价格信息</a></li>
                         <% } %>
                         <li><a href="/My/User/Center/MyFavList.aspx">我的收藏<span id="Span4"></span></a></li>
@@ -73,6 +73,7 @@
                 <div class="box_body">
                     <ul>
                         <li><a href="/My/User/Coupons/MyCashWhenFee.aspx">我的代金券</a></li>
+                         <li><a href="/My/User/Coupons/CashWhenFeeCodeLog.aspx">使用代金券记录</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
                         <li><a href="/My/User/Coupons/CashWhenFee.aspx">设置代金券</a></li>

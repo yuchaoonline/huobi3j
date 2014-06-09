@@ -408,7 +408,7 @@
             <param name="salemanuserid">商家ID</param>
             <returns>返回商家活动的信息，http404 商家未找到或商家未参加现金抵扣活动</returns>
         </member>
-        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicket(System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.GetMyTicket(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
             我的现金抵扣券
             </summary>
@@ -418,7 +418,7 @@
             <param name="pagesize">页容量</param>
             <returns>返回我所有的现金抵扣券</returns>
         </member>
-        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.MyTicketOfSaleman(System.Int32)">
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.GetMyTicketOfSaleman(System.Int32)">
             <summary>
             我的现金抵扣券(按商家)
             </summary>
@@ -442,6 +442,16 @@
             <param name="salemanuserid">商家ID</param>
             <param name="count">张数</param>
             <returns>http200 领取成功；http204领取券数小于0；http404 商家未找到或商家未参加现金抵扣活动；http409：今天count次数已经领取过</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.GetMyUseLog(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            我的现金抵扣券消费记录
+            </summary>
+            <param name="userid">用户ID</param>
+            <param name="salemanuserid">商家ID（商家ID=0，不筛选商家）</param>
+            <param name="pageindex">页码</param>
+            <param name="pagesize">页容量</param>
+            <returns>返回我的现金抵扣券消费记录列表</returns>
         </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.GetMyTicket(System.Data.DataTable)">
             <summary>
@@ -549,6 +559,46 @@
         <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.TicketCountOfSalemanModel.Count">
             <summary>
             券数
+            </summary>
+        </member>
+        <member name="T:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog">
+            <summary>
+            使用记录
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.UseCode">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.Money">
+            <summary>
+            抵扣金额
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.Fee">
+            <summary>
+            消费金额
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.CreatTime">
+            <summary>
+            消费时间
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.UseCount">
+            <summary>
+            使用次数
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController.UseCodeLog.SaleMan">
+            <summary>
+            商家名称
             </summary>
         </member>
         <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.CouponsController.RegisterTicket(System.Int32)">

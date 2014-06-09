@@ -45,7 +45,7 @@ GO
 
 CREATE TABLE [dbo].[Coupons_CashWhenFee_CodeLog](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[UserCode] [varchar](8) NULL,
+	[UseCode] [varchar](8) NULL,
 	[CodeID] [int] NULL,
 	[UseCount] [int] NULL,
 	[CreateTime] [datetime] NULL,
@@ -84,7 +84,10 @@ GO
 
 CREATE VIEW [dbo].[vw_Coupons_CashWhenFee_UseLog]
 AS
-SELECT   l.ID, l.UserCode, l.CodeID, l.UseCount, l.CreateTime, code.Money, code.Fee
+SELECT   l.ID, l.UseCode, l.CodeID, l.UseCount, l.CreateTime, code.Money, code.Fee, code.UserID, code.SaleManUserID,
+                    (SELECT   CompanyName
+                     FROM      dbo.Key_CircleSaleMan
+                     WHERE   (UserID = code.SaleManUserID)) AS SaleMan
 FROM      dbo.Coupons_CashWhenFee_CodeLog AS l LEFT OUTER JOIN
                 dbo.Coupons_CashWhenFee_Code AS code ON l.CodeID = code.ID
 

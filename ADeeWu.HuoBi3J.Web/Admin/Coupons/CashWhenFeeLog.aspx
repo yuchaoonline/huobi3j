@@ -15,14 +15,16 @@
                     <th class="common">日期</th>
                     <th class="common">领取次数</th>
                     <th class="common">领取使用次数</th>
+                    <th class="common">消费次数</th>
                 </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <tr>
-                        <td><%# Eval("CreateDate") %></td>
+                        <td><%# Eval("Title") %></td>
                         <td><%# Eval("TotalCount") %></td>
                         <td><%# Eval("TotalUseCount") %></td>
+                        <td><%# Eval("TotalExchangeCount") %></td>
                     </tr>
                 </tr>
             </ItemTemplate>
@@ -36,14 +38,16 @@
                     <th class="common">月份</th>
                     <th class="common">领取次数</th>
                     <th class="common">领取使用次数</th>
+                    <th class="common">消费次数</th>
                 </tr>
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
                     <tr>
-                        <td><%# Eval("CreateMonth") %></td>
+                        <td><%# Eval("Title") %></td>
                         <td><%# Eval("TotalCount") %></td>
                         <td><%# Eval("TotalUseCount") %></td>
+                        <td><%# Eval("TotalExchangeCount") %></td>
                     </tr>
                 </tr>
             </ItemTemplate>

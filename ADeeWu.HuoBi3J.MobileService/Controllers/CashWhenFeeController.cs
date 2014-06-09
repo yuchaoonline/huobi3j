@@ -64,8 +64,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="pageindex">页码</param>
         /// <param name="pagesize">页容量</param>
         /// <returns>返回我所有的现金抵扣券</returns>
-        [HttpGet]
-        public IEnumerable<MyTicketModel> MyTicket(int userid, int salemanuserid, int pageindex, int pagesize)
+        public IEnumerable<MyTicketModel> GetMyTicket(int userid, int salemanuserid, int pageindex, int pagesize)
         {
             var strWhere = "count > 0  and count>usecount and userid=" + userid;
             if (salemanuserid > 0)
@@ -80,8 +79,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// </summary>
         /// <param name="userid">用户ID</param>
         /// <returns>返回各个商家拥有的券数</returns>
-        [HttpGet]
-        public IEnumerable<TicketCountOfSalemanModel> MyTicketOfSaleman(int userid)
+        public IEnumerable<TicketCountOfSalemanModel> GetMyTicketOfSaleman(int userid)
         {
             var strWhere = string.Format("userid={0} and usecount<count and enddate >= '{1}'", userid, DateTime.Now);
             var ticketTable = db.Select("vw_Coupons_CashWhenFee_UserTicket", strWhere, "");
@@ -104,7 +102,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (!IDs.IsNotNullAndAny() || !Counts.IsNotNullAndAny() || IDs.Count != Counts.Count)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var codeDT = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("id in (0,{0}) and userid = {1}", string.Join(",", IDs), userid), "id");
+            var codeDT = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("id in (0,{0}) and userid = {1} and usecount < count and enddate >= getdate()", string.Join(",", IDs), userid), "id");
             var codes = GetMyTicket(codeDT).ToList();
 
             if (codes.Count() != IDs.Count)
@@ -127,7 +125,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                     CodeID = code.ID,
                     CreateTime = DateTime.Now,
                     UseCount = Counts[i],
-                    UserCode = ticketCode,
+                    UseCode = ticketCode,
                 });
             }
 
@@ -166,6 +164,42 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             });
 
             return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        /// <summary>
+        /// 我的现金抵扣券消费记录
+        /// </summary>
+        /// <param name="userid">用户ID</param>
+        /// <param name="salemanuserid">商家ID（商家ID=0，不筛选商家）</param>
+        /// <param name="pageindex">页码</param>
+        /// <param name="pagesize">页容量</param>
+        /// <returns>返回我的现金抵扣券消费记录列表</returns>
+        [Route("api/CashWhenFee/UseLog")]
+        public IEnumerable<UseCodeLog> GetMyUseLog(int userid, int salemanuserid, int pageindex,int pagesize)
+        {
+            List<UseCodeLog> logs = new List<UseCodeLog>();
+
+            var strWhere = "userid=" + userid;
+            if (salemanuserid > 0)
+                strWhere += " and salemanuserid=" + salemanuserid;
+            var logDT = db.Select(pagesize, pageindex, "[vw_Coupons_CashWhenFee_UseLog]", "ID", strWhere, "CreateTime Desc");
+            if (logDT.Rows.Count <= 0) return logs;
+
+            foreach (DataRow item in logDT.Rows)
+            {
+                logs.Add(new UseCodeLog
+                {
+                    CreatTime = item["CreateTime"].GetDateTime(),
+                    Fee = item["Fee"].GetDecimal(),
+                    Money = item["Money"].GetDecimal(),
+                    UseCode = item["UseCode"].GetStr(),
+                    UseCount = item["UseCount"].GetInt(),
+                    ID = item["ID"].GetInt(),
+                    SaleMan = item["SaleMan"].GetStr(),
+                });
+            }
+
+            return logs;
         }
 
         /// <summary>
@@ -216,7 +250,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             while (true)
             {
                 code = r.Next(10000000, 99999999).ToString();
-                if (!codeLogDAL.Exist("UserCode", code)) break;
+                if (!codeLogDAL.Exist("UseCode", code)) break;
             }
 
             return code;
@@ -305,6 +339,41 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             /// 券数
             /// </summary>
             public int Count { get; set; }
+        }
+
+        /// <summary>
+        /// 使用记录
+        /// </summary>
+        public class UseCodeLog
+        {
+            /// <summary>
+            /// ID
+            /// </summary>
+            public int ID { get; set; }
+            /// <summary>
+            /// 密码
+            /// </summary>
+            public string UseCode { get; set; }
+            /// <summary>
+            /// 抵扣金额
+            /// </summary>
+            public decimal Money { get; set; }
+            /// <summary>
+            /// 消费金额
+            /// </summary>
+            public decimal Fee { get; set; }
+            /// <summary>
+            /// 消费时间
+            /// </summary>
+            public DateTime CreatTime { get; set; }
+            /// <summary>
+            /// 使用次数
+            /// </summary>
+            public int UseCount { get; set; }
+            /// <summary>
+            /// 商家名称
+            /// </summary>
+            public string SaleMan { get; set; }
         }
     }
 }

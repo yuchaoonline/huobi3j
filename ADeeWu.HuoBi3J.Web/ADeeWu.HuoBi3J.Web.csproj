@@ -148,6 +148,7 @@
     <Content Include="My\User\Center\PriceCount4Key.aspx" />
     <Content Include="My\User\Center\Prices.aspx" />
     <Content Include="My\User\Coupons\CashWhenFeeCode.aspx" />
+    <Content Include="My\User\Coupons\CashWhenFeeCodeLog.aspx" />
     <Content Include="My\User\Coupons\CashWhenFeeValidate.aspx" />
     <Content Include="My\User\Coupons\MyCashWhenFee.aspx" />
     <Content Include="My\User\Coupons\ObtainLog.aspx" />
@@ -747,6 +748,13 @@
     </Compile>
     <Compile Include="My\User\Coupons\CashWhenFeeCode.aspx.designer.cs">
       <DependentUpon>CashWhenFeeCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="My\User\Coupons\CashWhenFeeCodeLog.aspx.cs">
+      <DependentUpon>CashWhenFeeCodeLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My\User\Coupons\CashWhenFeeCodeLog.aspx.designer.cs">
+      <DependentUpon>CashWhenFeeCodeLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="My\User\Coupons\CashWhenFeeValidate.aspx.cs">
       <DependentUpon>CashWhenFeeValidate.aspx</DependentUpon>

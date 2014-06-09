@@ -50,7 +50,7 @@
                             <%# Eval("count") %>/<%# Eval("usecount") %>
                         </td>
                         <td>
-                            <%# Eval("createtime").GetDateTime().ToString("yyyy/MM/dd hh:mm") %>
+                            <%# Eval("createtime").GetDateTime().ToString("yyyy/MM/dd HH:mm") %>
                         </td>
                     </tr>
                 </tr>

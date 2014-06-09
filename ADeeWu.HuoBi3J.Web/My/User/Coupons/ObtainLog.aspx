@@ -19,6 +19,7 @@
                             <td class="common">日期</td>
                             <td class="common">领取次数</td>
                             <td class="common">领取使用次数</td>
+                            <td class="common">消费次数</td>
                         </tr>
                     </tbody>
                 </table>
@@ -29,9 +30,10 @@
                         <asp:Repeater ID="rpDate" runat="server">
                             <ItemTemplate>
                                 <tr>
-                                    <td><%# Eval("CreateDate") %></td>
+                                    <td><%# Eval("Title") %></td>
                                     <td><%# Eval("TotalCount") %></td>
                                     <td><%# Eval("TotalUseCount") %></td>
+                                    <td><%# Eval("TotalExchangeCount") %></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -51,6 +53,7 @@
                             <td class="common">月份</td>
                             <td class="common">领取次数</td>
                             <td class="common">领取使用次数</td>
+                            <td class="common">消费次数</td>
                         </tr>
                     </tbody>
                 </table>
@@ -61,9 +64,10 @@
                         <asp:Repeater ID="rpMonth" runat="server">
                             <ItemTemplate>
                                 <tr>
-                                    <td><%# Eval("CreateMonth") %></td>
+                                    <td><%# Eval("Title") %></td>
                                     <td><%# Eval("TotalCount") %></td>
                                     <td><%# Eval("TotalUseCount") %></td>
+                                    <td><%# Eval("TotalExchangeCount") %></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>

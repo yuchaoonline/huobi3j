@@ -26,7 +26,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 
         private void BandData(string code)
         {
-            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UserCode= '{0}'", code), "UseCount desc");
+            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UseCode= '{0}'", code), "UseCount desc");
             if (list == null || list.Rows.Count <= 0) return;
 
             rpResult.DataSource = list;
@@ -44,7 +44,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
                 totalfee=totalFee.ToString("0.00"),
                 totalmoney=totalMoney.ToString("0.00"),
                 createtime=list.Rows[0]["createtime"].GetDateTime(),
-                usecode=list.Rows[0]["usercode"].GetStr()} 
+                usecode=list.Rows[0]["usecode"].GetStr()} 
             };
             rpTotal.DataBind();
         }
