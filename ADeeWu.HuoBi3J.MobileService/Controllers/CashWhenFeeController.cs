@@ -102,29 +102,34 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (!IDs.IsNotNullAndAny() || !Counts.IsNotNullAndAny() || IDs.Count != Counts.Count)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var codeDT = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("id in (0,{0}) and userid = {1} and usecount < count and enddate >= getdate()", string.Join(",", IDs), userid), "id");
+            var useDic = new Dictionary<int, int>();
+            for (int i = 0; i < IDs.Count; i++)
+            {
+                useDic.Add(IDs[i], Counts[i]);
+            }
+
+            var codeDT = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("id in (0,{0}) and userid = {1} and usecount < count and enddate >= getdate()", string.Join(",", useDic.Keys), userid), "id");
             var codes = GetMyTicket(codeDT).ToList();
 
-            if (codes.Count() != IDs.Count)
+            if (codes.Count() != useDic.Count)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
-
-            for (int i = 0; i < codes.Count; i++)
+                        
+            foreach (var code in codes)
             {
-                if (codes[i].LeftCount > 0 && codes[i].LeftCount > Counts[i])
+                if (code.LeftCount > 0 && code.LeftCount < useDic[code.ID])
                     throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
 
             var ticketCode = GeneralCode();
-            for (int i = 0; i < codes.Count(); i++)
+            foreach (var code in codes)
             {
-                var code = codes[i];
-                codeDAL.Update(new string[] { "usecount" }, new object[] { code.UseCount + Counts[i] }, "id=" + code.ID);
+                codeDAL.Update(new string[] { "usecount" }, new object[] { code.UseCount + useDic[code.ID] }, "id=" + code.ID);
 
                 codeLogDAL.Add(new Model.Coupons_CashWhenFee_CodeLog
                 {
                     CodeID = code.ID,
                     CreateTime = DateTime.Now,
-                    UseCount = Counts[i],
+                    UseCount = useDic[code.ID],
                     UseCode = ticketCode,
                 });
             }

@@ -18,8 +18,8 @@
                         <tr>
                             <td class="common">日期</td>
                             <td class="common">领取次数</td>
-                            <td class="common">领取使用次数</td>
-                            <td class="common">消费次数</td>
+                            <td class="common">领取券数</td>
+                            <td class="common">消费券数</td>
                         </tr>
                     </tbody>
                 </table>

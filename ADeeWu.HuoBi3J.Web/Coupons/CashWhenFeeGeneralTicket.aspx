@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MMobileIndex.Master" AutoEventWireup="true" CodeBehind="CashWhenFeeGeneralTicket.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.Coupons.CashWhenFeeGeneralTicket" %>
+<%@ Import Namespace="ADeeWu.HuoBi3J.Libary" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
     获得现金抵扣券
@@ -43,10 +44,10 @@
         <a href="#" class="list-group-item active">汇总</a>
         <asp:Repeater ID="rpTotal" runat="server">
             <ItemTemplate>
-                <a href="#" class="list-group-item">合计消费金额：<%# Eval("totalfee") %></a>
-                <a href="#" class="list-group-item">合计抵扣金额：<%# Eval("totalmoney") %></a>
-                <a href="#" class="list-group-item">当前时间：<%# Eval("nowdate") %></a>
-                <a href="#" class="list-group-item">过期时间：<%# Eval("invaildate") %></a>
+                <a href="#" class="list-group-item">合计消费金额：<%# Eval("totalfee").GetDecimal().ToString("0.00") %></a>
+                <a href="#" class="list-group-item">合计抵扣金额：<%# Eval("totalmoney").GetDecimal().ToString("0.00") %></a>
+                <a href="#" class="list-group-item">当前时间：<%# Eval("nowdate").GetDateTime().ToString("yyyy/MM/dd HH:mm:ss") %></a>
+                <a href="#" class="list-group-item">过期时间：<%# Eval("invaildate").GetDateTime().ToString("yyyy/MM/dd HH:mm:ss") %></a>
             </ItemTemplate>
         </asp:Repeater>
     </div>

@@ -47,6 +47,7 @@ namespace ADeeWu.HuoBi3J.Web.Coupons
 
         private void TotalInfo(decimal money, decimal fee, int count, DateTime endDate)
         {
+            endDate = endDate.Date.AddDays(1).AddSeconds(-1);
             rpTotal.DataSource = new List<object> { new { totalmoney = (money * count).ToString("0.00"), totalfee = (fee * count).ToString("0.00"), nowdate = DateTime.Now, invaildate = endDate } };
             rpTotal.DataBind();
         }

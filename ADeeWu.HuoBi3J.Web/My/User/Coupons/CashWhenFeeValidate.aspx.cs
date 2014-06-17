@@ -26,7 +26,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 
         private void BandData(string code)
         {
-            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UseCode= '{0}'", code), "UseCount desc");
+            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UseCode= '{0}' and SaleManUserID={1}", code), "UseCount desc", this.LoginUser.UserID);
             if (list == null || list.Rows.Count <= 0) return;
 
             rpResult.DataSource = list;
@@ -36,8 +36,8 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             decimal totalMoney = 0;
             foreach (DataRow item in list.Rows)
             {
-                totalFee += item["fee"].GetDecimal();
-                totalMoney += item["money"].GetDecimal();
+                totalFee += item["fee"].GetDecimal() * item["usecount"].GetInt();
+                totalMoney += item["money"].GetDecimal() * item["usecount"].GetInt();
             }
 
             rpTotal.DataSource = new List<object> { new {

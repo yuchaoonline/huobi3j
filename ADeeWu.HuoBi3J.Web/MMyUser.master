@@ -72,13 +72,13 @@
                 </div>
                 <div class="box_body">
                     <ul>
-                        <li><a href="/My/User/Coupons/MyCashWhenFee.aspx">我的代金券</a></li>
-                         <li><a href="/My/User/Coupons/CashWhenFeeCodeLog.aspx">使用代金券记录</a></li>
+                        <li><a href="/My/User/Coupons/MyCashWhenFee.aspx">我领取的代金券</a></li>
+                         <li><a href="/My/User/Coupons/CashWhenFeeCodeLog.aspx">我的代金券使用记录</a></li>
                         <%if (ADeeWu.HuoBi3J.Web.Class.SaleManSession.IsSaleMan)
                           { %>
-                        <li><a href="/My/User/Coupons/CashWhenFee.aspx">设置代金券</a></li>
-                        <li><a href="/My/User/Coupons/CashWhenFeeValidate.aspx">验证代金券</a></li>
-                        <li><a href="/My/User/Coupons/CashWhenFeeCode.aspx">领取代金券记录</a></li>
+                        <li><a href="/My/User/Coupons/CashWhenFee.aspx">设置商家代金券</a></li>
+                        <li><a href="/My/User/Coupons/CashWhenFeeValidate.aspx">验证商家代金券</a></li>
+                        <li><a href="/My/User/Coupons/CashWhenFeeCode.aspx">商家代金券领取记录</a></li>
                         <% } %>
                     </ul>
                 </div>
