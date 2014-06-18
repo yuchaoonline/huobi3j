@@ -26,7 +26,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
 
         private void BandData(string code)
         {
-            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UseCode= '{0}' and SaleManUserID={1}", code), "UseCount desc", this.LoginUser.UserID);
+            var list = db.Select("vw_Coupons_CashWhenFee_UseLog", string.Format("UseCode= '{0}' and SaleManUserID={1}", code, this.LoginUser.UserID), "UseCount desc");
             if (list == null || list.Rows.Count <= 0) return;
 
             rpResult.DataSource = list;

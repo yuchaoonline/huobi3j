@@ -35,9 +35,10 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (cashWhenFees == null || !cashWhenFees.Any()) throw new HttpResponseException(HttpStatusCode.NotFound);
             var cashWhenFee = cashWhenFees.FirstOrDefault();
 
+            var condition = new Model.Coupons_CashWhenFee_Condition();
             var conditions = conditionDAL.GetEntityList("CreateTime desc", new string[] { "salemanuserid" }, new object[] { salemanuserid });
-            if (!conditions.IsNotNullAndAny()) throw new HttpResponseException(HttpStatusCode.NotFound);
-            var condition = conditions.FirstOrDefault();
+            if (conditions.IsNotNullAndAny())
+                condition = conditions.FirstOrDefault();
 
             var saleman = salemanDAL.GetEntity("userid=" + cashWhenFee.CreateUserID);
             if (saleman == null) saleman = new Model.Key_CircleSaleMan();
@@ -51,7 +52,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 CompanyAddress = saleman.CompanyAddress,
                 CompanyName = saleman.CompanyName,
                 Phone = saleman.Phone,
-                GetTicketMoney = condition.Money.Value,
+                GetTicketMoney = condition.Money.HasValue ? condition.Money.Value : 0,
                 GetTicketMemo = condition.Memo,
             };
         }
@@ -113,7 +114,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
 
             if (codes.Count() != useDic.Count)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
-                        
+
             foreach (var code in codes)
             {
                 if (code.LeftCount > 0 && code.LeftCount < useDic[code.ID])
@@ -152,7 +153,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             if (cashWhenFees == null || !cashWhenFees.Any()) throw new HttpResponseException(HttpStatusCode.NotFound);
             var cashWhenFee = cashWhenFees.FirstOrDefault();
 
-            if (codeDAL.Select(string.Format("count={0} and userid={1} and datediff(dd,createtime,getdate()) = 0", count, userid), "").Rows.Count > 0)
+            if (codeDAL.Select(string.Format("count={0} and userid={1} and salemanuserid={2} and datediff(dd,createtime,getdate()) = 0", count, userid, salemanuserid), "").Rows.Count > 0)
                 throw new HttpResponseException(HttpStatusCode.Conflict);
 
             codeDAL.Add(new Model.Coupons_CashWhenFee_Code
@@ -180,7 +181,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         /// <param name="pagesize">页容量</param>
         /// <returns>返回我的现金抵扣券消费记录列表</returns>
         [Route("api/CashWhenFee/UseLog")]
-        public IEnumerable<UseCodeLog> GetMyUseLog(int userid, int salemanuserid, int pageindex,int pagesize)
+        public IEnumerable<UseCodeLog> GetMyUseLog(int userid, int salemanuserid, int pageindex, int pagesize)
         {
             List<UseCodeLog> logs = new List<UseCodeLog>();
 

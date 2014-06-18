@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MMyUser.master" AutoEventWireup="true" CodeBehind="ObtainLog.aspx.cs" Inherits="ADeeWu.HuoBi3J.Web.My.User.Coupons.ObtainLog" %>
+<%@ Import Namespace="ADeeWu.HuoBi3J.Libary" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="title" runat="server">
 </asp:Content>
@@ -20,6 +21,7 @@
                             <td class="common">领取次数</td>
                             <td class="common">领取券数</td>
                             <td class="common">消费券数</td>
+                            <td class="common">消费金额</td>
                         </tr>
                     </tbody>
                 </table>
@@ -34,6 +36,7 @@
                                     <td><%# Eval("TotalCount") %></td>
                                     <td><%# Eval("TotalUseCount") %></td>
                                     <td><%# Eval("TotalExchangeCount") %></td>
+                                    <td><%# Eval("TotalFee").GetDecimal().ToString("0.00") %></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>
@@ -52,8 +55,9 @@
                         <tr>
                             <td class="common">月份</td>
                             <td class="common">领取次数</td>
-                            <td class="common">领取使用次数</td>
-                            <td class="common">消费次数</td>
+                            <td class="common">领取券数</td>
+                            <td class="common">消费券数</td>
+                            <td class="common">消费金额</td>
                         </tr>
                     </tbody>
                 </table>
@@ -68,6 +72,7 @@
                                     <td><%# Eval("TotalCount") %></td>
                                     <td><%# Eval("TotalUseCount") %></td>
                                     <td><%# Eval("TotalExchangeCount") %></td>
+                                    <td><%# Eval("TotalFee").GetDecimal().ToString("0.00") %></td>
                                 </tr>
                             </ItemTemplate>
                         </asp:Repeater>

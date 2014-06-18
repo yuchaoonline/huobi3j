@@ -17,7 +17,7 @@
         </div>
         <div class="box_body">
             <span style="color: blue;">领取次数：<font color="#ff9933"><asp:Literal ID="litCount" runat="server"></asp:Literal></font> ，领取使用次数：<font color="#ff9933"><asp:Literal ID="litUseCount" runat="server"></asp:Literal></font></span>
-            <a href="ObtainLog.aspx" title="查看记录" class="btn_blue" style="float: right;">领取使用统计</a>
+            <a href="ObtainLog.aspx" title="查看记录" class="btn_blue89" style="float: right; line-height: 24px; height: 24px;">领取使用统计</a>
         </div>
     </div>
 

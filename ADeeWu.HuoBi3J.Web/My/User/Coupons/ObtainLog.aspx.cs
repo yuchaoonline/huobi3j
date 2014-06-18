@@ -28,7 +28,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
         {
             var sql = string.Format(@"SELECT code.CreateDate as Title ,SUM(code.Count) AS TotalUseCount ,COUNT(code.Count) AS TotalCount FROM ( SELECT CONVERT(VARCHAR(12), c.CreateTime, 112) AS CreateDate , c.[Count] FROM dbo.Coupons_CashWhenFee_Code c WHERE SaleManUserID = {0} AND DATEDIFF(DD, c.CreateTime, GETDATE()) <= 7) AS code GROUP BY code.CreateDate", this.LoginUser.UserID);
             var GetDT = db.Select(sql);
-            var sql2 = string.Format("SELECT  CreateDate as Title , SUM(UseCount) AS TotalExchangeCount FROM ( SELECT CONVERT(VARCHAR(12), l.CreateTime, 112) AS CreateDate , l.UseCount FROM dbo.Coupons_CashWhenFee_CodeLog l LEFT JOIN dbo.Coupons_CashWhenFee_Code code ON l.CodeID = code.ID WHERE code.SaleManUserID = {0} AND DATEDIFF(DD, l.CreateTime, GETDATE()) <= 7) AS newTable GROUP BY CreateDate", this.LoginUser.UserID);
+            var sql2 = string.Format("SELECT  CreateDate as Title , SUM(UseCount) AS TotalExchangeCount , SUM(UseCount * Fee) AS TotalFee FROM ( SELECT CONVERT(VARCHAR(12), l.CreateTime, 112) AS CreateDate , l.UseCount , code.Fee FROM dbo.Coupons_CashWhenFee_CodeLog l LEFT JOIN dbo.Coupons_CashWhenFee_Code code ON l.CodeID = code.ID WHERE code.SaleManUserID = {0} AND DATEDIFF(DD, l.CreateTime, GETDATE()) <= 7) AS newTable GROUP BY CreateDate", this.LoginUser.UserID);
             var GetDT2 = db.Select(sql2);
 
             var result = new List<TotalModel>();
@@ -47,6 +47,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
                 if (model!=null)
                 {
                     model.TotalExchangeCount = item["TotalExchangeCount"].GetInt();
+                    model.TotalFee = item["TotalFee"].GetDecimal();
                     continue;
                 }
 
@@ -54,6 +55,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
                 {
                     Title = item["Title"].GetStr(),
                     TotalExchangeCount = item["TotalExchangeCount"].GetInt(),
+                    TotalFee = item["TotalFee"].GetDecimal(),
                 });
             }
 
@@ -65,7 +67,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
         {
             var sql = string.Format(@"SELECT code.CreateMonth as Title , SUM(code.Count) AS TotalUseCount , COUNT(code.Count) AS TotalCount FROM ( SELECT SUBSTRING(CONVERT(VARCHAR(12), c.CreateTime, 112), 0, 7) AS CreateMonth ,c.[Count] FROM dbo.Coupons_CashWhenFee_Code c WHERE SaleManUserID = {0} AND DATEDIFF(MM, c.CreateTime, GETDATE()) <= 6 ) AS code GROUP BY code.CreateMonth", this.LoginUser.UserID);
             var GetDT = db.Select(sql);
-            var sql2 = string.Format("SELECT  CreateDate as Title , SUM(UseCount) AS TotalExchangeCount FROM ( SELECT SUBSTRING(CONVERT(VARCHAR(12), l.CreateTime, 112), 0, 7) AS CreateDate , l.UseCount FROM dbo.Coupons_CashWhenFee_CodeLog l LEFT JOIN dbo.Coupons_CashWhenFee_Code code ON l.CodeID = code.ID WHERE code.SaleManUserID = {0} AND DATEDIFF(MM, l.CreateTime, GETDATE()) <= 6) AS newTable GROUP BY CreateDate", this.LoginUser.UserID);
+            var sql2 = string.Format("SELECT  CreateDate as Title , SUM(UseCount) AS TotalExchangeCount , SUM(UseCount * Fee) AS TotalFee FROM ( SELECT SUBSTRING(CONVERT(VARCHAR(12), l.CreateTime, 112), 0, 7) AS CreateDate , l.UseCount , code.Fee FROM dbo.Coupons_CashWhenFee_CodeLog l LEFT JOIN dbo.Coupons_CashWhenFee_Code code ON l.CodeID = code.ID WHERE code.SaleManUserID = {0} AND DATEDIFF(MM, l.CreateTime, GETDATE()) <= 6) AS newTable GROUP BY CreateDate", this.LoginUser.UserID);
             var GetDT2 = db.Select(sql2);
 
             var result = new List<TotalModel>();
@@ -84,6 +86,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
                 if (model != null)
                 {
                     model.TotalExchangeCount = item["TotalExchangeCount"].GetInt();
+                    model.TotalFee = item["TotalFee"].GetDecimal();
                     continue;
                 }
 
@@ -91,6 +94,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
                 {
                     Title = item["Title"].GetStr(),
                     TotalExchangeCount = item["TotalExchangeCount"].GetInt(),
+                    TotalFee = item["TotalFee"].GetDecimal()
                 });
             }
 
@@ -104,6 +108,7 @@ namespace ADeeWu.HuoBi3J.Web.My.User.Coupons
             public int TotalUseCount { get; set; }
             public int TotalCount { get; set; }
             public int TotalExchangeCount { get; set; }
+            public decimal TotalFee { get; set; }
         }
     }
 }
