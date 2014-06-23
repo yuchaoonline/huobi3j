@@ -46,7 +46,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
             return new SaleManCashWhenFee
             {
                 SaleManUserID = salemanuserid,
-                EndDate = cashWhenFee.EndDate.Value,
+                EndDate = cashWhenFee.EndDate.Value.Date.AddDays(1).AddSeconds(-1),
                 Fee = cashWhenFee.Fee.Value,
                 Money = cashWhenFee.Money.Value,
                 CompanyAddress = saleman.CompanyAddress,
@@ -109,7 +109,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 useDic.Add(IDs[i], Counts[i]);
             }
 
-            var codeDT = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("id in (0,{0}) and userid = {1} and usecount < count and enddate >= getdate()", string.Join(",", useDic.Keys), userid), "id");
+            var codeDT = db.Select("vw_Coupons_CashWhenFee_UserTicket", string.Format("id in (0,{0}) and userid = {1} and usecount < count and DATEDIFF(DAY,EndDate,GETDATE()) <= 0", string.Join(",", useDic.Keys), userid), "id");
             var codes = GetMyTicket(codeDT).ToList();
 
             if (codes.Count() != useDic.Count)

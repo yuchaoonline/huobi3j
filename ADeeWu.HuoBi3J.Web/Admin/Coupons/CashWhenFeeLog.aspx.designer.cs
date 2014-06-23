@@ -22,15 +22,6 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons {
         protected global::System.Web.UI.WebControls.TextBox txtName;
         
         /// <summary>
-        /// txtCompanyName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompanyName;
-        
-        /// <summary>
         /// btnSubmit 控件。
         /// </summary>
         /// <remarks>
@@ -38,6 +29,15 @@ namespace ADeeWu.HuoBi3J.Web.Admin.Coupons {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmit;
+        
+        /// <summary>
+        /// litSaleman 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litSaleman;
         
         /// <summary>
         /// rpWeek 控件。

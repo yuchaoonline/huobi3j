@@ -20,14 +20,16 @@
                 <tbody>
                     <tr height="35px">
                         <td class="tr">需要消费满的金额设置：</td>
-                        <td class="font14 black4B">
+                        <td>
                             <asp:TextBox ID="txtConditionMoney" runat="server"></asp:TextBox>
+                            <span class="tips">该信息填写后会在扫商家二维码时显示出来，选择“隐藏”按钮可以不显示</span>
                         </td>
                     </tr>
                     <tr height="35px">
                         <td class="tr">备注：</td>
-                        <td class="font14 black4B">
+                        <td>
                             <asp:TextBox ID="txtMemo" runat="server"></asp:TextBox>
+                            <span class="tips">该信息填写后会在手机应用的代金券说明显示出来</span>
                         </td>
                     </tr>
                     <tr height="35px">
@@ -165,7 +167,7 @@
                                         <%# Eval("startdate").GetDateTime().ToString("yyyy/MM/dd")%> - <%#Eval("enddate").GetDateTime().ToString("yyyy/MM/dd") %>
                                     </td>
                                     <td class="common">
-                                        <%# Eval("createdate").GetDateTime().ToString("yyyy/MM/dd HH:ss") %>
+                                        <%# Eval("createdate").GetDateTime().ToString("yyyy/MM/dd HH:mm") %>
                                     </td>
                                 </tr>
                             </ItemTemplate>
