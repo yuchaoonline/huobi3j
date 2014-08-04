@@ -15,6 +15,7 @@ public class Coupons_CashWhenFee_Code{
 	private DateTime? _StartDate = null;
 	private DateTime? _EndDate = null;
 	private DateTime? _CreateTime = null;
+	private decimal _OriginalMoney = 0M;
 	#endregion
 	
 	#region Contructors
@@ -33,7 +34,8 @@ public class Coupons_CashWhenFee_Code{
 			int saleManUserID,
 			DateTime startDate,
 			DateTime endDate,
-			DateTime createTime
+			DateTime createTime,
+			decimal originalMoney
 	)
 	{
 		_ID            = iD;
@@ -46,6 +48,7 @@ public class Coupons_CashWhenFee_Code{
 			_StartDate     = startDate;
 			_EndDate       = endDate;
 			_CreateTime    = createTime;
+			_OriginalMoney = originalMoney;
 			
 	}
 	#endregion
@@ -60,6 +63,7 @@ public class Coupons_CashWhenFee_Code{
 	public DateTime? StartDate { set{ _StartDate = value; } get{ return _StartDate; }}
 	public DateTime? EndDate { set{ _EndDate = value; } get{ return _EndDate; }}
 	public DateTime? CreateTime { set{ _CreateTime = value; } get{ return _CreateTime; }}
+	public decimal OriginalMoney { set{ _OriginalMoney = value; } get{ return _OriginalMoney; }}
 }
 }
 

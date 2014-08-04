@@ -10,7 +10,7 @@ using ADeeWu.HuoBi3J.SQL;
 namespace ADeeWu.HuoBi3J.DAL
 {
 	
-	public class Coupons_CashWhenFee_Code{
+	public class Coupons_CashWhenFee_ShareFriend{
 	
 		private DataBase db = null;
 		///<summary>
@@ -32,7 +32,7 @@ namespace ADeeWu.HuoBi3J.DAL
             get { return db.Parameters; }
         }
 		
-		public Coupons_CashWhenFee_Code()
+		public Coupons_CashWhenFee_ShareFriend()
 		{
 			this.db = DataBase.Create();
 		}
@@ -42,7 +42,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		public bool Exist(string where)
         {
            StringBuilder builder = new StringBuilder();
-           builder.Append("select * from [Coupons_CashWhenFee_Code] where 1=1");
+           builder.Append("select * from [Coupons_CashWhenFee_ShareFriend] where 1=1");
            if (!string.IsNullOrEmpty(where) && where.Trim()!="")
            {
                builder.AppendFormat(" and ( {0} )", where);
@@ -59,7 +59,7 @@ namespace ADeeWu.HuoBi3J.DAL
         {
            
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [Coupons_CashWhenFee_Code] where 1=1");
+            builder.Append("select * from [Coupons_CashWhenFee_ShareFriend] where 1=1");
 			db.Parameters.Clear();
             for (int i = 0; i < columns.Length; i++)
             {
@@ -72,40 +72,26 @@ namespace ADeeWu.HuoBi3J.DAL
 	    /// <summary>
 		/// 成功返回大于0的新ID
 		/// </summary>
-		public int Add(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code model)
+		public int Add(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend model)
 		{
 			db.Parameters.Clear();
-		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Count",model.Count.HasValue ? (object)model.Count.Value : (object)DBNull.Value );
-		db.Parameters.Append("@UseCount",model.UseCount.HasValue ? (object)model.UseCount.Value : (object)DBNull.Value );
-		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
-		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
-		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
-		db.Parameters.Append("@OriginalMoney",model.OriginalMoney);
-		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_Code]([Fee],[Money],[Count],[UseCount],[UserID],[SaleManUserID],[StartDate],[EndDate],[CreateTime],[OriginalMoney]) values (@Fee,@Money,@Count,@UseCount,@UserID,@SaleManUserID,@StartDate,@EndDate,@CreateTime,@OriginalMoney);select @@Identity;");
+		db.Parameters.Append("@CodeID",model.CodeID.HasValue ? (object)model.CodeID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@DateTime",model.DateTime.HasValue ? (object)model.DateTime.Value : (object)DBNull.Value );
+		db.Parameters.Append("@ShareType",model.ShareType.HasValue ? (object)model.ShareType.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_ShareFriend]([CodeID],[DateTime],[ShareType]) values (@CodeID,@DateTime,@ShareType);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
 		}
 		
-		public int Update(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code model)
+		public int Update(ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend model)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",model.ID);
-		db.Parameters.Append("@Fee",model.Fee.HasValue ? (object)model.Fee.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
-		db.Parameters.Append("@Count",model.Count.HasValue ? (object)model.Count.Value : (object)DBNull.Value );
-		db.Parameters.Append("@UseCount",model.UseCount.HasValue ? (object)model.UseCount.Value : (object)DBNull.Value );
-		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@SaleManUserID",model.SaleManUserID.HasValue ? (object)model.SaleManUserID.Value : (object)DBNull.Value );
-		db.Parameters.Append("@StartDate",model.StartDate.HasValue ? (object)model.StartDate.Value : (object)DBNull.Value );
-		db.Parameters.Append("@EndDate",model.EndDate.HasValue ? (object)model.EndDate.Value : (object)DBNull.Value );
-		db.Parameters.Append("@CreateTime",model.CreateTime.HasValue ? (object)model.CreateTime.Value : (object)DBNull.Value );
-		db.Parameters.Append("@OriginalMoney",model.OriginalMoney);
-			return db.ExecuteSql("update [Coupons_CashWhenFee_Code] set [Fee]=@Fee,[Money]=@Money,[Count]=@Count,[UseCount]=@UseCount,[UserID]=@UserID,[SaleManUserID]=@SaleManUserID,[StartDate]=@StartDate,[EndDate]=@EndDate,[CreateTime]=@CreateTime,[OriginalMoney]=@OriginalMoney where [ID]=@ID");
+		db.Parameters.Append("@CodeID",model.CodeID.HasValue ? (object)model.CodeID.Value : (object)DBNull.Value );
+		db.Parameters.Append("@DateTime",model.DateTime.HasValue ? (object)model.DateTime.Value : (object)DBNull.Value );
+		db.Parameters.Append("@ShareType",model.ShareType.HasValue ? (object)model.ShareType.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Coupons_CashWhenFee_ShareFriend] set [CodeID]=@CodeID,[DateTime]=@DateTime,[ShareType]=@ShareType where [ID]=@ID");
 		}
 		
 	
@@ -121,7 +107,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public int Update(string columnName, object value, string where)
 		{
-			string sql = String.Format("update [{0}] set {1}=@{1}","Coupons_CashWhenFee_Code",columnName);
+			string sql = String.Format("update [{0}] set {1}=@{1}","Coupons_CashWhenFee_ShareFriend",columnName);
 			if(!string.IsNullOrEmpty(where)){
 				sql += " where " + where;
 			}
@@ -142,7 +128,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			if( updateColumns==null || updateColumns.Length==0 || updateValues== null || updateValues.Length != updateColumns.Length) return -1;
 			
-			string sql = String.Format("update [{0}] ","Coupons_CashWhenFee_Code");
+			string sql = String.Format("update [{0}] ","Coupons_CashWhenFee_ShareFriend");
 			
 			db.Parameters.Clear();
 			StringBuilder builder = new StringBuilder();
@@ -172,7 +158,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		{
 			db.Parameters.Clear();
 			db.Parameters.Append("@ID",ID);
-			return db.ExecuteSql("delete from [Coupons_CashWhenFee_Code]  where  @ID=ID");
+			return db.ExecuteSql("delete from [Coupons_CashWhenFee_ShareFriend]  where  @ID=ID");
 		}
 		
 		/// <summary>
@@ -182,7 +168,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		/// <returns>影响行数</returns>
 		public int DeleteAll()
 		{
-			string sql = string.Format("delete from [{0}] ", "Coupons_CashWhenFee_Code");
+			string sql = string.Format("delete from [{0}] ", "Coupons_CashWhenFee_ShareFriend");
 			return db.ExecuteSql(sql);
 
 		}
@@ -194,7 +180,7 @@ namespace ADeeWu.HuoBi3J.DAL
 		/// <returns>影响行数</returns>
 		public int Delete(string where)
         {
-            string sql = string.Format("delete from [{0}] where 1=2 ", "Coupons_CashWhenFee_Code");
+            string sql = string.Format("delete from [{0}] where 1=2 ", "Coupons_CashWhenFee_ShareFriend");
 			if(string.IsNullOrEmpty(where)){
 				return -1;
 			}
@@ -203,66 +189,52 @@ namespace ADeeWu.HuoBi3J.DAL
 
         public int Delete(string columnName, object value)
         {
-            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "Coupons_CashWhenFee_Code",columnName);
+            string sql = string.Format("delete from [{0}] where {1}=@{1} ", "Coupons_CashWhenFee_ShareFriend",columnName);
 			db.Parameters.Clear();
             db.Parameters.Append("@" + columnName, value);
             return db.ExecuteSql(sql);
         }
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code GetEntity(int  ID)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend GetEntity(int  ID)
 		{
 			db.Parameters.Clear();
 		db.Parameters.Append("@ID",ID);
-			DataTable dt = db.Select("select * from [Coupons_CashWhenFee_Code] where 1=1  and [ID]=@ID");
+			DataTable dt = db.Select("select * from [Coupons_CashWhenFee_ShareFriend] where 1=1  and [ID]=@ID");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code();
+			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Fee = dr["Fee"] as decimal?;
-			Entity.Money = dr["Money"] as decimal?;
-			Entity.Count = dr["Count"] as int?;
-			Entity.UseCount = dr["UseCount"] as int?;
-			Entity.UserID = dr["UserID"] as int?;
-			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
-			Entity.StartDate = dr["StartDate"] as DateTime?;
-			Entity.EndDate = dr["EndDate"] as DateTime?;
-			Entity.CreateTime = dr["CreateTime"] as DateTime?;
-			Entity.OriginalMoney = decimal.Parse(dr["OriginalMoney"].ToString());
+			Entity.CodeID = dr["CodeID"] as int?;
+			Entity.DateTime = dr["DateTime"] as DateTime?;
+			Entity.ShareType = dr["ShareType"] as int?;
 			return Entity;
 		}
 		
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code GetEntity(string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend GetEntity(string[] columns,params object[] values)
 		{
-			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code[] EntityList = GetEntityList("",columns,values);
+			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend[] EntityList = GetEntityList("",columns,values);
 			if(EntityList.Length==0)return null;
 			return EntityList[0];
 		}
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code GetEntity(string where)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend GetEntity(string where)
 		{
 			DataTable dt = this.Select(where,"");
 			if(dt.Rows.Count==0) return null;
 			DataRow dr = dt.Rows[0];
-			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code();
+			ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend();
 			Entity.ID = int.Parse(dr["ID"].ToString());
-			Entity.Fee = dr["Fee"] as decimal?;
-			Entity.Money = dr["Money"] as decimal?;
-			Entity.Count = dr["Count"] as int?;
-			Entity.UseCount = dr["UseCount"] as int?;
-			Entity.UserID = dr["UserID"] as int?;
-			Entity.SaleManUserID = dr["SaleManUserID"] as int?;
-			Entity.StartDate = dr["StartDate"] as DateTime?;
-			Entity.EndDate = dr["EndDate"] as DateTime?;
-			Entity.CreateTime = dr["CreateTime"] as DateTime?;
-			Entity.OriginalMoney = decimal.Parse(dr["OriginalMoney"].ToString());
+			Entity.CodeID = dr["CodeID"] as int?;
+			Entity.DateTime = dr["DateTime"] as DateTime?;
+			Entity.ShareType = dr["ShareType"] as int?;
 			return Entity;
 		}
 		
-		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code[] GetEntityList(string orderBy,string[] columns,params object[] values)
+		public ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend[] GetEntityList(string orderBy,string[] columns,params object[] values)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append("select * from [Coupons_CashWhenFee_Code] where 1=1");
+            builder.Append("select * from [Coupons_CashWhenFee_ShareFriend] where 1=1");
 			db.Parameters.Clear();
 			for(int i=0;i<columns.Length;i++)
 			{
@@ -277,23 +249,16 @@ namespace ADeeWu.HuoBi3J.DAL
 
             DataTable dt = db.Select(builder.ToString());
            
-            ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code[] EntityList = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code[dt.Rows.Count];
+            ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend[] EntityList = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend[dt.Rows.Count];
 			 if (dt.Rows.Count == 0) return EntityList;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
 				DataRow dr = dt.Rows[i];
-                ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_Code();
+                ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend Entity = new ADeeWu.HuoBi3J.Model.Coupons_CashWhenFee_ShareFriend();
 				Entity.ID = int.Parse(dr["ID"].ToString());
-				Entity.Fee = dr["Fee"] as decimal?;
-				Entity.Money = dr["Money"] as decimal?;
-				Entity.Count = dr["Count"] as int?;
-				Entity.UseCount = dr["UseCount"] as int?;
-				Entity.UserID = dr["UserID"] as int?;
-				Entity.SaleManUserID = dr["SaleManUserID"] as int?;
-				Entity.StartDate = dr["StartDate"] as DateTime?;
-				Entity.EndDate = dr["EndDate"] as DateTime?;
-				Entity.CreateTime = dr["CreateTime"] as DateTime?;
-				Entity.OriginalMoney = decimal.Parse(dr["OriginalMoney"].ToString());
+				Entity.CodeID = dr["CodeID"] as int?;
+				Entity.DateTime = dr["DateTime"] as DateTime?;
+				Entity.ShareType = dr["ShareType"] as int?;
                 EntityList[i] = Entity;
             }
              return EntityList;
@@ -307,7 +272,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(string where,string orderBy)
 		{
-			return db.Select(-1,-1,"Coupons_CashWhenFee_Code","ID",where,orderBy);
+			return db.Select(-1,-1,"Coupons_CashWhenFee_ShareFriend","ID",where,orderBy);
 		}
 		
 		
@@ -320,7 +285,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex)
 		{
-			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee_Code","ID","","");
+			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee_ShareFriend","ID","","");
 		}
 		
 		/// <summary>
@@ -332,7 +297,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee_Code","ID","",orderBy);
+			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee_ShareFriend","ID","",orderBy);
 		}
 		
 		/// <summary>
@@ -345,7 +310,7 @@ namespace ADeeWu.HuoBi3J.DAL
         /// <returns></returns>
 		public DataTable Select(long pageSize,long pageIndex,string where,string orderBy)
 		{
-			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee_Code","ID",where,orderBy);
+			return db.Select(pageSize,pageIndex,"Coupons_CashWhenFee_ShareFriend","ID",where,orderBy);
 		}
 		
 		

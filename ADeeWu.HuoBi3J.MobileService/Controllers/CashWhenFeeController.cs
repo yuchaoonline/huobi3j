@@ -167,6 +167,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                 StartDate = cashWhenFee.StartDate,
                 UseCount = 0,
                 UserID = userid,
+                OriginalMoney = cashWhenFee.Money.Value
             });
 
             return new HttpResponseMessage(HttpStatusCode.OK);
