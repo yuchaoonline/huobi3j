@@ -237,6 +237,7 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                     CreateTime = row["CreateTime"].GetDateTime(),
                     CompanyName = row["CompanyName"].GetStr(),
                     UserName = row["UserName"].GetStr(),
+                    OriginalMoney = row["OriginalMoney"].GetDecimal(),
                 });
             }
 
