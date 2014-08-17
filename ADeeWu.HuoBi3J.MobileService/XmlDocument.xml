@@ -396,6 +396,103 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController">
+            <summary>
+            分享现金抵扣券
+            有两种分享方式：分享给朋友使用，分享给朋友提高券值
+            </summary>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.GetMyShare(System.Int32)">
+            <summary>
+            我分享的抵扣券，包括分享给朋友使用的抵扣券、分享给朋友的提高券，使用ShareType区分
+            </summary>
+            <param name="userid">我的UserID</param>
+            <returns>IsVaild确定抵扣券是否过期；通过ShareType确定进入不同的页面，ShareType: 1.分享券，2.提高券</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.GetFriendShare(System.Int32)">
+            <summary>
+            朋友分享给我的券
+            </summary>
+            <param name="userid">我的UserID</param>
+            <returns>分享券可以通过userid确定分享用户，提高券只统计次数，并取最大money为最后抵扣券金额；OriginalMoney抵扣券原始金额</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.GetFriendShareLevel(System.Int32)">
+            <summary>
+            提高券的提高等级
+            </summary>
+            <param name="codeid">券ID</param>
+            <returns>http404：抵扣券不存在或不是提高券；http204：抵扣券没有设置等级</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.Share(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            分享抵扣券
+            </summary>
+            <param name="userid">分享人</param>
+            <param name="codeid">抵扣券ID</param>
+            <param name="sharetype">分享类型</param>
+            <returns>http400：抵扣券不是userid的；http409：抵扣券已分享；http403：分享失败；http200：分享成功，并返回分享链接</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.GetShareLink(System.Int32)">
+            <summary>
+            抵扣券的分享链接
+            </summary>
+            <param name="codeid">抵扣券ID</param>
+            <returns>返回抵扣券分享链接</returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.GetShareTickets(System.Data.DataTable)">
+            <summary>
+            dt转sharetickets
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.GetObtainShareTickets(System.Data.DataTable)">
+            <summary>
+            dt转obtainsharetickets
+            </summary>
+            <param name="dt"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ShareTicket">
+            <summary>
+            分享抵扣券实体
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ShareTicket.ShareTime">
+            <summary>
+            分享时间
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ShareTicket.ShareType">
+            <summary>
+            分享类型
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ShareTicket.IsVaild">
+            <summary>
+            是否无效
+            </summary>
+        </member>
+        <member name="T:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ObtainShareTicket">
+            <summary>
+            获得分享抵扣券实体
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ObtainShareTicket.MyUserID">
+            <summary>
+            我的UserID
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ObtainShareTicket.ObtainTicketTime">
+            <summary>
+            获得抵扣券时间
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Controllers.ShareController.ObtainShareTicket.IsVaild">
+            <summary>
+            是否无效
+            </summary>
+        </member>
         <member name="T:ADeeWu.HuoBi3J.MobileService.Controllers.CashWhenFeeController">
             <summary>
             现金抵扣
@@ -750,6 +847,16 @@
         <member name="P:ADeeWu.HuoBi3J.MobileService.Helpers.BaseDataHelper.RegisterCouponsID">
             <summary>
             注册赠送券ID
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Helpers.BaseDataHelper.MobileServiceSite">
+            <summary>
+            接口站点
+            </summary>
+        </member>
+        <member name="P:ADeeWu.HuoBi3J.MobileService.Helpers.BaseDataHelper.WebSite">
+            <summary>
+            运行网站
             </summary>
         </member>
         <member name="T:ADeeWu.HuoBi3J.MobileService.Helpers.RadiusHelper">

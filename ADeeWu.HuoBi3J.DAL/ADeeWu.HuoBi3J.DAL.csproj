@@ -87,6 +87,7 @@
     <Compile Include="Coupons_CashWhenFee_CodeLog.cs" />
     <Compile Include="Coupons_CashWhenFee_Condition.cs" />
     <Compile Include="Coupons_CashWhenFee_ShareFriend.cs" />
+    <Compile Include="Coupons_CashWhenFee_ShareFriendLevel.cs" />
     <Compile Include="Coupons_CashWhenFee_ShareFriendLog.cs" />
     <Compile Include="Coupons_List.cs" />
     <Compile Include="Coupons_Subject.cs" />

@@ -31,3 +31,19 @@ CREATE TABLE [dbo].[Coupons_CashWhenFee_ShareFriendLog](
 GO
 
 ALTER TABLE dbo.Coupons_CashWhenFee_Code ADD OriginalMoney MONEY DEFAULT 0
+
+CREATE TABLE [dbo].[Coupons_CashWhenFee_ShareFriendLevel](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Count] [nvarchar](50) NULL,
+	[Money] [money] NULL,
+	[CodeID] [int] NULL,
+ CONSTRAINT [PK_Coupons_CashWhenFee_ShareFriendLevel] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+INSERT INTO [dbo].[BaseData]([Name],[Value],[IDentity])VALUES('运行网站','http://www.huobi3j.com/',3)
+GO

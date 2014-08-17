@@ -28,6 +28,28 @@ namespace ADeeWu.HuoBi3J.MobileService.Helpers
             }
         }
 
+        /// <summary>
+        /// 接口站点
+        /// </summary>
+        public static string MobileServiceSite
+        {
+            get
+            {
+                return GetValue(2).GetStr("http://mobile2.huobi3j.com");
+            }
+        }
+
+        /// <summary>
+        /// 运行网站
+        /// </summary>
+        public static string WebSite
+        {
+            get
+            {
+                return GetValue(3).GetStr("http://www2.huobi3j.com/");
+            }
+        }
+
         #region 操作方法
         private static object GetValue(int IDentity)
         {

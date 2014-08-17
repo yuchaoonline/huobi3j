@@ -17,6 +17,26 @@ namespace ADeeWu.HuoBi3J.Libary
     public static class UtilityExtention
     {
         /// <summary>
+        /// 对象是否为空
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsNull(this object obj)
+        {
+            return obj == null;
+        }
+
+        /// <summary>
+        /// 对象是否不为空
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static bool IsNotNull(this object obj)
+        {
+            return !obj.IsNull();
+        }
+
+        /// <summary>
         /// 验证是否日期型
         /// </summary>
         /// <param name="value"></param>
