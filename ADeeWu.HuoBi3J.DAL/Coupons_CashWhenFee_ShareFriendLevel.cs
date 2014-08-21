@@ -77,8 +77,8 @@ namespace ADeeWu.HuoBi3J.DAL
 			db.Parameters.Clear();
 		db.Parameters.Append("@Count",model.Count );
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
-		db.Parameters.Append("@CodeID",model.CodeID.HasValue ? (object)model.CodeID.Value : (object)DBNull.Value );
-		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_ShareFriendLevel]([Count],[Money],[CodeID]) values (@Count,@Money,@CodeID);select @@Identity;");
+		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+		    DataTable dt = db.Select("insert into [Coupons_CashWhenFee_ShareFriendLevel]([Count],[Money],[UserID]) values (@Count,@Money,@UserID);select @@Identity;");
 			int newID = int.Parse(dt.Rows[0][0].ToString());
 			model.ID = newID;
 			return newID;
@@ -90,8 +90,8 @@ namespace ADeeWu.HuoBi3J.DAL
 		db.Parameters.Append("@ID",model.ID);
 		db.Parameters.Append("@Count",model.Count );
 		db.Parameters.Append("@Money",model.Money.HasValue ? (object)model.Money.Value : (object)DBNull.Value );
-		db.Parameters.Append("@CodeID",model.CodeID.HasValue ? (object)model.CodeID.Value : (object)DBNull.Value );
-			return db.ExecuteSql("update [Coupons_CashWhenFee_ShareFriendLevel] set [Count]=@Count,[Money]=@Money,[CodeID]=@CodeID where [ID]=@ID");
+		db.Parameters.Append("@UserID",model.UserID.HasValue ? (object)model.UserID.Value : (object)DBNull.Value );
+			return db.ExecuteSql("update [Coupons_CashWhenFee_ShareFriendLevel] set [Count]=@Count,[Money]=@Money,[UserID]=@UserID where [ID]=@ID");
 		}
 		
 	
@@ -206,7 +206,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.ID = int.Parse(dr["ID"].ToString());
 			Entity.Count = dr["Count"] as string;
 			Entity.Money = dr["Money"] as decimal?;
-			Entity.CodeID = dr["CodeID"] as int?;
+			Entity.UserID = dr["UserID"] as int?;
 			return Entity;
 		}
 		
@@ -227,7 +227,7 @@ namespace ADeeWu.HuoBi3J.DAL
 			Entity.ID = int.Parse(dr["ID"].ToString());
 			Entity.Count = dr["Count"] as string;
 			Entity.Money = dr["Money"] as decimal?;
-			Entity.CodeID = dr["CodeID"] as int?;
+			Entity.UserID = dr["UserID"] as int?;
 			return Entity;
 		}
 		
@@ -258,7 +258,7 @@ namespace ADeeWu.HuoBi3J.DAL
 				Entity.ID = int.Parse(dr["ID"].ToString());
 				Entity.Count = dr["Count"] as string;
 				Entity.Money = dr["Money"] as decimal?;
-				Entity.CodeID = dr["CodeID"] as int?;
+				Entity.UserID = dr["UserID"] as int?;
                 EntityList[i] = Entity;
             }
              return EntityList;

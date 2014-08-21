@@ -48,20 +48,23 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
         }
 
         /// <summary>
-        /// 提高券的提高等级
+        /// 提高抵扣券的提高等级及当前所在位置
         /// </summary>
         /// <param name="codeid">券ID</param>
         /// <returns>http404：抵扣券不存在或不是提高券；http204：抵扣券没有设置等级</returns>
         [Route("api/Share/Friend/Level/{codeid}")]
-        public IEnumerable<Model.Coupons_CashWhenFee_ShareFriendLevel> GetFriendShareLevel(int codeid)
+        public CodeLevel GetFriendShareLevel(int codeid)
         {
             var shareFriend = shareFriendDAL.GetEntity(new string[] { "codeid", "sharetype" }, new object[] { codeid, 2 });
             if (shareFriend.IsNull()) throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            var levels = shareFriendLevelDAL.GetEntityList("money desc", new string[] { "codeid" }, new object[] { shareFriend.CodeID });
+            var code = codeDAL.GetEntity(shareFriend.CodeID.Value);
+            if (code.IsNull()) throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            var levels = shareFriendLevelDAL.GetEntityList("money desc", new string[] { "userid" }, new object[] { code.SaleManUserID });
             if (levels.IsNull()) throw new HttpResponseException(HttpStatusCode.NoContent);
 
-            return levels;
+            return new CodeLevel { CurrentMoney = code.Money.Value, Levels = levels.ToList() };
         }
 
         /// <summary>
@@ -226,6 +229,18 @@ namespace ADeeWu.HuoBi3J.MobileService.Controllers
                     return this.StartDate.HasValue && this.EndDate.HasValue && this.StartDate <= DateTime.Now && this.EndDate >= DateTime.Now;
                 }
             }
+        }
+
+        public class CodeLevel
+        {
+            /// <summary>
+            /// 当前抵扣金额
+            /// </summary>
+            public decimal CurrentMoney { get; set; }
+            /// <summary>
+            /// 提升等级
+            /// </summary>
+            public List<Model.Coupons_CashWhenFee_ShareFriendLevel> Levels { get; set; }
         }
     }
 }

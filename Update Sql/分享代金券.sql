@@ -36,7 +36,7 @@ CREATE TABLE [dbo].[Coupons_CashWhenFee_ShareFriendLevel](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
 	[Count] [nvarchar](50) NULL,
 	[Money] [money] NULL,
-	[CodeID] [int] NULL,
+	[UserID] [int] NULL,
  CONSTRAINT [PK_Coupons_CashWhenFee_ShareFriendLevel] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
